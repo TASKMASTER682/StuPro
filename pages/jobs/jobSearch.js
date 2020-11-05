@@ -7,7 +7,7 @@ const JobSearch=()=>{
     return(
         <section className="container">
             <h1 className="large text-primary">Search Jobs</h1>
-            <p className="extra-small text-light-gray">Find the job of your choice by searching keywords</p>
+            <p className="extra-small text-light-gray">Find the job of your choice by searching keywords,title or location</p>
             <div className="line"></div>
             <div className="my-1">
             <Search />

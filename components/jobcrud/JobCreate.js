@@ -249,13 +249,13 @@ return (
             <div className="line"></div>
         </div>
      <div className="checkList">
-       <ul style={{ maxHeight: '200px' }}>
+       <ul >
         <h3 className="text-primary">Tags</h3>
         <small className="text-light-gray">Select the tags related to your blog</small>
          {showJobTags()}
          
         </ul>
-        <ul style={{ maxHeight: '200px'}}>
+        <ul >
         <h3 className="text-primary">Categories</h3>
         <small className="text-light-gray">Select the category of your blog</small>
         {showJobCategories()}

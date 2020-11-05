@@ -14,16 +14,16 @@ const Navbar=()=>{
     return(
     <>
        <nav className='navbar bg-success'style={{height:'4rem'}}>
-       <div className="p-1" style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-         <Link href ="/" ><a>  <div className="bg-success nbtn" style={{justifyContent:'center',margin:'auto'}}>
-          <img src="/StuproLogo.png" style={{width:'110px',height:'110px',marginTop:'2rem'}}/>
-          </div></a>
+       <div className="py-1" style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+         <Link href ="/" ><a>
+          <img src="img/prograd.png" style={{width:'175px',height:'50px',marginTop:'0.5rem'}}/>
+          </a>
        </Link>
-        
+        <div className='hide-sm'>
         <Search />
         </div>
+        </div>
         <ul >
-            
             <li><h3><Link href="/jobs"><a>Jobs</a></Link></h3></li>
             <li><h3><Link href="/blogs"><a>Blogs</a></Link></h3></li>
             <li><h3><Link  href="/user/crud/blog"><a>Write a blog</a></Link></h3></li>
@@ -31,10 +31,7 @@ const Navbar=()=>{
             
          </ul>
          <ul>
-
-           
-            
-             {isAuth() && isAuth().role === 0 && (
+              {isAuth() && isAuth().role === 0 && (
                    <>
                   <li><Link href="/user" ><a className="btn nbtn btn-dark "><i className="fas fa-user"></i> <span>{`${isAuth().name}'s Dashboard`}</span></a></Link></li>
                    </>
@@ -56,22 +53,16 @@ const Navbar=()=>{
         </ul>
      </nav>
          <ul className="bottom-nav ">
-
-        
          <li>
             <Link href="/blogs"><i className="fab fa-readme fa-2x text-dark "></i></Link>
-            
          </li>
          <li>
            <Link  href="/jobs"><i className="fas fa-briefcase fa-2x text-dark "></i></Link>  
-             
-        </li>
-
-        <li>
+         </li>
+         <li>
              <Link href="/user/crud/blog"><i className="fas fa-plus-circle  fa-2x text-dark"></i></Link>
-             </li>
-
-             {!isAuth() ? ( 
+         </li>
+            {!isAuth() ? ( 
               <>
                 <li><a  href="/signin"><i className="fas fa-sign-in-alt fa-2x text-dark"></i></a></li>
              </>
@@ -80,25 +71,17 @@ const Navbar=()=>{
          <li>
             <a href="/user"><i className="fas fa-columns fa-2x text-dark"></i></a>
          </li>
-            
-         )}
+      )}
          {isAuth() && isAuth().role === 1 && (
-            <li>
+         <li>
             <a href="/admin"><i className="fas fa-columns fa-2x  text-dark"></i></a> 
-             </li>
-            
-         )}
-         </>
-               )
+         </li>
+       )}
+         </>)
                
-               }
-        
-            
-         
-            
-    </ul>
-   
-    </>
+   }
+  </ul>
+   </>
     )
 }
 export default Navbar;

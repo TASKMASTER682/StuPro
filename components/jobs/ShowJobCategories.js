@@ -32,9 +32,9 @@ const ShowJobCategories=()=>{
     };
 
     const showJobCategories=()=>{
-        return jobCategories.map((c,i)=>{
+        return jobCategories.map((jc,ji)=>{
             return(
-               <Link href={`/jobCategories/${c.slug}`}><a style={{ padding:'0rem 0.8rem'}}   key={i} className="btn nbtn  btn-danger  my-1  "><p>{c.name}</p></a></Link> 
+               <Link href={`/jobCategories/${jc.slug}`}><a style={{ padding:'0rem 0.8rem'}}   key={ji} className="btn nbtn  btn-danger  my-1  "><p>{jc.name}</p></a></Link> 
                 )    
             })
     };

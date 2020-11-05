@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import ShowJobCategories from './jobs/ShowJobCategories';
-import ShowJobTags from './jobs/ShowJobTags';
+import ShowCategories from './blogs/ShowCategories';
 
 const Footer=()=>{
     const currentDate=new Date();
@@ -18,25 +19,26 @@ const Footer=()=>{
                 <div className="line"></div>
             </div>
             <div className="second-row p-1 ">
-                <h2 className="lead text-dark">Categories</h2>
+                <h2 className="lead text-dark">Job Categories</h2>
                 <ul>
                     <li><ShowJobCategories /></li>
                    
                 </ul>
             </div>
             <div className="second-row p-1 ">
-                <h2 className="lead text-dark">Job Categories</h2>
+                <h2 className="lead text-dark">Blog Categories</h2>
                 <ul>
-                    <li><ShowJobTags/></li>
+                    <li><ShowCategories/></li>
                     
                 </ul>
             </div>
             <div className="third-row p-1">
                 <h2 className="lead text-dark">Quick Links</h2>
-               <p>About us</p>
-               <p>Contact us</p>
-               <p>Terms and conditions</p>
-               <div className="line"></div>
+               <Link href="/disclaimer"><p className='text-dark'> Disclaimer</p></Link>
+               <Link href="/contact"><p className='text-dark'> Contact us</p></Link>
+               <Link href="/privacy"><p className='text-dark'>Privacy Policy Terms & conditions</p></Link>
+            
+             <div className="line"></div>
                 <ul className="my-2 icons">
                     <li><a href="#"><i className="fab fa-instagram small "></i></a></li>
                     <li><a href="#"><i className="fab fa-facebook small "></i></a></li>

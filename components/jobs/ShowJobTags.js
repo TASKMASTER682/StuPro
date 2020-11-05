@@ -1,23 +1,26 @@
 import { useState, useEffect } from 'react';
-import {  getJobTags} from '../../actions/jobTag';
+import {  getJobTags } from '../../actions/jobTag';
 import Link from 'next/link';
 
 
- const ShowJobTags = () => {
 
+const ShowJobTags=()=>{
     const [values, setValues] = useState({
       
-        jobTags:[],
-        reaload:false
+        jobTags: [],
+        reaload:true
         
     });
 
-    const {jobTags,reload} = values;
+    const {  jobTags,reload} = values;
+    
 
     useEffect(() => {
-       loadJobTags();
+        loadJobTags();
+       
     }, [reload]);
 
+   
     const loadJobTags = () => {
         getJobTags().then(data => {
             if (data.error) {
@@ -27,21 +30,25 @@ import Link from 'next/link';
             }
         });
     };
+
     const showJobTags=()=>{
         return jobTags.map((t,i)=>{
             return(
-                <>
-               
-                <Link href={`/jobTags/${t.slug}`}><a  style={{ padding:'0rem 0.8rem'}} key={i} className="btn btn-dark nbtn my-1 "><p>{t.name}</p></a></Link> 
-                </>
-            )
-        })
+               <Link href={`/jobTags/${t.slug}`}><a style={{ padding:'0rem 0.8rem'}}   key={i} className="btn nbtn  btn-dark  my-1  "><p>{t.name}</p></a></Link> 
+                )    
+            })
     };
-    return (
-        <>
-            
-            {showJobTags()}
-       </>
-    )
+
+
+
+
+
+return(
+    <>
+       
+        {showJobTags()}
+       
+   </>
+)
 }
 export default ShowJobTags;

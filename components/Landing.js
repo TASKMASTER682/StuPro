@@ -14,7 +14,7 @@ const Landing=()=>{
      <div className="dark-overlay nbtn my-1">
          <div className="landing-inner ">
             <div>
-            <h2 className="x-large text-dark">{APP_NAME}</h2>
+            <h2 className="x-large text-dark hide-sm">{APP_NAME}</h2>
             <h3 className="lead text-dark my-2">A platform to make your transition from   Stu-dents towards Pro-fessionalism </h3>
         <ol type="A" style={{lineHeight:'2rem'}}>
              <li className="extra-small">Search and get your job according to your profile</li>
@@ -35,35 +35,38 @@ const Landing=()=>{
 
  <section className="landing-categories my-1">
      <h2 className="text-primary small my-1">Top Job Categories</h2>
-     <div className="cat-main">
+     <div className="cat-main ">
+
      <div className="cat-item nbtn job m-1">
-        <Link href="#"><a><i className="fas fa-piggy-bank x-large text-primary p-1"></i><p className="lead">Banking</p></a></Link>
+        <Link href="/jobCategories/defence"><a><i className="fas fa-shield-alt x-large text-primary p-1"></i><p className="lead">Defence</p></a></Link>
+     </div>
+
+     <div className="cat-item nbtn job m-1">
+        <Link href="/jobCategories/banking"><a><i className="fas fa-piggy-bank x-large text-primary p-1"></i><p className="lead">Banking</p></a></Link>
      </div>
      <div className="cat-item nbtn job m-1">
-         <Link href="#"><a><i className="fas fa-briefcase-medical text-primary x-large p-1"></i><p className="lead">Medical</p></a></Link>
+         <Link href="/jobCategories/medical"><a><i className="fas fa-briefcase-medical text-primary x-large p-1"></i><p className="lead">Medical</p></a></Link>
 
      </div>
      
      <div className="cat-item nbtn job m-1">
-         <Link href="#"><a><i className="fas fa-cogs text-primary x-large p-1"></i><p className="lead">Egineering</p></a></Link>
+         <Link href="/jobCategories/engineering"><a><i className="fas fa-cogs text-primary x-large p-1"></i><p className="lead">Egineering</p></a></Link>
 
      </div>
      
      <div className="cat-item nbtn job m-1">
-         <Link href="#"><a><i className="fas fa-balance-scale text-primary x-large p-1"></i><p className="lead">Law</p></a></Link>
+         <Link href="/jobCategories/law"><a><i className="fas fa-balance-scale text-primary x-large p-1"></i><p className="lead">Law</p></a></Link>
 
      </div>
-     <div className="cat-item nbtn job m-1">
-      <Link href="#"><a><i className="far fa-building x-large text-primary p-1"></i><p className='lead'>Private</p></a></Link>
-     </div>
+    
      <div className="cat-item nbtn job m-1">
          
-        <Link href="#"><a><i className="fas fa-briefcase x-large text-primary p-1"></i><p className='lead'>J&K jobs</p></a></Link> 
+        <Link href="/jobTags/jandk-jobs"><a><i className="fas fa-briefcase x-large text-primary p-1"></i><p className='lead'>J&K jobs</p></a></Link> 
 
      </div>
      <div className="cat-item nbtn job m-1">
          
-         <Link href="#"><a ><i className="fas fa-train x-large text-primary p-1"></i><p className='lead'>Railway </p></a></Link>
+         <Link href="/jobCategories/railway"><a ><i className="fas fa-train x-large text-primary p-1"></i><p className='lead'>Railway </p></a></Link>
 
      </div>
   
@@ -93,7 +96,10 @@ const Landing=()=>{
  <section className="bg-primary landing-categories nbtn my-1 py-1">
      <h2 className="text-dark small py-1">Job Posting Plans</h2>
      <div className="cat-main">
+     <div>
       <h2 className="small text-light-gray">The job posting is free till 6th of November 2021</h2>
+      <p className="text-dark extra-small">Just click on<Link  href="/contact"><a className="text-dark"> <strong>contact us</strong></a></Link>  and send your job to us or ask any other query.</p>
+      </div>
      
      </div>
    </section>

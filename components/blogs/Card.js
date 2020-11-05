@@ -60,11 +60,10 @@ const Card=({blog})=>{
                    </div>
                   <div className="blog-body">
                        <img className="nbtn " src={`${API}/blog/photo/${blog.slug}`} style={{maxHeight: '400px', width: '100%', marginBottom: '3rem'}}  alt={blog.title} />
-                        <div> {renderHTML(blog.excerpt)}</div><span> </span>
-                          <Link href={`/blogs/${blog.slug}`} className="text-light-gray extra-small"><a>Read more</a></Link>
-                        </div>
-                   
-                     <ul> 
+                        <div> {renderHTML(blog.excerpt)}
+                         </div>
+                     </div>
+                      <ul> 
                       <li> <a href={`/blogs/${blog.slug}`} className="btn btn-primary nbtn  ">View to Discuss</a></li>
                       </ul> 
                     

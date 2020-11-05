@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import {signup,preSignup,isAuth} from '../../actions/auth';
+import LoginGoogle from './LoginGoogle';
+
 
 
 const SignupComponent=()=>{
@@ -52,10 +54,9 @@ const SignupComponent=()=>{
         <div className="account">
             <div>
 
-        <h1 className="large text-primary">
+        <h1 className="large text-primary py-1">
             Sign up
         </h1>
-        <p className="lead">Sign up to your account</p>
         <form  className="form" onSubmit={handleSubmit}>
         <div className="form-group">
                 <input  value={name} onChange={handleChange('name')} type="text" type="text"  placeholder="name" />
@@ -69,12 +70,17 @@ const SignupComponent=()=>{
             </div>
             <input type="submit" value="Sign up" className="btn nbtn btn-primary" />
         </form>
-      <p className="my-1 ">Register here and grab knowlege from Experianced guides around India</p> 
+      <p className="my-1 text-light-gray "></p> 
+      <div style={{textAlign:'center',margin:'auto',justifyContent:'center'}}>
+        
+      <span><h1 className="lead text-primary my-1">Sign up using Google</h1><p className="extra-small text-light-gray">Recommended</p></span>
+       <LoginGoogle />
+      </div>
       
     </div>
     <div className="second p-2 hide-sm">
         <div className="fst">
-            <h2 className="text-dark">Signup using other social media</h2>
+            <h2 className="text-dark">Register to help educated youth of India</h2>
            <img src="img/stupro2.png" alt="" />
         </div>
        
@@ -84,7 +90,7 @@ const SignupComponent=()=>{
         
     </div>
     </div>
-
+ 
     </div>
     </section>
         </>

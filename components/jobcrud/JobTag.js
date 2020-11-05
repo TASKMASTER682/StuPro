@@ -33,7 +33,7 @@ const JobTag=()=>{
         return jobTags.map((t,i)=>{
             return(
                 <>
-                <div className="line"></div>
+               
                   <button  style={{ padding:'0rem 0.8rem'}} onDoubleClick={() => deleteConfirm(t.slug)} title="Double click to delete" key={i} className="btn btn-dark nbtn my-1 "><p>{t.name}</p></button>
                 </>
             )

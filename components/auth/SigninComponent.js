@@ -75,10 +75,11 @@ const signinForm=()=>{
             </div>
             <input type="submit" value="Sign in" className="btn nbtn btn-primary" />
         </form>
-        <p className="my-1">Forgot Password?<span><Link href="/auth/password/forgot" ><a>Recover here</a></Link></span></p> 
+        <p className="my-1 extra-small">Forgot Password?<span> <Link href="/auth/password/forgot" ><a>Recover here</a></Link></span></p> 
         <div style={{textAlign:'center',margin:'auto',justifyContent:'center'}}>
         
-          <h1 className="lead text-primary my-1">Social Login</h1>
+          <h1 className="lead text-primary my-1">Login using google</h1>
+          <p className="extra-small text-light-gray">Recommended</p>
          <LoginGoogle />
         </div>
      
