@@ -13,7 +13,6 @@ const AdminDashboard=()=>{
             Dashboard
         </h1>
  <div className="line"></div>
-        <p className="lead" ><i className="far fa-grin-beam"></i> <span>{`Welcome ${isAuth().name}`}</span></p>
 <div className="dash-buttons">
     <Link href="/admin/jobcrud/job">
         <a className="btn btn-primary  nbtn"><i className="fas fa-user-edit "></i><span></span> Create Job</a>

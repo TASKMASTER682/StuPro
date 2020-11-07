@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState,useEffect  } from 'react';
-import { singleBlog,listRelated,addLikes  } from '../../actions/blog';
+import { singleBlog,listRelated } from '../../actions/blog';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
