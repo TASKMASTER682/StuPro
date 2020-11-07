@@ -1,7 +1,5 @@
 import { useState } from 'react';
-
 import { forgotPassword } from '../../../actions/auth';
-import { ToastContainer, toast } from 'react-toastify';
 
 const ForgotPassword = () => {
     const [values, setValues] = useState({
@@ -29,18 +27,20 @@ const ForgotPassword = () => {
         });
     };
 
-    const showError = () => (error &&   
-           toast({error},{
-            className:"error-toast",
-            draggable:true,
-            position:toast.POSITION.TOP_CENTER
-        }));
-    const showMessage = () => (message ?  
-            toast({message},{
-            className:"info-toast",
-            draggable:true,
-            position:toast.POSITION.TOP_CENTER
-        }));
+    const showError = (error) => {
+        return (
+            <div className="badge-danger">{error}</div>
+        )
+    }  
+        
+        
+    const showMessage = (message) => {
+        return(
+            <div className="bg-primary">{message}</div>
+        )
+    }
+         
+        
 
     const passwordForgotForm = () => (
         <form onSubmit={handleSubmit} className="form">
@@ -68,7 +68,7 @@ const ForgotPassword = () => {
                 <div>
                 {showError()}
                 {showMessage()}
-                <ToastContainer />
+               
                 </div>
 
                
