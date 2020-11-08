@@ -152,13 +152,17 @@ const CreateBlog=({router})=>{
                 tags.map((t, i) => (
                     <li key={i} >
                         <Checkbox onChange={handleTagsToggle(t._id)}   />
-                        <label >{t.name}</label>
+                        <label >{t.n0ame}</label>
                     </li>
                 ))
             );
         };
     
-      
+     const showLoading=()=>(
+         <div className="badge-primary" style={{display:loading ?'':'none'}}>
+             Loading...
+         </div>
+     )
     
 
 
@@ -194,6 +198,7 @@ return(
         <div className="createForm">
            {createBlogForm()}
         <div className="line"></div>
+        {showLoading()}
         </div>
     </div>
     <div className="catagoriesTags">
