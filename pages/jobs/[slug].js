@@ -40,7 +40,7 @@ const SingleJob=({job,query})=>{
 
             <meta property="og:image" content={`${API}/job/photo/${job.slug}`} />
             <meta property="og:image:secure_url" ccontent={`${API}/job/photo/${job.slug}`} />
-            <meta property="og:image:type" content="image/jpg" />
+            <meta property="og:image:type" content="img/StuproLogo.png" />
             <meta name="twitter:card" content="summary_large_image"></meta>
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>

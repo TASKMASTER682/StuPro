@@ -15,10 +15,10 @@ const Navbar=()=>{
     <>
        <nav className='navbar bg-success'style={{height:'4rem'}}>
        <div className="py-1" style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-         <Link href ="/" ><a>
+         <a  href ="/">
           <img src="img/prograd.png" style={{width:'175px',height:'50px',marginTop:'0.5rem'}}/>
           </a>
-       </Link>
+       
         <div className='hide-sm'>
         <Search />
         </div>

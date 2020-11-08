@@ -27,9 +27,9 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
 
-            <meta property="og:image" content={`${DOMAIN}/static/images/stupro.jpg`} />
-            <meta property="og:image:secure_url" ccontent={`${DOMAIN}/static/images/stupro.jpg`} />
-            <meta property="og:image:type" content="image/jpg" />
+            <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
+            <meta property="og:image:secure_url" ccontent={`${DOMAIN}/img/StuproLogo.png`} />
+            <meta property="og:image:type" content="img/StuproLogo.png" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
     );

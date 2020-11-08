@@ -21,8 +21,8 @@ const JobCategory=({jobCategory,jobs,query})=>{
             <meta property="og:url" content={`${DOMAIN}/categories/${query.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
 
-            <meta property="og:image" content={`${DOMAIN}/public/images/seoblog.jpg`} />
-            <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/stupro.jpg`} />
+            <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
+            <meta property="og:image:secure_url" content={`${DOMAIN}/StuproLogo.png`} />
             <meta property="og:image:type" content="image/jpg" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
