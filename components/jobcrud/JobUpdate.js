@@ -8,18 +8,16 @@ import { getJobCategories } from '../../actions/jobCategory';
 import { getJobTags } from '../../actions/jobTag';
 import { singleJob, updateJob } from '../../actions/job';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-
-
-
 import { QuillModules, QuillFormats } from '../../helpers/quill';
 import { API } from '../../config';
+
+
 
 const JobUpdate=({router})=>{
     const [body, setBody] = useState('');
    
     const [jobCategories, setJobCategories] = useState([]);
     const [jobTags, setJobTags] = useState([]);
-
     const [checked, setChecked] = useState([]); // categories
     const [checkedTag, setCheckedTag] = useState([]); // tags
 
@@ -40,7 +38,7 @@ const JobUpdate=({router})=>{
         qualification:''
     });
 
-    const { error, success, formData,agency,applyLink, title,qualification,location,type,lastDate, salary } = values;
+    const { error, success, formData,agency,applyLink, title,qualification,lastDate,location,type, salary } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -57,7 +55,7 @@ const JobUpdate=({router})=>{
                 if (data.error) {
                     console.log(data.error);
                 } else {
-                    setValues({ ...values, title: data.title,applyLink:data.applyLink,agency:data.agency,salary:data.salary,qualification:data.qualification,location:data.location,lastDate:data.lastDate,type:data.type });
+                    setValues({ ...values, title: data.title,applyLink:data.applyLink,lastDate:data.lastDate,agency:data.agency,salary:data.salary,qualification:data.qualification,location:data.location,type:data.type });
                     setBody(data.body);
                     setCategoriesArray(data.jobCategories);
                     setTagsArray(data.jobTags);
@@ -248,7 +246,7 @@ const JobUpdate=({router})=>{
             <input type="text" placeholder="Location"  value={location} onChange={handleChange('location')} required />
             </div>
             <div className="form-group">
-              <input type="text" placeholder="Last date to apply"  value={lastDate} onChange={handleChange('lastDate')} required />
+            <input type="date" value={lastDate} onChange={handleChange('lastDate')}/>
             </div>
             <div className="form-group">
               <input type="text" placeholder="Qualification needed"  value={qualification} onChange={handleChange('qualification')} required />
@@ -260,7 +258,6 @@ const JobUpdate=({router})=>{
             <input type="text" placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} required />
             </div>
 
-            <div className="form-group textinput">
             <ReactQuill
                      modules={QuillModules}
                     formats={QuillFormats}
@@ -268,7 +265,7 @@ const JobUpdate=({router})=>{
                     placeholder="Write something amazing..."
                     onChange={handleBody}
                 />
-            </div>
+            
 
             <div>
                 <button type="submit" className="btn nbtn btn-dark">

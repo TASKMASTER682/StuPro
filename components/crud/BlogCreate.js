@@ -42,7 +42,7 @@ const CreateBlog=({router})=>{
             hidePublishButton: false
         });
     
-        const { error, sizeError, success, formData, title, hidePublishButton } = values;
+        const { error, sizeError, success, formData, title, hidePublishButton,loading } = values;
         const token = getCookie('token');
     
         useEffect(() => {
@@ -164,6 +164,17 @@ const CreateBlog=({router})=>{
          </div>
      )
     
+     const showError = () => (
+        <div className="badge badge-danger" style={{ display: error ? '' : 'none' }}>
+            {error}
+        </div>
+    );
+
+    const showSuccess = () => (
+        <div className="badge badge-success" style={{ display: success ? '' : 'none' }}>
+            {success}
+        </div>
+    );
 
 
     const createBlogForm = () => {
@@ -199,6 +210,10 @@ return(
            {createBlogForm()}
         <div className="line"></div>
         {showLoading()}
+    <div className="py-3">
+        {showError()}
+        {showSuccess()}
+    </div>
         </div>
     </div>
     <div className="catagoriesTags">

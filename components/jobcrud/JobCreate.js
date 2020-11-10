@@ -10,7 +10,8 @@ import { createJob } from '../../actions/job';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import { QuillModules, QuillFormats } from '../../helpers/quill';
 import Checkbox from '@material-ui/core/Checkbox';
-;
+
+
 
 
 
@@ -30,6 +31,7 @@ const CreateJob=({router})=>{
     const [jobCategories, setJobCategories] = useState([]);
     const [jobTags, setJobTags] = useState([]);
 
+
     const [checked, setChecked] = useState([]); // categories
     const [checkedTag, setCheckedTag] = useState([]); // tags
 
@@ -46,11 +48,11 @@ const CreateJob=({router})=>{
         type:'',
         qualification:'',
         location:'',
-        lastDate:'',
+       lastDate:'',
         hidePublishButton: false
     });
 
-    const { error, sizeError, success, formData,applyLink, agency,title,salary,qualification,location,lastDate,type, hidePublishButton } = values;
+    const { error, sizeError, success, formData,applyLink,lastDate, agency,title,salary,qualification,location,type, hidePublishButton } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -86,7 +88,7 @@ const CreateJob=({router})=>{
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
-                setValues({ ...values, title: '',agency:'',applyLink:'', error: '',salary:'',qualification:'',type:'',lastDate:'',location:'', success: `A new blog titled "${data.title}" is created` });
+                setValues({ ...values, title: '',agency:'',applyLink:'',lastDate:'', error: '',salary:'',qualification:'',type:'',location:'', success: `A new blog titled "${data.title}" is created` });
                 setBody('');
                 setJobCategories([]);
                 setJobTags([]);
@@ -197,8 +199,8 @@ const createJobForm = () => {
             <input type="text" placeholder="Location"  value={location} onChange={handleChange('location')} required />
             </div>
             <div className="form-group">
-              <input type="text" placeholder="Last date to apply"  value={lastDate} onChange={handleChange('lastDate')} required />
-            </div>
+            <input type="date" value={lastDate} onChange={handleChange('lastDate')}/>
+            </div>           
             <div className="form-group">
               <input type="text" placeholder="Qualification needed"  value={qualification} onChange={handleChange('qualification')} required />
             </div>

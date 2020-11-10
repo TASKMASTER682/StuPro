@@ -72,7 +72,7 @@ const SingleBlog=({blog,query})=>{
         const showComments = () => {
             return (
                 <div>
-                    <DisqusThread id={blog.id} title={blog.title} path={`/blog/${blog.slug}`} />
+                    <DisqusThread id={blog._id} title={blog.title} path={`/blog/${blog.slug}`} />
                 </div>
             );
         };
@@ -109,10 +109,10 @@ const SingleBlog=({blog,query})=>{
                           <div>
                             <div className=" p-1">
                                    
-                                   <a href={`https://www.facebook.com/sharer/sharer.php?u=http://www.stupro.com/blogs/${query.slug}`} target="_blank"><i className="lead fab fa-facebook"></i></a>
-                                   <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://www.stupro.com/jobs/${query.slug}.&title=${blog.title}&source=stupro.com`}><i className="lead fab fa-linkedin-in"></i></a>
+                                   <a href={`https://www.facebook.com/sharer/sharer.php?u=https://theprograd.com/blogs/${query.slug}`} target="_blank"><i className="lead fab fa-facebook"></i></a>
+                                   <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://theprograd.com/jobs/${query.slug}.&title=${blog.title}&source=stupro.com`}><i className="lead fab fa-linkedin-in"></i></a>
                                 
-                                   <a href={`http://twitter.com/share?text=${blog.title};url=http://www.stupro.com`}><i className="lead fab fa-twitter"></i></a>
+                                   <a href={`http://twitter.com/share?text=${blog.title};url=https://theprograd.com`}><i className="lead fab fa-twitter"></i></a>
                                </div>
                                <Link href={`/profile/${blog.postedBy.username}`}>
                                    <a>

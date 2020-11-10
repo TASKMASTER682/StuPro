@@ -28,7 +28,7 @@ const Card=({blog})=>{
                         </h2>
                     </a>
                     </Link>
-                    <div style={{display: "flex",alignItems:'left'}}>
+                    <div style={{display: "flex",alignItems:'left',flexWrap:'wrap',lineHeight:'1.2rem'}}>
                        {showBlogCategories(blog)}
                        {showBlogTags(blog)}
                   </div>

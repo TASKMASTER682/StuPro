@@ -215,13 +215,13 @@ const BlogUpdate=({router})=>{
     };
     const showError = () => (
        
-        <div className="alert alert-danger" >
+        <div className="badge badge-danger" >
             {error}
         </div>
     );
 
     const showSuccess = () => (
-        <div className="alert alert-success">
+        <div className="badge badge-success">
             {success}
         </div>
     );

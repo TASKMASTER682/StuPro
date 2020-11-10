@@ -14,15 +14,21 @@ const UserIndex=()=>{
           <div className="line"></div>
        <div className="dash-buttons">
     <Link href="/user/crud/blog">
-        <a className="btn btn-primary  nbtn"><i className="fas fa-user-edit "></i><span></span> Create Blog</a>
+        <a className="btn btn-primary  nbtn"><i class="fas fa-edit"></i><span></span> Create Blog</a>
     </Link>
     <Link href="/user/crud/blogs">
-        <a className="btn  nbtn"><i className="fas fa-user-edit text-primary"></i><span></span> Update/Delete Blog</a>
+        <a className="btn  nbtn"><i class="fas fa-upload text-primary"></i><span></span> Update/Delete Blog</a>
     </Link>
   
     <Link href="/user/update">
         <a className="btn  nbtn"><i className="fas fa-user-edit text-primary"></i><span></span> Update Profile</a>
     </Link>
+      
+    {isAuth() && (
+        <>
+        <button className ="btn nbtn btn-dark " style={{ cursor: 'pointer' }} onClick={() => signout(() => Router.replace(`/signin`))} >Signout <span> <i className="fas fa-sign-out-alt"></i> </span></button>
+        </>
+     )}
  
     <img  className="nbtn my-1" style={{maxHeight: '550px',width:'100%'}} src="img/stupro10.png" alt="" />
 </div>

@@ -21,7 +21,7 @@ const showJobTags = job =>
     return (
         <>
     <div className="nbtn job-read my-1">
-       <main className="p-1"  style={{display: "flex",justifyContent:'space-between'}}>
+       <main className="p-1"  style={{display: "grid",gridTemplateColumns:'10fr 2fr'}}>
        
        <Link href={`/jobs/${job.slug}`}>
        <a>
@@ -29,13 +29,11 @@ const showJobTags = job =>
        </a>
        
        </Link>
-       
-       
-       <p className="extra-small "><i className="fas fa-shield-alt text-primary"></i><strong> {job.agency}</strong></p>
+       <p className="extra-small p-1"><i className="fas fa-shield-alt text-primary"></i><strong> {job.agency}</strong></p>
     </main>
     <small className="text-light-gray p-1"> Published {moment(job.updatedAt).fromNow()}</small>
-     <p className="extra-small" style={{paddingLeft:'1rem'}}>Last Date {job.lastDate}</p>
-     <div  style={{display: "inline",marginLeft:'1rem'}}>
+     <p className="extra-small py-1" style={{paddingLeft:'1rem'}}>Will Expire  {moment(job.lastDate).fromNow()}</p>
+     <div  style={{display: "flex",marginLeft:'1rem',flexWrap:'wrap',lineHeight:'1.2rem'}}>
          {showJobCategories(job)}
          {showJobTags(job)}
         </div>

@@ -16,7 +16,7 @@ const Navbar=()=>{
        <nav className='navbar bg-success'style={{height:'4rem'}}>
        <div className="py-1" style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
          <a  href ="/">
-          <img src="img/prograd.png" style={{width:'175px',height:'50px',marginTop:'0.5rem'}}/>
+          <img src='/img/prograd.png' style={{width:'170px',height:'50px',marginTop:'0.5rem'}}/>
           </a>
        
         <div className='hide-sm'>
@@ -59,28 +59,24 @@ const Navbar=()=>{
          <li>
            <Link  href="/jobs"><i className="fas fa-briefcase fa-2x text-dark "></i></Link>  
          </li>
+         {!isAuth() && ( 
+              <>
+                <li><Link href="/signup"><a><i className="fas fa-user-plus fa-2x text-dark"></i></a></Link></li>
+              </>
+               )}
          <li>
              <Link href="/user/crud/blog"><i className="fas fa-plus-circle  fa-2x text-dark"></i></Link>
          </li>
-            {!isAuth() ? ( 
-              <>
-                <li><a  href="/signin"><i className="fas fa-sign-in-alt fa-2x text-dark"></i></a></li>
-             </>
-               ):(<>
-                  {isAuth() && isAuth().role === 0 && (
-         <li>
-            <a href="/user"><i className="fas fa-columns fa-2x text-dark"></i></a>
-         </li>
-      )}
-         {isAuth() && isAuth().role === 1 && (
-         <li>
-            <a href="/admin"><i className="fas fa-columns fa-2x  text-dark"></i></a> 
-         </li>
-       )}
-         </>)
-               
-   }
-  </ul>
+         {isAuth() && isAuth().role === 0 && (
+                   <>
+                  <li><Link href="/user" ><a><i className="fas fa-columns text-dark fa-2x"></i></a></Link></li>
+                   </>
+               )}
+               {isAuth() && isAuth().role === 1 && (
+                   <li><Link href="/admin" ><a ><i className="fas fa-columns fa-2x text-dark"></i></a></Link></li>
+            )}
+         
+         </ul>
    </>
     )
 }

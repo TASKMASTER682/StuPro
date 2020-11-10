@@ -74,7 +74,7 @@ const SingleJob=({job,query})=>{
         const showComments = () => {
             return (
                 <div>
-                    <DisqusThread id={job.id} title={job.title} path={`/job/${job.slug}`} />
+                    <DisqusThread id={job._id} title={job.title} path={`/job/${job.slug}`} />
                 </div>
             );
         };
@@ -100,67 +100,75 @@ const SingleJob=({job,query})=>{
                 </a>
             </Link>
                   <div className="share icons p-1">
-                     <a href={`https://www.facebook.com/sharer.php?u=www.stupro.com/jobs/${query.slug}`} target="_blank"><i className="fab fa-facebook text-primary lead"></i></a>
-                     <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://www.stupro.com/jobs/${query.slug}.&title=${job.title}&source=stupro.com`} target="_blank" ><i className="fab fa-linkedin-in text-primary lead"></i></a>
-                     <a href={`http://twitter.com/share?text=${job.title};url=http://www.stupro.com`} target="_blank"><i className="fab fa-twitter text-primary lead"></i></a>
+                     <a href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${query.slug}`} target="_blank"><i className="fab fa-facebook text-primary lead"></i></a>
+                     <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://theprograd.com/jobs/${query.slug}.&title=${job.title}&source=stupro.com`} target="_blank" ><i className="fab fa-linkedin-in text-primary lead"></i></a>
+                     <a href={`https://twitter.com/share?text=${job.title};url=https://theprograd.com`} target="_blank"><i className="fab fa-twitter text-primary lead"></i></a>
                   </div>
 
                  </div>
                  <small className="text-light-gray author extra-small ">| Published {moment(job.updatedAt).fromNow()}</small>
-                 <div style={{display: 'inline-block',alignItems:'left'}}>
-                           {showJobCategories(job)}
+                 <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
+                     <div className='my-1'>
+                         {showJobCategories(job)}
+                           </div>
+                           <div className='my-1'>
                            {showJobTags(job)}
+                           </div>
                       </div>
                  <div className="job-bottom">
-                 <table >
-                 <tbody>
-                 <tr>
-                        <td><strong><i className="fas fa-shield-alt text-primary"></i><span> </span>Agency:</strong></td>
-                            <td>{job.agency}</td>
-                    </tr>
-                   <tr>
-                        <td><strong><i className="far fa-clock text-primary"></i><span> </span>Last Date to apply:</strong></td>
-                            <td>{job.lastDate}</td>
-                    </tr>
-                    <tr>
-                        <td><strong><i className="fas fa-rupee-sign text-primary"></i><span>  </span>Salary:</strong></td>
-                            <td>{job.salary}</td>
-                    </tr>
-                    <tr>
-                        <td><i className="fas fa-graduation-cap text-primary"></i><span> </span><strong>Qualification</strong></td>
-                            <td>{job.qualification}</td>
-                    </tr>
-                    <tr>
-                        <td><i className="fas fa-map-marker-alt text-primary"></i><span> </span><strong>location:</strong></td>
-                            <td>{job.location}</td>
-                    </tr>
-                    <tr>
-                        <td><i className="fas fa-briefcase text-primary"></i><span> </span><strong>Job Type:</strong></td>
-                            <td>{job.type}</td>
-                    </tr>
-                    </tbody>
-                           
-         </table>
-                   <ul>
-                     <li><a href="#" className="btn btn-primary nbtn1 ">Save job</a></li>
-                     <li><a href={`${job.applyLink}`} className="btn btn-primary nbtn1">Apply now</a></li>
-                    </ul>
-                 </div>
-                 
-                 <div class="my-1 p-1">
-                 {renderHTML(job.body)}
-                 </div>
-             </div>
-             </div>
-                   
-            </section>
+
+                 <div className="job-table p-1">
+                          <div >
+                              <ul>
+                                  <li><i className="fas fa-shield-alt text-primary"></i></li>
+                                  <li className="my-1"><i className="far fa-clock text-primary"></i></li>
+                                  <li className="my-1"><i className="fas fa-rupee-sign text-primary"></i></li>
+                                  <li className="my-1"><i className="fas fa-graduation-cap text-primary"></i></li>
+                                  <li className='my-1'><i className="fas fa-map-marker-alt text-primary"></i></li>
+                                  <li><i className="fas fa-briefcase text-primary"></i></li>
+                              </ul>
+                          </div>
+                          <div>
+                              <ul>
+                                  <li><h4 >Agency</h4></li>
+                                  <li><h4 className="my-1">Will Expire</h4></li>
+                                  <li><h4 className="my-1">Salary</h4></li>
+                                  <li><h4 className="my-1">Qualification</h4></li>
+                                  <li><h4 className="my-1">Location</h4></li>
+                                  <li><h4>Job Type</h4></li>
+                                  
+                             </ul>
+                          </div>
+                          <div>
+                              <ul>
+                                  <li ><p>{job.agency}</p></li>
+                                  <li><p className="my-1">{moment(job.lastDate).fromNow()}</p></li>
+                                  <li><p className="my-1">{job.salary}</p></li>
+                                  <li><p className="my-1">{job.qualification}</p></li>
+                                  <li><p className="my-1">{job.location}</p></li>
+                                  <li><p>{job.type}</p></li>
+
+                                </ul>
+                          </div>
+                        </div>  
+                          <div className="job-buttons p-1">
+                              <a href={`${job.applyLink}`}  target="_blank" className="btn nbtn btn-primary nbtn1 my-1 ">Apply now</a>
+                        </div>
+                      </div>
+                     
+                      <div className='job-content' style={{padding:'0.4rem'}}>
+                      {renderHTML(job.body)}
+                    </div>
+                </div>
+              </div>
+        </section>
             <section className="container">
                     <h2 className="text-primary small">Suggested Jobs to apply</h2>
                     <div className='line'></div>
                     <div className="card">
                         {showRelatedJob()}
                     </div>
-                    <div class="bg-primary my-2">
+                    <div className="bg-primary my-2">
                       <h3 className="cmnt-body">Leave A Comment</h3>
                     </div>
                     <div className="p-1">{showComments()}</div>

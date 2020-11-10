@@ -15,13 +15,13 @@ const SmallCard=({job})=>{
               </Link>
                 <Link href={`/jobs/${job.slug}`}>
                   <a>
-                  <h3 className="small text-primary p-1"  style={{fontFamily:`'Source Serif Pro' ,serif`,lineHeight:'1.8rem' }}>{job.title}</h3>
+                  <h3 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif`,lineHeight:'1.8rem',padding:'0.6rem' }}>{job.title}</h3>
                   </a>
                 </Link>
                
-                <div className="author extra-small"  style={{display: "flex"}}>
+                <div className="author extra-small"  style={{display: "flex" ,alignContent:'flex-end'}}>
                 
-                  <p className="author text-light-gray  my-1 p-1">|Published {moment(job.updatedAt).fromNow()} by {' '}</p>
+                  <p className="author text-light-gray p-1">|Published {moment(job.updatedAt).fromNow()} </p>
                 </div>
           </main>
         
