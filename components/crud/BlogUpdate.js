@@ -7,10 +7,10 @@ import { getCategories } from '../../actions/category';
 import { getTags } from '../../actions/tag';
 import { singleBlog, updateBlog } from '../../actions/blog';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-
-
 import { QuillModules, QuillFormats } from '../../helpers/quill';
 import { API } from '../../config';
+import Checkbox from '@material-ui/core/Checkbox';
+
 
 const BlogUpdate=({router})=>{
     const [body, setBody] = useState('');
@@ -149,11 +149,10 @@ const BlogUpdate=({router})=>{
             categories &&
             categories.map((c, i) => (
                 <li key={i}>
-                    <input
+                    <Checkbox
                         onChange={handleToggle(c._id)}
                         checked={findOutCategory(c._id)}
-                        type="checkbox"
-                        className="m-1"
+                        
                     />
                     <label >{c.name}</label>
                 </li>
@@ -166,11 +165,10 @@ const BlogUpdate=({router})=>{
             tags &&
             tags.map((t, i) => (
                 <li key={i}>
-                    <input
+                    <Checkbox
                         onChange={handleTagsToggle(t._id)}
                         checked={findOutTag(t._id)}
-                        type="checkbox"
-                        className="m-1"
+                        
                     />
                     <label>{t.name}</label>
                 </li>

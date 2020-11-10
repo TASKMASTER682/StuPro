@@ -10,6 +10,8 @@ import { singleJob, updateJob } from '../../actions/job';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import { QuillModules, QuillFormats } from '../../helpers/quill';
 import { API } from '../../config';
+import Checkbox from '@material-ui/core/Checkbox';
+
 
 
 
@@ -155,11 +157,10 @@ const JobUpdate=({router})=>{
             jobCategories &&
             jobCategories.map((c, i) => (
                 <li key={i} className="list-unstyled">
-                    <input
+                    <Checkbox
                         onChange={handleToggle(c._id)}
                         checked={findOutCategory(c._id)}
-                        type="checkbox"
-                        className="mr-2"
+                        
                     />
                     <label className="form-check-label">{c.name}</label>
                 </li>
@@ -172,11 +173,11 @@ const JobUpdate=({router})=>{
             jobTags &&
             jobTags.map((t, i) => (
                 <li key={i} className="list-unstyled">
-                    <input
+                    <Checkbox
                         onChange={handleTagsToggle(t._id)}
                         checked={findOutTag(t._id)}
-                        type="checkbox"
-                        className="mr-2"
+                        
+                        
                     />
                     <label className="form-check-label">{t.name}</label>
                 </li>
