@@ -87,14 +87,18 @@ const SingleBlog=({blog,query})=>{
                <header>
                     <Link href={`/blogs/${blog.slug}`}>
                      <a>
-                     <h2  className="text-dark large p-1  " style={{textAlign: 'justify',fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>
+                     <h2  className="text-dark large p-1  " style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>
                         {blog.title}
                     </h2>
                         </a>
                         </Link>
-                        <div style={{display: "inline-block",alignItems:'left'}}>
+                        <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
+                           <div className="my-1">
                            {showBlogCategories(blog)}
+                           </div>
+                           <div className="my-1">
                            {showBlogTags(blog)}
+                           </div>
                       </div>
                     </header>
                        <div className="blog-top">
@@ -110,9 +114,9 @@ const SingleBlog=({blog,query})=>{
                             <div className=" p-1">
                                    
                                    <a href={`https://www.facebook.com/sharer/sharer.php?u=https://theprograd.com/blogs/${query.slug}`} target="_blank"><i className="lead fab fa-facebook"></i></a>
-                                   <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://theprograd.com/jobs/${query.slug}.&title=${blog.title}&source=stupro.com`}><i className="lead fab fa-linkedin-in"></i></a>
+                                   <a href={`http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/jobs/${job.title}"><img src=${API}/job/photo/${job.slug}`}><i className="lead fab fa-linkedin-in"></i></a>
                                 
-                                   <a href={`http://twitter.com/share?text=${blog.title};url=https://theprograd.com`}><i className="lead fab fa-twitter"></i></a>
+                                   <a href={`http://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${job.title}"><img src=${API}/job/photo/${job.slug} alt="Share on Twitter`}><i className="lead fab fa-twitter"></i></a>
                                </div>
                                <Link href={`/profile/${blog.postedBy.username}`}>
                                    <a>

@@ -15,18 +15,38 @@ const Landing=()=>{
          <div className="landing-inner ">
             <div>
             <h2 className="x-large text-dark hide-sm">{APP_NAME}</h2>
-            <h3 className="lead text-dark my-2">A platform to make your transition from   Stu-dents towards Pro-fessionalism </h3>
+            <div className='py-1' style={{lineHeight:'1.2rem'}}>
+            <small className="text-dark"> 
+            <ul>
+            <li><h5>A PLATFORM BRINGING ASPIRING GRADS AND EXCELLING PROFESSIONALS TOGATHER.</h5> </li>
+                <li><h5> A COMMUNITY THAT HAS A PERFECT ECOSYSTEM FOR EVERY NIECHE OF EDUCATION SYSTEM.</h5></li>
+            </ul>
+    </small>
+        <h3 className="extra-small text-dark">Be a part of our community</h3>
+
+ </div>
         <ol type="A" style={{lineHeight:'2rem'}}>
-             <li className="extra-small">Search and get your job according to your profile</li>
-            <li className="extra-small">Search your Topic and Read free of cost</li>
-            <li className="extra-small">A new way to to learn and remember things by writing Blogs</li>
-            <li className="extra-small">Invite your teachers here to solve your queries</li>
-            <li className="extra-small">Contact Professionals and get some advice from them. </li>
+             <li className="extra-small">plan and get your education in accordance with the professional aspirations.</li>
+            <li className="extra-small">Get professional help around the clock and tip to toe.</li>
+            <li className="extra-small">Excel and grow your profile with, “THE ProGrad”</li>
+            <li className="extra-small">Find jobs and get hired for the most suitable professions to your profiles</li>
+            <li className="extra-small">Share the knowledge, help it increase and get the sweet experience.</li>
+            <li className="extra-small">Contribute for others to follow and lead eventually.</li>
+
      </ol>
-     <Link href='/signup'><a className="btn btn-dark nbtn small my-2">Let's Get Started</a></Link>
+     <Link href='/signup'><a className="btn btn-dark nbtn small my-2 hide-sm">Let's Get Started</a></Link>
          </div>
          <div>
-             <Search />
+         <div className="hide-sm">
+         <Search />
+         </div>
+             
+            
+             <ul className='hide-sm p-1'>
+             <li><h4 className= 'extra-small text-dark'>LEARN, GROW, CONTRIBUTE</h4></li>
+             <li><h4 className= 'extra-small text-dark'>BE THE PRO-GRADS FROM THE BEGINNING</h4></li>
+
+         </ul>
          </div>
      </div>
      </div> 
@@ -38,7 +58,7 @@ const Landing=()=>{
      <div className="cat-main ">
 
      <div className="cat-item nbtn job m-1">
-        <Link href="/jobCategories/defence"><a><i className="fas fa-shield-alt x-large text-primary p-1"></i><p className="lead">Defence</p></a></Link>
+        <Link href="/jobCategories/defence"><a><i className="fas fa-shield-alt x-large text-primary p-1"></i><p className="lead ">Defence</p></a></Link>
      </div>
 
      <div className="cat-item nbtn job m-1">
@@ -78,17 +98,16 @@ const Landing=()=>{
    <div className="cat-main">
        <div className="cat-item nbtn job m-1">
          <JobNumber />
-         <h2 className="extra-small text-light-gray">Total number of active Jobs</h2>
+         <h2 className="extra-small text-light-gray my-1">Total number of active Jobs</h2>
          </div>
 
          <div className="cat-item nbtn job m-1">
          <BlogNumber/>
-         <h2 className="extra-small text-light-gray">Total number of Blogs</h2>
+         <h2 className="extra-small text-light-gray my-1">Total number of Blogs</h2>
          </div>
-
          <div className="cat-item nbtn job m-1">
          <UserCount />
-         <h2 className="extra-small text-light-gray">Number of users at our platform</h2>
+         <h2 className="extra-small text-light-gray my-1">Number of users at our platform</h2>
          </div>
        </div>
        
@@ -97,15 +116,13 @@ const Landing=()=>{
      <h2 className="text-dark small py-1">Job Posting Plans</h2>
      <div className="cat-main">
      <div>
-      <h2 className="small text-light-gray">The job posting is free till 6th of November 2021</h2>
+      <h2 className="small text-light-gray">The job posting is free for a particular period of time</h2>
       <p className="text-dark extra-small">Just click on<Link  href="/contact"><a className="text-dark"> <strong>contact us</strong></a></Link>  and send your job to us or ask any other query.</p>
       </div>
      
      </div>
    </section>
-  
-
-   </>
+ </>
 
        
  )

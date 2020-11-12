@@ -121,14 +121,22 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
     <h2 className="lead text-light-gray">Search the job keyword,title or the location</h2>
         <Search />
         <div style={{display:'flex',justifyContent:'space-between'}}>
+        
         <ul className='p-1'>
         <h4 className="my-1">Categories</h4>
+        
         {showJobCategories()}
+        
         </ul>
+        
+        
         <ul className='p-1'>
         <h4 className="my-1">Tags</h4>
+        
             {showJobTags()}
+           
         </ul>
+        
         </div>
     </div> 
      </div>

@@ -12,7 +12,7 @@ const PrivacyPolicy=()=>{
         
         <ol>
             <li><p>At ProGrad, accessible from theprograd.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by ProGrad and how we use it.</p></li>
-            <li><p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to Contact through email at <b>TheProGradofficial@gmail.com</b></p></li>
+            <li><p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to Contact through email at <b>theprograds@gmail.com</b></p></li>
         </ol>
         <p className="lead text-primary my-1">Log Files</p>
         <ol>
@@ -23,7 +23,7 @@ const PrivacyPolicy=()=>{
           <p>Like any other website, ProGrad uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
     
             <p className="lead text-primary my-1">Google DoubleClick DART Cookie</p>
-            <p>Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.website.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL – <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>
+            <p>Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.website.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL – <a href="https://policies.google.com/technologies/ads">Click me to access URL</a></p>
             <p className="lead text-primary my-1">Privacy policies</p>
             <ol >
                 <li><p>You may consult this list to find the Privacy Policy for each of the advertising partners of ProGrad. Our Privacy Policy was created with the help of the <a  href="https://webbeast.in">GDPR Privacy Policy Generator</a></p></li>
