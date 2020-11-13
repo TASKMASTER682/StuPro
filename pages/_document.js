@@ -37,7 +37,7 @@ class MyDocument extends Document {
           <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
            <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 
-       <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZWZZ4HH6FM"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y27GY802BM"></script>
         <script dangerouslySetInnerHTML={this.setGoogleTags()}></script>
 
         </Head>
