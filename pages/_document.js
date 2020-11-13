@@ -7,10 +7,11 @@ class MyDocument extends Document {
       return {
         
         __html:`
-             window.dataLayer = window.dataLayer || [];
-             function gtag(){dataLayer.push(arguments);}
-             gtag('js', new Date());
-             gtag('config', 'G-ZWZZ4HH6FM');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'G-Y27GY802BM');
 
         `
         
