@@ -51,14 +51,14 @@ const SingleJob=({job,query})=>{
      const showJobCategories = job =>
         job.jobCategories.map((c, i) => (
             <Link key={i} href={`/jobCategories/${c.slug}`}>
-                <a style={{padding:" 0 0.8rem"}}  className="btn nbtn btn-danger "><p>{c.name}</p></a>
+                <a style={{padding:" 0 0.8rem",border:'solid #00e7d2'}}  className="btn nbtn btn-light-gray "><p>{c.name}</p></a>
             </Link>
         ));
 
     const showJobTags = job =>
         job.jobTags.map((t, i) => (
             <Link key={i} href={`/jobTags/${t.slug}`}>
-                <a style={{padding:" 0 0.8rem"}}  className="btn nbtn btn-dark "><p>{t.name}</p></a>
+                <a style={{padding:" 0 0.8rem",border:'solid black '}}  className="btn nbtn btn-light-gray  "><p>{t.name}</p></a>
             </Link>
         ));
 
@@ -152,7 +152,7 @@ const SingleJob=({job,query})=>{
                           </div>
                         </div>  
                           <div className="job-buttons p-1">
-                              <a href={`${job.applyLink}`}  target="_blank" className="btn nbtn btn-primary nbtn1 my-1 ">Apply now</a>
+                              <a href={`${job.applyLink}`}  target="_blank" className="btn nbtn btn-success nbtn1 my-1 ">Apply now</a>
                         </div>
                       </div>
                      

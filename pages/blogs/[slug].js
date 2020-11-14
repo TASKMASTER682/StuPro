@@ -48,14 +48,14 @@ const SingleBlog=({blog,query})=>{
      const showBlogCategories = blog =>
         blog.categories.map((c, i) => (
             <Link key={i} href={`/categories/${c.slug}`}>
-                <a style={{padding:" 0 0.8rem"}}  className="btn nbtn btn-danger "><p>{c.name}</p></a>
+                <a style={{padding:" 0 0.8rem",border:'solid #00e7d2'}}  className="btn nbtn btn-light-gray "><p>{c.name}</p></a>
             </Link>
         ));
 
     const showBlogTags = blog =>
         blog.tags.map((t, i) => (
             <Link key={i} href={`/tags/${t.slug}`}>
-                <a style={{padding:" 0 0.8rem"}}  className="btn nbtn btn-dark "><p>{t.name}</p></a>
+                <a style={{padding:" 0 0.8rem",border:'solid dark'}}  className="btn nbtn btn-light-gray "><p>{t.name}</p></a>
             </Link>
         ));
 
