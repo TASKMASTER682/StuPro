@@ -51,14 +51,14 @@ const SingleJob=({job,query})=>{
      const showJobCategories = job =>
         job.jobCategories.map((c, i) => (
             <Link key={i} href={`/jobCategories/${c.slug}`}>
-                <a style={{padding:" 0 0.8rem",margin:'0.4rem 0'}}  className="btn nbtn btn-danger "><p>{c.name}</p></a>
+                <a style={{padding:" 0 0.8rem"}}  className="btn nbtn btn-danger "><p>{c.name}</p></a>
             </Link>
         ));
 
     const showJobTags = job =>
         job.jobTags.map((t, i) => (
             <Link key={i} href={`/jobTags/${t.slug}`}>
-                <a style={{padding:" 0 0.8rem",margin:'0.4rem 0'}}  className="btn nbtn btn-dark "><p>{t.name}</p></a>
+                <a style={{padding:" 0 0.8rem"}}  className="btn nbtn btn-dark "><p>{t.name}</p></a>
             </Link>
         ));
 
@@ -101,8 +101,8 @@ const SingleJob=({job,query})=>{
             </Link>
                   <div className="share icons p-1">
                      <a href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${query.slug}`} target="_blank"><i className="fab fa-facebook text-primary lead"></i></a>
-                     <a href={`http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/jobs/${job.title}"><img src=${API}/job/photo/${job.slug}`} target="_blank" ><i className="fab fa-linkedin-in text-primary lead"></i></a>
-                     <a href={`http://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${job.title}"><img src=${API}/job/photo/${job.slug} alt="Share on Twitter`} target="_blank"><i className="fab fa-twitter text-primary lead"></i></a>
+                     <a href={`https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/jobs/${job.title}"><img src=${API}/job/photo/${job.slug}`} target="_blank" ><i className="fab fa-linkedin-in text-primary lead"></i></a>
+                     <a href={`https://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${job.title}"><img src=${API}/job/photo/${job.slug} alt="Share on Twitter`} target="_blank"><i className="fab fa-twitter text-primary lead"></i></a>
                   </div>
 
                  </div>
