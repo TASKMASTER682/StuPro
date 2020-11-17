@@ -18,15 +18,15 @@ const Landing=()=>{
             <div className='py-1' style={{lineHeight:'1.2rem'}}>
             <small className="text-dark"> 
             <ul>
-            <li><h5>A PLATFORM BRINGING ASPIRING GRADS AND EXCELLING PROFESSIONALS TOGATHER.</h5> </li>
+            <li><h5>A PLATFORM BRINGING ASPIRING GRADS AND EXCELLING PROFESSIONALS TOGEATHER.</h5> </li>
                 <li><h5> A COMMUNITY THAT HAS A PERFECT ECOSYSTEM FOR EVERY NIECHE OF EDUCATION SYSTEM.</h5></li>
             </ul>
     </small>
         <h3 className="extra-small text-dark">Be a part of our community</h3>
 
  </div>
-        <ol type="A" style={{lineHeight:'2rem'}}>
-             <li className="extra-small">plan and get your education in accordance with the professional aspirations.</li>
+        <ol type="A" style={{lineHeight:'1.8rem'}}>
+             <li className="extra-small">Plan and get your education in accordance with the professional aspirations.</li>
             <li className="extra-small">Get professional help around the clock and tip to toe.</li>
             <li className="extra-small">Excel and grow your profile with, “THE ProGrad”</li>
             <li className="extra-small">Find jobs and get hired for the most suitable professions to your profiles</li>
@@ -97,17 +97,18 @@ const Landing=()=>{
    <h2 className="text-primary small py-1">Our Numbers</h2>
    <div className="cat-main">
        <div className="cat-item nbtn job m-1">
+       <i class="fas fa-briefcase text-primary x-large p-1"></i>
+         
          <JobNumber />
-         <h2 className="extra-small text-light-gray my-1">Total number of active Jobs</h2>
          </div>
 
          <div className="cat-item nbtn job m-1">
+         <i class="fas fa-book-reader text-primary x-large p-1"></i>
          <BlogNumber/>
-         <h2 className="extra-small text-light-gray my-1">Total number of Blogs</h2>
          </div>
          <div className="cat-item nbtn job m-1">
+         <i class="fas fa-users text-primary x-large p-1"></i>
          <UserCount />
-         <h2 className="extra-small text-light-gray my-1">Number of users at our platform</h2>
          </div>
        </div>
        

@@ -1,5 +1,4 @@
 import Private from '../../components/auth/Private';
-import {isAuth} from '../../actions/auth';
 import Link from 'next/link';
 
 const UserIndex=()=>{
@@ -23,12 +22,6 @@ const UserIndex=()=>{
     <Link href="/user/update">
         <a className="btn  nbtn"><i className="fas fa-user-edit text-primary"></i><span></span> Update Profile</a>
     </Link>
-      
-    {isAuth() && (
-        <>
-        <button className ="btn nbtn btn-dark " style={{ cursor: 'pointer' }} onClick={() => signout(() => Router.replace(`/signin`))} >Signout <span> <i className="fas fa-sign-out-alt"></i> </span></button>
-        </>
-     )}
  
     <img  className="nbtn my-1" style={{maxHeight: '550px',width:'100%'}} src="img/stupro10.png" alt="" />
 </div>

@@ -97,19 +97,19 @@ const Category=()=>{
     );
     const showSuccess = () => {
         if (success) {
-            return <div className="alert p-1 nbtn bg-success">Category is created</div>;
+            return <div className=" p-1 nbtn badge badge-success" style={{ display: success ? '' : 'none' }}>Category is created</div>;
         }
     };
 
     const showError = () => {
         if (error) {
-            return <div className="alert p-1 nbtn bg-danger">Category already exist</div>;
+            return <div className=" p-1 nbtn badge badge-danger" style={{ display: error ? '' : 'none' }}>Category already exist</div>;
         }
     };
 
     const showRemoved = () => {
         if (removed) {
-            return <div className="alert p-1 nbtn bg-danger">Category is removed</div>;
+            return <div className=" p-1 nbtn badge badge-danger" style={{ display: removed ? '' : 'none' }}>Category is removed</div>;
         }
     };
 return (

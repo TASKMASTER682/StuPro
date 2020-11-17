@@ -100,19 +100,19 @@ const JobCategory=()=>{
     
     const showSuccess = () => {
         if (success) {
-            return <div className="alert p-1 nbtn bg-success">Category is created</div>;
+            return <div className="badge badge-success p-1 nbtn " style={{ display: success ? '' : 'none' }}>Category is created</div>;
         }
     };
 
     const showError = () => {
         if (error) {
-            return <div className="alert p-1 nbtn bg-danger">Category already exist</div>;
+            return <div className="badge badge-danger p-1 nbtn " style={{ display: error ? '' : 'none' }}>Category already exist</div>;
         }
     };
 
     const showRemoved = () => {
         if (removed) {
-            return <div className="alert p-1 nbtn bg-danger">Category is removed</div>;
+            return <div className="badge badge-primary p-1 nbtn " style={{ display: removed ? '' : 'none' }}>Category is removed</div>;
         }
     };
 

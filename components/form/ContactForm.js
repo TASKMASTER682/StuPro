@@ -39,10 +39,10 @@ const ContactForm = ({authorEmail}) => {
         setValues({ ...values, [name]: e.target.value, error: false, success: false, buttonText: 'Send Message' });
     };
 
-    const showSuccessMessage = () => success && <div className="alert p-1 nbtn bg-success">Thank you for contacting us.</div>;
+    const showSuccessMessage = () => success && <div className=" p-1 nbtn badge badge-success">Thank you for contacting us.</div>;
 
     const showErrorMessage = () => (
-        <div className="alert p-1 nbtn bg-danger" style={{ display: error ? '' : 'none' }}>
+        <div className=" p-1 nbtn badge badge-danger" style={{ display: error ? '' : 'none' }}>
             {error}
         </div>
     );

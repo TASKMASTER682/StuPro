@@ -30,7 +30,7 @@ const UserCount=()=>{
     };
 
     return(
-        <h2 className="x-large text-light-gray">{users.length}</h2>
+        <h2 className="small text-light-gray">{users.length}</h2>
     )
 }
 export default UserCount;

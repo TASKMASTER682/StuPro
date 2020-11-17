@@ -29,7 +29,7 @@ const JobNumber=()=>{
     };
 
     return(
-        <h2 className="x-large text-light-gray">{jobs.length}</h2>
+        <h4 className="small text-light-gray">{jobs.length}</h4>
     )
 }
 export default JobNumber;

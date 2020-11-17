@@ -218,13 +218,13 @@ const JobUpdate=({router})=>{
     };
 
     const showError = () => (
-        <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
+        <div className="badge badge-danger p-1" style={{ display: error ? '' : 'none' }}>
             {error}
         </div>
     );
 
     const showSuccess = () => (
-        <div className="alert  alert-success" style={{ display: success ? '' : 'none' }}>
+        <div className="badge badge-success p-1" style={{ display: success ? '' : 'none' }}>
             {success}
         </div>
     );

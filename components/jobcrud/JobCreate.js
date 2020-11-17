@@ -172,11 +172,11 @@ const CreateJob=({router})=>{
  
 
     const showError = () => (
-        <div>{error}</div>
+        <div className="badge badge-danger p-1" style={{ display: error ? '' : 'none' }}>{error}</div>
     );
 
     const showSuccess = () => (
-        <div>{success}</div>
+        <div className="badge badge-success p-1" style={{ display: success ? '' : 'none' }}>{success}</div>
     );
 
   

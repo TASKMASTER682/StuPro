@@ -75,19 +75,19 @@ const Tag=()=>{
 
     const showSuccess = () => {
         if (success) {
-            return <div className="alert p-1 nbtn bg-success">Tag is created</div>;
+            return <div className=" p-1 nbtn badge badge-success" style={{ display: success ? '' : 'none' }}>Tag is created</div>;
         }
     };
 
     const showError = () => {
         if (error) {
-            return <div className="alert p-1 nbtn bg-danger">Tag already exist</div>;
+            return <div className="badge p-1 nbtn badge-danger" style={{ display: error ? '' : 'none' }}>Tag already exist</div>;
         }
     };
 
     const showRemoved = () => {
         if (removed) {
-            return <div className="alert p-1 nbtn bg-danger">Tag is removed</div>;
+            return <div className="badge p-1 nbtn badge-danger" style={{ display: removed ? '' : 'none' }}>Tag is removed</div>;
         }
     };
   

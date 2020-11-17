@@ -76,19 +76,19 @@ const JobTag=()=>{
 
     const showSuccess = () => {
         if (success) {
-            return <div className="alert p-1 nbtn bg-success">Tag is created</div>;
+            return <div className="badge badge-success p-1 nbtn" style={{ display: success ? '' : 'none' }}>Tag is created</div>;
         }
     };
 
     const showError = () => {
         if (error) {
-            return <div className="alert p-1 nbtn bg-danger">Tag already exist</div>;
+            return <div className="badge badge-danger p-1 nbtn" style={{ display: error ? '' : 'none' }}>Tag already exist</div>;
         }
     };
 
     const showRemoved = () => {
         if (removed) {
-            return <div className="alert p-1 nbtn bg-danger">Tag is removed</div>;
+            return <div className="badge badge-primary p-1 nbtn" style={{ display: removed ? '' : 'none' }}>Tag is removed</div>;
         }
     };
 
