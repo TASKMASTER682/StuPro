@@ -1,5 +1,7 @@
 import Private from '../../components/auth/Private';
 import Link from 'next/link';
+import Image from 'next/image';
+
 
 const UserIndex=()=>{
     return(
@@ -23,7 +25,7 @@ const UserIndex=()=>{
         <a className="btn  nbtn"><i className="fas fa-user-edit text-primary"></i><span></span> Update Profile</a>
     </Link>
  
-    <img  className="nbtn my-1" style={{maxHeight: '550px',width:'100%'}} src="img/stupro10.png" alt="" />
+    <Image  className="nbtn my-1" height={1000} width={2000} src="/img/stupro10.png"  sizes='40vw' priority alt="support others" />
 </div>
       
     </div>

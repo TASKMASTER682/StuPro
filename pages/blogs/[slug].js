@@ -8,7 +8,7 @@ import moment from 'moment';
 import SmallCard from '../../components/blogs/SmallCard';
 import DisqusThread from '../../components/DisqusThread';
 
-const SingleBlog=({blog,query})=>{
+const SingleBlog=  ({blog,query})=>{
     const [related, setRelated] = useState([]);
 
     const loadRelated = () => {
@@ -59,7 +59,7 @@ const SingleBlog=({blog,query})=>{
             </Link>
         ));
 
-        const showRelatedBlog = () => {
+        const showRelatedBlog =  () => {
             return related.map((blog, i) => (
                 <div className='card-item m-1' key={i}>
                     <article>
@@ -69,7 +69,7 @@ const SingleBlog=({blog,query})=>{
                 </div>
             ));
         };
-        const showComments = () => {
+        const showComments =() => {
             return (
                 <div>
                     <DisqusThread id={blog._id} title={blog.title} path={`/blog/${blog.slug}`} />
@@ -83,7 +83,7 @@ const SingleBlog=({blog,query})=>{
             {head()}
             <main>
             <section className="container">
-            <article  className="blog bg-light">
+            <article  className="blog bg-light ">
                <header>
                     <Link href={`/blogs/${blog.slug}`}>
                      <a>
@@ -103,32 +103,37 @@ const SingleBlog=({blog,query})=>{
                     </header>
                        <div className="blog-top">
                        <div>
+                       <div className='round-image profile-img-border'style={{alignItems:'center'}}>
+    
                        <Link href={`/profile/${blog.postedBy.username}`}>
                                    <a>
-                                   <img src={`${API}/user/photo/${blog.postedBy.username}`} alt={blog.postedBy.name}  className="round-image" />
+                                   <img src={`${API}/user/photo/${blog.postedBy.username}`}   alt={blog.postedBy.name}   className="profile-img round-image" />
                                    </a>
                                </Link>
+                               </div>
                           <small className="text-light-gray author extra-small ">| Published {moment(blog.updatedAt).fromNow()}</small>
                        </div>
+                      
                           <div>
-                            <div className=" p-1">
-                                   
-                                   <a href={`https://www.facebook.com/sharer/sharer.php?u=https://theprograd.com/blogs/${query.slug}`} target="_blank"><i className="lead fab fa-facebook"></i></a>
-                                   <a href={`http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/blogs/${blog.title}"><img src=${API}/blog/photo/${blog.slug}`}><i className="lead fab fa-linkedin-in"></i></a>
-                                
-                                   <a href={`http://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${blog.title}"><img src=${API}/blog/photo/${blog.slug} alt="Share on Twitter`}><i className="lead fab fa-twitter"></i></a>
-                               </div>
+                         
                                <Link href={`/profile/${blog.postedBy.username}`}>
                                    <a>
                                    <h2  className="small text-dark">{blog.postedBy.name} </h2>
                                    </a>
                                </Link>
+                               <div >
+                                   <a href={`https://www.facebook.com/sharer/sharer.php?u=https://theprograd.com/blogs/${query.slug}`} target="_blank"><i className="lead fab fa-facebook"></i></a>
+                                   <a href={`http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/blogs/${blog.title}"><img src=${API}/blog/photo/${blog.slug}`}><i className="lead fab fa-linkedin-in"></i></a>
+                                
+                                   <a href={`http://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${blog.title}"><img src=${API}/blog/photo/${blog.slug} alt="Share on Twitter`}><i className="lead fab fa-twitter"></i></a>
+                               </div>
+                         
                                
                           </div>
                        </div>
                       <div className="blog-body">
-                           <img className="nbtn " src={`${API}/blog/photo/${blog.slug}`} style={{maxHeight: '400px',width:'100%', marginBottom: '3rem'}}  alt={blog.title} />
-                            <div className="p-1"> {renderHTML(blog.body)}</div>
+                           <img className="nbtn " src={`${API}/blog/photo/${blog.slug}`}  style={{maxHeight: '400px', width: '100%', marginBottom: '3rem'}}  alt={blog.title} />
+                            <div style={{lineHeight:'2rem'}}> {renderHTML(blog.body)}</div>
                               
                             </div>
                       
@@ -136,12 +141,12 @@ const SingleBlog=({blog,query})=>{
                     
                     </section>
                     <section className="container">
-                    <h2 className="text-primary small">Suggested blogs</h2>
+                    <h2 className="text-primary small m-1">Suggested blogs</h2>
                     <div className='line'></div>
                     <div className="card">
                         {showRelatedBlog()}
                     </div>
-                    <div className="bg-primary my-2">
+                    <div className="bg-primary m-2">
                       <h3 className="cmnt-body">Start Discussion</h3>
                     </div>
                     <div className="p-1">{showComments()}</div>

@@ -19,8 +19,8 @@ const BlogUpdate=({router})=>{
     const [categories, setCategories] = useState([]);
     const [tags, setTags] = useState([]);
 
-    const [checked, setChecked] = useState([]); // categories
-    const [checkedTag, setCheckedTag] = useState([]); // tags
+    const [checked, setChecked] = useState([]); 
+    const [checkedTag, setCheckedTag] = useState([]); 
 
 
     const [values, setValues] = useState({
@@ -96,7 +96,6 @@ const BlogUpdate=({router})=>{
 
     const handleToggle = c => () => {
         setValues({ ...values, error: '' });
-        // return the first index or -1
         const clickedCategory = checked.indexOf(c);
         const all = [...checked];
 
@@ -112,7 +111,6 @@ const BlogUpdate=({router})=>{
 
     const handleTagsToggle = t => () => {
         setValues({ ...values, error: '' });
-        // return the first index or -1
         const clickedTag = checkedTag.indexOf(t);
         const all = [...checkedTag];
 
@@ -179,7 +177,6 @@ const BlogUpdate=({router})=>{
  
 
     const handleChange = name => e => {
-        // console.log(e.target.value);
         const value = name === 'photo' ? e.target.files[0] : e.target.value;
         formData.set(name, value);
         setValues({ ...values, [name]: value, formData, error: '' });
@@ -195,17 +192,17 @@ const BlogUpdate=({router})=>{
         let formData = new FormData();
         formData.append("title", values.title);
         formData.append("body", body);
-        // continue adding more.. 
+       
         updateBlog(formData, token, router.query.slug).then(data => {
             if (data.error) {
                 setValues({ ...values, error: "Blog could not be updated" });
             } else {
                 setValues({ ...values, title: '', success: `Blog titled "${data.title}" is successfully updated` });
                 if (isAuth() && isAuth().role === 1) {
-                    // Router.replace(`/admin/crud/${router.query.slug}`);
+                   
                     Router.replace(`/admin`);
                 } else if (isAuth() && isAuth().role === 0) {
-                    // Router.replace(`/user/crud/${router.query.slug}`);
+                    
                     Router.replace(`/user`);
                 }
             }

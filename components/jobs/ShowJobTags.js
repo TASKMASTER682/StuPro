@@ -38,11 +38,6 @@ const ShowJobTags=()=>{
                 )    
             })
     };
-
-
-
-
-
 return(
     <>
        

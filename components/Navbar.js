@@ -3,6 +3,7 @@ import {APP_NAME} from '../config';
 import NProgress from 'nprogress';
 import {signout,isAuth} from '../actions/auth';
 import Router from "next/router"
+import Image from "next/image"
 import Search from './blogs/Search';
 
 
@@ -16,7 +17,7 @@ const Navbar=()=>{
        <nav className='navbar bg-success'style={{height:'4rem'}}>
        <div className="py-1" style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
          <a  href ="/">
-          <img src='/img/prograd.png' style={{width:'170px',height:'50px',marginTop:'0.5rem'}}/>
+          <Image src='/img/prograd.png' height={50} width={190} sizes='40vw' style={{marginTop:'0.5rem'}}/>
           </a>
        
         <div className='hide-sm'>

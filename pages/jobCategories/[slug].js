@@ -13,17 +13,17 @@ const JobCategory=({jobCategory,jobs,query})=>{
             <title>
                 {jobCategory.name} | {APP_NAME}
             </title>
-            <meta name="description" content={`Best programming tutorials on ${jobCategory.name}`} />
+            <meta name="description" content={`Jobs related to category: ${jobCategory.name}`} />
             <link rel="canonical" href={`${DOMAIN}/jobCategories/${query.slug}`} />
             <meta property="og:title" content={`${jobCategory.name}| ${APP_NAME}`} />
-            <meta property="og:description" content={`Best programming tutorials on ${jobCategory.name}`} />
+            <meta property="og:description" content={`Jobs related to category: ${jobCategory.name}`} />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}/categories/${query.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
 
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/StuproLogo.png`} />
-            <meta property="og:image:type" content="image/jpg" />
+            <meta property="og:image:type" content="image/png" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
     );

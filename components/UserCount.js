@@ -1,5 +1,4 @@
 import {list} from '../actions/user';
-
 import { useState, useEffect } from 'react';
 
 const UserCount=()=>{
@@ -7,18 +6,13 @@ const UserCount=()=>{
       
         users: [],
         reaload:true
-        
     });
-
-    const {  users,reload} = values;
-    
-
+   const {  users,reload} = values;
     useEffect(() => {
         loadUsers();
        
     }, [reload]);
-
-   
+    
     const loadUsers = () => {
         list().then(data => {
             if (data.error) {

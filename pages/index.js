@@ -5,10 +5,10 @@ const Index=()=> {
 
     const head = () => (
         <Head>
-            <title>{APP_NAME}  | An Online Platform that helps Students to become professionals </title>
+            <title>{APP_NAME}  | A community that has a perfect ecosystem for every niche of education system.Also get government(sarkari) jobs here </title>
             <meta
                 name="description"
-                content=" An Online Platform that helps Students to become professionals.It provides Jobs ,blogs written by top class professionals of india and free study material.It helps the students to guide "
+                content="A community that has a perfect ecosystem for every niche of education system.You can write anything on any social topic or any topic related toeducation.You can find government jobs,sarkari jobs,sarkari result here "
             />
             <link rel="canonical" href={`${DOMAIN}`} />
             <meta property="og:title" content={`${APP_NAME} | An Online Platform that helps Students to become professionals  `} />
@@ -20,9 +20,9 @@ const Index=()=> {
             <meta property="og:url" content={`${DOMAIN}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
 
-            <meta property="og:image" content={`${DOMAIN}/static/images/stupro.jpg`} />
-            <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/stupro.jpg`} />
-            <meta property="og:image:type" content="image/jpg" />
+            <meta property="og:image" content={`${DOMAIN}/img/stupro2.png`} />
+            <meta property="og:image:secure_url" content={`${DOMAIN}/stupro2.png`} />
+            <meta property="og:image:type" content="img/stupro2.png" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
     );

@@ -57,8 +57,6 @@ const JobRead = () => {
             );
         }
     };
-    
-
     const showAllJobs = () => {
         return jobs.map((job, i) => {
             return (

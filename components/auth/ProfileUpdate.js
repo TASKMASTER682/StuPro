@@ -70,11 +70,9 @@ const ProfileUpdate = () => {
     }, []);
  
     const handleChange = name => e => {
-        // console.log(e.target.value);
         const value = name === 'photo' ? e.target.files[0] : e.target.value;
-        // let userData = new FormData();
         userData.set(name, value);
-        console.log(...userData); // SEE THE FORMDATA IN CONSOLE
+        console.log(...userData); 
         setValues({ ...values, [name]: value, userData, error: false, success: false });
     };
  
@@ -159,19 +157,19 @@ const ProfileUpdate = () => {
     );
 
     const showError = () => (
-        <div className="alert p-1 nbtn bg-danger" style={{ display: error ? '' : 'none' }}>
+        <div className="badge badge-danger p-1" style={{ display: error ? '' : 'none' }}>
             {error}
         </div>
     );
 
     const showSuccess = () => (
-        <div className="alert  p-1 nbtn bg-success" style={{ display: success ? '' : 'none' }}>
+        <div className="badge badge-success p-1" style={{ display: success ? '' : 'none' }}>
             Profile updated
         </div>
     );
 
     const showLoading = () => (
-        <div className="alert p-1 nbtn bg-primary" style={{ display: loading ? '' : 'none' }}>
+        <div className="badge badge-primary p-1" style={{ display: loading ? '' : 'none' }}>
             Loading...
         </div>
     );

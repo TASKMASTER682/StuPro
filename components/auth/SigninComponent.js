@@ -25,7 +25,6 @@ const SigninComponent=()=>{
 
     const handleSubmit = e => {
         e.preventDefault();
-        // console.table({ name, email, password, error, loading, message, showForm });
         setValues({ ...values, loading: true, error: false });
         const user = { email, password };
 
@@ -33,9 +32,7 @@ const SigninComponent=()=>{
             if (data.error) {
                 setValues({ ...values, error: data.error, loading: false });
             } else {
-                // save user token to cookie
-                // save user info to localstorage
-                // authenticate user
+              
                 authenticate(data,()=>{
                     if (isAuth() && isAuth().role === 1) {
                         Router.push(`/admin`);
@@ -52,8 +49,7 @@ const SigninComponent=()=>{
         setValues({ ...values, error: false, [name]: e.target.value });
     };
 
-   
-const signinForm=()=>{
+    const signinForm=()=>{
     
          return(
         <>

@@ -1,15 +1,14 @@
 import Link from 'next/link';
-import ShowJobCategories from './jobs/ShowJobCategories';
-import ShowCategories from './blogs/ShowCategories';
+import Image from 'next/image';
 
 const Footer=()=>{
     const currentDate=new Date();
     const year=currentDate.getFullYear();
     return(
-        <section className="footer-container bg-success my-2">
+        <section className="footer-container bg-success my-1">
         <div className="footer">
             <div className="first-row ">
-              <span>  <img src="/StuproLogo.png" alt="" /></span>
+              <span>  <Image src="/StuproLogo.png" height={220} width={220} sizes='40vw' priority alt="ProGrad" /></span>
                 <p className="extra-small text-light-gray">
                     © Copyright {year}.ProGrad India | 
                     All rights reserved
@@ -18,18 +17,13 @@ const Footer=()=>{
                 <div className="line"></div>
             </div>
             <div className="second-row p-1 ">
-                <h2 className="lead text-dark">Job Categories</h2>
-                <ul>
-                    <li><ShowJobCategories /></li>
-                   
-                </ul>
+                <h2 className="lead text-dark ">Learn more</h2>
+                   <p>ProGrad is an open platform where readers come to find insightful and dynamic thinking.Here experts and undiscovered voices come togeather and dive into the heart of any topic and bring new ideas to surface.Also the jobseekers come here to easily find a job and apply according to thier qualification.</p>
+                
             </div>
             <div className="second-row p-1 ">
-                <h2 className="lead text-dark">Blog Categories</h2>
-                <ul>
-                    <li><ShowCategories/></li>
-                    
-                </ul>
+                <h2 className="lead text-dark">Share what you have learnt</h2>
+               <p>If you have knowlege to share ,a story to tell,or a perspective to offer - welcome to ProGrad.Its easy and free to post your thinking on any topic</p>
             </div>
             <div className="third-row p-1">
                 <h2 className="lead text-dark">Quick Links</h2>

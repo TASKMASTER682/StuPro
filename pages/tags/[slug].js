@@ -22,7 +22,7 @@ const Tag=({ tag, blogs, query })=>{
 
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />
-            <meta property="og:image:type" content="img/StuproLogo.png" />
+            <meta property="og:image:type" content="img/stupro2.png" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
     );

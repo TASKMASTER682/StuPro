@@ -85,14 +85,15 @@ const SingleJob=({job,query})=>{
            {head()}
             <section className="container">
            
-            <h1 className="large text-primary m-1">See detailed</h1>
+            <h1 className="large text-primary my-1">See detailed</h1>
              <p className="extra-small text-light-gray m-1 ">see eligibilty and full notification</p>
 
           
              <div className="jobs">
-             <div className="job bg-light">
+             <div className="job bg-light ">
                  <div className="job-top p-1">
-                 <img src={`${API}/job/photo/${job.slug}`} alt={job.title} className="round-image m-1 hide-sm" />
+                
+                 <img src={`${API}/job/photo/${job.slug}`} alt={job.title} className="round-image my-1 hide-sm" />
                 
             <Link href={`/jobs/${job.slug}`}>
                 <a>
@@ -163,12 +164,12 @@ const SingleJob=({job,query})=>{
               </div>
         </section>
             <section className="container">
-                    <h2 className="text-primary small">Suggested Jobs to apply</h2>
+                    <h2 className="text-primary small m-1">Suggested Jobs to apply</h2>
                     <div className='line'></div>
                     <div className="card">
                         {showRelatedJob()}
                     </div>
-                    <div className="bg-primary my-2">
+                    <div className="bg-primary m-1">
                       <h3 className="cmnt-body">Leave A Comment</h3>
                     </div>
                     <div className="p-1">{showComments()}</div>

@@ -35,31 +35,33 @@ const Card=({blog})=>{
                 </header>
                    <div className="blog-top">
                    <div>
+                   <div className="profile-img-border round-image" style={{alignItems:'center'}}>
                    <Link href={`/profile/${blog.postedBy.username}`}>
                        <a>
-                       <img src={`${API}/user/photo/${blog.postedBy.username}`} alt={blog.postedBy.name}  className="round-image" />
+                       <img src={`${API}/user/photo/${blog.postedBy.username}`} alt={blog.postedBy.name}  className="profile-img round-image" />
                        </a>
                    </Link>
-                      
+                   </div>
                        <small className="text-light-gray author extra-small ">| Published {moment(blog.updatedAt).fromNow()}</small>
                    </div>
                       <div>
-                        <div className=" p-1">
+                       
+                           <Link href={`/profile/${blog.postedBy.username}`}>
+                           <a>
+                           <h2  className="small text-dark">{blog.postedBy.name} </h2>
+                           </a>
+                           </Link>
+                           <div>
                                <small  className="text-light-gray extra-small">Follow me on :</small>
                                <a href={`${blog.postedBy.facebook}`} target="_blank"><i className="lead fab fa-facebook"></i></a>
                                <a href={`${blog.postedBy.linkedin}`} target="_blank"><i className="lead fab fa-linkedin-in"></i></a>
                                <a href={`${blog.postedBy.insta}`} target="_blank"><i className="lead fab fa-instagram"></i></a>
                                <a href={`${blog.postedBy.twitter}`} target="_blank"><i className="lead fab fa-twitter"></i></a>
                            </div>
-                           <Link href={`/profile/${blog.postedBy.username}`}>
-                           <a>
-                           <h2  className="small text-dark">{blog.postedBy.name} </h2>
-                           </a>
-                           </Link>
                       </div>
                    </div>
                   <div className="blog-body">
-                       <img className="nbtn " src={`${API}/blog/photo/${blog.slug}`} style={{maxHeight: '400px', width: '100%', marginBottom: '3rem'}}  alt={blog.title} />
+                       <img className="nbtn " src={`${API}/blog/photo/${blog.slug}`} style={{maxHeight: '350px', width: '100%', marginBottom: '3rem'}}  alt={blog.title} />
                         <div> {renderHTML(blog.excerpt)}
                          </div>
                      </div>

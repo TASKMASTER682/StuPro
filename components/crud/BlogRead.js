@@ -87,7 +87,7 @@ const BlogRead = ({ username }) => {
             <h2 className="large text-primary my-">Manage Blogs</h2>
             <div className="line"></div>
                 <div className="blog">
-                    {/* {message && <div className="alert alert-warning">{message}</div>} */}
+                   
                     {showAllBlogs()}
                 </div>
             </div>

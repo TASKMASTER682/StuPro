@@ -122,7 +122,7 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
         <Search />
         <div style={{display:'flex',justifyContent:'space-between'}}>
         
-        <ul className='p-1'>
+        <ul className='p-1'style={{overflowY:'scroll',maxHeight:'20rem'}}>
         <h4 className="my-1">Categories</h4>
         
         {showJobCategories()}
@@ -130,11 +130,9 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
         </ul>
         
         
-        <ul className='p-1'>
+        <ul className='p-1' style={{overflowY:'scroll',maxHeight:'20rem'}}>
         <h4 className="my-1">Tags</h4>
-        
-            {showJobTags()}
-           
+         {showJobTags()}
         </ul>
         
         </div>

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import Router from 'next/router';
 import dynamic from 'next/dynamic';
 import { withRouter } from 'next/router';
 import { getCookie, isAuth } from '../../actions/auth';
@@ -73,7 +72,7 @@ const CreateBlog=({router})=>{
     
         const publishBlog = e => {
             e.preventDefault();
-            // console.log('ready to publishBlog');
+           
             createBlog(formData, token).then(data => {
                 if (data.error) {
                     setValues({ ...values, error: data.error });
@@ -87,14 +86,14 @@ const CreateBlog=({router})=>{
         };
     
         const handleChange = name => e => {
-            // console.log(e.target.value);
+            
             const value = name === 'photo' ? e.target.files[0] : e.target.value;
             formData.set(name, value);
             setValues({ ...values, [name]: value, formData, error: '' });
         };
     
         const handleBody = e => {
-            // console.log(e);
+            
             setBody(e);
             formData.set('body', e);
             if (typeof window !== 'undefined') {
@@ -104,7 +103,7 @@ const CreateBlog=({router})=>{
     
         const handleToggle = c => () => {
             setValues({ ...values, error: '' });
-            // return the first index or -1
+           
             const clickedCategory = checked.indexOf(c);
             const all = [...checked];
     
@@ -120,7 +119,7 @@ const CreateBlog=({router})=>{
     
         const handleTagsToggle = t => () => {
             setValues({ ...values, error: '' });
-            // return the first index or -1
+           
             const clickedTag = checked.indexOf(t);
             const all = [...checkedTag];
     
@@ -152,14 +151,14 @@ const CreateBlog=({router})=>{
                 tags.map((t, i) => (
                     <li key={i} >
                         <Checkbox onChange={handleTagsToggle(t._id)}   />
-                        <label >{t.n0ame}</label>
+                        <label >{t.name}</label>
                     </li>
                 ))
             );
         };
     
      const showLoading=()=>(
-         <div className="badge-primary" style={{display:loading ?'':'none'}}>
+         <div className=" badge badge-primary" style={{display:loading ?'':'none'}}>
              Loading...
          </div>
      )

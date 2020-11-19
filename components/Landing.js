@@ -97,17 +97,17 @@ const Landing=()=>{
    <h2 className="text-primary small py-1">Our Numbers</h2>
    <div className="cat-main">
        <div className="cat-item nbtn job m-1">
-       <i class="fas fa-briefcase text-primary x-large p-1"></i>
+       <i className="fas fa-briefcase text-primary x-large p-1"></i>
          
          <JobNumber />
          </div>
 
          <div className="cat-item nbtn job m-1">
-         <i class="fas fa-book-reader text-primary x-large p-1"></i>
+         <i className="fas fa-book-reader text-primary x-large p-1"></i>
          <BlogNumber/>
          </div>
          <div className="cat-item nbtn job m-1">
-         <i class="fas fa-users text-primary x-large p-1"></i>
+         <i className="fas fa-users text-primary x-large p-1"></i>
          <UserCount />
          </div>
        </div>
@@ -118,10 +118,9 @@ const Landing=()=>{
      <div className="cat-main">
      <div>
       <h2 className="small text-light-gray">The job posting is free for a particular period of time</h2>
-      <p className="text-dark extra-small">Just click on<Link  href="/contact"><a className="text-dark"> <strong>contact us</strong></a></Link>  and send your job to us or ask any other query.</p>
+      <p >Just click on<Link  href="/contact"><a className="text-dark"> <strong>contact us</strong></a></Link>  and send your job to us or ask any other query.</p>
       </div>
-     
-     </div>
+    </div>
    </section>
  </>
 

@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import Layout from '../../components/Layout';
 import { singleCategory } from '../../actions/category';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import Card from '../../components/blogs/Card';
@@ -12,17 +10,17 @@ const Category=({category,blogs,query})=>{
             <title>
                 {category.name} | {APP_NAME}
             </title>
-            <meta name="description" content={`Best programming tutorials on ${category.name}`} />
+            <meta name="description" content={`Blogs related to category: ${category.name}`} />
             <link rel="canonical" href={`${DOMAIN}/categories/${query.slug}`} />
             <meta property="og:title" content={`${category.name}| ${APP_NAME}`} />
-            <meta property="og:description" content={`Best programming tutorials on ${category.name}`} />
+            <meta property="og:description" content={`Blogs related to: ${category.name}`} />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}/categories/${query.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
 
-            <meta property="og:image" content={`${DOMAIN}/static/images/seoblog.jpg`} />
+            <meta property="og:image" content={`${DOMAIN}/img/stupro2.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />
-            <meta property="og:image:type" content="image/jpg" />
+            <meta property="og:image:type" content="image/png" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
     );

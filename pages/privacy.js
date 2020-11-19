@@ -56,12 +56,3 @@ const PrivacyPolicy=()=>{
 }
 
 export default PrivacyPolicy;
-
-// ></p>
-// <p></p>
-// <h2></h2>
-// <p></p>
-// <h2></h2>
-// <p></p>
-// <h2></h2>
-// <p></p>

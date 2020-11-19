@@ -11,7 +11,7 @@ const JobTag=({ jobTag, jobs, query })=>{
             <title>
                 {jobTag.name} | {APP_NAME}
             </title>
-            <meta name="description" content={`Jobss related to ${jobTag.name}`} />
+            <meta name="description" content={`Jobs related to ${jobTag.name}`} />
             <link rel="canonical" href={`${DOMAIN}/jobCategories/${query.slug}`} />
             <meta property="og:title" content={`${jobTag.name}| ${APP_NAME}`} />
             <meta property="og:description" content={`Jobs related to ${jobTag.name}`} />
@@ -21,7 +21,7 @@ const JobTag=({ jobTag, jobs, query })=>{
 
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />
-            <meta property="og:image:type" content="img/StuproLogo.png" />
+            <meta property="og:image:type" content="img/stupro2.png" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
     );

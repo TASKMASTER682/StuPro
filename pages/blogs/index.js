@@ -65,7 +65,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
         return blogs.map((blog, i) => {
             // ()
             return (
-                <article key={i} className="blog bg-light">
+                <article key={i} className="blog bg-light ">
                  <Card blog={blog}/>
                </article>
             );
@@ -73,7 +73,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
     };
     const showLoadedBlogs = () => {
         return loadedBlogs.map((blog, i) => (
-            <article key={i} className="blog bg-light">
+            <article key={i} className="blog bg-light ">
                 <Card blog={blog} />
             </article>
         ));
@@ -83,7 +83,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
        <>
        {head()}
   <main>
-     <section className="container">
+     <section className="container ">
           <h1 className="large text-primary">All Blogs</h1>
           <p className="extra-small text-light-gray">Knowledge is everything,share it.</p>
           <div className="line"></div>

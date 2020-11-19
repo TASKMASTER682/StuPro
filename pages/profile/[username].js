@@ -20,9 +20,9 @@ const UserProfile = ({ user, blogs, query}) => {
             <meta property="og:url" content={`${DOMAIN}/profile/${query.username}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
 
-            <meta property="og:image" content={`${DOMAIN}/static/images/seoblog.jpg`} />
-            <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/seoblog.jpg`} />
-            <meta property="og:image:type" content="image/jpg" />
+            <meta property="og:image" content={`${DOMAIN}/img/stupro2.png`} />
+            <meta property="og:image:secure_url" content={`${DOMAIN}/img/stupro2.png`} />
+            <meta property="og:image:type" content="image/png" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
     );
@@ -69,52 +69,22 @@ const UserProfile = ({ user, blogs, query}) => {
             
         </div>
         <h3 className="text-primary small ">Message to {user.name}</h3>
-            <ContactForm authorEmail={user.email} />
-
-
-               {/* <h2 className="large text-primary ">User Profile</h2>
-               <div className="line"></div>
-               <div className="blog p-1 ">
-                   <div className="blog-top">
-                   <div className="small text-success">
-                   <img src={user.photo} alt={user.name} className="round-image"/>
-                       {user.name}
-                   </div>
-                      <div>
-                        <div className="icons p-1">
-                               <Link href={`${user.profile}`}>
-                                   <button className="btn nbtn btn-primary">View Profile</button>
-                               </Link>
-                           </div>
-                          
-                      </div>
-                   </div>
-                   <div className="blog-body">
-                       <h2 className="small text-primary my-1">Recent Blogs by {user.name}</h2>
-                       {showUserBlogs()}
-                   </div>
-                   
-                   
-               </div> */}
-                
+            <ContactForm authorEmail={user.email} />                
            </section>
         </React.Fragment>
     );
 };
 
 UserProfile.getInitialProps = ({ query }) => {
-    // console.log(query);
+    
     return userPublicProfile(query.username).then(data => {
         if (data.error) {
             console.log(data.error);
         } else {
-            // console.log(data);
+           
             return { user: data.user, blogs: data.blogs, query };
         }
     });
 };
 
 export default UserProfile;
-
-
-{/* */}
