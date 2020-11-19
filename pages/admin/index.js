@@ -1,7 +1,7 @@
 import Admin from '../../components/auth/Admin';
-import {isAuth} from '../../actions/auth';
 import Link from 'next/link';
-import Router from "next/router"
+import Image from "next/image";
+
 
 
 const AdminDashboard=()=>{
@@ -38,7 +38,7 @@ const AdminDashboard=()=>{
     </Link> 
 
    
-    <img  className="nbtn my-1" style={{maxHeight: '550px',width:'100%'}} src="img/stupro10.png" alt="" />
+    <Image  className="nbtn my-1" height={1000} width={2000} priority src="/img/stupro10.png" alt="" />
     
 </div>
        

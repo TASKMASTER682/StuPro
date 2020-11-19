@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-
 const Footer=()=>{
     const currentDate=new Date();
     const year=currentDate.getFullYear();
@@ -8,7 +7,7 @@ const Footer=()=>{
         <section className="footer-container bg-success my-1">
         <div className="footer">
             <div className="first-row ">
-              <span>  <Image src="/StuproLogo.png" height={220} width={220} sizes='40vw' priority alt="ProGrad" /></span>
+              <span>  <Image src="/StuproLogo.png" height={220} width={220}   priority alt="ProGrad" /></span>
                 <p className="extra-small text-light-gray">
                     © Copyright {year}.ProGrad India | 
                     All rights reserved

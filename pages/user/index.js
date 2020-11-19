@@ -25,7 +25,7 @@ const UserIndex=()=>{
         <a className="btn  nbtn"><i className="fas fa-user-edit text-primary"></i><span></span> Update Profile</a>
     </Link>
  
-    <Image  className="nbtn my-1" height={1000} width={2000} src="/img/stupro10.png"  sizes='40vw' priority alt="support others" />
+    <Image  className="nbtn my-1" height={1000} width={2000} src="/img/stupro10.png"  priority alt="support others" />
 </div>
       
     </div>

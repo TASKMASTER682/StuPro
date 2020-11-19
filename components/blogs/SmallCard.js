@@ -21,11 +21,11 @@ const SmallCard=({blog})=>{
                 <div className="author extra-small"  style={{display: "flex",paddingBottom:'0rem'}}>
                 
                   <a href={`/profile/${blog.postedBy.username}`}>
-                  <img className="m-1 round-image" src={`${API}/user/photo/${blog.postedBy.username}`}/>
+                  <img className="p-1 round-image" src={`${API}/user/photo/${blog.postedBy.username}`}/>
                  
                   </a>
                 
-                <p className="author text-light-gray  my-1 p-1">|Published {moment(blog.updatedAt).fromNow()} by {blog.postedBy.name}</p>
+                <p className="author text-light-gray p-1 ">|Published {moment(blog.updatedAt).fromNow()} by {blog.postedBy.name}</p>
                 </div>
           </main>
         
