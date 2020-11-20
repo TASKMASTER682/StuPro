@@ -32,7 +32,7 @@ const showJobTags = job =>
        <p className="extra-small p-1"><i className="fas fa-shield-alt text-primary"></i><strong> {job.agency}</strong></p>
     </main>
     <small className="text-light-gray p-1"> Published {moment(job.updatedAt).fromNow()}</small>
-     <p className="extra-small py-1" style={{paddingLeft:'1rem'}}>Will Expire  {moment(job.lastDate).fromNow()}</p>
+     <p className="extra-small py-1" style={{paddingLeft:'1rem'}}> Expire  {moment(job.lastDate).fromNow()}</p>
      <div  style={{display: "flex",marginLeft:'1rem',flexWrap:'wrap',lineHeight:'1.2rem'}}>
          {showJobCategories(job)}
          {showJobTags(job)}

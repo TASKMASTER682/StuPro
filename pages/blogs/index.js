@@ -15,13 +15,15 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             <title>All Educational blogs | {APP_NAME}</title>
             <meta
                 name="description"
-                content="Programming blogs and tutorials on react node next vue php laravel and web developoment"
+                content="All type of blogs thst helps you think out of the box"
             />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
-            <meta property="og:title" content={`Latest web developoment tutorials | ${APP_NAME}`} />
+            <meta property="og:title" content={`Latest and featured blogs | ${APP_NAME}`} />
             <meta
                 property="og:description"
-                content="Programming blogs and tutorials on react node next vue php laravel and web developoment"
+                content="All type of blogs thst helps you think out of the box"
             />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />

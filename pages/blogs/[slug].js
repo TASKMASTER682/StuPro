@@ -30,6 +30,7 @@ const SingleBlog=  ({blog,query})=>{
             <title>
                 {blog.title} | {APP_NAME}
             </title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <meta name="description" content={blog.mdesc} />
             <link rel="canonical" href={`${DOMAIN}/blogs/${query.slug}`} />
             <meta property="og:title" content={`${blog.title}| ${APP_NAME}`} />

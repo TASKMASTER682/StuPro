@@ -11,6 +11,7 @@ const JobTag=({ jobTag, jobs, query })=>{
             <title>
                 {jobTag.name} | {APP_NAME}
             </title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <meta name="description" content={`Jobs related to ${jobTag.name}`} />
             <link rel="canonical" href={`${DOMAIN}/jobCategories/${query.slug}`} />
             <meta property="og:title" content={`${jobTag.name}| ${APP_NAME}`} />

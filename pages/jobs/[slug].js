@@ -30,6 +30,8 @@ const SingleJob=({job,query})=>{
             <title>
                 {job.title} | {APP_NAME}
             </title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
             <meta name="description" content={job.mdesc} />
             <link rel="canonical" href={`${DOMAIN}/jobs/${query.slug}`} />
             <meta property="og:title" content={`${job.title}| ${APP_NAME}`} />

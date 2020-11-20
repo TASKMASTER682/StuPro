@@ -17,6 +17,8 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
                 name="description"
                 content="All types of government and private sector Jobs"
             />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
             <meta property="og:title" content={`Latest web developoment tutorials | ${APP_NAME}`} />
             <meta

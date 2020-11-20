@@ -18,9 +18,9 @@ const Landing=()=>{
             <div className='py-1' style={{lineHeight:'1.2rem'}}>
             <small className="text-dark"> 
             <ul>
-            <li><h5>A PLATFORM BRINGING ASPIRING GRADS AND EXCELLING PROFESSIONALS TOGEATHER.</h5> </li>
+            <li><h5>A PLATFORM BRINGING ASPIRING GRADS AND EXCELLING PROFESSIONALS TOGETHER.</h5> </li>
                 <li><h5> A COMMUNITY THAT HAS A PERFECT ECOSYSTEM FOR EVERY NIECHE OF EDUCATION SYSTEM.</h5></li>
-            </ul>
+            </ul> 
     </small>
         <h3 className="extra-small text-dark">Be a part of our community</h3>
 

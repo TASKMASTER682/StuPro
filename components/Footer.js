@@ -17,7 +17,7 @@ const Footer=()=>{
             </div>
             <div className="second-row p-1 ">
                 <h2 className="lead text-dark ">Learn more</h2>
-                   <p>ProGrad is an open platform where readers come to find insightful and dynamic thinking.Here experts and undiscovered voices come togeather and dive into the heart of any topic and bring new ideas to surface.Also the jobseekers come here to easily find a job and apply according to thier qualification.</p>
+                   <p>ProGrad is an open platform where readers come to find insightful and dynamic thinking.Here experts and undiscovered voices come together and dive into the heart of any topic and bring new ideas to surface.Also the jobseekers come here to easily find a job and apply according to thier qualification.</p>
                 
             </div>
             <div className="second-row p-1 ">
