@@ -20,7 +20,7 @@ export const create = async (tag, token) => {
 };
 
 export const getTags = async () => {
-    return await fetch(`${API}/tags`, {
+    return fetch(`${API}/tags`, {
         method: 'GET'
     })
         .then(response => {

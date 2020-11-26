@@ -20,7 +20,7 @@ export const create = async (jobTag, token) => {
 };
 
 export const getJobTags = async () => {
-    return await fetch(`${API}/jobTags`, {
+    return fetch(`${API}/jobTags`, {
         method: 'GET'
     })
         .then(response => {

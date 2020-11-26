@@ -20,7 +20,6 @@ export const getProfile = async (token) => {
         method: 'GET',
         headers: {
             Accept: 'application/json',
-            Authorization: `Bearer ${token}`
         }
     })
         .then(response => {
@@ -28,6 +27,7 @@ export const getProfile = async (token) => {
         })
         .catch(err => console.log(err));
 };
+
 
 export const list =async () => {
   
@@ -56,3 +56,4 @@ export const update =async (token, user) => {
         })
         .catch(err => console.log(err));
 };
+

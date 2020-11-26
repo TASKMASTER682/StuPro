@@ -51,7 +51,7 @@ export const singleJob = async (slug) => {
 };
 
 export const listRelated = async (job) => {
-    return await fetch(`${API}/jobs/related`, {
+    return  fetch(`${API}/jobs/related`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',

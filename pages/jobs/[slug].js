@@ -60,7 +60,7 @@ const SingleJob=({job,query})=>{
     const showJobTags = job =>
         job.jobTags.map((t, i) => (
             <Link key={i} href={`/jobTags/${t.slug}`}>
-                <a style={{padding:" 0 0.8rem",border:'solid black '}}  className="btn nbtn btn-light-gray  "><p>{t.name}</p></a>
+                <a style={{padding:" 0 0.8rem",border:'solid black '}}  className="btn nbtn btn-light-gray my-1 "><p>{t.name}</p></a>
             </Link>
         ));
 
@@ -113,8 +113,7 @@ const SingleJob=({job,query})=>{
                  <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
                      <div className='my-1'>
                          {showJobCategories(job)}
-                           </div>
-                           <div className='my-1'>
+                           
                            {showJobTags(job)}
                            </div>
                       </div>
@@ -161,7 +160,9 @@ const SingleJob=({job,query})=>{
                      
                       <div className='job-content' style={{padding:'0.4rem'}}>
                       {renderHTML(job.body)}
+
                     </div>
+                    {/* <button className="btn-dark btn nbtn"onClick={()=>saveJob()}>Save job</button> */}
                 </div>
               </div>
         </section>

@@ -16,9 +16,11 @@ const Navbar=()=>{
     <>
        <nav className='navbar bg-success'style={{height:'4rem'}}>
        <div className="py-1" style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-         <a  href ="/">
+         <Link  href ="/">
+         <a>
           <Image src='/img/prograd.png' height={50} width={190}  priority style={{marginTop:'0.5rem'}}/>
           </a>
+          </Link>
        
         <div className='hide-sm'>
         <Search />

@@ -21,7 +21,7 @@ export const create = async (category, token) => {
 };
 
 export const getCategories = async () => {
-    return await fetch(`${API}/categories`, {
+    return  fetch(`${API}/categories`, {
         method: 'GET'
     })
         .then(response => {

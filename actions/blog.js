@@ -58,7 +58,7 @@ export const singleBlog = async (slug) => {
 };
 
 export const listRelated = async (blog) => {
-    return await fetch(`${API}/blogs/related`, {
+    return  fetch(`${API}/blogs/related`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',

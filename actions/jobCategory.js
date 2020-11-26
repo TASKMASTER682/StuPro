@@ -21,7 +21,7 @@ export const create = async (jobCategory, token) => {
 };
 
 export const getJobCategories =async () => {
-    return await fetch(`${API}/jobCategories`, {
+    return  fetch(`${API}/jobCategories`, {
         method: 'GET'
     })
         .then(response => {

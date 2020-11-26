@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useState,useEffect  } from 'react';
-import { singleBlog,listRelated } from '../../actions/blog';
+import { singleBlog,listRelated} from '../../actions/blog';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
@@ -56,7 +56,7 @@ const SingleBlog=  ({blog,query})=>{
     const showBlogTags = blog =>
         blog.tags.map((t, i) => (
             <Link key={i} href={`/tags/${t.slug}`}>
-                <a style={{padding:" 0 0.8rem",border:'solid dark'}}  className="btn nbtn btn-light-gray "><p>{t.name}</p></a>
+                <a style={{padding:" 0 0.8rem",border:'solid dark'}}  className="btn nbtn btn-light-gray my-1"><p>{t.name}</p></a>
             </Link>
         ));
 
@@ -96,8 +96,7 @@ const SingleBlog=  ({blog,query})=>{
                         <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
                            <div className="my-1">
                            {showBlogCategories(blog)}
-                           </div>
-                           <div className="my-1">
+                           
                            {showBlogTags(blog)}
                            </div>
                       </div>
@@ -135,8 +134,7 @@ const SingleBlog=  ({blog,query})=>{
                       <div className="blog-body">
                            <img className="nbtn " src={`${API}/blog/photo/${blog.slug}`}  style={{maxHeight: '400px', width: '100%', marginBottom: '3rem'}}  alt={blog.title} />
                             <div style={{lineHeight:'2rem'}}> {renderHTML(blog.body)}</div>
-                              
-                            </div>
+                    </div>
                       
                     </article>
                     
