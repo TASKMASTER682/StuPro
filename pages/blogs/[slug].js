@@ -115,7 +115,7 @@ const SingleBlog=  ({blog,query})=>{
                        </div>
                       
                           <div>
-                         
+                       
                                <Link href={`/profile/${blog.postedBy.username}`}>
                                    <a>
                                    <h2  className="small text-dark">{blog.postedBy.name} </h2>
