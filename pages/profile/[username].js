@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { userPublicProfile,follow,unfollow } from '../../actions/user';
+import { userPublicProfile } from '../../actions/user';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import moment from 'moment';
 import ContactForm from '../../components/form/ContactForm';
@@ -49,9 +49,7 @@ const UserProfile = ({ user, blogs, query}) => {
                 <img src={`${API}/user/photo/${user.username}`} alt="" className="round-image my-1" />
                 <h1 className="large">{user.name}</h1>
                 <p  className="extra-small text-light-gray">Joined {moment(user.createdAt).fromNow()}</p>
-                <button className="btn btn-dark my-1" onClick={()=>followUser()}>Follow</button>
-                <button className="btn btn-dark"onClick={()=>unfollowUser()}>Unfollow</button>
-
+           
                 <div className="icons my-1">
                 <a href={user.twitter}><i className="fab fa-twitter lead m-1"></i></a>
                 <a href={user.facebook}><i className="fab fa-facebook lead m-1"></i></a>
@@ -91,4 +89,4 @@ UserProfile.getInitialProps = ({ query }) => {
     });
 };
 
-export default withRouter(UserProfile);
+export default UserProfile;
