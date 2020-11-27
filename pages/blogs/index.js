@@ -89,6 +89,8 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
           <h1 className="large text-primary">All Blogs</h1>
           <p className="extra-small text-light-gray">Knowledge is everything,share it.</p>
           <div className="line"></div>
+          <Link href="/search"><a className="btn nbtn btn-dark m-1">Click here to Search blog</a></Link>
+
          <main>
          {showAllBlogs()}
          </main>

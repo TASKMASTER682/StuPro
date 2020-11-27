@@ -4,7 +4,6 @@ import NProgress from 'nprogress';
 import {signout,isAuth} from '../actions/auth';
 import Router from "next/router"
 import Image from "next/image"
-import Search from './blogs/Search';
 
 
  Router.onRouteChangeStart=url=>NProgress.start()
@@ -22,9 +21,6 @@ const Navbar=()=>{
           </a>
           </Link>
        
-        <div className='hide-sm'>
-        <Search />
-        </div>
         </div>
         <ul >
             <li><h3><Link href="/jobs"><a>Jobs</a></Link></h3></li>

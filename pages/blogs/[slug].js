@@ -56,7 +56,7 @@ const SingleBlog=  ({blog,query})=>{
     const showBlogTags = blog =>
         blog.tags.map((t, i) => (
             <Link key={i} href={`/tags/${t.slug}`}>
-                <a style={{padding:" 0 0.8rem",border:'solid dark'}}  className="btn nbtn btn-light-gray my-1"><p>{t.name}</p></a>
+                <a style={{padding:" 0 0.8rem",border:'solid black'}}  className="btn nbtn btn-light-gray my-1"><p>{t.name}</p></a>
             </Link>
         ));
 
@@ -84,6 +84,8 @@ const SingleBlog=  ({blog,query})=>{
             {head()}
             <main>
             <section className="container">
+            <Link href="/search"><a className="btn nbtn btn-dark m-1">Click here to Search blog</a></Link>
+
             <article  className="blog bg-light ">
                <header>
                     <Link href={`/blogs/${blog.slug}`}>
@@ -93,13 +95,7 @@ const SingleBlog=  ({blog,query})=>{
                     </h2>
                         </a>
                         </Link>
-                        <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
-                           <div className="my-1">
-                           {showBlogCategories(blog)}
-                           
-                           {showBlogTags(blog)}
-                           </div>
-                      </div>
+                     
                     </header>
                        <div className="blog-top">
                        <div>
@@ -135,7 +131,16 @@ const SingleBlog=  ({blog,query})=>{
                            <img className="nbtn " src={`${API}/blog/photo/${blog.slug}`}  style={{maxHeight: '400px', width: '100%', marginBottom: '3rem'}}  alt={blog.title} />
                             <div style={{lineHeight:'2rem'}}> {renderHTML(blog.body)}</div>
                     </div>
-                      
+                    <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
+
+                           <div>
+                           <div className="line"></div>
+
+                           {showBlogCategories(blog)}
+                           
+                           {showBlogTags(blog)}
+                           </div>
+                      </div>
                     </article>
                     
                     </section>
@@ -160,7 +165,6 @@ SingleBlog.getInitialProps = ({ query }) => {
         if (data.error) {
             console.log(data.error);
         } else {
-            // console.log('GET INITIAL PROPS IN SINGLE BLOG', data);
             return { blog: data, query };
         }
     });
