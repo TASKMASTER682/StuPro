@@ -119,7 +119,7 @@ const SingleBlog=  ({blog,query})=>{
                                </Link>
                                <div >
                                    <a href={`https://www.facebook.com/sharer/sharer.php?u=https://theprograd.com/blogs/${query.slug}`} target="_blank"><i className="lead fab fa-facebook"></i></a>
-                                   <a href={`http://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/blogs/${blog.title}"><img src=${API}/blog/photo/${blog.slug}`}><i className="lead fab fa-linkedin-in"></i></a>
+                                   <a href={`whatsapp://send?text=${DOMAIN}/blogs/${query.slug}`} data-action="share/whatsapp/share" ><i className="lead fab fa-whatsapp-square"></i></a>
                                 
                                    <a href={`http://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${blog.title}"><img src=${API}/blog/photo/${blog.slug} alt="Share on Twitter`}><i className="lead fab fa-twitter"></i></a>
                                </div>

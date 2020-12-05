@@ -36,9 +36,10 @@ const Search = () => {
                         <div key={i} >
                         <Link href={`/jobs/${job.slug}`}>
                        <a>
-                        <h3  className="text-dark  " style={{textAlign: 'justify',fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>
+                        <h3  className="text-dark " style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>
                         🤩<span> </span>{job.title}
                         </h3>
+                        <div className="line"></div>
                        </a>
                         </Link>
                       

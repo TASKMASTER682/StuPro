@@ -35,10 +35,11 @@ const Search = () => {
                         <div key={i} >
                         <Link href={`/blogs/${blog.slug}`}>
                        <a>
-                        <h3  className="text-primary  " style={{textAlign: 'justify',fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>
-                        *<span> </span>{blog.title}
+                        <h3  className="text-primary  " style={{fontFamily:`'Source Serif Pro' ,serif` }}>
+                        🕵️‍♂️<span> </span>{blog.title}
                         </h3>
                        </a>
+                       <div className="line"></div>
                         </Link>
                       
                     </div>

@@ -31,10 +31,25 @@ const UserProfile = ({ user, blogs, query}) => {
     const showUserBlogs = () => {
         return blogs.map((blog, i) => {
             return (
-                <div  key={i}>
-                    <Link href={`/blogs/${blog.slug}`}>
-                        <a className="lead text-dark">{blog.title}</a>
-                    </Link>
+        <div  key={i}>
+        <main>
+           <Link href={`/jobs/${blog.slug}`}>
+            <a>
+             <img className="img-slider mob-image-slider"  src={`${API}/job/photo/${blog.slug}`} alt={blog.title} />
+              </a>
+              </Link>
+              <div style={{maxHeight:'6rem',overflow:'hidden'}}>
+                <Link href={`/jobs/${blog.slug}`}>
+                  <a>
+                  <h3 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif`,lineHeight:'1.8rem',padding:'0.6rem' }}>{blog.title}</h3>
+                  </a>
+                </Link>
+                </div>
+                <div className="author extra-small"  style={{display: "flex" ,alignContent:'flex-end'}}>
+                
+                  <p className="author text-light-gray p-1">|Published {moment(blog.updatedAt).fromNow()} </p>
+                </div>
+          </main>
                 </div>
             );
         });
@@ -64,7 +79,7 @@ const UserProfile = ({ user, blogs, query}) => {
                 <div className="line"></div>
                 <h2 className="text-dark my-1">Recent Blogs by {user.name}</h2>
                 <div className="user-blog">
-                    <p className="small text-dark my-1 p-2">{showUserBlogs()}</p>
+                    {showUserBlogs()}
                 </div>
               
             </div>
