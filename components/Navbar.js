@@ -36,7 +36,7 @@ const Navbar=()=>{
                    </>
                )}
                {isAuth() && isAuth().role === 1 && (
-                   <li><Link href="/admin" ><a  className="btn nbtn btn-dark "><i className="fas fa-user"></i> <span>{`${isAuth().name}'s Dashboard`}</span></a></Link></li>              )}
+                   <li><Link href="/admin" ><a  className="btn nbtn btn-dark "><i className="fas fa-user"></i><span> {`${isAuth().name}'s Dashboard`}</span></a></Link></li>              )}
                {!isAuth() && ( 
               <>
                 <li><a href="/signin"  className =" btn nbtn btn-dark">Sign in<span> </span><i className="fas fa-sign-in-alt"></i></a></li>
