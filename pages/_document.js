@@ -39,6 +39,7 @@ class MyDocument extends Document {
            <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y27GY802BM"></script>
+        <script data-ad-client="ca-pub-8555056818557400" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script dangerouslySetInnerHTML={this.setGoogleTags()}></script>
 
         </Head>
