@@ -12,25 +12,29 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
     const head = () => (
         <Head>
-            <title>All Educational blogs | {APP_NAME}</title>
+            <title>Get all types of educational blogs for learning and dive deep into conceptual knowledge | {APP_NAME}</title>
             <meta
                 name="description"
-                content="All type of blogs thst helps you think out of the box"
+                content="Welcome to the India's best emerging learning platform in which you can check your understanding of a concept by writing it and publishing it.
+                It is free of cost.This helps you in two ways that you will never forget the concept and secondly it helps other to your blog and this will increase 
+                your popularity on internet and on other socia media.Make this patform the india wikipedia.The future of India is in your hands."
             />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
-            <meta property="og:title" content={`Latest and featured blogs | ${APP_NAME}`} />
+            <meta property="og:title" content={`Get all types of educational blogs and get best user experience | ${APP_NAME}`} />
             <meta
                 property="og:description"
-                content="All type of blogs thst helps you think out of the box"
+                content="Welcome to the India's best emerging learning platform in which you can check your understanding of a concept by writing it and publishing it.
+                It is free of cost.This helps you in two ways that you will never forget the concept and secondly it helps other to your blog and this will increase 
+                your popularity on internet and on other socia media.Make this patform the india wikipedia.The future of India is in your hands."
             />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
 
             <meta property="og:image" content={`${DOMAIN}/static/images/seoblog.jpg`} />
-            <meta property="og:image:secure_url" ccontent={`${DOMAIN}/img/STuproLogo.png`} />
+            <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:type" content="image/jpg" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>

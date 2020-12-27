@@ -25,7 +25,7 @@ const showJobTags = job =>
        
        <Link href={`/jobs/${job.slug}`}>
        <a>
-       <h2 className="lead text-dark" style={{lineHeight:'1.9rem'}}>{job.title}</h2>
+       <h2 className="lead text-dark" style={{lineHeight:'1.9rem',color:'#03002e'}}>{job.title}</h2>
        </a>
        
        </Link>

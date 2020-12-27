@@ -32,7 +32,7 @@ const SingleJob=({job,query})=>{
             </title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <meta name="description" content={job.mdesc} />
+            <meta name="description" content= {`${job.mdesc} Last date:${job.lastdate},Job Location:${job.location},Salary:${job.salary} .Get more freejobalerts and many other features here`} />
             <link rel="canonical" href={`${DOMAIN}/jobs/${query.slug}`} />
             <meta property="og:title" content={`${job.title}| ${APP_NAME}`} />
             <meta property="og:description" content={job.mdesc} />
@@ -42,7 +42,7 @@ const SingleJob=({job,query})=>{
 
             <meta property="og:image" content={`${API}/job/photo/${job.slug}`} />
             <meta property="og:image:secure_url" ccontent={`${API}/job/photo/${job.slug}`} />
-            <meta property="og:image:type" content="img/StuproLogo.png" />
+            <meta property="og:image:type" content={`${API}/job/photo/${job.slug}`} />
             <meta name="twitter:card" content="summary_large_image"></meta>
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
@@ -160,18 +160,29 @@ const SingleJob=({job,query})=>{
                      
                       <div className='job-content' style={{padding:'0.4rem'}}>
                       {renderHTML(job.body)}
-
                     </div>
-                    {/* <button className="btn-dark btn nbtn"onClick={()=>saveJob()}>Save job</button> */}
+                   
                 </div>
+                <div >
+                        <h2 className="small text-primary my-1">Frequently Asked Questions </h2>
+                        <h3 className="lead text-dark">What is the salary of {job.title} ?</h3>
+                        <p className='m-1'> The salary of {job.title} is {job.salary}</p>
+                        <h3 className="lead text-dark">What is the job location of {job.title} ?</h3>
+                        <p className='m-1'>The job location of {job.title} is {job.location}</p>
+                        <h3 className="lead text-dark">What is the last date to apply for {job.title} ?</h3>
+                        <p className='m-1'>The Last date of {job.title} is - {moment(job.lastDate).format("MMM DD YYYY")}</p>
+                        <h3 className="lead text-dark">What is the qualification needed for {job.title} ?</h3>
+                        <p className='m-1'>The detailed qualification needed to apply for {job.title} is shown above.</p>
+                    </div>
               </div>
         </section>
             <section className="container">
-                    <h2 className="text-primary small m-1">Suggested Jobs to apply</h2>
+                    <h2 className="text-primary small">Suggested Jobs to apply</h2>
                     <div className='line'></div>
                     <div className="card">
                         {showRelatedJob()}
                     </div>
+
                     <div className="bg-primary m-1">
                       <h3 className="cmnt-body">Leave A Comment</h3>
                     </div>
@@ -187,7 +198,6 @@ SingleJob.getInitialProps = ({ query }) => {
         if (data.error) {
             console.log(data.error);
         } else {
-            // console.log('GET INITIAL PROPS IN SINGLE BLOG', data);
             return { job: data, query };
         }
     });

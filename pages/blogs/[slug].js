@@ -41,7 +41,7 @@ const SingleBlog=  ({blog,query})=>{
 
             <meta property="og:image" content={`${API}/blog/photo/${blog.slug}`} />
             <meta property="og:image:secure_url" ccontent={`${API}/blog/photo/${blog.slug}`} />
-            <meta property="og:image:type" content="img/StuproLogo.png" />
+            <meta property="og:image:type" content={`${API}/blog/photo/${blog.slug}`} />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
     );
