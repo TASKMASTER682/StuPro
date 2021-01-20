@@ -4,15 +4,15 @@ import queryString from 'query-string';
 import { isAuth ,handleResponse } from './auth';
 
 
-export const createJob = async (job, token) => {
+export const createPvtJob = async (privateJob, token) => {
     
-    return await fetch(`${API}/job`, {
+    return await fetch(`${API}/privateJob`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: job
+        body: privateJob
     })
         .then(response => {
             handleResponse(response);
@@ -21,12 +21,12 @@ export const createJob = async (job, token) => {
         .catch(err => console.log(err));
 };
 
-export const listJobsWithCategoriesAndTags =async (skip,limit) => {
+export const listPvtJobsWithCategoriesAndTags =async (skip,limit) => {
     const data = {
         limit,
         skip
     };
-    return await fetch(`${API}/jobs-categories-tags`, {
+    return await fetch(`${API}/privateJobs-categories-tags`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -40,8 +40,8 @@ export const listJobsWithCategoriesAndTags =async (skip,limit) => {
         .catch(err => console.log(err));
 };
 
-export const singleJob = async (slug) => {
-    return await fetch(`${API}/job/${slug}`, {
+export const singlePvtJob = async (slug) => {
+    return await fetch(`${API}/privateJob/${slug}`, {
         method: 'GET'
     })
         .then(response => {
@@ -50,14 +50,14 @@ export const singleJob = async (slug) => {
         .catch(err => console.log(err));
 };
 
-export const listRelated = async (job) => {
-    return  fetch(`${API}/jobs/related`, {
+export const listRelatedPvt = async (privateJob) => {
+    return  fetch(`${API}/privateJobs/related`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(job)
+        body: JSON.stringify(privateJob)
     })
         .then(response => {
             return response.json();  
@@ -65,10 +65,21 @@ export const listRelated = async (job) => {
         .catch(err => console.log(err));
 };
 
-export const list =async () => {
+export const listPvt =async () => {
   
 
-    return await fetch(`${API}/jobs`, {
+    return await fetch(`${API}/privateJobs`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+export const listPvtHome =async () => {
+  
+
+    return await fetch(`${API}/privateJobsHome`, {
         method: 'GET'
     })
         .then(response => {
@@ -77,22 +88,10 @@ export const list =async () => {
         .catch(err => console.log(err));
 };
 
-export const listHome =async () => {
-  
-
-    return await fetch(`${API}/jobsHome`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
-
-export const removeJob= async (slug, token) => {
+export const removePvtJob= async (slug, token) => {
     
 
-    return await fetch( `${API}/job/${slug}`, {
+    return await fetch( `${API}/privateJob/${slug}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -108,17 +107,17 @@ export const removeJob= async (slug, token) => {
 };
 
 
-export const updateJob = async (job, token, slug) => {
+export const updatePvtJob = async (privateJob, token, slug) => {
     
 
 
-    return await fetch(`${API}/job/${slug}`, {
+    return await fetch(`${API}/privateJob/${slug}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: job
+        body: privateJob
     })
         .then(response => {
             handleResponse(response);
@@ -127,11 +126,11 @@ export const updateJob = async (job, token, slug) => {
         .catch(err => console.log(err));
 };
 
-export const listSearch =async (params) => {
+export const listSearchPvt =async (params) => {
     console.log('search params', params);
     let query = queryString.stringify(params);
     console.log('query params', query);
-    return await fetch(`${API}/jobs/search?${query}`, {
+    return await fetch(`${API}/privateJobs/search?${query}`, {
         method: 'GET'
     })
         .then(response => {

@@ -68,7 +68,7 @@ const SignupComponent=()=>{
             <div className="form-group">
                 <input   value={password} onChange={handleChange('password')} type="password" placeholder="Password" />
             </div>
-            <input type="submit" value="Sign up" className="btn nbtn btn-primary" />
+            <input type="submit" value={loading ?'Signing up...':'Sign Up'} className="btn nbtn btn-primary" />
         </form>
       <p className="my-1 text-light-gray "></p> 
       <div style={{textAlign:'center',margin:'auto',justifyContent:'center'}}>
@@ -80,7 +80,7 @@ const SignupComponent=()=>{
     </div>
     <div className="second p-2 hide-sm">
         <div className="fst">
-            <h2 className="text-dark">Register to help educated youth of India</h2>
+            <h2 className="text-dark">Register to be the part of our community</h2>
            <img src="img/stupro2.png" alt="" />
         </div>
        
@@ -96,10 +96,15 @@ const SignupComponent=()=>{
         </>
     )
    }
-
+   const showError = () => {
+    if (error) {
+        return <div className="badge badge-danger p-1 nbtn " style={{ display: error ? '' : 'none' }}>{error}</div>;
+    }
+};
    return <React.Fragment>
    
    {signupForm()}
+   {showError()}
    </React.Fragment>;
 }
 export default SignupComponent;

@@ -4,9 +4,9 @@ import Router from 'next/router';
 import dynamic from 'next/dynamic';
 import { withRouter } from 'next/router';
 import { getCookie, isAuth } from '../../actions/auth';
-import { getJobCategories } from '../../actions/jobCategory';
-import { getJobTags } from '../../actions/jobTag';
-import { createJob } from '../../actions/job';
+import { getPvtJobCategories } from '../../actions/privateJobCategory';
+import { getPvtJobTags } from '../../actions/privateJobTag';
+import { createPvtJob } from '../../actions/privateJob';
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import { QuillModules, QuillFormats } from '../../helpers/quill';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -15,21 +15,21 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 
 
-const CreateJob=({router})=>{
+const CreatePvtJob=({router})=>{
     const jobFromLS = () => {
         if (typeof window === 'undefined') {
             return false;
         }
 
-        if (localStorage.getItem('job')) {
-            return JSON.parse(localStorage.getItem('job'));
+        if (localStorage.getItem('privateJob')) {
+            return JSON.parse(localStorage.getItem('privateJob'));
         } else {
             return false;
         }
     };
 
-    const [jobCategories, setJobCategories] = useState([]);
-    const [jobTags, setJobTags] = useState([]);
+    const [privateJobCategories, setPrivateJobCategories] = useState([]);
+    const [privateJobTags, setPrivateJobTags] = useState([]);
 
 
     const [checked, setChecked] = useState([]); // categories
@@ -44,6 +44,8 @@ const CreateJob=({router})=>{
         title: '',
         agency:'',
         applyLink:'',
+        position:'',
+        keySkills:'',
         salary:'',
         type:'',
         qualification:'',
@@ -52,7 +54,7 @@ const CreateJob=({router})=>{
         hidePublishButton: false
     });
 
-    const { error, sizeError, success, formData,applyLink,lastDate, agency,title,salary,qualification,location,type, hidePublishButton } = values;
+    const { error, sizeError, success, formData,applyLink,lastDate, keySkills,position,agency,title,salary,qualification,location,type, hidePublishButton } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -62,21 +64,21 @@ const CreateJob=({router})=>{
     }, [router]);
 
     const initJobCategories = () => {
-        getJobCategories().then(data => {
+        getPvtJobCategories().then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
-                setJobCategories(data);
+                setPrivateJobCategories(data);
             }
         });
     };
 
     const initJobTags = () => {
-        getJobTags().then(data => {
+        getPvtJobTags().then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
-                setJobTags(data);
+                setPrivateJobTags(data);
             }
         });
     };
@@ -84,14 +86,14 @@ const CreateJob=({router})=>{
     const publishJob = e => {
         e.preventDefault();
         // console.log('ready to publishBlog');
-        createJob(formData, token).then(data => {
+        createPvtJob(formData, token).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
-                setValues({ ...values, title: '',agency:'',applyLink:'',lastDate:'', error: '',salary:'',qualification:'',type:'',location:'', success: `A new blog titled "${data.title}" is created` });
+                setValues({ ...values, title: '',agency:'',applyLink:'',lastDate:'',position:'',keySkills:'', error: '',salary:'',qualification:'',type:'',location:'', success: `A new blog titled "${data.title}" is created` });
                 setBody('');
-                setJobCategories([]);
-                setJobTags([]);
+                setPrivateJobCategories([]);
+                setPrivateJobTags([]);
             }
         });
     };
@@ -108,7 +110,7 @@ const CreateJob=({router})=>{
         setBody(e);
         formData.set('body', e);
         if (typeof window !== 'undefined') {
-            localStorage.setItem('job', JSON.stringify(e));
+            localStorage.setItem('privateJob', JSON.stringify(e));
         }
     };
 
@@ -125,7 +127,7 @@ const CreateJob=({router})=>{
         }
         console.log(all);
         setChecked(all);
-        formData.set('jobCategories', all);
+        formData.set('privateJobCategories', all);
     };
 
     const handleJobTagsToggle = t => () => {
@@ -141,13 +143,13 @@ const CreateJob=({router})=>{
         }
         console.log(all);
         setCheckedTag(all);
-        formData.set('jobTags', all);
+        formData.set('privateJobTags', all);
     };
 
     const showJobCategories = () => {
         return (
-            jobCategories &&
-            jobCategories.map((c, i) => (
+            privateJobCategories &&
+            privateJobCategories.map((c, i) => (
                 <li key={i} >
                     <Checkbox onChange={handleToggle(c._id)} />
                     <label>{c.name}</label>
@@ -158,8 +160,8 @@ const CreateJob=({router})=>{
 
     const showJobTags = () => {
         return (
-            jobTags &&
-            jobTags.map((t, i) => (
+            privateJobTags &&
+            privateJobTags.map((t, i) => (
                 <li key={i} >
                     <Checkbox onChange={handleJobTagsToggle(t._id)} />
                     <label >{t.name}</label>
@@ -210,6 +212,12 @@ const createJobForm = () => {
             <input type="text" placeholder="Type of Job"  value={type} onChange={handleChange('type')} required />
             </div>
             <div className="form-group">
+            <input type="text" placeholder="Position"  value={position} onChange={handleChange('position')} required />
+            </div>
+            <div className="form-group">
+            <input type="text" placeholder="Key Skills"  value={keySkills} onChange={handleChange('keySkills')} required />
+            </div>
+            <div className="form-group">
             <input type="text" placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} required />
             </div>
 
@@ -255,13 +263,13 @@ return (
      <div className="checkList">
        <ul >
         <h3 className="text-primary">Tags</h3>
-        <small className="text-light-gray">Select the tags related to your blog</small>
+        <small className="text-light-gray">Select the tags related to your Job</small>
          {showJobTags()}
          
         </ul>
         <ul >
         <h3 className="text-primary">Categories</h3>
-        <small className="text-light-gray">Select the category of your blog</small>
+        <small className="text-light-gray">Select the category of your Job</small>
         {showJobCategories()}
       </ul>
      </div>
@@ -270,4 +278,4 @@ return (
 </section>
 )
 }
-export default withRouter(CreateJob);
+export default withRouter(CreatePvtJob);

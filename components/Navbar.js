@@ -24,7 +24,8 @@ const Navbar=()=>{
         </div>
         <ul >
             <li><h3><Link href="/jobs"><a>Jobs</a></Link></h3></li>
-            <li><h3><Link href="/blogs"><a>Blogs</a></Link></h3></li>
+            <li><h3><Link href="/privateJobs"><a>Private Jobs</a></Link></h3></li>
+            <li><h3><Link href="/blogs"><a>Educational Blogs</a></Link></h3></li>
             <li><h3><Link  href="/user/crud/blog"><a>Write a blog</a></Link></h3></li>
              <li><h3><Link href="/contact"><a>Contact</a></Link></h3></li>
             
@@ -58,14 +59,15 @@ const Navbar=()=>{
          <li>
            <Link  href="/jobs"><i className="fas fa-briefcase fa-2x text-dark "></i></Link>  
          </li>
+         <li>
+           <Link  href="/privateJobs"><i class="far fa-building fa-2x text-dark"></i></Link>  
+         </li>
          {!isAuth() && ( 
               <>
                 <li><Link href="/signup"><a><i className="fas fa-user-plus fa-2x text-dark"></i></a></Link></li>
               </>
                )}
-         <li>
-             <Link href="/user/crud/blog"><i className="fas fa-plus-circle  fa-2x text-dark"></i></Link>
-         </li>
+        
          {isAuth() && isAuth().role === 0 && (
                    <>
                   <li><Link href="/user" ><a><i className="fas fa-columns text-dark fa-2x"></i></a></Link></li>

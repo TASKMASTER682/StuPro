@@ -7,6 +7,7 @@ import renderHTML from 'react-render-html';
 import moment from 'moment';
 import SmallCard from '../../components/jobs/SmallCard';
 import DisqusThread from '../../components/DisqusThread';
+import { isAuth } from '../../actions/auth';
 
 const SingleJob=({job,query})=>{
     const [related, setRelated] = useState([]);
@@ -81,7 +82,7 @@ const SingleJob=({job,query})=>{
             );
         };
      
-
+const today=moment();
         return(
            <>
            {head()}
@@ -154,26 +155,30 @@ const SingleJob=({job,query})=>{
                           </div>
                         </div>  
                           <div className="job-buttons p-1">
-                              <a href={`${job.applyLink}`}  target="_blank" className="btn nbtn btn-success nbtn1 my-1 ">Apply now</a>
+                          <a href={`${job.applyLink}`}  target="_blank" className={`btn nbtn btn-${ moment(job.lastDate).format()<today.format() ? 'danger':'primary'} nbtn1 my-1 `}>{moment(job.lastDate).format()<today.format()  ? 'Closed':'Apply now'}</a>
+
                         </div>
                       </div>
                      
                       <div className='job-content' style={{padding:'0.4rem'}}>
                       {renderHTML(job.body)}
                     </div>
-                   
+                    <div>
+                   {( isAuth() && isAuth().role===1 )? <a href={`/admin/jobcrud/${job.slug}`} className="m-2 btn nbtn btn-success">Update</a>:''}
+                   </div>
                 </div>
-                <div >
+                <div className='btn nbtn' style={{border:'solid #00e7d2',fontFamily:'Source Serif Pro ,serif'}}>
                         <h2 className="small text-primary my-1">Frequently Asked Questions </h2>
-                        <h3 className="lead text-dark">What is the salary of {job.title} ?</h3>
-                        <p className='m-1'> The salary of {job.title} is {job.salary}</p>
-                        <h3 className="lead text-dark">What is the job location of {job.title} ?</h3>
-                        <p className='m-1'>The job location of {job.title} is {job.location}</p>
-                        <h3 className="lead text-dark">What is the last date to apply for {job.title} ?</h3>
-                        <p className='m-1'>The Last date of {job.title} is - {moment(job.lastDate).format("MMM DD YYYY")}</p>
-                        <h3 className="lead text-dark">What is the qualification needed for {job.title} ?</h3>
-                        <p className='m-1'>The detailed qualification needed to apply for {job.title} is shown above.</p>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-1:</strong>What is the salary of {job.title} ?</h3>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The salary of {job.title} is {job.salary}</p>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-2:</strong>What is the job location of {job.title} ?</h3>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The job location of {job.title} is {job.location}</p>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-3:</strong>What is the last date to apply for {job.title} ?</h3>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The Last date of {job.title} is - {moment(job.lastDate).format("MMM DD YYYY")}</p>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-4:</strong>What is the qualification needed for {job.title} ?</h3>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The detailed qualification needed to apply for {job.title} is shown above.</p>
                     </div>
+                   
               </div>
         </section>
             <section className="container">

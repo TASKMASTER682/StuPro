@@ -25,7 +25,7 @@ const SigninComponent=()=>{
 
     const handleSubmit = e => {
         e.preventDefault();
-        setValues({ ...values, loading: true, error: false });
+        setValues({ ...values, loading: true, error: '' });
         const user = { email, password };
 
         signin(user).then(data => {
@@ -61,7 +61,7 @@ const SigninComponent=()=>{
         <h1 className="large text-primary">
             Sign In
         </h1>
-        <p className="extra-small text-light-gray">Sign in to get latest Job notifications and many more</p>
+        <p className="extra-small text-light-gray">Sign in to be the part of our community</p>
         <form  className="form" onSubmit={handleSubmit}>
             <div className="form-group">
                 <input   value={email} onChange={handleChange('email')} type="email"  placeholder="Email Address" />
@@ -69,7 +69,7 @@ const SigninComponent=()=>{
             <div className="form-group">
                 <input  value={password} onChange={handleChange('password')} type="password" placeholder="Password" />
             </div>
-            <input type="submit" value="Sign in" className="btn nbtn btn-primary" />
+            <input type="submit" value={loading?'Please wait...':'Sign in'} className="btn nbtn btn-primary" />
         </form>
         <p className="my-1 extra-small">Forgot Password?<span> <Link href="/auth/password/forgot" ><a>Recover here</a></Link></span></p> 
         <div style={{textAlign:'center',margin:'auto',justifyContent:'center'}}>
@@ -83,7 +83,7 @@ const SigninComponent=()=>{
     </div>
     <div className="second p-2 hide-sm">
         <div className="fst">
-        <h2 className="text-dark">Login to get Job notifications and many more</h2>
+        <h2 className="text-dark">Sign in Your account and share your ideas.</h2>
             <img src="img/stupro2.png" alt="" />
         </div>
        
@@ -100,10 +100,16 @@ const SigninComponent=()=>{
     
     )
   }
+  const showError = () => {
+    if (error) {
+        return <div className="badge badge-danger p-1 nbtn " style={{ display: error ? '' : 'none' }}>{error}</div>;
+    }
+};
    return (
         <React.Fragment>
             {showForm && signinForm()}
-           
+            {showError()}
+
         </React.Fragment>
     );
 }

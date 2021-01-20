@@ -17,6 +17,8 @@ const showJobTags = job =>
             <a style={{padding:" 0 0.8rem",border:'solid black '}}  className="btn nbtn bg-light-gray "><p className="extra-small">{t.name}</p></a>
         </Link>
     ));
+    const today=moment();
+
 
     return (
         <>
@@ -25,13 +27,13 @@ const showJobTags = job =>
        
        <Link href={`/jobs/${job.slug}`}>
        <a>
-       <h2 className="lead text-dark" style={{lineHeight:'1.9rem',color:'#03002e'}}>{job.title}</h2>
+       <h2 className="lead text-success" style={{lineHeight:'1.9rem'}}>{job.title}</h2>
        </a>
        
        </Link>
        <p className="extra-small p-1"><i className="fas fa-shield-alt text-primary"></i><strong> {job.agency}</strong></p>
     </main>
-    <small className="text-light-gray p-1"> Published {moment(job.updatedAt).fromNow()}</small>
+    <small className="text-gray p-1"> Published {moment(job.updatedAt).fromNow()}</small>
      <p className="extra-small py-1" style={{paddingLeft:'1rem'}}> Expire  {moment(job.lastDate).fromNow()}</p>
      <div  style={{display: "flex",marginLeft:'1rem',flexWrap:'wrap',lineHeight:'1.2rem'}}>
          {showJobCategories(job)}
@@ -39,12 +41,14 @@ const showJobTags = job =>
         </div>
        <div className="xyz">
        <div>
-           <p className=" text-light-gray my-1"><i className="fas fa-rupee-sign"></i><span> </span> {job.salary}</p>
-           <p className=" text-light-gray my-1"><i className="fas fa-briefcase"></i><span> </span> {job.type}</p>
-           <p className=" text-light-gray my-1"><i className="fas fa-map-marker-alt "></i><span> </span>{job.location}</p>
+           <p className=" text-gray my-1"><i className="fas fa-rupee-sign"></i><span> </span> {job.salary}</p>
+           <p className=" text-gray my-1"><i className="fas fa-briefcase"></i><span> </span> {job.type}</p>
+           <p className=" text-gray my-1"><i className="fas fa-map-marker-alt "></i><span> </span>{job.location}</p>
         </div>
-           <a href={`${job.applyLink}`} target="_blank" className="btn btn-primary nbtn m-1 lead">Apply now</a>
+        <a href={`${job.applyLink}`}  target="_blank" className={`btn nbtn btn-${ moment(job.lastDate).format()<today.format() ? 'danger':'primary'} nbtn1 my-1 `}>{moment(job.lastDate).format()<today.format()  ? 'Closed':'Apply now'}</a>
+
         </div>
+       
     </div>
 </>
     )

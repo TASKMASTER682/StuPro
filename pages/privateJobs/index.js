@@ -2,12 +2,12 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState,useEffect } from 'react';
 import { withRouter } from 'next/router';
-import { listJobsWithCategoriesAndTags } from '../../actions/job';
-import Card from '../../components/jobs/Card';
-import Search from '../../components/jobs/Search';
+import { listPvtJobsWithCategoriesAndTags } from '../../actions/privateJob';
+import Card from '../../components/privateJobs/Card';
+import SearchPvt from '../../components/privateJobs/PvtSearch';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 
-const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, router })=>{
+const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs, jobsLimit, jobSkip, router })=>{
 
 
     const head = () => (
@@ -43,11 +43,11 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
 
     const loadMore = () => {
         let toSkip = skip + limit;
-        listJobsWithCategoriesAndTags(toSkip, limit).then(data => {
+        listPvtJobsWithCategoriesAndTags(toSkip, limit).then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                setLoadedJobs([...loadedJobs, ...data.jobs]);
+                setLoadedJobs([...loadedJobs, ...data.privateJobs]);
                 setSize(data.size);
                 setSkip(toSkip);
             }
@@ -66,34 +66,34 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
     };
 
     const showAllJobs = () => {
-        return jobs.map((job, i) => {
+        return privateJobs.map((privateJob, i) => {
             // ()
             return (
                 <article className="my-1 " key={i} >
-                 <Card job={job}/>
+                 <Card privateJob={privateJob}/>
                </article>
             );
         });
     };
     const showLoadedJobs = () => {
-        return loadedJobs.map((job, i) => (
+        return loadedJobs.map((privateJob, i) => (
             <article key={i} >
-                <Card job={job} />
+                <Card privateJob={privateJob} />
             </article>
         ));
     };
-    const showJobCategories = job =>{
-    return jobCategories.map((c, i) => (
+    const showJobCategories = privateJob =>{
+    return privateJobCategories.map((c, i) => (
         
-        <Link key={i} href={`/jobCategories/${c.slug}`}>
+        <Link key={i} href={`/privateJobCategories/${c.slug}`}>
          <li> <a style={{padding:" 0 0.8rem",border:'solid #00e7d2'}}  className="btn nbtn bg-light-gray "><p className="extra-small">{c.name}</p></a></li> 
         </Link>
         
     ));
     }
-    const showJobTags = job =>{
-    return jobTags.map((t, i) => (
-        <Link key={i} href={`/jobTags/${t.slug}`}>
+    const showJobTags = privateJob =>{
+    return privateJobTags.map((t, i) => (
+        <Link key={i} href={`/privateJobTags/${t.slug}`}>
           <li>  <a style={{padding:" 0 0.8rem",border:'solid black '}}  className="btn nbtn bg-light-gray "><p className="extra-small">{t.name}</p></a></li>
         </Link>
     ));
@@ -103,9 +103,9 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
     {head()}
     <main>
      <section className="blogCreate">
-     <h1 className="large text-primary" style={{lineHeight:'1.9rem'}}>All Govrnment Jobs in India</h1>
+     <h1 className="large text-primary" style={{lineHeight:'1.9rem'}}>All Private Sector Jobs in India</h1>
      <p className="extra-small text-gray ">Find suitable jobs for you and apply.Just click on the title of job and see it in detail</p>
-     <Link href="/jobs/jobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search job</a></Link>
+     <Link href="/privateJobs/pvtJobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search Pvt. job</a></Link>
      <div className="createMain">
      <main>
          <main >
@@ -121,7 +121,7 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
     </main> 
     <div>
     <h2 className="lead text-light-gray">Search the job keyword,title or the location</h2>
-        <Search />
+        <SearchPvt />
         <div style={{display:'flex',justifyContent:'space-between'}}>
         
         <ul className='p-1'style={{overflowY:'scroll',maxHeight:'20rem'}}>
@@ -146,17 +146,17 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
     )
 };
 
-Jobs.getInitialProps = () => {
+PvtJobs.getInitialProps = () => {
     let skip = 0;
     let limit = 10;
-    return listJobsWithCategoriesAndTags(skip, limit).then(data => {
+    return listPvtJobsWithCategoriesAndTags(skip, limit).then(data => {
         if (data.error) {
             console.log(data.error);
         } else {
             return {
-                jobs: data.jobs,
-                jobCategories: data.jobCategories,
-                jobTags: data.jobTags,
+                privateJobs: data.privateJobs,
+                privateJobCategories: data.privateJobCategories,
+                privateJobTags: data.privateJobTags,
                 totalJobs: data.size,
                 jobsLimit: limit,
                 jobSkip: skip
@@ -164,4 +164,4 @@ Jobs.getInitialProps = () => {
         }
     });
 }
-export default withRouter(Jobs);
+export default withRouter(PvtJobs);

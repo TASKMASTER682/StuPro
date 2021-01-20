@@ -27,7 +27,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
                 property="og:description"
                 content="Welcome to the India's best emerging learning platform in which you can check your understanding of a concept by writing it and publishing it.
                 It is free of cost.This helps you in two ways that you will never forget the concept and secondly it helps other to your blog and this will increase 
-                your popularity on internet and on other socia media.Make this patform the india wikipedia.The future of India is in your hands."
+                your popularity on internet and on other social media.Make this patform the india wikipedia.The future of India is in your hands."
             />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
