@@ -46,6 +46,7 @@ const CreatePvtJob=({router})=>{
         applyLink:'',
         position:'',
         keySkills:'',
+        affiliateLink:'',
         salary:'',
         type:'',
         qualification:'',
@@ -54,7 +55,7 @@ const CreatePvtJob=({router})=>{
         hidePublishButton: false
     });
 
-    const { error, sizeError, success, formData,applyLink,lastDate, keySkills,position,agency,title,salary,qualification,location,type, hidePublishButton } = values;
+    const { error, sizeError, success, formData,applyLink,lastDate,affiliateLink, keySkills,position,agency,title,salary,qualification,location,type, hidePublishButton } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -90,7 +91,7 @@ const CreatePvtJob=({router})=>{
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
-                setValues({ ...values, title: '',agency:'',applyLink:'',lastDate:'',position:'',keySkills:'', error: '',salary:'',qualification:'',type:'',location:'', success: `A new blog titled "${data.title}" is created` });
+                setValues({ ...values, title: '',agency:'',affiliateLink:'',applyLink:'',lastDate:'',position:'',keySkills:'', error: '',salary:'',qualification:'',type:'',location:'', success: `A new blog titled "${data.title}" is created` });
                 setBody('');
                 setPrivateJobCategories([]);
                 setPrivateJobTags([]);
@@ -220,6 +221,7 @@ const createJobForm = () => {
             <div className="form-group">
             <input type="text" placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} required />
             </div>
+            
 
             
             <ReactQuill

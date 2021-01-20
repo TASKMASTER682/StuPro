@@ -1,7 +1,7 @@
 import Layout from '../../../components/Layout';
 import Admin from '../../../components/auth/Admin';
 import PvtJobCategory from '../../../components/privateJobCrud/PvtJobCategory';
-import PvtJobTag from '../../../components/privateJobcrud/PvtJobTag';
+import PvtJobTag from '../../../components/privateJobCrud/PvtJobTag';
 import Link from 'next/link';
 
 const PrivateJobCategoryTag = () => {
