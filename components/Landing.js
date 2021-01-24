@@ -21,7 +21,7 @@ const Landing=()=>{
     </li>
     <li>
         <h2 className=" text-dark ">
-        A Community That Has A Perfect Ecosystem For Every Nieche Of Education System.
+        A Community That Has A Perfect Ecosystem For Every Niche Of Education System.
         </h2>
     </li>
 </ul>

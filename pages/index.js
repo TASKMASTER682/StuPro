@@ -5,7 +5,7 @@ const Index=()=> {
 
     const head = () => (
         <Head>
-            <title>{APP_NAME}  | A community that has a perfect ecosystem for every niche of education system.Also get government(sarkari) jobs here </title>
+            <title>{APP_NAME}  | A community that has a perfect ecosystem for every niche of education system.Also get government(sarkari) and private jobs here </title>
             <meta
                 name="description"
                 content="A community that has a perfect ecosystem for every niche of education system.You can write anything on any social topic or any topic related toeducation.You can find government jobs,sarkari jobs,sarkari result here "

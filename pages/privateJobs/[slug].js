@@ -42,7 +42,7 @@ const SinglePvtJob=({privateJob,query})=>{
             <meta property="og:site_name" content={`${APP_NAME}`} />
 
             <meta property="og:image" content={`${API}/privateJob/photo/${privateJob.slug}`} />
-            <meta property="og:image:secure_url" ccontent={`${API}/privateJob/photo/${privateJob.slug}`} />
+            <meta property="og:image:secure_url" content={`${API}/privateJob/photo/${privateJob.slug}`} />
             <meta property="og:image:type" content={`${API}/privateJob/photo/${privateJob.slug}`} />
             <meta name="twitter:card" content="summary_large_image"></meta>
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
@@ -69,7 +69,7 @@ const SinglePvtJob=({privateJob,query})=>{
             return relatedPvt.map((privateJob, i) => (
                 <div className='card-item m-1' key={i}>
                     <article>
-                        <SmallCardPvt privateJob={privatejob} />
+                        <SmallCardPvt privateJob={privateJob} />
                     </article>
                 </div>
             ));

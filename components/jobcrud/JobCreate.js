@@ -257,13 +257,13 @@ return (
      <div className="checkList">
        <ul >
         <h3 className="text-primary">Tags</h3>
-        <small className="text-light-gray">Select the tags related to your blog</small>
+        <small className="text-light-gray">Select the Tags</small>
          {showJobTags()}
          
         </ul>
         <ul >
         <h3 className="text-primary">Categories</h3>
-        <small className="text-light-gray">Select the category of your blog</small>
+        <small className="text-light-gray">Select the Category</small>
         {showJobCategories()}
       </ul>
      </div>

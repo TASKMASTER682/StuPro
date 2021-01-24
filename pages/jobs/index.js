@@ -103,7 +103,7 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
     {head()}
     <main>
      <section className="blogCreate">
-     <h1 className="large text-primary" style={{lineHeight:'1.9rem'}}>All Govrnment Jobs in India</h1>
+     <h1 className="large text-primary" style={{lineHeight:'1.9rem'}}>All Government Jobs in India</h1>
      <p className="extra-small text-gray ">Find suitable jobs for you and apply.Just click on the title of job and see it in detail</p>
      <Link href="/jobs/jobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search job</a></Link>
      <div className="createMain">

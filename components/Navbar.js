@@ -26,7 +26,7 @@ const Navbar=()=>{
             <li><h3><Link href="/jobs"><a>Jobs</a></Link></h3></li>
             <li><h3><Link href="/privateJobs"><a>Private Jobs</a></Link></h3></li>
             <li><h3><Link href="/blogs"><a>Educational Blogs</a></Link></h3></li>
-            <li><h3><Link  href="/user/crud/blog"><a>Write a blog</a></Link></h3></li>
+            <li><h3><Link  href="/user/crud/blog"><a>Explain a Concept</a></Link></h3></li>
              <li><h3><Link href="/contact"><a>Contact</a></Link></h3></li>
             
          </ul>
@@ -60,7 +60,7 @@ const Navbar=()=>{
            <Link  href="/jobs"><i className="fas fa-briefcase fa-2x text-dark "></i></Link>  
          </li>
          <li>
-           <Link  href="/privateJobs"><i class="far fa-building fa-2x text-dark"></i></Link>  
+           <Link  href="/privateJobs"><i className="far fa-building fa-2x text-dark"></i></Link>  
          </li>
          {!isAuth() && ( 
               <>

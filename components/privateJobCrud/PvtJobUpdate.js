@@ -62,7 +62,7 @@ const PvtJobUpdate=({router})=>{
                     setValues({ ...values, title: data.title,applyLink:data.applyLink,position:data.position,keySkills:data.keySkills,lastDate:data.lastDate,agency:data.agency,salary:data.salary,qualification:data.qualification,location:data.location,type:data.type });
                     setBody(data.body);
                     setCategoriesArray(data.privateJobCategories);
-                    setTagsArray(data.prvateJobTags);
+                    setTagsArray(data.privateJobTags);
                 }
             });
         }
