@@ -33,6 +33,7 @@ const Landing=()=>{
     <li><h3>Share the knowledge, help it increase and get the sweet experience.</h3></li>
     <li><h3>Contribute for others to follow and lead eventually.</h3></li>
 
+
 </ol>
 <div>
 <Link href='/signup'>
@@ -42,6 +43,7 @@ const Landing=()=>{
 </div>
     <div >
         <img className='p-1 my-1' src="./img/stupro2.png" alt="" />
+       
     </div>     
 </section>
 <section className="landing-two" style={{textAlign:'center',alignItems:'center',alignContent:'center'}}>
@@ -56,18 +58,18 @@ const Landing=()=>{
      <div>
      <Link href='/jobs'>
       <a>
-      <h2 class="text-danger small m-1">Government Jobs:-</h2>
+      <h2 className="text-danger small m-1">Government Jobs:-</h2>
       </a>
      </Link>
      
-        <div class="line"></div>
-        <div class="card">
+        <div className="line"></div>
+        <div className="card">
         <JobHome />
             </div>
     <div>
     <Link href='/privateJobs'>
       <a>
-      <h2 class="text-danger small m-1">Private Jobs:-</h2>
+      <h2 className="text-danger small m-1">Private Jobs:-</h2>
       </a>
      </Link>
                 <div className="line"></div>

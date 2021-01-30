@@ -29,7 +29,7 @@ const SinglePvtJob=({privateJob,query})=>{
     const head = () => (
         <Head>
             <title>
-                {privateJob.title} | {APP_NAME}
+                {privateJob.title} |Apply Online| {APP_NAME}
             </title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 

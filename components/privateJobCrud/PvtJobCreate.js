@@ -46,16 +46,15 @@ const CreatePvtJob=({router})=>{
         applyLink:'',
         position:'',
         keySkills:'',
-        affiliateLink:'',
         salary:'',
         type:'',
         qualification:'',
         location:'',
        lastDate:'',
-        hidePublishButton: false
+        hidePublishButton: false,
     });
 
-    const { error, sizeError, success, formData,applyLink,lastDate,affiliateLink, keySkills,position,agency,title,salary,qualification,location,type, hidePublishButton } = values;
+    const { error, sizeError, success, formData,applyLink,lastDate, keySkills,position,agency,title,salary,qualification,location,type, hidePublishButton } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -89,9 +88,9 @@ const CreatePvtJob=({router})=>{
         // console.log('ready to publishBlog');
         createPvtJob(formData, token).then(data => {
             if (data.error) {
-                setValues({ ...values, error: data.error });
+                setValues({ ...values, error: data.error});
             } else {
-                setValues({ ...values, title: '',agency:'',affiliateLink:'',applyLink:'',lastDate:'',position:'',keySkills:'', error: '',salary:'',qualification:'',type:'',location:'', success: `A new blog titled "${data.title}" is created` });
+                setValues({ ...values, title: '',agency:'',loading:false,applyLink:'',lastDate:'',position:'',keySkills:'', error: '',salary:'',qualification:'',type:'',location:'', success: `A new blog titled "${data.title}" is created` });
                 setBody('');
                 setPrivateJobCategories([]);
                 setPrivateJobTags([]);
@@ -182,7 +181,7 @@ const CreatePvtJob=({router})=>{
         <div className="badge badge-success p-1" style={{ display: success ? '' : 'none' }}>{success}</div>
     );
 
-  
+
 
 const createJobForm = () => {
     return (

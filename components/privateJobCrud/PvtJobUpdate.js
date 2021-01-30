@@ -39,7 +39,7 @@ const PvtJobUpdate=({router})=>{
         lastDate:'',
         type:'',
         location:'',
-        qualification:''
+        qualification:'',
     });
 
     const { error, success, formData,agency,applyLink,position,keySkills, title,qualification,lastDate,location,type, salary } = values;
@@ -205,7 +205,7 @@ const PvtJobUpdate=({router})=>{
         e.preventDefault();
         updatePvtJob(formData, token, router.query.slug).then(data => {
             if (data.error) {
-                setValues({ ...values, error: data.error });
+                setValues({ ...values, error: data.error});
             } else {
                 setValues({ ...values, title: '', success: `Job titled "${data.title}" is successfully updated` });
                 if (isAuth() && isAuth().role === 1) {
@@ -278,7 +278,7 @@ const PvtJobUpdate=({router})=>{
 
             <div>
                 <button type="submit" className="btn nbtn btn-dark">
-                    Update
+                   Update
                 </button>
             </div>
         </form>

@@ -45,8 +45,9 @@ const showJobTags = privateJob =>
            <p className=" text-gray my-1"><i className="fas fa-briefcase"></i><span> </span> {privateJob.type}</p>
            <p className=" text-gray my-1"><i className="fas fa-map-marker-alt "></i><span> </span>{privateJob.location}</p>
         </div>
-        <a href={`${privateJob.applyLink}`}  target="_blank" className={`btn nbtn btn-${ moment(privateJob.lastDate).format()<today.format() ? 'danger':'primary'} nbtn1 my-1 `}>{moment(privateJob.lastDate).format()<today.format()  ? 'Closed':'Apply now'}</a>
-
+        <Link href={`/privateJobs/${privateJob.slug}`} >
+        <a   className={`btn nbtn nbtn1 m-1 btn-${ moment(privateJob.lastDate).format()<today.format() ? 'danger':'primary'}  `}>{moment(privateJob.lastDate).format()<today.format()  ? 'Closed':'Apply now'}</a>
+</Link>
         </div>
        
     </div>

@@ -38,10 +38,10 @@ const CreateBlog=({router})=>{
             success: '',
             formData: '',
             title: '',
-            hidePublishButton: false
+            hidePublishButton: false,
         });
     
-        const { error, sizeError, success, formData, title, hidePublishButton,loading } = values;
+        const { error, sizeError, success, formData, title, hidePublishButton } = values;
         const token = getCookie('token');
     
         useEffect(() => {
@@ -75,7 +75,7 @@ const CreateBlog=({router})=>{
            
             createBlog(formData, token).then(data => {
                 if (data.error) {
-                    setValues({ ...values, error: data.error });
+                    setValues({ ...values, error: data.error,});
                 } else {
                     setValues({ ...values, title: '', error: '', success: `A new blog titled "${data.title}" is created` });
                     setBody('');
@@ -157,11 +157,8 @@ const CreateBlog=({router})=>{
             );
         };
     
-     const showLoading=()=>(
-         <div className=" badge badge-primary" style={{display:loading ?'':'none'}}>
-             Loading...
-         </div>
-     )
+    
+     
     
      const showError = () => (
         <div className="badge badge-danger" style={{ display: error ? '' : 'none' }}>
@@ -208,7 +205,6 @@ return(
         <div className="createForm">
            {createBlogForm()}
         <div className="line"></div>
-        {showLoading()}
     <div className="py-3">
         {showError()}
         {showSuccess()}

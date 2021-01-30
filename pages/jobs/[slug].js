@@ -29,7 +29,7 @@ const SingleJob=({job,query})=>{
     const head = () => (
         <Head>
             <title>
-                {job.title} | {APP_NAME}
+                {job.title} |Apply Online| {APP_NAME}
             </title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -164,7 +164,7 @@ const today=moment();
                       {renderHTML(job.body)}
                     </div>
                     <div>
-                   {( isAuth() && isAuth().role===1 )? <a href={`/admin/jobcrud/${job.slug}`} className="m-2 btn nbtn btn-success">Update</a>:''}
+                   {( isAuth() && isAuth().role===1 )? <a href={`/admin/jobcrud/${job.slug}`} className="m-1 btn nbtn btn-success">Update</a>:''}
                    </div>
                 </div>
                 <div className='btn nbtn' style={{border:'solid #00e7d2',fontFamily:'Source Serif Pro ,serif'}}>

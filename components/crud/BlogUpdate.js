@@ -231,7 +231,7 @@ const BlogUpdate=({router})=>{
                 <input className="form-group" type="text"  value={title} onChange={handleChange('title')} />
             </div>
 
-            <div className="form-group textinput">
+            
             <ReactQuill
                      modules={QuillModules}
                     formats={QuillFormats}
@@ -239,7 +239,7 @@ const BlogUpdate=({router})=>{
                     placeholder="Write something amazing..."
                     onChange={handleBody}
                 />
-            </div>
+           
 
             <div>
                 <button type="submit" className="btn nbtn btn-dark">
@@ -289,12 +289,12 @@ const BlogUpdate=({router})=>{
            
             <ul style={{ maxHeight: '200px' }}>
             <h3 className="text-primary">Categories</h3>
-            <small className="text-light-gray">Select the tags related to your blog</small>
+            <small className="text-light-gray">Edit the Categories related to your blog</small>
              {showCategories()}
             </ul>
             <ul style={{ maxHeight: '200px'}}>
             <h3 className="text-primary">Tags</h3>
-            <small className="text-light-gray">Select the category of your blog</small>
+            <small className="text-light-gray">Edit the Tags of your blog</small>
             {showTags()}
           </ul>
         </div>

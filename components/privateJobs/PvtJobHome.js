@@ -40,7 +40,7 @@ const PvtJobHome = () => {
                     </div>
                 
                
-                  <h3 class="extra-small p-1">Published on | {moment(privateJob.lastDate).format("MMM DD YYYY")}</h3>
+                  <h3 class="extra-small p-1">Published on | {moment(privateJob.updatedAt).format("MMM DD YYYY")}</h3>
              </div>
             );
         });

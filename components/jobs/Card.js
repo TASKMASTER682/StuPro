@@ -45,8 +45,9 @@ const showJobTags = job =>
            <p className=" text-gray my-1"><i className="fas fa-briefcase"></i><span> </span> {job.type}</p>
            <p className=" text-gray my-1"><i className="fas fa-map-marker-alt "></i><span> </span>{job.location}</p>
         </div>
-        <a href={`${job.applyLink}`}  target="_blank" className={`btn nbtn btn-${ moment(job.lastDate).format()<today.format() ? 'danger':'primary'} nbtn1 my-1 `}>{moment(job.lastDate).format()<today.format()  ? 'Closed':'Apply now'}</a>
-
+        <Link href={`/jobs/${job.slug}`}>
+        <a   className={`btn nbtn nbtn1 m-1 btn-${ moment(job.lastDate).format()<today.format() ? 'danger':'primary'} `}>{moment(job.lastDate).format()<today.format()  ? 'Closed':'Apply now'}</a>
+</Link>
         </div>
        
     </div>
