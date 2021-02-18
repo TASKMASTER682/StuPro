@@ -33,14 +33,13 @@ const SinglePvtJob=({privateJob,query})=>{
             </title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <meta name="description" content= {`${privateJob.mdesc} Last date:${privateJob.lastdate},Job Location:${privateJob.location},Salary:${privateJob.salary} .Get more freejobalerts and many other features here`} />
+            <meta name="description" content= {`${privateJob.mdesc} Last date:${privateJob.lastdate},Location:${privateJob.location},Pay scale:${privateJob.salary}.`} />
             <link rel="canonical" href={`${DOMAIN}/privateJobs/${query.slug}`} />
             <meta property="og:title" content={`${privateJob.title}| ${APP_NAME}`} />
-            <meta property="og:description" content={privateJob.mdesc} />
+            <meta property="og:description" content={`${privateJob.mdesc} Last date:${privateJob.lastdate},Location:${privateJob.location},Pay scale:${privateJob.salary}.`} />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}/privateJobs/${query.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
-
             <meta property="og:image" content={`${API}/privateJob/photo/${privateJob.slug}`} />
             <meta property="og:image:secure_url" content={`${API}/privateJob/photo/${privateJob.slug}`} />
             <meta property="og:image:type" content={`${API}/privateJob/photo/${privateJob.slug}`} />
@@ -100,7 +99,7 @@ const today=moment();
                 
             <Link href={`/privateJobs/${privateJob.slug}`}>
                 <a>
-                <h2 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>{privateJob.title}</h2>
+                <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>{privateJob.title}</h1>
                 </a>
             </Link>
                   <div className="share icons p-1">

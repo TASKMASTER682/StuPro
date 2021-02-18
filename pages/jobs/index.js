@@ -12,17 +12,17 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
 
     const head = () => (
         <Head>
-            <title> Get all types of jobs either it is government of IT jobs in India and apply online directly from here. | {APP_NAME}</title>
+            <title> Get all types of government jobs in India and apply online directly from here. |The {APP_NAME}</title>
             <meta name="description" 
-            content={`Get all types of prograd jobs in india which includes all types of government jobs,analyst jobs,best jobs,free jobs,account manager,engineering jobs,jobriya,fast jobs,sbi carreers,highest paying jobs,sarkari work,army jobs,public jobs,it jobs,online jobs from home,accounting jobs,sarkari rojgar,marketing manager and various other jobs.Here recruters can also come to post jobs`}
+            content={`Get all types of jobs in india which includes all types of government jobs,best govt. jobs,free jobs,account manager,engineering government jobs,fresher jobs,sbi carreers,highest paying jobs,sarkari work,army jobs,public jobs,sarkari rojgar and various other government jobs.Here recruiters can also come to post jobs`}
             />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
-            <meta property="og:title" content={`India's best platform for grads to find all type of jobs in India. | ${APP_NAME}`} />
+            <meta property="og:title" content={`India's best platform for grads to find all type of jobs in India. |The ${APP_NAME}`} />
             <meta
                 property="og:description"
-                content={`Get all types of prograd jobs in india which includes all types of government jobs,analyst jobs,best jobs,free jobs,account manager,engineering jobs,jobriya,fast jobs,sbi carreers,highest paying jobs,sarkari work,army jobs,public jobs,it jobs,online jobs from home,accounting jobs,sarkari rojgar,marketing manager and various other jobs.Here recruters can also come to post jobs`}
+                content={`Get all types of jobs in india which includes all types of government jobs,best govt. jobs,free jobs,account manager,engineering government jobs,fresher jobs,sbi carreers,highest paying jobs,sarkari work,army jobs,public jobs,sarkari rojgar and various other government jobs.Here recruiters can also come to post jobs`}
 
             />
             <meta property="og:type" content="webiste" />

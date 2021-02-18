@@ -90,9 +90,9 @@ const SingleBlog=  ({blog,query})=>{
                <header>
                     <Link href={`/blogs/${blog.slug}`}>
                      <a>
-                     <h2  className="text-dark small p-1  " style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>
+                     <h1  className="text-dark small p-1  " style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>
                         {blog.title}
-                    </h2>
+                    </h1>
                         </a>
                         </Link>
                      

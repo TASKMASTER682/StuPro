@@ -27,7 +27,7 @@ const showJobTags = privateJob =>
        
        <Link href={`/privateJobs/${privateJob.slug}`}>
        <a>
-       <h2 className="lead text-success" style={{lineHeight:'1.9rem'}}>{privateJob.title}</h2>
+       <h1 className="lead text-success" style={{lineHeight:'1.9rem'}}>{privateJob.title}</h1>
        </a>
        
        </Link>

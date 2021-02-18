@@ -33,16 +33,15 @@ const SingleJob=({job,query})=>{
             </title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <meta name="description" content= {`${job.mdesc} Last date:${job.lastdate},Job Location:${job.location},Salary:${job.salary} .Get more freejobalerts and many other features here`} />
+            <meta name="description" content= {`${job.mdesc} Last date:${job.lastdate},Location:${job.location},Pay Scale:${job.salary} `} />
             <link rel="canonical" href={`${DOMAIN}/jobs/${query.slug}`} />
             <meta property="og:title" content={`${job.title}| ${APP_NAME}`} />
-            <meta property="og:description" content={job.mdesc} />
+            <meta property="og:description" content={`${job.mdesc} Last date:${job.lastdate},Location:${job.location},Pay Scale:${job.salary} `} />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}/jobs/${query.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
-
             <meta property="og:image" content={`${API}/job/photo/${job.slug}`} />
-            <meta property="og:image:secure_url" ccontent={`${API}/job/photo/${job.slug}`} />
+            <meta property="og:image:secure_url" content={`${API}/job/photo/${job.slug}`} />
             <meta property="og:image:type" content={`${API}/job/photo/${job.slug}`} />
             <meta name="twitter:card" content="summary_large_image"></meta>
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
@@ -100,7 +99,7 @@ const today=moment();
                 
             <Link href={`/jobs/${job.slug}`}>
                 <a>
-                <h2 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>{job.title}</h2>
+                <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>{job.title}</h1>
                 </a>
             </Link>
                   <div className="share icons p-1">
@@ -169,13 +168,13 @@ const today=moment();
                 </div>
                 <div className='btn nbtn' style={{border:'solid #00e7d2',fontFamily:'Source Serif Pro ,serif'}}>
                         <h2 className="small text-primary my-1">Frequently Asked Questions </h2>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-1:</strong>What is the salary of {job.title} ?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The salary of {job.title} is {job.salary}</p>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-2:</strong>What is the job location of {job.title} ?</h3>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-1:</strong>What is the pay scale of {job.title} ?</h3>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The pay scale of {job.title} is {job.salary}</p>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-2:</strong>What is the location of job after qualifying this exam?</h3>
                         <p className='m-1'><strong className="text-primary">Ans:</strong>The job location of {job.title} is {job.location}</p>
                         <h3 className="lead text-dark"><strong className='text-primary'>Q-3:</strong>What is the last date to apply for {job.title} ?</h3>
                         <p className='m-1'><strong className="text-primary">Ans:</strong>The Last date of {job.title} is - {moment(job.lastDate).format("MMM DD YYYY")}</p>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-4:</strong>What is the qualification needed for {job.title} ?</h3>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-4:</strong>What is the qualification needed to apply for {job.title} ?</h3>
                         <p className='m-1'><strong className="text-primary">Ans:</strong>The detailed qualification needed to apply for {job.title} is shown above.</p>
                     </div>
                    
