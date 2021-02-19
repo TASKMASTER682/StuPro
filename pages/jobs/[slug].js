@@ -33,10 +33,10 @@ const SingleJob=({job,query})=>{
             </title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <meta name="description" content= {`${job.mdesc} Last date:${job.lastdate},Location:${job.location},Pay Scale:${job.salary} `} />
+            <meta name="description" content= {`${job.mdesc} Last date:${moment(job.lastDate).format("MMM DD YYYY")},Location:${job.location},Pay Scale:${job.salary} `} />
             <link rel="canonical" href={`${DOMAIN}/jobs/${query.slug}`} />
             <meta property="og:title" content={`${job.title}| ${APP_NAME}`} />
-            <meta property="og:description" content={`${job.mdesc} Last date:${job.lastdate},Location:${job.location},Pay Scale:${job.salary} `} />
+            <meta property="og:description" content={`${job.mdesc} Last date:${moment(job.lastDate).format("MMM DD YYYY")},Location:${job.location},Pay Scale:${job.salary} `} />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}/jobs/${query.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
