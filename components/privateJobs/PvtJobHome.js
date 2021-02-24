@@ -32,9 +32,9 @@ const PvtJobHome = () => {
                 <div class="card-heading">
                     <Link href={`/privateJobs/${privateJob.slug}`}>
                     <a>
-                     <h3  className="text-dark   " style={{fontFamily:`'Source Serif Pro' ,serif`,fontSize:'1.2rem' }}>
+                     <h1  className="text-dark   " style={{fontFamily:`'Source Serif Pro' ,serif`,fontSize:'1.2rem' }}>
                         {privateJob.title}
-                        </h3>
+                        </h1>
                     </a>
                     </Link>
                     </div>
