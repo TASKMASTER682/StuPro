@@ -32,7 +32,7 @@ const Footer=()=>{
             
              <div className="line"></div>
                 <ul className="my-2 icons">
-                    <li><a href="https://www.instagram.com/theprograds/" target="_blank"><i className="fab fa-instagram large "></i></a></li>
+                    <li><a href="https://www.instagram.com/theprograd/" target="_blank"><i className="fab fa-instagram large "></i></a></li>
                     <li><a href="https://www.facebook.com/sayed.anwarulhaq.923" target="_blank"><i className="fab fa-facebook large "></i></a></li>
                     <li><a href="https:///t.me/theprograd" target="_blank"><i class="fab fa-telegram-plane large"></i></a></li>
                     <li><a href="https://www.linkedin.com/in/the-prograd-5533861bb/" target="_blank"><i class="fab fa-linkedin large"></i></a></li>
