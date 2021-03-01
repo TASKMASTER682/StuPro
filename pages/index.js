@@ -2,7 +2,23 @@ import {APP_NAME,DOMAIN,FB_APP_ID} from "../config";
 import Head from 'next/head';
 import Landing from '../components/Landing';
 const Index=()=> {
-
+    function makeSchema() {
+        return {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "url": "http://theprograd.com",
+             "logo": "http://theprograd.com/img/prograd.png"
+              }
+        
+    }
+    const Schema=()=> {
+        return (
+            <script
+                type='application/ld+json'
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(makeSchema()) }}
+            />
+        )
+    }
     const head = () => (
         <Head>
             <title>{APP_NAME}  | A community that has a perfect ecosystem for every niche of education system.Also get government(sarkari) and private jobs here </title>
@@ -24,6 +40,7 @@ const Index=()=> {
             <meta property="og:image:secure_url" content={`${DOMAIN}/stupro2.png`} />
             <meta property="og:image:type" content="img/stupro2.png" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+            {Schema()}
 
         </Head>
     );

@@ -8,7 +8,6 @@ import moment from 'moment';
 import SmallCardPvt from '../../components/privateJobs/SmallCardPvt';
 import DisqusThread from '../../components/DisqusThread';
 import { isAuth } from '../../actions/auth';
-
 const SinglePvtJob=({privateJob,query})=>{
     const [relatedPvt, setRelatedPvt] = useState([]);
 
@@ -25,6 +24,56 @@ const SinglePvtJob=({privateJob,query})=>{
     useEffect(() => {
         loadRelated();
     }, []);
+
+    function makeJobSchema(privateJob) {
+        return {
+            // schema truncated for brevity
+            '@context': 'http://schema.org',
+            '@type': 'JobPosting',
+            'title' : `${privateJob.title}`,
+            'description' : `${privateJob.desc}`,
+            'identifier': {
+                '@type': "PropertyValue",
+                 'name': "The ProGrad",
+                 'value': "1234567svha0896"
+               },
+               'datePosted' : `${privateJob.createdAt}`,
+               'validThrough' : `${privateJob.lastDate}`,
+               'employmentType' : `${privateJob.type}`,
+               'hiringOrganization' : {
+                '@type' : "Organization",
+                'name' : `${privateJob.agency}`,
+                'sameAs' : `${privateJob.slug}`,
+                "logo" : 'https://theprograd.com/img/prograd.png' 
+              },
+              'jobLocation': {
+                '@type': "Place",
+                  'address': {
+                  '@type': "PostalAddress",
+                  'streetAddress': `${privateJob.location}`,
+                  'addressCountry': "India"
+                  }
+                },
+                'baseSalary': {
+                    '@type': "MonetaryAmount",
+                    'currency': "INR",
+                    'value': {
+                      '@type': "QuantitativeValue",
+                      'value': `${privateJob.salary}`,
+                      'unitText': "Month"
+                    }
+                  }
+        }
+    }
+    const JobSchema=()=> {
+        return (
+            <script
+                key={`jobJSON-${privateJob.id}`}
+                type='application/ld+json'
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(makeJobSchema(privateJob)) }}
+            />
+        )
+    }
 
     const head = () => (
         <Head>
@@ -45,6 +94,7 @@ const SinglePvtJob=({privateJob,query})=>{
             <meta property="og:image:type" content={`${API}/privateJob/photo/${privateJob.slug}`} />
             <meta name="twitter:card" content="summary_large_image"></meta>
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+            {JobSchema()}
         </Head>
     );
 

@@ -8,7 +8,7 @@ import Search from '../../components/jobs/Search';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 
 const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, router })=>{
-
+    
 
     const head = () => (
         <Head>

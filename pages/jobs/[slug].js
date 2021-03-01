@@ -9,6 +9,7 @@ import SmallCard from '../../components/jobs/SmallCard';
 import DisqusThread from '../../components/DisqusThread';
 import { isAuth } from '../../actions/auth';
 
+
 const SingleJob=({job,query})=>{
     const [related, setRelated] = useState([]);
 
@@ -25,6 +26,55 @@ const SingleJob=({job,query})=>{
     useEffect(() => {
         loadRelated();
     }, []);
+    function makeJobSchema(job) {
+        return {
+            // schema truncated for brevity
+            '@context': 'http://schema.org',
+            '@type': 'JobPosting',
+            'title' : `${job.title}`,
+            'description' : `${job.mdesc} Last date:${moment(job.lastDate).format("MMM DD YYYY")},Location:${job.location},Pay Scale:${job.salary} .For more details visit The ProGrad and checkout the full update.`,
+            'identifier': {
+                '@type': "PropertyValue",
+                 'name': "The ProGrad",
+                 'value': "1234567svha0089"
+               },
+               'datePosted' : `${job.createdAt}`,
+               'validThrough' : `${job.lastDate}`,
+               'employmentType' : `${job.type}`,
+               'hiringOrganization' : {
+                '@type' : "Organization",
+                'name' : `${job.agency}`,
+                'sameAs' : `${job.slug}`,
+                "logo" : `http://theprograd.com/img/prograd.png` 
+              },
+              'jobLocation': {
+                '@type': "Place",
+                  'address': {
+                  '@type': "PostalAddress",
+                  'streetAddress': `${job.location}`,
+                  'addressCountry': "India"
+                  }
+                },
+                'baseSalary': {
+                    '@type': "MonetaryAmount",
+                    'currency': "INR",
+                    'value': {
+                      '@type': "QuantitativeValue",
+                      'value': `${job.salary}`,
+                      'unitText': "Month"
+                    }
+                  }
+        }
+    }
+    const JobSchema=()=> {
+        return (
+            <script
+                key={`jobJSON-${job.id}`}
+                type='application/ld+json'
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(makeJobSchema(job)) }}
+            />
+        )
+    }
 
     const head = () => (
         <Head>
@@ -45,6 +95,8 @@ const SingleJob=({job,query})=>{
             <meta property="og:image:type" content={`${API}/job/photo/${job.slug}`} />
             <meta name="twitter:card" content="summary_large_image"></meta>
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+            {JobSchema()}
+
         </Head>
     );
 
