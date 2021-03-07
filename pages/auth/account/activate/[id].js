@@ -45,7 +45,7 @@ const ActivateAccount = ({ router }) => {
                 {showLoading()}
                 {error && error}
                 {success && <div className="alert bg-success p-1 nbtn">
-                You have successfully activated your account. Please signin.
+                You have successfully activated your account.<a href="/signin" className="btn btn-primary nbtn">Please signin</a>
                 </div>
                 }
                 
