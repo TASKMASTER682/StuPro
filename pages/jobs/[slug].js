@@ -139,7 +139,7 @@ const today=moment();
            {head()}
             <section className="container">
            
-            <h1 className="large text-primary my-1">See detailed</h1>
+            <h3 className="large text-primary my-1">See detailed</h3>
              <p className="extra-small text-light-gray m-1 ">see eligibilty and full notification</p>
 
           
@@ -147,7 +147,7 @@ const today=moment();
              <div className="job bg-light ">
                  <div className="job-top p-1">
                 
-                 <img src={`${API}/job/photo/${job.slug}`} alt={job.title} className="round-image my-1 hide-sm" />
+                 <img loading='lazy' src={`${API}/job/photo/${job.slug}`} alt={job.title} className="round-image my-1 hide-sm" />
                 
             <Link href={`/jobs/${job.slug}`}>
                 <a>

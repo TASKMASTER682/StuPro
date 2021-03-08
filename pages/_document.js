@@ -27,12 +27,12 @@ class MyDocument extends Document {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="content-type" content="text/html; charset=UTF-8"></meta>
        
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" 
+        <link rel="stylesheet,preconnect" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" 
          integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossOrigin="anonymous" ></link>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&family=Source+Serif+Pro:wght@600&display=swap" rel="stylesheet"></link>
+<link  href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&family=Source+Serif+Pro:wght@600&display=swap" rel="stylesheet,preconnect"></link>
         
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" integrity="sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ==" 
+        <link rel="stylesheet,preconnect" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" integrity="sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ==" 
         crossOrigin="anonymous" />
 
           <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />

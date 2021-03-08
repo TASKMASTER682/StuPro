@@ -10,7 +10,7 @@ const SmallCardPvt=({privateJob})=>{
          <main>
            <Link href={`/privateJobs/${privateJob.slug}`}>
             <a>
-             <img className="img-slider mob-image-slider"  src={`${API}/privateJob/photo/${privateJob.slug}`} alt={privateJob.title} />
+             <img loading='lazy' className="img-slider mob-image-slider"  src={`${API}/privateJob/photo/${privateJob.slug}`} alt={privateJob.title} />
               </a>
               </Link>
               <div style={{maxHeight:'6rem',overflow:'hidden'}}>

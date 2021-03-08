@@ -54,7 +54,7 @@ const UserProfile = ({ user, blogs, query}) => {
            <section className="container">
            <div className="user">
             <div className="user-top">
-                <img src={`${API}/user/photo/${user.username}`} alt="" className="round-image my-1" />
+                <img loading='lazy' src={`${API}/user/photo/${user.username}`} alt="" className="round-image my-1" />
                 <h1 className="large">{user.name}</h1>
                 <p  className="extra-small text-light-gray">Joined {moment(user.createdAt).fromNow()}</p>
            

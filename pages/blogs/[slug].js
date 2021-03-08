@@ -103,7 +103,7 @@ const SingleBlog=  ({blog,query})=>{
     
                        <Link href={`/profile/${blog.postedBy.username}`}>
                                    <a>
-                                   <img src={`${API}/user/photo/${blog.postedBy.username}`}   alt={blog.postedBy.name}   className="profile-img round-image" />
+                                   <img loading='lazy' src={`${API}/user/photo/${blog.postedBy.username}`}   alt={blog.postedBy.name}   className="profile-img round-image" />
                                    </a>
                                </Link>
                                </div>

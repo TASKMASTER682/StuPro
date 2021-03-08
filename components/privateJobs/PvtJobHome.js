@@ -28,7 +28,7 @@ const PvtJobHome = () => {
         return privateJobs.map((privateJob, i) => {
             return (
                 <div class="home-card m-1 nbtn">
-                <img src={`${API}/privateJob/photo/${privateJob.slug}`} alt={privateJob.title} />
+                <img loading='lazy' src={`${API}/privateJob/photo/${privateJob.slug}`} alt={privateJob.title} />
                 <div class="card-heading">
                     <Link href={`/privateJobs/${privateJob.slug}`}>
                     <a>

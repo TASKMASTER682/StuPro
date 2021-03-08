@@ -10,7 +10,7 @@ const SmallCard=({job})=>{
          <main>
            <Link href={`/jobs/${job.slug}`}>
             <a>
-             <img className="img-slider mob-image-slider"  src={`${API}/job/photo/${job.slug}`} alt={job.title} />
+             <img loading='lazy' className="img-slider mob-image-slider"  src={`${API}/job/photo/${job.slug}`} alt={job.title} />
               </a>
               </Link>
               <div style={{maxHeight:'6rem',overflow:'hidden'}}>

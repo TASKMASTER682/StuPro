@@ -49,7 +49,7 @@ const AdminDashboard=()=>{
     </Link> 
 
    
-    <Image  className="nbtn my-1" height={1000} width={2000} priority src="/img/stupro10.png" alt="" />
+    <Image  className="nbtn my-1" height={1000} width={2000} priority src="/img/stupro10.png" alt="The ProGrad" />
     
 </div>
        
