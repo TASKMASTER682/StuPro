@@ -27,9 +27,9 @@ const JobHome = () => {
     const showAllJobs = () => {
         return jobs.map((job, i) => {
             return (
-                <div class="home-card m-1 nbtn">
+                <div className="home-card m-1 nbtn">
                 <img loading='lazy' src={`${API}/job/photo/${job.slug}`} alt={job.title} />
-                <div class="card-heading">
+                <div className="card-heading">
                     <Link href={`/jobs/${job.slug}`}>
                     <a>
                      <h1  className="text-dark   " style={{fontFamily:`'Source Serif Pro' ,serif`,fontSize:'1.2rem' }}>

@@ -2,9 +2,13 @@ import {APP_NAME} from "../config";
 import Link from 'next/link';
 import JobHome from './jobs/JobHome';
 import PvtJobHome from './privateJobs/PvtJobHome';
-
-
-
+import SecurityIcon from '@material-ui/icons/Security';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
+import SettingsIcon from '@material-ui/icons/Settings';
+import GavelIcon from '@material-ui/icons/Gavel';
+import FilterHdrIcon from '@material-ui/icons/FilterHdr';
+import TrainIcon from '@material-ui/icons/Train';
 const Landing=()=>{
 
     return(
@@ -84,35 +88,35 @@ const Landing=()=>{
      <div className="cat-main ">
 
      <div className="cat-item nbtn job m-1">
-        <Link href="/jobCategories/defence"><a><i className="fas fa-shield-alt x-large text-primary p-1"></i><p className="lead ">Defence</p></a></Link>
+        <Link href="/jobCategories/defence"><a><SecurityIcon style={{fontSize:80}}/><p className="lead ">Defence</p></a></Link>
      </div>
 
      <div className="cat-item nbtn job m-1">
-        <Link href="/jobCategories/banking"><a><i className="fas fa-piggy-bank x-large text-primary p-1"></i><p className="lead">Banking</p></a></Link>
+        <Link href="/jobCategories/banking"><a><AccountBalanceIcon style={{fontSize:80}}/><p className="lead">Banking</p></a></Link>
      </div>
      <div className="cat-item nbtn job m-1">
-         <Link href="/jobCategories/medical"><a><i className="fas fa-briefcase-medical text-primary x-large p-1"></i><p className="lead">Medical</p></a></Link>
-
-     </div>
-     
-     <div className="cat-item nbtn job m-1">
-         <Link href="/jobCategories/engineering"><a><i className="fas fa-cogs text-primary x-large p-1"></i><p className="lead">Egineering</p></a></Link>
+         <Link href="/jobCategories/medical"><a><LocalHospitalIcon style={{fontSize:80}}/><p className="lead">Medical</p></a></Link>
 
      </div>
      
      <div className="cat-item nbtn job m-1">
-         <Link href="/jobCategories/law"><a><i className="fas fa-balance-scale text-primary x-large p-1"></i><p className="lead">Law</p></a></Link>
+         <Link href="/jobCategories/engineering"><a><SettingsIcon style={{fontSize:80}}/><p className="lead">Egineering</p></a></Link>
+
+     </div>
+     
+     <div className="cat-item nbtn job m-1">
+         <Link href="/jobCategories/law"><a><GavelIcon style={{fontSize:80}}/><p className="lead">Law</p></a></Link>
 
      </div>
     
      <div className="cat-item nbtn job m-1">
          
-        <Link href="/jobTags/jandk-jobs"><a><i className="fas fa-briefcase x-large text-primary p-1"></i><p className='lead'>J&K jobs</p></a></Link> 
+        <Link href="/jobTags/jandk-jobs"><a><FilterHdrIcon style={{fontSize:80}}/><p className='lead'>J&K jobs</p></a></Link> 
 
      </div>
      <div className="cat-item nbtn job m-1">
          
-         <Link href="/jobCategories/railway"><a ><i className="fas fa-train x-large text-primary p-1"></i><p className='lead'>Railway </p></a></Link>
+         <Link href="/jobCategories/railway"><a ><TrainIcon style={{fontSize:80}}/><p className='lead'>Railway </p></a></Link>
 
      </div>
   

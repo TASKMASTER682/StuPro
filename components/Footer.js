@@ -1,5 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import TelegramIcon from '@material-ui/icons/Telegram';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 const Footer=()=>{
     const currentDate=new Date();
     const year=currentDate.getFullYear();
@@ -32,10 +36,10 @@ const Footer=()=>{
             
              <div className="line"></div>
                 <ul className="my-2 icons">
-                    <li><a href="https://www.instagram.com/theprograd/" target="_blank"><i className="fab fa-instagram large "></i></a></li>
-                    <li><a href="https://www.facebook.com/sayed.anwarulhaq.923" target="_blank"><i className="fab fa-facebook large "></i></a></li>
-                    <li><a href="https:///t.me/theprograd" target="_blank"><i className="fab fa-telegram-plane large"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/the-prograd-5533861bb/" target="_blank"><i className="fab fa-linkedin large"></i></a></li>
+                    <li><a href="https://www.instagram.com/theprograd/" target="_blank"><InstagramIcon  style={{ fontSize: 60 }}/></a></li>
+                    <li><a href="https://www.facebook.com/sayed.anwarulhaq.923" target="_blank"><FacebookIcon style={{ fontSize: 60 }} /></a></li>
+                    <li><a  href="https:///t.me/theprograd" target="_blank"><TelegramIcon  style={{ fontSize: 60 }}  /></a></li>
+                    <li><a href="https://www.linkedin.com/in/the-prograd-5533861bb/" target="_blank"><LinkedInIcon style={{ fontSize: 60 }} /></a></li>
 
                   
 

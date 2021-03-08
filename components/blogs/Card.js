@@ -2,6 +2,10 @@ import Link from 'next/link';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
 import { API } from '../../config';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import InstagramIcon from '@material-ui/icons/Instagram';
 
 const Card=({blog})=>{
     const showBlogCategories = blog =>
@@ -53,10 +57,10 @@ const Card=({blog})=>{
                            </Link>
                            <div>
                                <small  className="text-light-gray extra-small">Follow me on :</small>
-                               <a href={`${blog.postedBy.facebook}`} target="_blank"><i className="lead fab fa-facebook"></i></a>
-                               <a href={`${blog.postedBy.linkedin}`} target="_blank"><i className="lead fab fa-linkedin-in"></i></a>
-                               <a href={`${blog.postedBy.insta}`} target="_blank"><i className="lead fab fa-instagram"></i></a>
-                               <a href={`${blog.postedBy.twitter}`} target="_blank"><i className="lead fab fa-twitter"></i></a>
+                               <a href={`${blog.postedBy.facebook}`} target="_blank"><FacebookIcon /></a>
+                               <a href={`${blog.postedBy.linkedin}`} target="_blank"><LinkedInIcon /></a>
+                               <a href={`${blog.postedBy.insta}`} target="_blank"><InstagramIcon /></a>
+                               <a href={`${blog.postedBy.twitter}`} target="_blank"><TwitterIcon /></a>
                            </div>
                       </div>
                    </div>

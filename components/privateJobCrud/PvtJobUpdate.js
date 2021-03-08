@@ -322,12 +322,12 @@ const PvtJobUpdate=({router})=>{
          <div className="checkList">
            
             <ul style={{ maxHeight: '200px' }}>
-            <h3 className="text-primary">Tags</h3>
+            <h3 className="text-primary">Categories</h3>
             <small className="text-light-gray">Select the Categories </small>
              {showJobCategories()}
             </ul>
             <ul style={{ maxHeight: '200px'}}>
-            <h3 className="text-primary">Categories</h3>
+            <h3 className="text-primary">Tags</h3>
             <small className="text-light-gray">Select the  Tag</small>
             {showJobTags()}
           </ul>

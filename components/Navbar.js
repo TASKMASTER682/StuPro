@@ -2,10 +2,15 @@ import Link from 'next/link';
 import {APP_NAME} from '../config';
 import NProgress from 'nprogress';
 import {signout,isAuth} from '../actions/auth';
-import Router from "next/router"
-import Image from "next/image"
-
-
+import Router from "next/router";
+import Image from "next/image";
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+import WorkIcon from '@material-ui/icons/Work';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import BusinessIcon from '@material-ui/icons/Business';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
  Router.onRouteChangeStart=url=>NProgress.start()
  Router.onRouteChangeComplete=url=>NProgress.done()
  Router.onRouteChangeError=url=>NProgress.done()
@@ -33,48 +38,49 @@ const Navbar=()=>{
          <ul>
               {isAuth() && isAuth().role === 0 && (
                    <>
-                  <li><Link href="/user" ><a className="btn nbtn btn-dark "><i className="fas fa-user"></i> <span>{`${isAuth().name}'s Dashboard`}</span></a></Link></li>
+                  <li><Link href="/user" ><a className="btn nbtn btn-dark my-1
+                  "><AccountCircleIcon style={{fontSize:15}}/> <span>{`${isAuth().name}'s Dashboard`}</span></a></Link></li>
                    </>
                )}
                {isAuth() && isAuth().role === 1 && (
-                   <li><Link href="/admin" ><a  className="btn nbtn btn-dark "><i className="fas fa-user"></i><span> {`${isAuth().name}'s Dashboard`}</span></a></Link></li>              )}
+                   <li><Link href="/admin" ><a  className="btn nbtn btn-dark p-1"><span> {`${isAuth().name}'s Dashboard`}</span></a></Link></li>              )}
                {!isAuth() && ( 
               <>
-                <li><a href="/signin"  className =" btn nbtn btn-dark">Sign in<span> </span><i className="fas fa-sign-in-alt"></i></a></li>
-                <li><Link href="/signup"><a className ="btn nbtn btn-dark ">Sign up<span> </span><i className="fas fa-user-plus"></i></a></Link></li>
+                <li><a href="/signin"  className =" btn nbtn btn-dark my-1"><ExitToAppIcon style={{fontSize:15}}/>Sign in<span> </span></a></li>
+                <li><Link href="/signup"><a className ="btn nbtn btn-dark my-1"> Sign up <span> </span><PersonAddIcon style={{fontSize:16}}/></a></Link></li>
               </>
                )}
                
                {isAuth() && (
                  <>
-                <li><button className ="btn nbtn btn-dark " style={{ cursor: 'pointer' }} onClick={() => signout(() => Router.replace(`/signin`))} >Signout <span> <i className="fas fa-sign-out-alt"></i> </span></button></li>
+                <li><button className ="btn nbtn btn-dark p-1" style={{ cursor: 'pointer' }} onClick={() => signout(() => Router.replace(`/signin`))} >Signout <ExitToAppIcon style={{fontSize:15}}/><span> <i className="fas fa-sign-out-alt"></i> </span></button></li>
               </>
               )}
         </ul>
      </nav>
-         <ul className="bottom-nav ">
+         <ul className="bottom-nav " style={{zIndex:'1'}}>
          <li>
-            <Link href="/blogs"><i className="fab fa-readme fa-2x text-dark "></i></Link>
+            <Link href="/blogs"><a className='text-dark'><LibraryBooksIcon style={{fontSize:42}}/></a></Link>
          </li>
          <li>
-           <Link  href="/jobs"><i className="fas fa-briefcase fa-2x text-dark "></i></Link>  
+           <Link  href="/jobs"><a className='text-dark'><WorkIcon  style={{fontSize:42}}/></a></Link>  
          </li>
          <li>
-           <Link  href="/privateJobs"><i className="far fa-building fa-2x text-dark"></i></Link>  
+           <Link  href="/privateJobs"><a className='text-dark'><BusinessIcon style={{fontSize:42}}/></a></Link>  
          </li>
          {!isAuth() && ( 
               <>
-                <li><Link href="/signup"><a><i className="fas fa-user-plus fa-2x text-dark"></i></a></Link></li>
+                <li><Link href="/signup"><a className='text-dark'><PersonAddIcon style={{fontSize:42}}/></a></Link></li>
               </>
                )}
         
          {isAuth() && isAuth().role === 0 && (
                    <>
-                  <li><Link href="/user" ><a><i className="fas fa-columns text-dark fa-2x"></i></a></Link></li>
+                  <li><Link href="/user" ><a className='text-dark'><DashboardIcon style={{fontSize:42}}/></a></Link></li>
                    </>
                )}
                {isAuth() && isAuth().role === 1 && (
-                   <li><Link href="/admin" ><a ><i className="fas fa-columns fa-2x text-dark"></i></a></Link></li>
+                   <li><Link href="/admin" ><a className='text-dark'><DashboardIcon style={{fontSize:42}}/></a></Link></li>
             )}
          
          </ul>

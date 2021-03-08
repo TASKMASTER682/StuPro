@@ -269,7 +269,7 @@ const JobUpdate=({router})=>{
             
 
             <div>
-                <button type="submit" className="btn nbtn btn-dark">
+                <button type="submit" className="btn nbtn btn-dark my-1">
                     Update
                 </button>
             </div>

@@ -26,11 +26,8 @@ class MyDocument extends Document {
         <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="content-type" content="text/html; charset=UTF-8"></meta>
-       
-        <link rel="stylesheet preconnect" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" 
-         integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossOrigin="anonymous" ></link>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-<link  href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&family=Source+Serif+Pro:wght@600&display=swap" rel="stylesheet preconnect"></link>
+        <link  href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&family=Source+Serif+Pro:wght@600&display=swap" rel="stylesheet preconnect"></link>
         
         <link rel="stylesheet preconnect" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" integrity="sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ==" 
         crossOrigin="anonymous" />
@@ -39,7 +36,6 @@ class MyDocument extends Document {
            <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y27GY802BM"></script>
-        <script data-ad-client="ca-pub-8555056818557400" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script dangerouslySetInnerHTML={this.setGoogleTags()}></script>
 
         </Head>
@@ -47,6 +43,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
+        <script data-ad-client="ca-pub-8555056818557400" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       </Html>
     )
   }

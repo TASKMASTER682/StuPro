@@ -263,15 +263,15 @@ return (
         </div>
      <div className="checkList">
        <ul >
-        <h3 className="text-primary">Tags</h3>
-        <small className="text-light-gray">Select the tags related to your Job</small>
-         {showJobTags()}
+       <h3 className="text-primary">Categories</h3>
+        <small className="text-light-gray">Select the category of your Job</small>
+        {showJobCategories()}
          
         </ul>
         <ul >
-        <h3 className="text-primary">Categories</h3>
-        <small className="text-light-gray">Select the category of your Job</small>
-        {showJobCategories()}
+        <h3 className="text-primary">Tags</h3>
+        <small className="text-light-gray">Select the tags related to your Job</small>
+         {showJobTags()}
       </ul>
      </div>
     </div>
@@ -280,3 +280,4 @@ return (
 )
 }
 export default withRouter(CreatePvtJob);
+

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import moment from 'moment';
-
+import SecurityIcon from '@material-ui/icons/Security';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
+import RoomIcon from '@material-ui/icons/Room';
 
 
 const Card=({privateJob})=>{
@@ -28,10 +30,10 @@ const showJobTags = privateJob =>
        <Link href={`/privateJobs/${privateJob.slug}`}>
        <a>
        <h1 className="lead text-success" style={{lineHeight:'1.9rem'}}>{privateJob.title}</h1>
-       </a>
+      </a>
        
        </Link>
-       <p className="extra-small p-1"><i className="fas fa-shield-alt text-primary"></i><strong> {privateJob.agency}</strong></p>
+       <p className="extra-small p-1 text-primary"><SecurityIcon style={{fontSize:15}}/><strong className='text-dark'> {privateJob.agency}</strong></p>
     </main>
     <small className="text-gray p-1"> Published {moment(privateJob.updatedAt).fromNow()}</small>
      <p className="extra-small py-1" style={{paddingLeft:'1rem'}}> Expire  {moment(privateJob.lastDate).fromNow()}</p>
@@ -41,9 +43,9 @@ const showJobTags = privateJob =>
         </div>
        <div className="xyz">
        <div>
-           <p className=" text-gray my-1"><i className="fas fa-rupee-sign"></i><span> </span> {privateJob.salary}</p>
-           <p className=" text-gray my-1"><i className="fas fa-briefcase"></i><span> </span> {privateJob.type}</p>
-           <p className=" text-gray my-1"><i className="fas fa-map-marker-alt "></i><span> </span>{privateJob.location}</p>
+           <p className=" text-gray my-1">Rs.<span> </span> {privateJob.salary}</p>
+           <p className=" text-gray my-1"><BusinessCenterIcon /><span> </span> {privateJob.type}</p>
+           <p className=" text-gray my-1"><RoomIcon /><span> </span>{privateJob.location}</p>
         </div>
         <Link href={`/privateJobs/${privateJob.slug}`} >
         <a   className={`btn nbtn nbtn1 m-1 btn-${ moment(privateJob.lastDate).format()<today.format() ? 'danger':'primary'}  `}>{moment(privateJob.lastDate).format()<today.format()  ? 'Closed':'Apply now'}</a>

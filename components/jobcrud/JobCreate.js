@@ -256,15 +256,15 @@ return (
         </div>
      <div className="checkList">
        <ul >
-        <h3 className="text-primary">Tags</h3>
-        <small className="text-light-gray">Select the Tags</small>
-         {showJobTags()}
+        <h3 className="text-primary">Categories</h3>
+        <small className="text-light-gray">Select the Categories</small>
+         {showJobCategories()}
          
         </ul>
         <ul >
-        <h3 className="text-primary">Categories</h3>
-        <small className="text-light-gray">Select the Category</small>
-        {showJobCategories()}
+        <h3 className="text-primary">Tags</h3>
+        <small className="text-light-gray">Select the Tags</small>
+        {showJobTags()}
       </ul>
      </div>
     </div>

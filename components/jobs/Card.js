@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import moment from 'moment';
-
-
+import SecurityIcon from '@material-ui/icons/Security';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
+import RoomIcon from '@material-ui/icons/Room';
 
 const Card=({job})=>{
     const showJobCategories = job =>
@@ -31,7 +32,7 @@ const showJobTags = job =>
        </a>
        
        </Link>
-       <p className="extra-small p-1"><i className="fas fa-shield-alt text-primary"></i><strong> {job.agency}</strong></p>
+       <p className="extra-small p-1 text-primary"><SecurityIcon style={{fontSize:15}}/><strong className='text-dark'> {job.agency}</strong></p>
     </main>
     <small className="text-gray p-1"> Published {moment(job.updatedAt).fromNow()}</small>
      <p className="extra-small py-1" style={{paddingLeft:'1rem'}}> Expire  {moment(job.lastDate).fromNow()}</p>
@@ -41,9 +42,9 @@ const showJobTags = job =>
         </div>
        <div className="xyz">
        <div>
-           <p className=" text-gray my-1"><i className="fas fa-rupee-sign"></i><span> </span> {job.salary}</p>
-           <p className=" text-gray my-1"><i className="fas fa-briefcase"></i><span> </span> {job.type}</p>
-           <p className=" text-gray my-1"><i className="fas fa-map-marker-alt "></i><span> </span>{job.location}</p>
+           <p className=" text-gray my-1">Rs.<span> </span> {job.salary}</p>
+           <p className=" text-gray my-1"><BusinessCenterIcon /><span> </span> {job.type}</p>
+           <p className=" text-gray my-1"><RoomIcon /><span> </span>{job.location}</p>
         </div>
         <Link href={`/jobs/${job.slug}`}>
         <a   className={`btn nbtn nbtn1 m-1 btn-${ moment(job.lastDate).format()<today.format() ? 'danger':'primary'} `}>{moment(job.lastDate).format()<today.format()  ? 'Closed':'Apply now'}</a>

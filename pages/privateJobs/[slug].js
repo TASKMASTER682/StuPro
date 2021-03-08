@@ -8,6 +8,17 @@ import moment from 'moment';
 import SmallCardPvt from '../../components/privateJobs/SmallCardPvt';
 import DisqusThread from '../../components/DisqusThread';
 import { isAuth } from '../../actions/auth';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import SecurityIcon from '@material-ui/icons/Security';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
+import SchoolIcon from '@material-ui/icons/School';
+import PinDropIcon from '@material-ui/icons/PinDrop';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import WatchLaterIcon from '@material-ui/icons/WatchLater';
 const SinglePvtJob=({privateJob,query})=>{
     const [relatedPvt, setRelatedPvt] = useState([]);
 
@@ -153,9 +164,9 @@ const today=moment();
                 </a>
             </Link>
                   <div className="share icons p-1">
-                     <a href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/privateJobs/${query.slug}`} target="_blank"><i className="fab fa-facebook text-primary lead"></i></a>
-                     <a href={`https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/privateJobs/${privateJob.title}"><img src=${API}/privateJob/photo/${privateJob.slug}`} target="_blank" ><i className="fab fa-linkedin-in text-primary lead"></i></a>
-                     <a href={`https://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${privateJob.title}"><img src=${API}/privateJob/photo/${privateJob.slug} alt="Share on Twitter`} target="_blank"><i className="fab fa-twitter text-primary lead"></i></a>
+                     <a href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/privateJobs/${query.slug}`} target="_blank"><p className='text-primary'><FacebookIcon style={{fontSize:30}}/></p></a>
+                     <a href={`https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/privateJobs/${privateJob.title}"><img src=${API}/privateJob/photo/${privateJob.slug}`} target="_blank" ><p className='text-primary'><LinkedInIcon style={{fontSize:30}}/></p></a>
+                     <a href={`https://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${privateJob.title}"><img src=${API}/privateJob/photo/${privateJob.slug} alt="Share on Twitter`} target="_blank"><p className='text-primary'><TwitterIcon style={{fontSize:30}} /></p></a>
                   </div>
 
                  </div>
@@ -172,14 +183,14 @@ const today=moment();
                  <div className="job-table p-1">
                           <div >
                               <ul>
-                                  <li><i className="fas fa-shield-alt text-primary"></i></li>
-                                  <li className="my-1"><i className="far fa-clock text-primary"></i></li>
-                                  <li className="my-1"><i className="fas fa-rupee-sign text-primary"></i></li>
-                                  <li className="my-1"><i className="fas fa-graduation-cap text-primary"></i></li>                                
-                                  <li className="my-1"><i class="fas fa-map-marker-alt text-primary"></i></li>
-                                  <li className='my-1'><i class="fas fa-user-tie text-primary"></i></li>
-                                  <li className='my-1'><i class="fas fa-key text-primary"></i></li>
-                                  <li ><i className="fas fa-briefcase text-primary"></i></li>
+                                  <li className='text-primary'><SecurityIcon style={{fontSize:20}} /></li>
+                                  <li className='text-primary' style={{marginTop:'0.7rem'}}><DateRangeIcon style={{fontSize:20 }} /></li>
+                                  <li className='text-primary' style={{marginTop:'0.7rem'}}><AccountBalanceWalletIcon style={{fontSize:20}} /></li>
+                                  <li className='text-primary' style={{marginTop:'0.7rem'}}><SchoolIcon style={{fontSize:20}} /></li>                                
+                                  <li className='text-primary' style={{marginTop:'0.7rem'}}><PinDropIcon  style={{fontSize:20}} /></li>
+                                  <li className='text-primary' style={{marginTop:'0.7rem'}}><BusinessCenterIcon style={{fontSize:20}} /></li>
+                                  <li className='text-primary' style={{marginTop:'0.7rem'}}><VpnKeyIcon  style={{fontSize:20}} /></li>
+                                  <li className='text-primary' style={{marginTop:'0.7rem'}}><WatchLaterIcon style={{fontSize:20}} /></li>
 
                               </ul>
                           </div>
