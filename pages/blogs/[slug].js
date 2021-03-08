@@ -9,7 +9,7 @@ import SmallCard from '../../components/blogs/SmallCard';
 import DisqusThread from '../../components/DisqusThread';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const SingleBlog=  ({blog,query})=>{
     const [related, setRelated] = useState([]);
@@ -122,7 +122,7 @@ const SingleBlog=  ({blog,query})=>{
                                </Link>
                                <div >
                                    <a href={`https://www.facebook.com/sharer/sharer.php?u=https://theprograd.com/blogs/${query.slug}`} target="_blank"><p className='text-primary'><FacebookIcon style={{fontSize:30}}/></p></a>
-                                   <a href={`whatsapp://send?text=${DOMAIN}/blogs/${query.slug}`} data-action="share/whatsapp/share" ><p className='text-primary'><WhatsAppIcon  style={{fontSize:30}}/></p></a>
+                                   <a href={`whatsapp://send?text=${DOMAIN}/blogs/${query.slug}`} data-action="share/whatsapp/share" ><p className='text-primary'><LinkedInIcon  style={{fontSize:30}}/></p></a>
                                 
                                    <a href={`http://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${blog.title}"><img src=${API}/blog/photo/${blog.slug} alt="Share on Twitter`}><p className='text-primary'><TwitterIcon style={{fontSize:30}} /></p></a>
                                </div>
