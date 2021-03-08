@@ -1,7 +1,7 @@
 import Admin from '../../components/auth/Admin';
 import Link from 'next/link';
 import Image from "next/image";
-import BorderColorIcon from '@material-ui/icons/BorderColor';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import UpdateIcon from '@material-ui/icons/Update';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import EditIcon from '@material-ui/icons/Edit';
@@ -18,13 +18,13 @@ const AdminDashboard=()=>{
  <div className="line"></div>
 <div className="dash-buttons">
     <Link href="/admin/jobcrud/job">
-        <a className="btn btn-primary  nbtn"><BorderColorIcon style={{fontSize:15}}/><span></span> Create Job</a>
+        <a className="btn btn-primary  nbtn"><AddCircleOutlineIcon style={{fontSize:15}}/><span></span> Create Job</a>
     </Link>
     <Link href="/admin/privatejobcrud/privateJob">
-        <a className="btn btn-primary  nbtn"><BorderColorIcon style={{fontSize:15}}/><span></span> Create Private Job</a>
+        <a className="btn btn-primary  nbtn"><AddCircleOutlineIcon style={{fontSize:15}}/><span></span> Create Private Job</a>
     </Link>
     <Link href="/admin/crud/blog">
-        <a className="btn btn-primary  nbtn"><BorderColorIcon style={{fontSize:15}}/><span></span> Create Blog</a>
+        <a className="btn btn-primary  nbtn"><AddCircleOutlineIcon style={{fontSize:15}}/><span></span> Create Blog</a>
     </Link>
    <Link  href="/admin/crud/blogs">
         <a className="btn  nbtn"><strong className="text-primary"><UpdateIcon  style={{fontSize:15}}/></strong><span></span> Update/Delete Blog</a>
