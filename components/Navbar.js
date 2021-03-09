@@ -58,7 +58,7 @@ const Navbar=()=>{
         </ul>
      </nav>
          <ul className="bottom-nav " style={{zIndex:'1'}}>    
-         {!isAuth() && (<li><a href='/signin'><strong className='text-dark'><PersonAddIcon style={{fontSize:42}}/></strong></a></li>)}
+         {!isAuth() && (<li><strong><a href='/signin' className='text-dark'><PersonAddIcon style={{fontSize:42}}/></a></strong></li>)}
          {isAuth() && (<li><Link href={isAuth().role===1 ? '/admin' :'/user'} ><a className='text-dark'><DashboardIcon style={{fontSize:42}}/></a></Link></li>)}
          <li>
            <Link  href="/jobs"><a className='text-dark'><WorkIcon  style={{fontSize:42}}/></a></Link>  
