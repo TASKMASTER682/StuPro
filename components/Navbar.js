@@ -59,32 +59,21 @@ const Navbar=()=>{
         </ul>
      </nav>
          <ul className="bottom-nav " style={{zIndex:'1'}}>
-         <li>
-            <Link href="/blogs"><a className='text-dark'><LibraryBooksIcon style={{fontSize:42}}/></a></Link>
-         </li>
+        
+         {!isAuth() && (<li><Link href='/signin'><a className='text-dark'><PersonAddIcon style={{fontSize:42}}/></a></Link></li>)}
+         {isAuth() && (<li><Link href={isAuth().role===1 ? '/admin' :'/user'} ><a className='text-dark'><DashboardIcon style={{fontSize:42}}/></a></Link></li>)}
          <li>
            <Link  href="/jobs"><a className='text-dark'><WorkIcon  style={{fontSize:42}}/></a></Link>  
          </li>
          <li>
            <Link  href="/privateJobs"><a className='text-dark'><BusinessIcon style={{fontSize:42}}/></a></Link>  
          </li>
-         {!isAuth() && ( 
-              <>
-                <li><Link href="/signup"><a className='text-dark'><PersonAddIcon style={{fontSize:42}}/></a></Link></li>
-              </>
-               )}
-        
-         {isAuth() && isAuth().role === 0 && (
-                   <>
-                  <li><Link href="/user" ><a className='text-dark'><DashboardIcon style={{fontSize:42}}/></a></Link></li>
-                   </>
-               )}
-               {isAuth() && isAuth().role === 1 && (
-                   <li><Link href="/admin" ><a className='text-dark'><DashboardIcon style={{fontSize:42}}/></a></Link></li>
-            )}
-         
+         <li>
+            <Link href="/blogs"><a className='text-dark'><LibraryBooksIcon style={{fontSize:42}}/></a></Link>
+         </li>
          </ul>
    </>
     )
 }
 export default Navbar;
+ 

@@ -161,10 +161,10 @@ const today=moment();
                 <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>{job.title}</h1>
                 </a>
             </Link>
-                  <div className="share icons p-1">
-                     <a  href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${query.slug}`} target="_blank"><p className='text-primary'><FacebookIcon style={{fontSize:30}}/></p></a>
-                     <a href={`https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/jobs/${job.title}"><img src=${API}/job/photo/${job.slug}`} target="_blank" ><p className='text-primary'><LinkedInIcon style={{fontSize:30}}/></p></a>
-                     <a href={`https://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${job.title}"><img src=${API}/job/photo/${job.slug} alt="Share on Twitter`} target="_blank"><p className='text-primary'><TwitterIcon style={{fontSize:30}} /></p></a>
+            <div className="share icons p-1">
+                     <a  href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${query.slug}`} target="_blank"><strong className='text-primary'><FacebookIcon style={{fontSize:30}}/></strong></a>
+                     <a href={`https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/jobs/${job.title}"><img src=${API}/job/photo/${job.slug}`} target="_blank" ><strong className='text-primary'><LinkedInIcon style={{fontSize:30}}/></strong></a>
+                     <a href={`https://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${job.title}"><img src=${API}/job/photo/${job.slug} alt="Share on Twitter`} target="_blank"><strong className='text-primary'><TwitterIcon style={{fontSize:30}} /></strong></a>
                   </div>
 
                  </div>

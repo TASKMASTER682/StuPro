@@ -121,10 +121,9 @@ const SingleBlog=  ({blog,query})=>{
                                    </a>
                                </Link>
                                <div >
-                                   <a href={`https://www.facebook.com/sharer/sharer.php?u=https://theprograd.com/blogs/${query.slug}`} target="_blank"><p className='text-primary'><FacebookIcon style={{fontSize:30}}/></p></a>
-                                   <a href={`whatsapp://send?text=${DOMAIN}/blogs/${query.slug}`} data-action="share/whatsapp/share" ><p className='text-primary'><LinkedInIcon  style={{fontSize:30}}/></p></a>
-                                
-                                   <a href={`http://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${blog.title}"><img src=${API}/blog/photo/${blog.slug} alt="Share on Twitter`}><p className='text-primary'><TwitterIcon style={{fontSize:30}} /></p></a>
+                                   <a href={`https://www.facebook.com/sharer/sharer.php?u=https://theprograd.com/blogs/${query.slug}`} target="_blank"><strong className='text-primary'><FacebookIcon style={{fontSize:30}}/></strong></a>
+                                   <a href={`https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/blogs/${blog.title}"><img src=${API}/blog/photo/${blog.slug}`} target="_blank" ><strong className='text-primary'><LinkedInIcon  style={{fontSize:30}}/></strong></a>
+                                   <a href={`http://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${blog.title}"><img src=${API}/blog/photo/${blog.slug} alt="Share on Twitter`}><strong className='text-primary'><TwitterIcon style={{fontSize:30}} /></strong></a>
                                </div>
                          
                                
