@@ -38,8 +38,7 @@ const Navbar=()=>{
          <ul>
               {isAuth() && isAuth().role === 0 && (
                    <>
-                  <li><Link href="/user" ><a className="btn nbtn btn-dark my-1
-                  "><AccountCircleIcon style={{fontSize:15}}/> <span>{`${isAuth().name}'s Dashboard`}</span></a></Link></li>
+                  <li><Link href="/user" ><a className="btn nbtn btn-dark my-1"><AccountCircleIcon style={{fontSize:15}}/> <span>{`${isAuth().name}'s Dashboard`}</span></a></Link></li>
                    </>
                )}
                {isAuth() && isAuth().role === 1 && (
@@ -58,9 +57,8 @@ const Navbar=()=>{
               )}
         </ul>
      </nav>
-         <ul className="bottom-nav " style={{zIndex:'1'}}>
-        
-         {!isAuth() && (<li><Link href='/signin'><a className='text-dark'><PersonAddIcon style={{fontSize:42}}/></a></Link></li>)}
+         <ul className="bottom-nav " style={{zIndex:'1'}}>    
+         {!isAuth() && (<li><a href='/signin'><strong className='text-dark'><PersonAddIcon style={{fontSize:42}}/></strong></a></li>)}
          {isAuth() && (<li><Link href={isAuth().role===1 ? '/admin' :'/user'} ><a className='text-dark'><DashboardIcon style={{fontSize:42}}/></a></Link></li>)}
          <li>
            <Link  href="/jobs"><a className='text-dark'><WorkIcon  style={{fontSize:42}}/></a></Link>  
