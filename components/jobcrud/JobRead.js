@@ -68,8 +68,8 @@ const JobRead = () => {
                         </h2>
                     </a>
                     </Link>
-                    <p className={`extra-small text-${ moment(job.lastDate).format()>today.format() ? 'primary':'light-gray'}`}>
-                      { moment(job.lastDate).format()>today.format() ? 'Expired':'Live' }| Published on {moment(job.updatedAt).fromNow()}
+                    <p className={`extra-small text-${ moment(job.lastDate).format()<today.format() ? 'primary':'light-gray'}`}>
+                      { moment(job.lastDate).format()<today.format() ? 'Expired':'Live' }| Published on {moment(job.updatedAt).fromNow()}
                     </p>
                     <button className="btn btn-danger nbtn" onClick={() => deleteConfirm(job.slug)}>
                         Delete
@@ -80,7 +80,10 @@ const JobRead = () => {
             );
         });
     };
+
     // {showUpdateButton(blog)}
+    const today=moment();
+
     return (
         <React.Fragment>
             <div className="container">
