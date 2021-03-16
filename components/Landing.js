@@ -46,16 +46,16 @@ const Landing=()=>{
 </div>
 </div>
     <div >
-        <img className='p-1 my-1' src="./img/stupro2.png" alt="" />
+        <img className='p-1 my-1' src="./img/stupro2.png" alt="The ProGrad" />
        
     </div>     
 </section>
 <section className="landing-two" style={{textAlign:'center',alignItems:'center',alignContent:'center'}}>
    <div className="land-1" >
                
-        <h2 className="large text-primary my-2 ">Latest Jobs</h2>
+        <h1 className="large text-primary my-2 ">Latest Jobs</h1>
      <div style={{width:'50vw',height:'auto',margin:'auto'}}>
-            <img src="/img/landingjob.webp"  alt="" />
+            <img src="/img/landingjob.webp"  alt="The ProGrad" />
      </div>
      </div>
 
@@ -84,7 +84,7 @@ const Landing=()=>{
      </div>
 </section>
  <section className="landing-categories my-1">
-     <h2 className="text-primary small my-1">Top Job Categories</h2>
+     <h1 className="text-primary small my-1">Top Job Categories</h1>
      <div className="cat-main ">
 
      <div className="cat-item nbtn job m-1">

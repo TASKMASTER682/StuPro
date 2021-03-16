@@ -27,7 +27,7 @@ const Index=()=> {
                 content="A community that has a perfect ecosystem for every niche of education system.You can find apply online for all government jobs,sarkari jobs here.You can write anything on any social topic or any topic related to education. "
            
             />
-            <link rel="canonical" href={`${DOMAIN}`} />
+            <link rel="canonical" href={`https://${DOMAIN}`} />
             <meta property="og:title" content={`${APP_NAME} | An Online Platform that helps Students to become professionals.Prepare and apply online for any job directly from here `} />
             <meta
                 property="og:description"

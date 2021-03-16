@@ -62,6 +62,9 @@ const SinglePvtJob=({privateJob,query})=>{
                   'address': {
                   '@type': "PostalAddress",
                   'streetAddress': `${privateJob.location}`,
+                  "addressLocality": `${privateJob.location}`,
+                  "addressRegion": `${privateJob.location}`,
+                  "postalCode": "Not required",
                   'addressCountry': "India"
                   }
                 },
@@ -94,7 +97,7 @@ const SinglePvtJob=({privateJob,query})=>{
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
             <meta name="description" content= {`${privateJob.mdesc} Last date:${moment(privateJob.lastDate).format("MMM DD YYYY")},Location:${privateJob.location},Pay scale:${privateJob.salary}.`} />
-            <link rel="canonical" href={`${DOMAIN}/privateJobs/${query.slug}`} />
+            <link rel="canonical" href={`https://${DOMAIN}/privateJobs/${query.slug}`} />
             <meta property="og:title" content={`${privateJob.title}| ${APP_NAME}`} />
             <meta property="og:description" content={`${privateJob.mdesc} Last date:${moment(privateJob.lastDate).format("MMM DD YYYY")},Location:${privateJob.location},Pay scale:${privateJob.salary}.`} />
             <meta property="og:type" content="webiste" />

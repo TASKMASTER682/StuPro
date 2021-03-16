@@ -21,7 +21,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
+            <link rel="canonical" href={`https://${DOMAIN}${router.pathname}`} />
             <meta property="og:title" content={`Get all types of educational blogs and get best user experience | ${APP_NAME}`} />
             <meta
                 property="og:description"

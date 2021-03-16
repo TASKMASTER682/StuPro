@@ -14,7 +14,7 @@ const Tag=({ tag, blogs, query })=>{
             </title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <meta name="description" content={`Blogs related to ${tag.name}`} />
-            <link rel="canonical" href={`${DOMAIN}/categories/${query.slug}`} />
+            <link rel="canonical" href={`https://${DOMAIN}/categories/${query.slug}`} />
             <meta property="og:title" content={`${tag.name}| ${APP_NAME}`} />
             <meta property="og:description" content={`Blogs related to ${tag.name}`} />
             <meta property="og:type" content="webiste" />

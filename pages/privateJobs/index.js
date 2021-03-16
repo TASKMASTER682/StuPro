@@ -18,7 +18,7 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
             />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
+            <link rel="canonical" href={`https://${DOMAIN}${router.pathname}`} />
             <meta property="og:title" content={`India's best platform for grads to find all type of jobs in India. | ${APP_NAME}`} />
             <meta
                 property="og:description"
@@ -28,7 +28,6 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
-
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:secure_url" ccontent={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:type" content="img/StuproLogo.png" />

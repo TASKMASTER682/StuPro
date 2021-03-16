@@ -16,7 +16,7 @@ const PvtJobCategory=({privateJobCategory,privateJobs,query})=>{
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
             <meta name="description" content={`Jobs related to category: ${privateJobCategory.name} | Get all types of prograd jobs in india which includes all types of government jobs,analyst jobs,best jobs,free jobs,account manager,engineering jobs,jobriya,fast jobs,sbi carreers,highest paying jobs,sarkari work,army jobs,public jobs,it jobs,online jobs from home,accounting jobs,sarkari rojgar,marketing manager and various other jobs.Here recruters can also come to post jobs`} />
-            <link rel="canonical" href={`${DOMAIN}/privateJobCategories/${query.slug}`} />
+            <link rel="canonical" href={`https://${DOMAIN}/privateJobCategories/${query.slug}`} />
             <meta property="og:title" content={`${privateJobCategory.name}| ${APP_NAME}`} />
             <meta property="og:description" content={`Jobs related to category: ${privateJobCategory.name} | Get all types of prograd jobs in india which includes all types of government jobs,analyst jobs,best jobs,free jobs,account manager,engineering jobs,jobriya,fast jobs,sbi carreers,highest paying jobs,sarkari work,army jobs,public jobs,it jobs,online jobs from home,accounting jobs,sarkari rojgar,marketing manager and various other jobs.Here recruters can also come to post jobs`} />
             <meta property="og:type" content="webiste" />

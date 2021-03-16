@@ -68,8 +68,8 @@ const PvtJobRead = () => {
                         </h2>
                     </a>
                     </Link>
-                    <p className="extra-small text-light-gray ">
-                       Last Date to apply is: {privateJob.lastDate} | Published on {moment(privateJob.updatedAt).fromNow()}
+                    <p className={`extra-small text-${ moment(privateJob.lastDate).format()>today.format() ? 'primary':'light-gray'}`}>
+                    { moment(privateJob.lastDate).format()>today.format() ? 'Expired':'Live' }| Published on {moment(privateJob.updatedAt).fromNow()}
                     </p>
                     <button className="btn btn-danger nbtn" onClick={() => deleteConfirm(privateJob.slug)}>
                         Delete
