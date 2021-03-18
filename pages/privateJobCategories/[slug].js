@@ -3,7 +3,8 @@ import { singlePvtJobCategory } from '../../actions/privateJobCategory';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import Card from '../../components/privateJobs/Card';
 import PvtSearch from '../../components/privateJobs/PvtSearch';
-
+import Infeed from '../../components/ads/Infeed';
+import DisplayAd from '../../components/ads/DisplayAd';
 
 
 const PvtJobCategory=({privateJobCategory,privateJobs,query})=>{
@@ -41,7 +42,7 @@ const PvtJobCategory=({privateJobCategory,privateJobs,query})=>{
      <div className="line"></div>
      <div className="createMain">
      <main>
-       
+       <Infeed />
            <article className="my-1" >
            {privateJobs.map((j, i) => (
                 <Card key={i} privateJob={j} /> 
@@ -49,9 +50,9 @@ const PvtJobCategory=({privateJobCategory,privateJobs,query})=>{
            </article>
        
         </main>
-        <div>
+        <div className='hide-sm'>
         <PvtSearch />
-  
+     <DisplayAd />
     </div> 
      </div>
       </section>

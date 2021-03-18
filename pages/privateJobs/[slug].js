@@ -19,6 +19,9 @@ import PinDropIcon from '@material-ui/icons/PinDrop';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
+import SearchAd from '../../components/ads/SearchAd';
+import DisplayAd from '../../components/ads/DisplayAd';
+
 const SinglePvtJob=({privateJob,query})=>{
     const [relatedPvt, setRelatedPvt] = useState([]);
 
@@ -150,11 +153,10 @@ const today=moment();
            <>
            {head()}
             <section className="container">
-           
+           <DisplayAd />
             <h3 className="large text-primary my-1">See detailed</h3>
              <p className="extra-small text-light-gray m-1 ">see eligibilty and full notification</p>
-
-          
+             <SearchAd />          
              <div className="jobs">
              <div className="job bg-light ">
                  <div className="job-top p-1">

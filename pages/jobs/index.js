@@ -5,6 +5,10 @@ import { withRouter } from 'next/router';
 import { listJobsWithCategoriesAndTags } from '../../actions/job';
 import Card from '../../components/jobs/Card';
 import Search from '../../components/jobs/Search';
+import Infeed from '../../components/ads/Infeed';
+import DisplayAd from '../../components/ads/DisplayAd';
+
+
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 
 const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, router })=>{
@@ -108,9 +112,12 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
      <Link href="/jobs/jobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search job</a></Link>
      <div className="createMain">
      <main>
+     <Infeed />
+
          <main >
          {showAllJobs()}
          </main>
+
          <main>
             {showLoadedJobs()}
         </main>
@@ -119,7 +126,7 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
             {loadMoreButton()}
         </div>
     </main> 
-    <div>
+    <div className='hide-sm'>
     <h2 className="lead text-light-gray">Search the job keyword,title or the location</h2>
         <Search />
         <div style={{display:'flex',justifyContent:'space-between'}}>
@@ -138,6 +145,7 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
         </ul>
         
         </div>
+        <DisplayAd />
     </div> 
      </div>
     </section>

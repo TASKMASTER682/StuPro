@@ -30,6 +30,7 @@ const Footer=()=>{
             </div>
             <div className="third-row p-1">
                 <h2 className="lead text-dark">Quick Links</h2>
+                <Link href="/about"><p className='text-dark'>About Us</p></Link>
                <Link href="/disclaimer"><p className='text-dark'> Disclaimer</p></Link>
                <Link href="/contact"><p className='text-dark'> Contact us</p></Link>
                <Link href="/privacy"><p className='text-dark'>Terms of use | Privacy Policy </p></Link>

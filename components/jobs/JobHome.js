@@ -40,7 +40,7 @@ const JobHome = () => {
                     </div>
                 
                
-                  <h3 class="extra-small p-1">Published on | {moment(job.updatedAt).format("MMM DD YYYY")}</h3>
+                  <h3 className="extra-small p-1">Published on | {moment(job.updatedAt).format("MMM DD YYYY")}</h3>
              </div>
             );
         });

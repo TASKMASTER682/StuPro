@@ -6,7 +6,8 @@ import { listPvtJobsWithCategoriesAndTags } from '../../actions/privateJob';
 import Card from '../../components/privateJobs/Card';
 import SearchPvt from '../../components/privateJobs/PvtSearch';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
-
+import Infeed from '../../components/ads/Infeed';
+import DisplayAd from '../../components/ads/DisplayAd';
 const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs, jobsLimit, jobSkip, router })=>{
 
 
@@ -107,6 +108,7 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
      <Link href="/privateJobs/pvtJobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search Pvt. job</a></Link>
      <div className="createMain">
      <main>
+     <Infeed />
          <main >
          {showAllJobs()}
          </main>
@@ -118,7 +120,7 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
             {loadMoreButton()}
         </div>
     </main> 
-    <div>
+    <div className='hide-sm'>
     <h2 className="lead text-light-gray">Search the job keyword,title or the location</h2>
         <SearchPvt />
         <div style={{display:'flex',justifyContent:'space-between'}}>
@@ -137,6 +139,7 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
         </ul>
         
         </div>
+        <DisplayAd />
     </div> 
      </div>
     </section>

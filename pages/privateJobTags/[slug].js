@@ -3,7 +3,8 @@ import { singlePvtJobTag } from '../../actions/privateJobTag';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import Card from '../../components/privateJobs/Card';
 import PvtSearch from '../../components/privateJobs/PvtSearch';
-
+import Infeed from '../../components/ads/Infeed';
+import DisplayAd from '../../components/ads/DisplayAd';
 
 const PvtJobTag=({ privateJobTag, privateJobs, query })=>{
     const head = () => (
@@ -36,14 +37,16 @@ const PvtJobTag=({ privateJobTag, privateJobs, query })=>{
         <div className="line"></div>
         <div className="createMain">
           <main >
+          <Infeed />
               <article>
               {privateJobs.map((j, i) => (
                    <Card key={i} privateJob={j} /> 
                   ))}
               </article>
         </main>
-          <div>
+          <div className='hide-sm'>
         <PvtSearch />
+        <DisplayAd />
     </div>
           </div>
          </section>

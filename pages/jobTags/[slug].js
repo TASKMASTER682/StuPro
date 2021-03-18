@@ -3,7 +3,8 @@ import { singleJobTag } from '../../actions/jobTag';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import Card from '../../components/jobs/Card';
 import Search from '../../components/jobs/Search';
-
+import Infeed from '../../components/ads/Infeed';
+import DisplayAd from '../../components/ads/DisplayAd';
 
 const JobTag=({ jobTag, jobs, query })=>{
     const head = () => (
@@ -36,14 +37,17 @@ const JobTag=({ jobTag, jobs, query })=>{
         <div className="line"></div>
         <div className="createMain">
           <main >
+          <Infeed />
               <article>
               {jobs.map((j, i) => (
                    <Card key={i} job={j} /> 
                   ))}
               </article>
         </main>
-          <div>
+          <div className='hide-sm'>
         <Search />
+        <DisplayAd />
+
     </div>
           </div>
          </section>
