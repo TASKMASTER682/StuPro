@@ -5,6 +5,8 @@ import Card from '../../components/privateJobs/Card';
 import PvtSearch from '../../components/privateJobs/PvtSearch';
 import Infeed from '../../components/ads/Infeed';
 import DisplayAd from '../../components/ads/DisplayAd';
+import Vertical from '../../components/ads/Vertical';
+
 
 const PvtJobTag=({ privateJobTag, privateJobs, query })=>{
     const head = () => (
@@ -38,15 +40,18 @@ const PvtJobTag=({ privateJobTag, privateJobs, query })=>{
         <div className="createMain">
           <main >
           <Infeed />
+          <Infeed />
               <article>
               {privateJobs.map((j, i) => (
                    <Card key={i} privateJob={j} /> 
                   ))}
               </article>
+              <Infeed />
         </main>
           <div className='hide-sm'>
         <PvtSearch />
         <DisplayAd />
+        <Vertical />
     </div>
           </div>
          </section>

@@ -5,6 +5,7 @@ import Card from '../../components/jobs/Card';
 import Search from '../../components/jobs/Search';
 import Infeed from '../../components/ads/Infeed';
 import DisplayAd from '../../components/ads/DisplayAd';
+import Vertical from '../../components/ads/Vertical';
 
 const JobTag=({ jobTag, jobs, query })=>{
     const head = () => (
@@ -38,15 +39,18 @@ const JobTag=({ jobTag, jobs, query })=>{
         <div className="createMain">
           <main >
           <Infeed />
+          <Infeed />
               <article>
               {jobs.map((j, i) => (
                    <Card key={i} job={j} /> 
                   ))}
               </article>
+              <Infeed />
         </main>
           <div className='hide-sm'>
         <Search />
         <DisplayAd />
+        <Vertical />
 
     </div>
           </div>

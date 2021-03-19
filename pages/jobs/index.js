@@ -7,6 +7,8 @@ import Card from '../../components/jobs/Card';
 import Search from '../../components/jobs/Search';
 import Infeed from '../../components/ads/Infeed';
 import DisplayAd from '../../components/ads/DisplayAd';
+import Vertical from '../../components/ads/Vertical';
+
 
 
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
@@ -113,10 +115,12 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
      <div className="createMain">
      <main>
      <Infeed />
+     <Infeed />
 
          <main >
          {showAllJobs()}
          </main>
+         <Infeed />
 
          <main>
             {showLoadedJobs()}
@@ -146,6 +150,7 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
         
         </div>
         <DisplayAd />
+        <Vertical/>
     </div> 
      </div>
     </section>

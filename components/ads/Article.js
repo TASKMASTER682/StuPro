@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const DisplayAd = () => {
+const Article = () => {
   useEffect(() => {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -10,16 +10,16 @@ const DisplayAd = () => {
   }, []);
 
   return (
-   
+      <div className="p-1">
     <ins
     className="adsbygoogle"
-    style={{display:'block'}}
+    style={{display:'block', textAlign:'center'}}
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
      data-ad-client="ca-pub-8555056818557400"
-     data-ad-slot="5068177394"
-     data-ad-format="auto"
-     data-full-width-responsive="true"
+     data-ad-slot="6826738350"
   />
- 
+  </div>
   )
 }
-export default DisplayAd;
+export default Article;

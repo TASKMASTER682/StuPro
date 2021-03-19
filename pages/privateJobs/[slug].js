@@ -20,7 +20,7 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import SearchAd from '../../components/ads/SearchAd';
-import DisplayAd from '../../components/ads/DisplayAd';
+import Article from '../../components/ads/Article';
 
 const SinglePvtJob=({privateJob,query})=>{
     const [relatedPvt, setRelatedPvt] = useState([]);
@@ -153,7 +153,6 @@ const today=moment();
            <>
            {head()}
             <section className="container">
-           <DisplayAd />
             <h3 className="large text-primary my-1">See detailed</h3>
              <p className="extra-small text-light-gray m-1 ">see eligibilty and full notification</p>
              <SearchAd />          
@@ -175,14 +174,8 @@ const today=moment();
                   </div>
 
                  </div>
-                 <small className="text-light-gray author extra-small ">| Published {moment(privateJob.updatedAt).fromNow()}</small>
-                 <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
-                     <div className='my-1'>
-                         {showJobCategories(privateJob)}
-                           
-                           {showJobTags(privateJob)}
-                           </div>
-                      </div>
+                 <small className="text-light-gray author extra-small my-2">| Published {moment(privateJob.updatedAt).fromNow()}</small>
+             
                  <div className="job-bottom">
 
                  <div className="job-table p-1">
@@ -230,14 +223,23 @@ const today=moment();
                           <a href={`${privateJob.applyLink}`}  target="_blank" className={`btn nbtn btn-${ moment(privateJob.lastDate).format()<today.format() ? 'danger':'primary'} nbtn1 my-1 `}>{moment(privateJob.lastDate).format()<today.format()  ? 'Closed':'Apply now'}</a>
                         </div>
                       </div>
-                     
+                     <Article />
                       <div className='job-content' style={{padding:'0.4rem'}}>
                       {renderHTML(privateJob.body)}
                     </div>
                     <div>
                    {( isAuth() && isAuth().role===1 )? <a href={`/admin/privatejobcrud/${privateJob.slug}`} className="m-2 btn nbtn btn-success">Update</a>:''}
                    </div>
+                   <Article />
                 </div>
+                <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
+                <h4 className="small text-primary">Tags and Categories</h4>
+                    <div className='my-1'>
+                         {showJobCategories(privateJob)}
+                           
+                           {showJobTags(privateJob)}
+                           </div>
+                      </div>
                 <div className='btn nbtn' style={{border:'solid #e64444',fontFamily:'Source Serif Pro ,serif'}}>
                         <h2 className="small text-primary my-1">Frequently Asked Questions </h2>
                         <h3 className="lead text-dark"><strong className='text-primary'>Q-1:</strong>What is the salary of {privateJob.title} ?</h3>
@@ -264,6 +266,7 @@ const today=moment();
                       <h3 className="cmnt-body">Leave A Comment</h3>
                     </div>
                     <div className="p-1">{showComments()}</div>
+                    <Article />
             </section>
              
            </> 

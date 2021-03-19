@@ -36,7 +36,7 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script async src="https://cse.google.com/cse.js?cx=d9d81809b9959741d"></script>
+          <script async src="https://cse.google.com/cse.js?cx=0935e9e24f0456183"></script>
         </body>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y27GY802BM"></script>
         <script dangerouslySetInnerHTML={this.setGoogleTags()}></script>

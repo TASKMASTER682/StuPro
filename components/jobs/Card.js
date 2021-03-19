@@ -28,7 +28,7 @@ const showJobTags = job =>
        <main className="p-1"  style={{display: "grid",gridTemplateColumns:'10fr 2fr'}}>
        
        <Link href={`/jobs/${job.slug}`}>
-       <a>
+      <a>
        <h1 className="lead text-success" style={{lineHeight:'1.9rem'}}>{job.title}</h1>
        </a>
        

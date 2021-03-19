@@ -30,7 +30,7 @@ const showJobTags = privateJob =>
        <Link href={`/privateJobs/${privateJob.slug}`}>
        <a>
        <h1 className="lead text-success" style={{lineHeight:'1.9rem'}}>{privateJob.title}</h1>
-      </a>
+       </a>
        
        </Link>
        <p className="extra-small p-1 text-primary"><SecurityIcon style={{fontSize:15}}/><strong className='text-dark'> {privateJob.agency}</strong></p>

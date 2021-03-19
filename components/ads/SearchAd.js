@@ -10,7 +10,7 @@ const SearchAd = () => {
   }, []);
 
   return (
-<div className="gcse-search"></div>
+      <div className="gcse-search" ></div>
   )
 }
 export default SearchAd;

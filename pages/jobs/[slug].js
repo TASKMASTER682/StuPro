@@ -18,7 +18,9 @@ import SchoolIcon from '@material-ui/icons/School';
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
 import SearchAd from '../../components/ads/SearchAd';
-import DisplayAd from '../../components/ads/DisplayAd';
+import Article from '../../components/ads/Article';
+
+
 
 const SingleJob=({job,query})=>{
     const [related, setRelated] = useState([]);
@@ -94,10 +96,9 @@ const SingleJob=({job,query})=>{
             <title>
                 {job.title} |Apply Online| {APP_NAME}
             </title>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-            <meta name="description" content= {`${job.mdesc} Last date:${moment(job.lastDate).format("MMM DD YYYY")},Location:${job.location},Pay Scale:${job.salary} `} />
             <link rel="canonical" href={`https://${DOMAIN}/jobs/${query.slug}`} />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="description" content= {`${job.mdesc} Last date:${moment(job.lastDate).format("MMM DD YYYY")},Location:${job.location},Pay Scale:${job.salary} `} />
             <meta property="og:title" content={`${job.title}| ${APP_NAME}`} />
             <meta property="og:description" content={`${job.mdesc} Last date:${moment(job.lastDate).format("MMM DD YYYY")},Location:${job.location},Pay Scale:${job.salary} `} />
             <meta property="og:type" content="webiste" />
@@ -151,10 +152,10 @@ const today=moment();
            <>
            {head()}
             <section className="container">
-           <DisplayAd />
             <h3 className="large text-primary my-1">See detailed</h3>
              <p className="extra-small text-light-gray m-1 ">see eligibilty and full notification</p>
-             <SearchAd />         
+             <SearchAd />
+                     
              <div className="jobs">
              <div className="job bg-light ">
                  <div className="job-top p-1">
@@ -173,14 +174,9 @@ const today=moment();
                   </div>
 
                  </div>
-                 <small className="text-light-gray author extra-small ">| Published {moment(job.updatedAt).fromNow()}</small>
-                 <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
-                     <div className='my-1'>
-                         {showJobCategories(job)}
-                           
-                           {showJobTags(job)}
-                           </div>
-                      </div>
+                 <small className="text-light-gray author extra-small my-2">| Published {moment(job.updatedAt).fromNow()}</small>
+
+               
                  <div className="job-bottom">
 
                  <div className="job-table p-1">
@@ -222,6 +218,7 @@ const today=moment();
 
                         </div>
                       </div>
+                      <Article />
 
                       <div className='job-content' style={{padding:'0.4rem'}}>
                       {renderHTML(job.body)}
@@ -229,7 +226,17 @@ const today=moment();
                     <div>
                    {( isAuth() && isAuth().role===1 )? <a href={`/admin/jobcrud/${job.slug}`} className="m-1 btn nbtn btn-success">Update</a>:''}
                    </div>
+                   <Article />
+                  
                 </div>
+                <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
+                <h4 className="small text-primary">Tags and Categories</h4>
+                     <div className='my-1'>
+                         {showJobCategories(job)}
+                           
+                           {showJobTags(job)}
+                           </div>
+                      </div>
                 <div className='btn nbtn' style={{border:'solid #00e7d2',fontFamily:'Source Serif Pro ,serif'}}>
                         <h2 className="small text-primary my-1">Frequently Asked Questions </h2>
                         <h3 className="lead text-dark"><strong className='text-primary'>Q-1:</strong>What is the pay scale of {job.title} ?</h3>
@@ -255,6 +262,8 @@ const today=moment();
                       <h3 className="cmnt-body">Leave A Comment</h3>
                     </div>
                     <div className="p-1">{showComments()}</div>
+                    <Article />
+
             </section>
              
            </> 

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const Infeed = () => {
+const Vertical = () => {
   useEffect(() => {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -11,13 +11,13 @@ const Infeed = () => {
 
   return (
     <ins
-    className="adsbygoogle nbtn"
+    className="adsbygoogle"
     style={{display:'block'}}
-    data-ad-format="fluid"
-    data-ad-layout-key="-gq-3+1f-3d+2z"
-    data-ad-client="ca-pub-8555056818557400"
-    data-ad-slot="5859704254"
+     data-ad-client="ca-pub-8555056818557400"
+     data-ad-slot="4777970144"
+     data-ad-format="auto"
+     data-full-width-responsive="true"
   />
   )
 }
-export default Infeed;
+export default Vertical;
