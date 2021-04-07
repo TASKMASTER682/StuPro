@@ -31,7 +31,6 @@ class MyDocument extends Document {
             crossOrigin="anonymous" />
           <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
           <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-          <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
         </Head>
         <body>
           <Main />

@@ -1,15 +1,13 @@
 import Layout from '../components/Layout';
 import "../public/css/style.min.css";
-import OneSignal from '../components/NewOneSignal';
 import '../node_modules/react-quill/dist/quill.snow.css';
 
-function MyApp({Component,pageProps}){
-    return(
-        <Layout>
-          <OneSignal />
-        <Component {...pageProps} />
-        
-        </Layout>
-    );
+function MyApp({ Component, pageProps }) {
+  return (
+    <Layout>
+      <Component {...pageProps} />
+
+    </Layout>
+  );
 }
 export default MyApp;
