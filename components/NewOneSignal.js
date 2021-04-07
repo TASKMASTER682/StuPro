@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 window.OneSignal = window.OneSignal || [];
 const OneSignal = window.OneSignal;
 
-const OneSignal=()=>{
+const NewOneSignal=()=>{
     useEffect(
         OneSignal.push(()=> {
             OneSignal.init(
@@ -45,4 +45,4 @@ const OneSignal=()=>{
     )
 }
 
-export default OneSignal;
+export default NewOneSignal;
