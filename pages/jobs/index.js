@@ -7,7 +7,6 @@ import Card from '../../components/jobs/Card';
 import Search from '../../components/jobs/Search';
 import Infeed from '../../components/ads/Infeed';
 import DisplayAd from '../../components/ads/DisplayAd';
-import Vertical from '../../components/ads/Vertical';
 
 
 
@@ -114,7 +113,7 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
      <Link href="/jobs/jobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search job</a></Link>
      <div className="createMain">
      <main>
-     <Infeed />
+     <DisplayAd />
      <Infeed />
 
          <main >
@@ -150,7 +149,8 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
         
         </div>
         <DisplayAd />
-        <Vertical/>
+        <div className="line"></div>
+        <DisplayAd/>
     </div> 
      </div>
     </section>

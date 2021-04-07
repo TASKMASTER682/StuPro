@@ -9,6 +9,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import GavelIcon from '@material-ui/icons/Gavel';
 import FilterHdrIcon from '@material-ui/icons/FilterHdr';
 import TrainIcon from '@material-ui/icons/Train';
+import DisplayAd from '../../components/ads/DisplayAd';
 const Landing=()=>{
 
     return(
@@ -60,6 +61,7 @@ const Landing=()=>{
      </div>
 
      <div>
+     <DisplayAd />
      <Link href='/jobs'>
       <a>
       <h2 className="text-danger small m-1">Government Jobs:-</h2>
@@ -71,6 +73,7 @@ const Landing=()=>{
         <JobHome />
             </div>
     <div>
+    <DiplayAd />
     <Link href='/privateJobs'>
       <a>
       <h2 className="text-danger small m-1">Private Jobs:-</h2>
@@ -123,7 +126,7 @@ const Landing=()=>{
  </div>
  <Link  href="/jobs/jobSearch"><a className="btn nbtn btn-danger">Show All Job-Categories and Tags</a></Link>
  </section>
- 
+ <DisplayAd />
  <section className="bg-primary landing-categories nbtn my-1 py-1">
      <h2 className="text-dark small py-1">Job Posting Plans</h2>
      <div className="cat-main">
@@ -133,8 +136,7 @@ const Landing=()=>{
       </div>
     </div>
    </section>
-
-  </>     
+</>
  )
 }
 

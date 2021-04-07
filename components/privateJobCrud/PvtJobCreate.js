@@ -280,4 +280,3 @@ return (
 )
 }
 export default withRouter(CreatePvtJob);
-

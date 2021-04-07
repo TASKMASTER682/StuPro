@@ -99,10 +99,10 @@ const SinglePvtJob=({privateJob,query})=>{
             </title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <meta name="description" content= {`${privateJob.mdesc} Last date:${moment(privateJob.lastDate).format("MMM DD YYYY")},Location:${privateJob.location},Pay scale:${privateJob.salary}.`} />
+            <meta name="description" content= {`${privateJob.mdesc} Last date:${moment(privateJob.lastDate).format("MMM DD YYYY")} Location:${privateJob.location} Pay scale:${privateJob.salary}.`} />
             <link rel="canonical" href={`https://${DOMAIN}/privateJobs/${query.slug}`} />
             <meta property="og:title" content={`${privateJob.title}| ${APP_NAME}`} />
-            <meta property="og:description" content={`${privateJob.mdesc} Last date:${moment(privateJob.lastDate).format("MMM DD YYYY")},Location:${privateJob.location},Pay scale:${privateJob.salary}.`} />
+            <meta property="og:description" content={`${privateJob.mdesc} Last date:${moment(privateJob.lastDate).format("MMM DD YYYY")} Location:${privateJob.location} Pay scale:${privateJob.salary}.`} />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}/privateJobs/${query.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />

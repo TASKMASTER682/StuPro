@@ -108,7 +108,7 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
      <Link href="/privateJobs/pvtJobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search Pvt. job</a></Link>
      <div className="createMain">
      <main>
-     <Infeed />
+     <DisplayAd />
      <Infeed />
          <main >
          {showAllJobs()}
@@ -141,6 +141,7 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
         </ul>
         
         </div>
+        <DisplayAd />
         <DisplayAd />
     </div> 
      </div>

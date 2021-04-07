@@ -38,15 +38,15 @@ const Navbar=()=>{
          <ul>
               {isAuth() && isAuth().role === 0 && (
                    <>
-                  <li><Link href="/user" ><a className="btn nbtn btn-dark my-1"><AccountCircleIcon style={{fontSize:15}}/> <span>{`${isAuth().name}'s Dashboard`}</span></a></Link></li>
+                  <li><Link href="/user" ><a className="btn  btn-dark my-1"><AccountCircleIcon style={{fontSize:15}}/> <span>{`${isAuth().name}'s Dashboard`}</span></a></Link></li>
                    </>
                )}
                {isAuth() && isAuth().role === 1 && (
-                   <li><Link href="/admin" ><a  className="btn nbtn btn-dark p-1"><span> {`${isAuth().name}'s Dashboard`}</span></a></Link></li>              )}
+                   <li><Link href="/admin" ><a  className="btn btn-dark p-1"><span> {`${isAuth().name}'s Dashboard`}</span></a></Link></li>              )}
                {!isAuth() && ( 
               <>
-                <li><a href="/signin"  className =" btn nbtn btn-dark my-1"><ExitToAppIcon style={{fontSize:15}}/>Sign in<span> </span></a></li>
-                <li><Link href="/signup"><a className ="btn nbtn btn-dark my-1"> Sign up <span> </span><PersonAddIcon style={{fontSize:16}}/></a></Link></li>
+                <li><a href="/signin"  className =" btn btn-dark my-1"><ExitToAppIcon style={{fontSize:15}}/>Sign in<span> </span></a></li>
+                <li><Link href="/signup"><a className ="btn btn-dark m-1"> Sign up <span> </span><PersonAddIcon style={{fontSize:16}}/></a></Link></li>
               </>
                )}
                

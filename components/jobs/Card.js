@@ -9,7 +9,7 @@ const Card=({job})=>{
     const showJobCategories = job =>
     job.jobCategories.map((c, i) => (
         <Link key={i} href={`/jobCategories/${c.slug}`}>
-            <a style={{padding:" 0 0.8rem",border:'solid #00e7d2'}}  className="btn nbtn bg-light-gray "><p className="extra-small">{c.name}</p></a>
+            <a style={{padding:" 0 0.8rem",border:'solid #00e7d2'}}   className="btn nbtn bg-light-gray "><p className="extra-small">{c.name}</p></a>
         </Link>
     ));
 
