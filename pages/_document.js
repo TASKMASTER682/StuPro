@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import getConfig from 'next/config';
-import OneSignal from './components/OneSignal'
+import OneSignal from '../components/OneSignal'
 const { publicRuntimeConfig } = getConfig();
 class MyDocument extends Document {
   setGoogleTags() {
