@@ -9,7 +9,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import GavelIcon from '@material-ui/icons/Gavel';
 import FilterHdrIcon from '@material-ui/icons/FilterHdr';
 import TrainIcon from '@material-ui/icons/Train';
-import DisplayAd from '../../components/ads/DisplayAd';
+import DisplayAd from './ads/DisplayAd';
 const Landing=()=>{
 
     return(
