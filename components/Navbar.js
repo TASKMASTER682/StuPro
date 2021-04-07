@@ -52,7 +52,7 @@ const Navbar=()=>{
                
                {isAuth() && (
                  <>
-                <li><button className ="btn nbtn btn-dark p-1" style={{ cursor: 'pointer' }} onClick={() => signout(() => Router.replace(`/signin`))} >Signout <ExitToAppIcon style={{fontSize:15}}/><span> <i className="fas fa-sign-out-alt"></i> </span></button></li>
+                <li><button className ="btn btn-dark p-1" style={{ cursor: 'pointer' }} onClick={() => signout(() => Router.replace(`/signin`))} >Signout <ExitToAppIcon style={{fontSize:15}}/><span> <i className="fas fa-sign-out-alt"></i> </span></button></li>
               </>
               )}
         </ul>
