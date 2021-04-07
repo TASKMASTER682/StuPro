@@ -32,6 +32,7 @@ class MyDocument extends Document {
             crossOrigin="anonymous" />
           <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
           <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+          <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
         </Head>
         <body>
           <Main />
@@ -42,7 +43,7 @@ class MyDocument extends Document {
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y27GY802BM"></script>
         <script dangerouslySetInnerHTML={this.setGoogleTags()}></script>
         <script data-ad-client="ca-pub-8555056818557400" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+       
       </Html>
     )
   }
