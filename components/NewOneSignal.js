@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 
-window.OneSignal = window.OneSignal || [];
-const OneSignal = window.OneSignal;
-
 const NewOneSignal=()=>{
+  window.OneSignal = window.OneSignal || [];
+   const OneSignal = window.OneSignal;
     useEffect(
         OneSignal.push(()=> {
             OneSignal.init(
