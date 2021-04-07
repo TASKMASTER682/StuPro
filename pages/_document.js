@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import getConfig from 'next/config';
+import OneSignal from './components/OneSignal'
 const { publicRuntimeConfig } = getConfig();
 class MyDocument extends Document {
   setGoogleTags() {
@@ -12,13 +13,6 @@ class MyDocument extends Document {
         gtag('js', new Date());
       
         gtag('config', 'G-Y27GY802BM');
-
-        window.OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "7744c03d-58bb-4313-a26f-553be5180677",
-    });
-  });
 
         `
 
@@ -40,6 +34,7 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         </Head>
         <body>
+        <OneSignal />
           <Main />
           <NextScript />
           <script async src="https://cse.google.com/cse.js?cx=0935e9e24f0456183"></script>
