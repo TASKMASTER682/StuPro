@@ -73,7 +73,7 @@ const Landing=()=>{
         <JobHome />
             </div>
     <div>
-    <DiplayAd />
+    <DisplayAd />
     <Link href='/privateJobs'>
       <a>
       <h2 className="text-danger small m-1">Private Jobs:-</h2>
