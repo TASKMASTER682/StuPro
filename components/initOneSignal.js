@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 
 const initOneSignal = () => {
 
-    window.OneSignal = window.OneSignal || [];
-    const OneSignal = window.OneSignal;
+
 
     useEffect(() => {
        OneSignal.push(()=> {

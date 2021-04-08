@@ -12,6 +12,9 @@ class MyDocument extends Document {
         gtag('js', new Date());
       
         gtag('config', 'G-Y27GY802BM');
+
+        window.OneSignal = window.OneSignal || [];
+        const OneSignal = window.OneSignal;
        
         `
 
