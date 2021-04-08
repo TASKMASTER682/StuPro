@@ -70,6 +70,7 @@ const Navbar=()=>{
             <Link href="/blogs"><a className='text-dark'><LibraryBooksIcon style={{fontSize:42}}/></a></Link>
          </li>
          </ul>
+
    </>
     )
 }
