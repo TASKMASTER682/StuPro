@@ -109,6 +109,7 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
      <div className="createMain">
      <main>
      <DisplayAd />
+     <div className="line"></div>
      <Infeed />
          <main >
          {showAllJobs()}
