@@ -14,4 +14,3 @@ const initOneSignal = async () => {
 
   export default initOneSignal;
 
-  dynamic(() => import('../components/hello'))
