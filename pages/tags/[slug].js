@@ -1,9 +1,6 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { singleTag } from '../../actions/tag';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
-import renderHTML from 'react-render-html';
-import moment from 'moment';
 import Card from '../../components/blogs/Card';
 
 const Tag=({ tag, blogs, query })=>{
