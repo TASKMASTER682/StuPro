@@ -14,8 +14,11 @@ class MyDocument extends Document {
         gtag('config', 'G-Y27GY802BM');
 
         window.OneSignal = window.OneSignal || [];
-        const OneSignal = window.OneSignal;
-       
+        OneSignal.push(function() {
+          OneSignal.init({
+            appId: "7744c03d-58bb-4313-a26f-553be5180677",
+          });
+        });
         `
 
       }
