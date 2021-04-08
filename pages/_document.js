@@ -1,6 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import getConfig from 'next/config';
-import OneSignal from './initOneSignal';
 const { publicRuntimeConfig } = getConfig();
 class MyDocument extends Document {
   setGoogleTags() {
@@ -34,7 +33,6 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         </Head>
         <body>
-        <OneSignal />
           <Main />       
           <NextScript />
           <script async src="https://cse.google.com/cse.js?cx=0935e9e24f0456183"></script>
