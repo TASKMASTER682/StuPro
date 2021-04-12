@@ -170,7 +170,7 @@ const today=moment();
             <div className="share icons p-1">
                      <a  href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${query.slug}`} target="_blank"><strong className='text-primary'><FacebookIcon style={{fontSize:30}}/></strong></a>
                      <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/jobs/${query.slug}`} target="_blank" ><p className='text-primary'><LinkedInIcon style={{fontSize:30}}/></p></a>
-                     <a href={`https://t.me/share/url?url=https://theprograd.com/jobs/${query.slug}&text=Fresh recruitment for ${job.agency} for the post of ${job.position}.Do visit the Link to explore more abou these vacancies and apply directly at The ProGrad.${job.mdesc}`}><p className='text-primary'><TelegramIcon style={{fontSize:30}} /></p></a>
+                     <a href={`https://t.me/share/url?url=https://theprograd.com/jobs/${query.slug}&text=Fresh recruitment for ${job.agency} for the various post.Do visit the Link to explore more abou these vacancies and apply directly at The ProGrad.${job.mdesc}`}><p className='text-primary'><TelegramIcon style={{fontSize:30}} /></p></a>
                   </div>
 
                  </div>

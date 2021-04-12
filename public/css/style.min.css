@@ -406,7 +406,7 @@ img {
 }
 .job-content ul {
   list-style: disc;
-  padding-left: 1rem;
+  padding-left: 0.5rem;
   margin: 1rem;
 }
 .profile-img {
@@ -469,10 +469,21 @@ img {
   display: grid;
   grid-auto-flow: row;
 }
-.blog-body h {
+.eduBlog h3 {
   text-decoration: underline;
   font-family: 'Source Serif Pro', serif;
   font-size: 1.5rem;
+}
+.eduBlog h2 {
+  text-decoration: underline;
+  font-family: 'Source Serif Pro', serif;
+  font-size: 1.5rem;
+}
+.eduBlog ul,
+ol {
+  list-style: disc;
+  padding-left: 0.5rem;
+  margin: 1rem;
 }
 .nbtn {
   border-radius: 2rem;

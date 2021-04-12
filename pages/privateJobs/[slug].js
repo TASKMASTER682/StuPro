@@ -45,7 +45,7 @@ const SinglePvtJob=({privateJob,query})=>{
             '@context': 'http://schema.org',
             '@type': 'JobPosting',
             'title' : `${privateJob.title}`,
-            'description' : `${prvateJob.mdesc} Last date to apply is ${moment(privateJob.lastDate).format("MMM DD YYYY")} Job Location is ${privateJob.location} The Pay Scale is ${privateJob.salary} .For more details visit The ProGrad and checkout the full update.`,
+            'description' : `${privateJob.mdesc} Last date to apply is ${moment(privateJob.lastDate).format("MMM DD YYYY")} Job Location is ${privateJob.location} The Pay Scale is ${privateJob.salary} .For more details visit The ProGrad and checkout the full update.`,
             'identifier': {
                 '@type': "PropertyValue",
                  'name': "The ProGrad",
