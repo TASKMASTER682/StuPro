@@ -161,7 +161,7 @@ const SingleBlog=  ({blog,query})=>{
                                    </a>
                                </Link>
                                </div>
-                          <small className="badge badge-primary author extra-small ">| Published {moment(blog.updatedAt).format("MMM DD YYYY")}</small>
+                          <small className="text-primary author extra-small">| Published on {moment(blog.updatedAt).format("MMM DD YYYY")}</small>
                        </div>
                       
                           <div>
