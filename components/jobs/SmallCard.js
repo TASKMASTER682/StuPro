@@ -22,7 +22,7 @@ const SmallCard=({job})=>{
                 </div>
                 <div className="author extra-small"  style={{display: "flex" ,alignContent:'flex-end'}}>
                 
-                  <p className="author text-light-gray p-1">|Published {moment(job.updatedAt).fromNow()} </p>
+                  <p className="author text-primary p-1">|Published {moment(job.updatedAt).fromNow()} </p>
                 </div>
           </main>
         

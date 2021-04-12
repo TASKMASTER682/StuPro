@@ -171,7 +171,7 @@ const SingleBlog=  ({blog,query})=>{
                                    <h2  className="small text-dark">{blog.postedBy.name} </h2>
                                    </a>
                                </Link>
-                               <div >
+                               <div className="share icons p-1">
                                    <a href={`https://www.facebook.com/sharer/sharer.php?u=https://theprograd.com/blogs/${query.slug}`} target="_blank"><strong className='text-primary'><FacebookIcon style={{fontSize:30}}/></strong></a>
                                    <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/blogs/${query.slug}`} target="_blank" ><p className='text-primary'><LinkedInIcon style={{fontSize:30}}/></p></a>
                                    <a href={`https://t.me/share/url?url=https://theprograd.com/blogs/${query.slug}&text=${blog.title}`}><p className='text-primary'><TelegramIcon style={{fontSize:30}} /></p></a>

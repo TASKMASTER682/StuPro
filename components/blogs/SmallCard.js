@@ -26,7 +26,7 @@ const SmallCard=({blog})=>{
                  
                   </a>
                 
-                <p className="author text-light-gray p-1 ">|Published {moment(blog.updatedAt).fromNow()} by {blog.postedBy.name}</p>
+                <p className="author text-primary p-1 ">|Published {moment(blog.updatedAt).fromNow()} by {blog.postedBy.name}</p>
                 </div>
           </main>
         
