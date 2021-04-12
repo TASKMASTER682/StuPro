@@ -124,7 +124,7 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
         </div>
     </main> 
     <div className='hide-sm'>
-    <h2 className="lead text-light-gray">Search the job keyword,title or the location</h2>
+    <h2 className="lead text-dark">Search the job keyword,title or the location and hit search button</h2>
         <SearchPvt />
         <div style={{display:'flex',justifyContent:'space-between'}}>
         

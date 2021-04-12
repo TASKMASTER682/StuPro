@@ -10,7 +10,7 @@ import DisqusThread from '../../components/DisqusThread';
 import { isAuth } from '../../actions/auth';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TwitterIcon from '@material-ui/icons/Twitter';
+import TelegramIcon from '@material-ui/icons/Telegram';
 import SecurityIcon from '@material-ui/icons/Security';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
@@ -45,7 +45,7 @@ const SinglePvtJob=({privateJob,query})=>{
             '@context': 'http://schema.org',
             '@type': 'JobPosting',
             'title' : `${privateJob.title}`,
-            'description' : `${privateJob.desc}`,
+            'description' : `${prvateJob.mdesc} Last date to apply is ${moment(privateJob.lastDate).format("MMM DD YYYY")} Job Location is ${privateJob.location} The Pay Scale is ${privateJob.salary} .For more details visit The ProGrad and checkout the full update.`,
             'identifier': {
                 '@type': "PropertyValue",
                  'name': "The ProGrad",
@@ -56,16 +56,16 @@ const SinglePvtJob=({privateJob,query})=>{
                'employmentType' : `${privateJob.type}`,
                'hiringOrganization' : {
                 '@type' : "Organization",
-                'name' : `${privateJob.agency}`,
-                'sameAs' : `${privateJob.slug}`,
+                'name' : 'The ProGrad',
+                'sameAs' :`https://theprograd.com/privateJobs/${privateJob.slug}`,
                 "logo" : 'https://theprograd.com/img/prograd.png' 
               },
               'jobLocation': {
                 '@type': "Place",
                   'address': {
                   '@type': "PostalAddress",
-                  'streetAddress': `${privateJob.location}`,
-                  "addressLocality": `${privateJob.location}`,
+                  'streetAddress': `Any where in ${privateJob.location}`,
+                  "addressLocality": `All over ${privateJob.location}`,
                   "addressRegion": `${privateJob.location}`,
                   "postalCode": "Not required",
                   'addressCountry': "India"
@@ -99,17 +99,16 @@ const SinglePvtJob=({privateJob,query})=>{
             </title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <meta name="description" content= {`${privateJob.mdesc} Last date:${moment(privateJob.lastDate).format("MMM DD YYYY")} Location:${privateJob.location} Pay scale:${privateJob.salary}.`} />
+            <meta name="description" content= {`${privateJob.mdesc} Last date is ${moment(privateJob.lastDate).format("MMM DD YYYY")} The Job Location is ${privateJob.location} Pay scale is ${privateJob.salary}.`} />
             <link rel="canonical" href={`https://${DOMAIN}/privateJobs/${query.slug}`} />
             <meta property="og:title" content={`${privateJob.title}| ${APP_NAME}`} />
-            <meta property="og:description" content={`${privateJob.mdesc} Last date:${moment(privateJob.lastDate).format("MMM DD YYYY")} Location:${privateJob.location} Pay scale:${privateJob.salary}.`} />
+            <meta property="og:description" content={`${privateJob.mdesc} Last date is ${moment(privateJob.lastDate).format("MMM DD YYYY")} The Job Location is ${privateJob.location} Pay scale is ${privateJob.salary}.`} />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}/privateJobs/${query.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
             <meta property="og:image" content={`${API}/privateJob/photo/${privateJob.slug}`} />
             <meta property="og:image:secure_url" content={`${API}/privateJob/photo/${privateJob.slug}`} />
             <meta property="og:image:type" content={`${API}/privateJob/photo/${privateJob.slug}`} />
-            <meta name="twitter:card" content="summary_large_image"></meta>
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
             {JobSchema()}
         </Head>
@@ -169,10 +168,10 @@ const today=moment();
             </Link>
                   <div className="share icons p-1">
                      <a href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/privateJobs/${query.slug}`} target="_blank"><p className='text-primary'><FacebookIcon style={{fontSize:30}}/></p></a>
-                     <a href={`https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/privateJobs/${privateJob.title}"><img src=${API}/privateJob/photo/${privateJob.slug}`} target="_blank" ><p className='text-primary'><LinkedInIcon style={{fontSize:30}}/></p></a>
-                     <a href={`https://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${privateJob.title}"><img src=${API}/privateJob/photo/${privateJob.slug} alt="Share on Twitter`} target="_blank"><p className='text-primary'><TwitterIcon style={{fontSize:30}} /></p></a>
+                     <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/privateJobs/${query.slug}`} target="_blank" ><p className='text-primary'><LinkedInIcon style={{fontSize:30}}/></p></a>
+                     <a href={`https://t.me/share/url?url=https://theprograd.com/privateJobs/${query.slug}&text=Fresh recruitment for ${privateJob.agency} for the post of ${privateJob.position}.Do visit the Link to explore more abouthese vacancies and apply directly for The ProGrad.${privateJob.mdesc}`}><p className='text-primary'><TelegramIcon style={{fontSize:30}} /></p></a>
                   </div>
-
+                 
                  </div>
                  <small className="text-light-gray author extra-small my-2">| Published {moment(privateJob.updatedAt).fromNow()}</small>
              
@@ -242,16 +241,16 @@ const today=moment();
                       </div>
                 <div className='btn nbtn' style={{border:'solid #e64444',fontFamily:'Source Serif Pro ,serif'}}>
                         <h2 className="small text-primary my-1">Frequently Asked Questions </h2>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-1:</strong>What is the salary of {privateJob.title} ?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The salary of {privateJob.title} is {privateJob.salary}</p>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-2:</strong>What is the job location of {privateJob.title} ?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The job location of {privateJob.title} is {privateJob.location}</p>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-3:</strong>What is the last date to apply for {privateJob.title} ?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The Last date of {privateJob.title} is - {moment(privateJob.lastDate).format("MMM DD YYYY")}</p>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-4:</strong>What is the qualification needed for {privateJob.title} ?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The detailed qualification needed to apply for {privateJob.title} is shown above.</p>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-5:</strong>What are the keySkills needed for {privateJob.title} ?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The Key Skills needed to apply for {privateJob.title} is {privateJob.keySkills}.Also they are shown above.</p>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-1:</strong>What is the salary of {privateJob.position} ?</h3>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The salary of {privateJob.position} provided by {privateJob.agency} is {privateJob.salary}</p>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-2:</strong>What is the job location of {privateJob.position} provided by {privateJob.agency} ?</h3>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The job location of {privateJob.position} provided by {privateJob.agency} is {privateJob.location}</p>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-3:</strong>What is the last date to apply for {privateJob.agency} recrutment?</h3>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The Last date to apply for {privateJob.agency} recruitment is - {moment(privateJob.lastDate).format("MMM DD YYYY")}</p>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-4:</strong>What is the qualification needed to apply for {privateJob.position} ?</h3>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The detailed qualification needed to apply for {privateJob.position} is shown above.</p>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-5:</strong>What are the keySkills needed to apply for {privateJob.position} ?</h3>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The Key Skills needed to apply for {privateJob.position} is {privateJob.keySkills} and more which are shown above.</p>
                     </div>
               </div>
         </section>

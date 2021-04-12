@@ -10,7 +10,7 @@ import DisqusThread from '../../components/DisqusThread';
 import { isAuth } from '../../actions/auth';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TwitterIcon from '@material-ui/icons/Twitter';
+import TelegramIcon from '@material-ui/icons/Telegram';
 import SecurityIcon from '@material-ui/icons/Security';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
@@ -44,7 +44,7 @@ const SingleJob=({job,query})=>{
             '@context': 'http://schema.org',
             '@type': 'JobPosting',
             'title' : `${job.title}`,
-            'description' : `${job.mdesc} Last date:${moment(job.lastDate).format("MMM DD YYYY")},Location:${job.location},Pay Scale:${job.salary} .For more details visit The ProGrad and checkout the full update.`,
+            'description' : `${job.mdesc} The Last date to apply is ${moment(job.lastDate).format("MMM DD YYYY")} The Job Location:${job.location} The Pay Scale is ${job.salary} .For more details visit The ProGrad and checkout the full update.`,
             'identifier': {
                 '@type': "PropertyValue",
                  'name': "The ProGrad",
@@ -55,16 +55,16 @@ const SingleJob=({job,query})=>{
                'employmentType' : `${job.type}`,
                'hiringOrganization' : {
                 '@type' : "Organization",
-                'name' : `${job.agency}`,
-                'sameAs' : `${job.slug}`,
-                "logo" : `http://theprograd.com/img/prograd.png` 
+                'name' : 'The ProGrad',
+                'sameAs' : `https://theprograd.com/jobs/${job.slug}`,
+                "logo" : `https://theprograd.com/img/prograd.png` 
               },
               'jobLocation': {
                 '@type': "Place",
                   'address': {
                   '@type': "PostalAddress",
                   'streetAddress': `${job.location}`,
-                  "addressLocality": `${job.location}`,
+                  "addressLocality": `All over ${job.location}`,
                   "addressRegion": `${job.location}`,
                   "postalCode": "Not required",
                   'addressCountry': "India"
@@ -94,13 +94,13 @@ const SingleJob=({job,query})=>{
     const head = () => (
         <Head>
             <title>
-                {job.title} |Apply Online| {APP_NAME}
+                {job.title} | {APP_NAME}
             </title>
             <link rel="canonical" href={`https://${DOMAIN}/jobs/${query.slug}`} />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <meta name="description" content= {`${job.mdesc} Last date:${moment(job.lastDate).format("MMM DD YYYY")},Location:${job.location},Pay Scale:${job.salary} `} />
+            <meta name="description" content= {`${job.mdesc} Last date is ${moment(job.lastDate).format("MMM DD YYYY")} The Job Location is ${job.location} The Pay Scale is ${job.salary} `} />
             <meta property="og:title" content={`${job.title}| ${APP_NAME}`} />
-            <meta property="og:description" content={`${job.mdesc} Last date:${moment(job.lastDate).format("MMM DD YYYY")},Location:${job.location},Pay Scale:${job.salary} `} />
+            <meta property="og:description" content={`${job.mdesc} Last date is ${moment(job.lastDate).format("MMM DD YYYY")} The Job Location is ${job.location} The Pay Scale is ${job.salary} `} />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}/jobs/${query.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
@@ -169,8 +169,8 @@ const today=moment();
             </Link>
             <div className="share icons p-1">
                      <a  href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${query.slug}`} target="_blank"><strong className='text-primary'><FacebookIcon style={{fontSize:30}}/></strong></a>
-                     <a href={`https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/jobs/${job.title}"><img src=${API}/job/photo/${job.slug}`} target="_blank" ><strong className='text-primary'><LinkedInIcon style={{fontSize:30}}/></strong></a>
-                     <a href={`https://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${job.title}"><img src=${API}/job/photo/${job.slug} alt="Share on Twitter`} target="_blank"><strong className='text-primary'><TwitterIcon style={{fontSize:30}} /></strong></a>
+                     <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/jobs/${query.slug}`} target="_blank" ><p className='text-primary'><LinkedInIcon style={{fontSize:30}}/></p></a>
+                     <a href={`https://t.me/share/url?url=https://theprograd.com/jobs/${query.slug}&text=Fresh recruitment for ${job.agency} for the post of ${job.position}.Do visit the Link to explore more abou these vacancies and apply directly at The ProGrad.${job.mdesc}`}><p className='text-primary'><TelegramIcon style={{fontSize:30}} /></p></a>
                   </div>
 
                  </div>
@@ -239,14 +239,14 @@ const today=moment();
                       </div>
                 <div className='btn nbtn' style={{border:'solid #00e7d2',fontFamily:'Source Serif Pro ,serif'}}>
                         <h2 className="small text-primary my-1">Frequently Asked Questions </h2>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-1:</strong>What is the pay scale of {job.title} ?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The pay scale of {job.title} is {job.salary}</p>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-1:</strong>What is the pay scale of posts released by {job.agency} ?</h3>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The pay scale of the posts released by {job.agency} is {job.salary}</p>
                         <h3 className="lead text-dark"><strong className='text-primary'>Q-2:</strong>What is the location of job after qualifying this exam?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The job location of {job.title} is {job.location}</p>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-3:</strong>What is the last date to apply for {job.title} ?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The Last date of {job.title} is - {moment(job.lastDate).format("MMM DD YYYY")}</p>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-4:</strong>What is the qualification needed to apply for {job.title} ?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The detailed qualification needed to apply for {job.title} is shown above.</p>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The job location of posts released by {job.agency} is {job.location}</p>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-3:</strong>What is the last date to apply for vacancies released by {job.agency} ?</h3>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The Last date to apply is - {moment(job.lastDate).format("MMM DD YYYY")}</p>
+                        <h3 className="lead text-dark"><strong className='text-primary'>Q-4:</strong>What is the qualification needed to apply for the recruitment of {job.agency} ?</h3>
+                        <p className='m-1'><strong className="text-primary">Ans:</strong>The minimum qualification needed to apply for these posts of  {job.agency} is {job.qualification} .The detailed is shown above.</p>
                     </div>
                    
               </div>

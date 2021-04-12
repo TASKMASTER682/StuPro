@@ -8,9 +8,8 @@ import moment from 'moment';
 import SmallCard from '../../components/blogs/SmallCard';
 import DisqusThread from '../../components/DisqusThread';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-
+import TelegramIcon from '@material-ui/icons/Telegram';
 const SingleBlog=  ({blog,query})=>{
     const [related, setRelated] = useState([]);
 
@@ -27,6 +26,53 @@ const SingleBlog=  ({blog,query})=>{
     useEffect(() => {
         loadRelated();
     }, []);
+
+    function makeJobSchema(blog) {
+        return {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": `https://theprograd.com/blogs/${blog.slug}`
+            },
+            "headline": `${blog.title}`,
+            "image": {
+                "@type":"imageObject",
+                "url": `${API}/blog/photo/${blog.slug}`,
+                "height":463,
+                "width":700
+            },
+            "datePublished": `${blog.createdAt}`,
+            "dateModified": `${blog.updatedAt}`,
+            "author":{
+                "@type":"Person",
+                "name":`${blog.postedBy.name}`
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "The ProGrad",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "http://theprograd.com/img/prograd.png",
+                "width":550,
+                "height":60
+  
+              }
+            },
+            "description":`${blog.mdesc}`,
+
+        }
+    }
+    const BlogSchema=()=> {
+        return (
+            <script
+                key={`jobJSON-${blog.id}`}
+                type='application/ld+json'
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(makeJobSchema(blog)) }}
+            />
+        )
+    }
+
 
     const head = () => (
         <Head>
@@ -46,6 +92,7 @@ const SingleBlog=  ({blog,query})=>{
             <meta property="og:image:secure_url" ccontent={`${API}/blog/photo/${blog.slug}`} />
             <meta property="og:image:type" content={`${API}/blog/photo/${blog.slug}`} />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+            {BlogSchema()}
         </Head>
     );
  
@@ -98,7 +145,11 @@ const SingleBlog=  ({blog,query})=>{
                     </h1>
                         </a>
                         </Link>
-                     
+                        <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
+                      <div>
+                          {showBlogCategories(blog)}
+                       </div>
+                      </div>
                     </header>
                        <div className="blog-top">
                        <div>
@@ -110,7 +161,7 @@ const SingleBlog=  ({blog,query})=>{
                                    </a>
                                </Link>
                                </div>
-                          <small className="text-light-gray author extra-small ">| Published {moment(blog.updatedAt).fromNow()}</small>
+                          <small className="badge badge-primary author extra-small ">| Published {moment(blog.updatedAt).format("MMM DD YYYY")}</small>
                        </div>
                       
                           <div>
@@ -122,8 +173,8 @@ const SingleBlog=  ({blog,query})=>{
                                </Link>
                                <div >
                                    <a href={`https://www.facebook.com/sharer/sharer.php?u=https://theprograd.com/blogs/${query.slug}`} target="_blank"><strong className='text-primary'><FacebookIcon style={{fontSize:30}}/></strong></a>
-                                   <a href={`https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&source=https://theprograd.com/blogs/${blog.title}"><img src=${API}/blog/photo/${blog.slug}`} target="_blank" ><strong className='text-primary'><LinkedInIcon  style={{fontSize:30}}/></strong></a>
-                                   <a href={`http://twitter.com/home?status=Currentlyreading <?php the_permalink(); ?>" title=${blog.title}"><img src=${API}/blog/photo/${blog.slug} alt="Share on Twitter`}><strong className='text-primary'><TwitterIcon style={{fontSize:30}} /></strong></a>
+                                   <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/blogs/${query.slug}`} target="_blank" ><p className='text-primary'><LinkedInIcon style={{fontSize:30}}/></p></a>
+                                   <a href={`https://t.me/share/url?url=https://theprograd.com/blogs/${query.slug}&text=${blog.title}`}><p className='text-primary'><TelegramIcon style={{fontSize:30}} /></p></a>
                                </div>
                          
                                
@@ -139,7 +190,6 @@ const SingleBlog=  ({blog,query})=>{
                            <div className="line"></div>
 
                            {showBlogCategories(blog)}
-                           
                            {showBlogTags(blog)}
                            </div>
                       </div>
@@ -173,3 +223,4 @@ SingleBlog.getInitialProps = ({ query }) => {
 };
 
 export default SingleBlog;
+

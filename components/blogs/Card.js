@@ -15,12 +15,6 @@ const Card=({blog})=>{
             </Link>
         ));
 
-    const showBlogTags = blog =>
-        blog.tags.map((t, i) => (
-            <Link key={i} href={`/tags/${t.slug}`}>
-                <a style={{padding:" 0 0.8rem" ,marginBottom:'0.4rem'}}  className="btn nbtn btn-dark "><h5>{t.name}</h5></a>
-            </Link>
-        ));
 
     return(
         <>
@@ -34,7 +28,6 @@ const Card=({blog})=>{
                     </Link>
                     <div className="p-1" style={{display: "flex",alignItems:'left',flexWrap:'wrap'}}>
                        {showBlogCategories(blog)}
-                       {showBlogTags(blog)}
                   </div>
                 </header>
                    <div className="blog-top">
@@ -46,7 +39,7 @@ const Card=({blog})=>{
                        </a>
                    </Link>
                    </div>
-                       <small className="text-light-gray author extra-small ">| Published {moment(blog.updatedAt).fromNow()}</small>
+                   <small className="badge badge-primary author extra-small ">| Published {moment(blog.updatedAt).format("MMM DD YYYY")}</small>
                    </div>
                       <div>
                        
