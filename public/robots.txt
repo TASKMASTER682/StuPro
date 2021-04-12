@@ -1,2 +1,3 @@
 User-agent:Googlebot
+Sitemap: http://theprograd.com/sitemap.xml
 Disallow
