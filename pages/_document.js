@@ -10,15 +10,8 @@ class MyDocument extends Document {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-      
         gtag('config', 'G-Y27GY802BM');
-
-        window.OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-          OneSignal.init({
-            appId: "7744c03d-58bb-4313-a26f-553be5180677",
-          });
-        });
+       
         `
 
       }
@@ -44,13 +37,22 @@ class MyDocument extends Document {
         </body>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y27GY802BM"></script>
         <script async dangerouslySetInnerHTML={this.setGoogleTags()}></script>
-        <script data-ad-client="ca-pub-8555056818557400" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""  ></script>
-        <script async src="https://cse.google.com/cse.js?cx=0935e9e24f0456183"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script async src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" dangerouslySetInnerHTML={{
+          __html:`
+          window.OneSignal = window.OneSignal || [];
+          OneSignal.push(function() {
+          OneSignal.init({
+          appId: "7744c03d-58bb-4313-a26f-553be5180677",
+  });
+});`
+        }}  ></script>
 
       </Html>
     )
   }
 }
 
-export default MyDocument
+export default MyDocument;
+
+

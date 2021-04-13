@@ -16,7 +16,6 @@ import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import SchoolIcon from '@material-ui/icons/School';
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
-import SearchAd from '../../components/ads/SearchAd';
 import Article from '../../components/ads/Article';
 
 
@@ -147,7 +146,6 @@ const today=moment();
             <section className="container">
             <h3 className="large text-primary my-1">See detailed</h3>
              <p className="extra-small text-light-gray m-1 ">see eligibilty and full notification</p>
-             <SearchAd />
                      
              <div className="jobs">
              <div className="job bg-light ">
