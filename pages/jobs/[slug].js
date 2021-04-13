@@ -6,7 +6,6 @@ import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
 import SmallCard from '../../components/jobs/SmallCard';
-import DisqusThread from '../../components/DisqusThread';
 import { isAuth } from '../../actions/auth';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
@@ -139,13 +138,7 @@ const SingleJob=({job,query})=>{
                 </div>
             ));
         };
-        const showComments = () => {
-            return (
-                <div>
-                    <DisqusThread id={job._id} title={job.title} path={`/job/${job.slug}`} />
-                </div>
-            );
-        };
+
      
 const today=moment();
         return(
@@ -257,12 +250,11 @@ const today=moment();
                     <div className="card">
                         {showRelatedJob()}
                     </div>
+                    <div className="m-1">
 
-                    <div className="bg-primary m-1">
-                      <h3 className="cmnt-body">Leave A Comment</h3>
-                    </div>
-                    <div className="p-1">{showComments()}</div>
                     <Article />
+                    </div>
+
 
             </section>
              

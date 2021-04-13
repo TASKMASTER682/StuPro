@@ -41,12 +41,13 @@ class MyDocument extends Document {
         <body>
           <Main />       
           <NextScript />
-          <script async src="https://cse.google.com/cse.js?cx=0935e9e24f0456183"></script>
         </body>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y27GY802BM"></script>
-        <script dangerouslySetInnerHTML={this.setGoogleTags()}></script>
+        <script async dangerouslySetInnerHTML={this.setGoogleTags()}></script>
         <script data-ad-client="ca-pub-8555056818557400" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""  ></script>
+        <script async src="https://cse.google.com/cse.js?cx=0935e9e24f0456183"></script>
+
       </Html>
     )
   }

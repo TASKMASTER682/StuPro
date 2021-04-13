@@ -3,7 +3,7 @@ import Image from 'next/image';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import YouTubeIcon from '@material-ui/icons/YouTube';
 const Footer=()=>{
     const currentDate=new Date();
     const year=currentDate.getFullYear();
@@ -40,7 +40,7 @@ const Footer=()=>{
                     <li><a href="https://www.instagram.com/theprograd/" target="_blank"><InstagramIcon  style={{ fontSize: 60 }}/></a></li>
                     <li><a href="https://www.facebook.com/sayed.anwarulhaq.923" target="_blank"><FacebookIcon style={{ fontSize: 60 }} /></a></li>
                     <li><a  href="https:///t.me/theprograd" target="_blank"><TelegramIcon  style={{ fontSize: 60 }}  /></a></li>
-                    <li><a href="https://www.linkedin.com/in/the-prograd-5533861bb/" target="_blank"><LinkedInIcon style={{ fontSize: 60 }} /></a></li>
+                    <li><a href="https://youtube.com/channel/UCFGm2Nfoqs0G29E38B1GZxw" target="_blank"><YouTubeIcon style={{ fontSize: 60 }} /></a></li>
 
                   
 

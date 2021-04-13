@@ -6,7 +6,6 @@ import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
 import SmallCard from '../../components/blogs/SmallCard';
-import DisqusThread from '../../components/DisqusThread';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import TelegramIcon from '@material-ui/icons/Telegram';
@@ -120,13 +119,7 @@ const SingleBlog=  ({blog,query})=>{
                 </div>
             ));
         };
-        const showComments =() => {
-            return (
-                <div>
-                    <DisqusThread id={blog._id} title={blog.title} path={`/blog/${blog.slug}`} />
-                </div>
-            );
-        };
+ 
      
 
         return(
@@ -202,10 +195,6 @@ const SingleBlog=  ({blog,query})=>{
                     <div className="card">
                         {showRelatedBlog()}
                     </div>
-                    <div className="bg-primary m-2">
-                      <h3 className="cmnt-body">Start Discussion</h3>
-                    </div>
-                    <div className="p-1">{showComments()}</div>
                     </section>
                </main>
             </>

@@ -404,11 +404,22 @@ img {
   font-family: 'Source Serif Pro', serif;
   font-size: 1.5rem;
 }
+
 .job-content ul {
-  list-style: disc;
+  list-style: none;
   padding-left: 0.5rem;
   margin: 1rem;
 }
+
+.job-content ul li::before {
+  content: '\2022';
+  color: #00cdbb;
+  display: inline-block;
+  font-weight: bold;
+  width: 1rem;
+  font-size: 1.4rem;
+}
+
 .profile-img {
   width: 70px;
   height: 70px;
