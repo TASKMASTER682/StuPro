@@ -20,6 +20,7 @@ export const getProfile = async (token) => {
         method: 'GET',
         headers: {
             Accept: 'application/json',
+            Authorization: `Bearer ${token}`
         }
     })
         .then(response => {
@@ -28,21 +29,8 @@ export const getProfile = async (token) => {
         .catch(err => console.log(err));
 };
 
-
-export const list =async () => {
-  
-
-    return await fetch(`${API}/users`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
-
-export const update =async (token, user) => {
-    return await fetch(`${API}/user/update`, {
+export const update = (token, user) => {
+    return fetch(`${API}/user/update`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',

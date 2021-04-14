@@ -35,11 +35,9 @@ const AdminDashboard=()=>{
     <Link href="/admin/privatejobcrud/privateJobs">
         <a className="btn  nbtn"><strong className="text-primary"><UpdateIcon  style={{fontSize:15}}/></strong><span></span> Update/Delete Pvt. Job</a>
     </Link>
-    <Link href="/admin/update">
+    <Link href="/user/update">
         <a className="btn  nbtn"><strong className="text-primary"><AssignmentIndIcon style={{fontSize:15}}/></strong><span></span> Update Profile</a>
-    </Link>
-   
-   
+    </Link>      
     <Link href="/admin/crud/category-tag"> 
         <a className="btn  nbtn my-1"><strong className="text-primary"><EditIcon style={{fontSize:15}}/></strong><span></span> Edit Tag/Catagories</a>
     </Link>  

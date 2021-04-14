@@ -175,7 +175,7 @@ const SingleBlog=  ({blog,query})=>{
                        </div>
                       <div className="blog-body">
                            <img className="nbtn " src={`${API}/blog/photo/${blog.slug}`}  style={{maxHeight: '400px', width: '100%', marginBottom: '3rem'}}  alt={blog.title} />
-                            <div className='eduBlog' style={{lineHeight:'2rem'}}> {renderHTML(blog.body)}</div>
+                            <div className='eduBlog p-1' style={{lineHeight:'2rem'}}> {renderHTML(blog.body)}</div>
                     </div>
                     <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
 

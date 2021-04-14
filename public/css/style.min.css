@@ -438,7 +438,7 @@ img {
 }
 .blog ul {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
 }
 .blog ul li {
@@ -481,8 +481,7 @@ img {
   font-family: 'Source Serif Pro', serif;
   font-size: 1.5rem;
 }
-.eduBlog ul,
-ol {
+.eduBlog ul {
   list-style: disc;
   padding-left: 0.5rem;
   margin: 1rem;
