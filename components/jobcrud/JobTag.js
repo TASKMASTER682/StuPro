@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getCookie } from '../../actions/auth';
 import { create, getJobTags, removeJobTag } from '../../actions/jobTag'
 

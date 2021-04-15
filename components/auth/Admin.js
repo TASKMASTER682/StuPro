@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import React from 'react';
 import Router from 'next/router';
 import { isAuth } from '../../actions/auth';
 

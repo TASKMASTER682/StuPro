@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React ,{ useState, useEffect } from 'react';
 import {  getCategories} from '../../actions/category';
 import Link from 'next/link';
 

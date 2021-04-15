@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
+import React from 'react';
 import {signup,preSignup,isAuth} from '../../actions/auth';
 import LoginGoogle from './LoginGoogle';
 import Router from 'next/router';

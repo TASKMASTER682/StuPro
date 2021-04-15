@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useState ,useEffect} from 'react';
 import { signin,authenticate,isAuth } from '../../actions/auth';
 import LoginGoogle from './LoginGoogle';
+import React from 'react';
 
 
 

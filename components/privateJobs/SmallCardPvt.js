@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import renderHTML from 'react-render-html';
+import React from 'react';
 import moment from 'moment';
 import { API } from '../../config';
 

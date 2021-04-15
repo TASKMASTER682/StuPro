@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import renderHTML from 'react-render-html';
-import { useState, useEffect } from 'react';
+import React,{ useState } from 'react';
 import { listSearchPvt } from '../../actions/privateJob';
 
 const SearchPvt = () => {

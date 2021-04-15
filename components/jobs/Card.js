@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import React from 'react';
 import moment from 'moment';
-import Icons from '@material-ui/core';
 import SecurityIcon from '@material-ui/icons/Security';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import RoomIcon from '@material-ui/icons/Room';

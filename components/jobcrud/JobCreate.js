@@ -1,9 +1,7 @@
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import Router from 'next/router';
+import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { withRouter } from 'next/router';
-import { getCookie, isAuth } from '../../actions/auth';
+import { getCookie} from '../../actions/auth';
 import { getJobCategories } from '../../actions/jobCategory';
 import { getJobTags } from '../../actions/jobTag';
 import { createJob } from '../../actions/job';

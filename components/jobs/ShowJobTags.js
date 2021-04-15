@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React,{ useState, useEffect } from 'react';
 import {  getJobTags } from '../../actions/jobTag';
 import Link from 'next/link';
 

@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import Router from 'next/router';
+import React, { useState, useEffect } from 'react';
 import { getCookie, isAuth } from '../../actions/auth';
 import { list, removeJob } from '../../actions/job';
 import moment from 'moment';
