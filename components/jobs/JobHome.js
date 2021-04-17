@@ -22,8 +22,6 @@ const JobHome = () => {
         });
     };
 
- 
-
     const showAllJobs = () => {
         return jobs.map((job, i) => {
             return (

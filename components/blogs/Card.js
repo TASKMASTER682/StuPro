@@ -1,12 +1,14 @@
-import Link from 'next/link';
+import Link  from 'next/link';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import React from 'react';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
 import { API } from '../../config';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import InstagramIcon from '@material-ui/icons/Instagram';
+const FacebookIcon= dynamic(async ()=>import( '@material-ui/icons/Facebook'));
+const LinkedInIcon=dynamic(async ()=>import('@material-ui/icons/LinkedIn')) ;
+const TwitterIcon =dynamic(async()=>import('@material-ui/icons/Twitter')) ;
+const InstagramIcon =dynamic(async()=>import('@material-ui/icons/Instagram')) ;
 
 const Card=({blog})=>{
     const showBlogCategories = blog =>
@@ -16,7 +18,9 @@ const Card=({blog})=>{
             </Link>
         ));
 
-
+        const myLoader = ({ src }) => {
+            return `${API}/blog/photo/${blog.slug}` 
+          }
     return(
         <>
            <header >
@@ -51,16 +55,19 @@ const Card=({blog})=>{
                            </Link>
                            <div>
                                <small  className="text-light-gray extra-small">Follow me on :</small>
+                             
                                <a href={`${blog.postedBy.facebook}`} target="_blank"><FacebookIcon /></a>
                                <a href={`${blog.postedBy.linkedin}`} target="_blank"><LinkedInIcon /></a>
                                <a href={`${blog.postedBy.insta}`} target="_blank"><InstagramIcon /></a>
                                <a href={`${blog.postedBy.twitter}`} target="_blank"><TwitterIcon /></a>
+                         
                            </div>
                       </div>
                    </div>
                   <div className="blog-body">
-                       <img className="nbtn " src={`${API}/blog/photo/${blog.slug}`} style={{maxHeight: '350px', width: '100%', marginBottom: '3rem'}}  alt={blog.title} />
-                        <div> {renderHTML(blog.excerpt)}
+                  <div  style={{maxHeight: '400px', width: '100%', marginBottom: '3rem'}}>
+                      <Image  loader={myLoader}  className="nbtn" src={`${API}/blog/photo/${blog.slug}`} width={1000} height={400} alt={blog.title} />
+                       </div>                        <div> {renderHTML(blog.excerpt)}
                          </div>
                      </div>
                       <ul> 

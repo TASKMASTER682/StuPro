@@ -1,15 +1,13 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState,useEffect } from 'react';
+import dynamic from 'next/dynamic';
+import { useState} from 'react';
 import { withRouter } from 'next/router';
 import { listJobsWithCategoriesAndTags } from '../../actions/job';
 import Card from '../../components/jobs/Card';
-import Search from '../../components/jobs/Search';
-import Infeed from '../../components/ads/Infeed';
-import DisplayAd from '../../components/ads/DisplayAd';
-
-
-
+const Search=dynamic(async()=>import('../../components/jobs/Search'));
+const Infeed=dynamic(async()=>import('../../components/ads/Infeed'),{ssr:false});
+const DisplayAd=dynamic(async()=>import('../../components/ads/DisplayAd'),{ssr:false});
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 
 const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, router })=>{

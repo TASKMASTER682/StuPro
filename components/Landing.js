@@ -1,17 +1,21 @@
-import {APP_NAME} from "../config";
 import Link from 'next/link';
-import JobHome from './jobs/JobHome';
-import PvtJobHome from './privateJobs/PvtJobHome';
-import SecurityIcon from '@material-ui/icons/Security';
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
-import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
-import SettingsIcon from '@material-ui/icons/Settings';
-import GavelIcon from '@material-ui/icons/Gavel';
-import FilterHdrIcon from '@material-ui/icons/FilterHdr';
-import TrainIcon from '@material-ui/icons/Train';
-import DisplayAd from './ads/DisplayAd';
+import Image from 'next/image';
+import {DOMAIN} from '../config'
+import dynamic from 'next/dynamic'
+const JobHome =dynamic(async ()=>import('./jobs/JobHome'),{ssr:false});
+const PvtJobHome =dynamic(async ()=>import('./privateJobs/PvtJobHome'),{ssr:false}) ;
+const SecurityIcon =dynamic(async ()=>import( '@material-ui/icons/Security'),{ssr:false});
+const AccountBalanceIcon =dynamic(async ()=>import('@material-ui/icons/AccountBalance'),{ssr:false}) ;
+const LocalHospitalIcon =dynamic(async ()=>import('@material-ui/icons/LocalHospital'),{ssr:false}) ;
+const SettingsIcon =dynamic(async ()=>import('@material-ui/icons/Settings'),{ssr:false}) ;
+const GavelIcon =dynamic(async ()=>import('@material-ui/icons/Gavel'),{ssr:false}) ;
+const FilterHdrIcon =dynamic(async ()=>import('@material-ui/icons/FilterHdr'),{ssr:false}) ;
+const TrainIcon =dynamic(async ()=>import('@material-ui/icons/Train'),{ssr:false}) ;
+const DisplayAd =dynamic(async ()=>import('./ads/DisplayAd'),{ssr:false}) ;
 const Landing=()=>{
-
+    const myLoader = ({ src }) => {
+        return `${DOMAIN}/img/stupro2.png`
+      }
     return(
 <>
 <section className="landing " >
@@ -46,8 +50,8 @@ const Landing=()=>{
     </Link>
 </div>
 </div>
-    <div >
-        <img className='p-1 my-1' src="./img/stupro2.png" alt="The ProGrad" />
+    <div className='p-1 my-1'>
+        <Image  src='/img/stupro2.png'  width={800} height={500} alt="The ProGrad" />
        
     </div>     
 </section>
@@ -56,7 +60,7 @@ const Landing=()=>{
                
         <h1 className="large text-primary my-2 ">Latest Jobs</h1>
      <div style={{width:'50vw',height:'auto',margin:'auto'}}>
-            <img src="/img/landingjob.webp"  alt="The ProGrad" />
+            <Image src="/img/landingjob.webp" height={300} width={800}  alt="The ProGrad" />
      </div>
      </div>
 

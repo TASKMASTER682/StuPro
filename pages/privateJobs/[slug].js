@@ -1,24 +1,26 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image'
+import dynamic from 'next/dynamic';
 import { useState,useEffect  } from 'react';
-import { singlePvtJob ,listRelatedPvt } from '../../actions/privateJob';
+import { singlePvtJob,listRelatedPvt } from '../../actions/privateJob';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
-import SmallCardPvt from '../../components/privateJobs/SmallCardPvt';
+const SmallCardPvt=dynamic(()=>import('../../components/privateJobs/SmallCardPvt'));
 import { isAuth } from '../../actions/auth';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TelegramIcon from '@material-ui/icons/Telegram';
-import SecurityIcon from '@material-ui/icons/Security';
-import DateRangeIcon from '@material-ui/icons/DateRange';
-import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
-import SchoolIcon from '@material-ui/icons/School';
-import PinDropIcon from '@material-ui/icons/PinDrop';
-import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import WatchLaterIcon from '@material-ui/icons/WatchLater';
-import Article from '../../components/ads/Article';
+const FacebookIcon =dynamic(async()=>import( '@material-ui/icons/Facebook'),{loading:()=><p>...</p>,ssr:false});
+const LinkedInIcon =dynamic(async()=>import('@material-ui/icons/LinkedIn'),{loading:()=><p>...</p>,ssr:false}) ;
+const TelegramIcon =dynamic(async()=>import('@material-ui/icons/Telegram'),{loading:()=><p>...</p>,ssr:false}) ;
+const SecurityIcon =dynamic(async()=>import('@material-ui/icons/Security'),{loading:()=><p>...</p>,ssr:false}) ;
+const DateRangeIcon= dynamic(async()=>import( '@material-ui/icons/DateRange'),{loading:()=><p>...</p>,ssr:false});
+const AccountBalanceWalletIcon =dynamic(async()=>import('@material-ui/icons/AccountBalanceWallet'),{loading:()=><p>...</p>,ssr:false}) ;
+const SchoolIcon =dynamic(async()=>import('@material-ui/icons/School'),{loading:()=><p>...</p>,ssr:false}) ;
+const PinDropIcon =dynamic(async()=>import('@material-ui/icons/PinDrop'),{loading:()=><p>...</p>,ssr:false}) ;
+const BusinessCenterIcon =dynamic(async()=>import('@material-ui/icons/BusinessCenter')) ;
+const VpnKeyIcon =dynamic(async()=>import('@material-ui/icons/VpnKey'),{loading:()=><p>...</p>,ssr:false}) ;
+const WatchLaterIcon=dynamic(async()=>import( '@material-ui/icons/WatchLater'),{loading:()=><p>...</p>,ssr:false});
+const Article=dynamic(async()=>import('../../components/ads/Article'),{loading:()=><p>...</p>,ssr:false}) ;
 
 const SinglePvtJob=({privateJob,query})=>{
     const [relatedPvt, setRelatedPvt] = useState([]);
@@ -137,6 +139,9 @@ const SinglePvtJob=({privateJob,query})=>{
                 </div>
             ));
         };
+        const myLoader = ({ src }) => {
+            return `${API}/privateJob/photo/${privateJob.slug}` 
+          }
 const today=moment();
         return(
            <>
@@ -146,15 +151,13 @@ const today=moment();
              <p className="extra-small text-light-gray m-1 ">see eligibilty and full notification</p>
              <div className="jobs">
              <div className="job bg-light ">
-                 <div className="job-top p-1">
-                
-                 <img loading='lazy' src={`${API}/privateJob/photo/${privateJob.slug}`} alt={privateJob.title} className="round-image my-1 hide-sm" />
-                
-            <Link href={`/privateJobs/${privateJob.slug}`}>
-                <a>
+                 <div className="job-top p-1">         
+                 <div className="m-1 hide-sm">
+                <Image  loader={myLoader} src={`${API}/privateJob/photo/${privateJob.slug}`}  width={300} height={300} alt={privateJob.title} className="round-image" />                     
+
+                </div>          
                 <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>{privateJob.title}</h1>
-                </a>
-            </Link>
+             
                   <div className="share icons p-1">
                      <a href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/privateJobs/${query.slug}`} target="_blank"><p className='text-primary'><FacebookIcon style={{fontSize:30}}/></p></a>
                      <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/privateJobs/${query.slug}`} target="_blank" ><p className='text-primary'><LinkedInIcon style={{fontSize:30}}/></p></a>

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState,useEffect } from 'react';
+import React,{ useState} from 'react';
 import { withRouter } from 'next/router';
 import { listBlogsWithCategoriesAndTags } from '../../actions/blog';
 import Card from '../../components/blogs/Card';
@@ -84,7 +84,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             </article>
         ));
     };
-
+  
     return (
        <>
        {head()}

@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
+import dynamic from 'next/dynamic'
 import moment from 'moment';
-import SecurityIcon from '@material-ui/icons/Security';
-import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
-import RoomIcon from '@material-ui/icons/Room';
+const SecurityIcon =dynamic(async ()=>import('@material-ui/icons/Security') ,{ssr:false});
+const BusinessCenterIcon =dynamic(async ()=>import( '@material-ui/icons/BusinessCenter'),{ssr:false});
+const RoomIcon =dynamic(async ()=>import('@material-ui/icons/Room'),{ssr:false}) ;
 
 const Card=({job})=>{
     const showJobCategories = job =>

@@ -1,5 +1,5 @@
 import React ,{ useState, useEffect } from 'react';
-import { isAuth, getCookie } from '../../actions/auth';
+import {  getCookie } from '../../actions/auth';
 import { create, getCategories, removeCategory } from '../../actions/category';
 
 

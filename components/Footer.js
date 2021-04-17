@@ -1,10 +1,11 @@
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import React from 'react';
 import Image from 'next/image';
-import TelegramIcon from '@material-ui/icons/Telegram';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import YouTubeIcon from '@material-ui/icons/YouTube';
+const TelegramIcon =dynamic(async ()=>import('@material-ui/icons/Telegram'),{ssr:false});
+const InstagramIcon =dynamic(async ()=>import('@material-ui/icons/Instagram'),{ssr:false}) ;
+const FacebookIcon =dynamic(async ()=>import('@material-ui/icons/Facebook'),{ssr:false});
+const YouTubeIcon =dynamic(async ()=>import('@material-ui/icons/YouTube'),{ssr:false});
 const Footer=()=>{
     const currentDate=new Date();
     const year=currentDate.getFullYear();

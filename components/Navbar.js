@@ -1,17 +1,17 @@
 import Link from 'next/link';
 import React from 'react';
-import {APP_NAME} from '../config';
+import dynamic from 'next/dynamic';                                     
 import NProgress from 'nprogress';
 import {signout,isAuth} from '../actions/auth';
 import Router from "next/router";
 import Image from "next/image";
-import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
-import WorkIcon from '@material-ui/icons/Work';
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import BusinessIcon from '@material-ui/icons/Business';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+const LibraryBooksIcon=dynamic(()=>import('@material-ui/icons/LibraryBooks'),{ssr:false}) ;
+const WorkIcon=dynamic(async ()=>import('@material-ui/icons/Work'),{ssr:false}) ;
+const PersonAddIcon=dynamic(async ()=>import('@material-ui/icons/PersonAdd'),{ssr:false}) ;
+const BusinessIcon=dynamic(async ()=>import( '@material-ui/icons/Business'),{ssr:false});
+const DashboardIcon=dynamic(async ()=>import('@material-ui/icons/Dashboard'),{ssr:false}) ;
+const ExitToAppIcon=dynamic(async ()=>import('@material-ui/icons/ExitToApp'),{ssr:false}) ;
+const AccountCircleIcon=dynamic(async ()=>import( '@material-ui/icons/AccountCircle'),{ssr:false});
  Router.onRouteChangeStart=url=>NProgress.start()
  Router.onRouteChangeComplete=url=>NProgress.done()
  Router.onRouteChangeError=url=>NProgress.done()

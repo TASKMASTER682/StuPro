@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import renderHTML from 'react-render-html';
 import { useState, useEffect } from 'react';
 import { listSearch } from '../../actions/job';
 

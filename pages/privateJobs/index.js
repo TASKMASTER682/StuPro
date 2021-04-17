@@ -1,13 +1,15 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState,useEffect } from 'react';
+import dynamic from 'next/dynamic';
+import { useState} from 'react';
+import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import { withRouter } from 'next/router';
 import { listPvtJobsWithCategoriesAndTags } from '../../actions/privateJob';
 import Card from '../../components/privateJobs/Card';
-import SearchPvt from '../../components/privateJobs/PvtSearch';
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
-import Infeed from '../../components/ads/Infeed';
-import DisplayAd from '../../components/ads/DisplayAd';
+const SearchPvt =dynamic(async ()=>import( '../../components/privateJobs/PvtSearch'));
+const Infeed =dynamic(async ()=>import('../../components/ads/Infeed'),{ssr:false}) ;
+const DisplayAd =dynamic(async ()=>import('../../components/ads/DisplayAd'),{ssr:false}) ;
+
 const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs, jobsLimit, jobSkip, router })=>{
 
 

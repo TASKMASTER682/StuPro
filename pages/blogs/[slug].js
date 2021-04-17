@@ -1,14 +1,16 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
+import dynamic from "next/dynamic";
 import { useState,useEffect  } from 'react';
 import { singleBlog,listRelated} from '../../actions/blog';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
-import SmallCard from '../../components/blogs/SmallCard';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TelegramIcon from '@material-ui/icons/Telegram';
+const SmallCard = dynamic(async () => import('../../components/blogs/SmallCard'),{loading:()=><p>...</p>,ssr:false});
+const FacebookIcon=dynamic(async ()=>import('@material-ui/icons/Facebook'),{loading:()=><p>...</p>,ssr:false});
+const LinkedInIcon =dynamic(async ()=>import('@material-ui/icons/LinkedIn'),{loading:()=><p>...</p>,ssr:false});
+const TelegramIcon =dynamic(async ()=>import('@material-ui/icons/Telegram'),{loading:()=><p>...</p>,ssr:false});
 const SingleBlog=  ({blog,query})=>{
     const [related, setRelated] = useState([]);
 
@@ -119,7 +121,9 @@ const SingleBlog=  ({blog,query})=>{
                 </div>
             ));
         };
- 
+        const myLoader = ({ src }) => {
+            return `${API}/blog/photo/${blog.slug}` 
+          }
      
 
         return(
@@ -174,7 +178,9 @@ const SingleBlog=  ({blog,query})=>{
                           </div>
                        </div>
                       <div className="blog-body">
-                           <img className="nbtn " src={`${API}/blog/photo/${blog.slug}`}  style={{maxHeight: '400px', width: '100%', marginBottom: '3rem'}}  alt={blog.title} />
+                      <div  style={{maxHeight: '400px', width: '100%', marginBottom: '3rem'}}>
+                      <Image  loader={myLoader}  className="nbtn" src={`${API}/blog/photo/${blog.slug}`} width={1000} height={400} alt={blog.title} />
+                       </div>
                             <div className='eduBlog p-1' style={{lineHeight:'2rem'}}> {renderHTML(blog.body)}</div>
                     </div>
                     <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>

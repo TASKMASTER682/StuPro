@@ -1,22 +1,24 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
+import dynamic from "next/dynamic";
 import { useState,useEffect  } from 'react';
 import { singleJob ,listRelated } from '../../actions/job';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
-import SmallCard from '../../components/jobs/SmallCard';
+const SmallCard =dynamic(()=>import('../../components/jobs/SmallCard'),{loading:()=><p>...</p>});
 import { isAuth } from '../../actions/auth';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TelegramIcon from '@material-ui/icons/Telegram';
-import SecurityIcon from '@material-ui/icons/Security';
-import DateRangeIcon from '@material-ui/icons/DateRange';
-import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
-import SchoolIcon from '@material-ui/icons/School';
-import PinDropIcon from '@material-ui/icons/PinDrop';
-import WatchLaterIcon from '@material-ui/icons/WatchLater';
-import Article from '../../components/ads/Article';
+const FacebookIcon=dynamic(async ()=>import('@material-ui/icons/Facebook'),{loading:()=><p>...</p>,ssr:false}) ;
+const LinkedInIcon =dynamic(async ()=>import('@material-ui/icons/LinkedIn'),{loading:()=><p>...</p>,ssr:false});
+const TelegramIcon=dynamic(async ()=>import('@material-ui/icons/Telegram'),{loading:()=><p>...</p>,ssr:false}) ;
+const SecurityIcon =dynamic(async ()=>import('@material-ui/icons/Security'),{loading:()=><p>...</p>,ssr:false}) ;
+const DateRangeIcon =dynamic(async ()=>import('@material-ui/icons/DateRange'),{loading:()=><p>...</p>,ssr:false}) ;
+const AccountBalanceWalletIcon =dynamic(async ()=>import('@material-ui/icons/AccountBalanceWallet'),{loading:()=><p>...</p>,ssr:false}) ;
+const SchoolIcon =dynamic(async ()=>import('@material-ui/icons/School'),{loading:()=><p>...</p>,ssr:false}) ;
+const PinDropIcon =dynamic(async ()=>import('@material-ui/icons/PinDrop'),{loading:()=><p>...</p>,ssr:false}) ;
+const WatchLaterIcon =dynamic(async ()=>import('@material-ui/icons/WatchLater'),{loading:()=><p>...</p>,ssr:false}) ;
+const Article =dynamic(async ()=>import('../../components/ads/Article'),{loading:()=><p>...</p>,ssr:false}) ;
 
 
 
@@ -138,7 +140,9 @@ const SingleJob=({job,query})=>{
             ));
         };
 
-     
+        const myLoader = ({ src }) => {
+            return `${API}/job/photo/${job.slug}` 
+          }
 const today=moment();
         return(
            <>
@@ -150,14 +154,12 @@ const today=moment();
              <div className="jobs">
              <div className="job bg-light ">
                  <div className="job-top p-1">
-                
-                 <img loading='lazy' src={`${API}/job/photo/${job.slug}`} alt={job.title} className="round-image my-1 hide-sm" />
-                
-            <Link href={`/jobs/${job.slug}`}>
-                <a>
+                <div className="m-1 hide-sm">
+                <Image  loader={myLoader} src={`${API}/job/photo/${job.slug}`}  width={300} height={300} alt={job.title} className="round-image" />                     
+
+                </div>
                 <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>{job.title}</h1>
-                </a>
-            </Link>
+          
             <div className="share icons p-1">
                      <a  href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${query.slug}`} target="_blank"><strong className='text-primary'><FacebookIcon style={{fontSize:30}}/></strong></a>
                      <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/jobs/${query.slug}`} target="_blank" ><p className='text-primary'><LinkedInIcon style={{fontSize:30}}/></p></a>
