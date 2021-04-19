@@ -23,7 +23,7 @@ const Navbar=()=>{
        <div className="py-1" style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
          <Link  href ="/">
          <a>
-          <Image src='/img/prograd.png' height={50} width={190}  priority style={{marginTop:'0.5rem'}}/>
+          <Image src='/img/prograd.png' height={50} width={190}  priority style={{marginTop:'0.5rem'}} alt='prograd landing'/>
           </a>
           </Link>
        

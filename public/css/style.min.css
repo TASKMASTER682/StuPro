@@ -1035,13 +1035,10 @@ img {
     margin-top: 1rem;
     padding: 0.5rem;
   }
-  .home-card img {
-    width: 140px;
-    height: 7rem;
-  }
+
   .home-card {
-    width: 145px;
-    height: 220px;
+    width: 500px;
+    height: 500px;
   }
   .landing-inner {
     display: flex;

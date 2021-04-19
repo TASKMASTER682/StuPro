@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React,{ useState, useEffect } from 'react';
 import { listPvtHome } from '../../actions/privateJob';
 import moment from 'moment';
+import Image from 'next/image'
 import { API } from '../../config';
 
 
@@ -27,8 +28,8 @@ const PvtJobHome = () => {
     const showAllJobs = () => {
         return privateJobs.map((privateJob, i) => {
             return (
-                <div class="home-card m-1 nbtn">
-                <img loading='lazy' src={`${API}/privateJob/photo/${privateJob.slug}`} alt={privateJob.title} />
+                <div className="home-card m-1 nbtn">
+                <img  loading='lazy' src="/homeJob1.png" alt={privateJob.title} />
                 <div class="card-heading">
                     <Link href={`/privateJobs/${privateJob.slug}`}>
                     <a>
@@ -40,7 +41,7 @@ const PvtJobHome = () => {
                     </div>
                 
                
-                  <h3 class="extra-small p-1">Published on | {moment(privateJob.updatedAt).format("MMM DD YYYY")}</h3>
+                  <h3 class="extra-small text-primary p-1">Published on | {moment(privateJob.updatedAt).format("MMM DD YYYY")}</h3>
              </div>
             );
         });

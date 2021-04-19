@@ -9,14 +9,14 @@ const RoomIcon =dynamic(async ()=>import('@material-ui/icons/Room'),{ssr:false})
 const Card=({job})=>{
     const showJobCategories = job =>
     job.jobCategories.map((c, i) => (
-        <Link key={i} href={`/jobCategories/${c.slug}`}>
+        <Link key={i} href={`/jobCategories/${c.slug}`} >
             <a style={{padding:" 0 0.8rem",border:'solid #00e7d2'}}   className="btn nbtn bg-light-gray "><p className="extra-small">{c.name}</p></a>
         </Link>
     ));
 
 const showJobTags = job =>
     job.jobTags.map((t, i) => (
-        <Link key={i} href={`/jobTags/${t.slug}`}>
+        <Link key={i} href={`/jobTags/${t.slug}`} >
             <a style={{padding:" 0 0.8rem",border:'solid black '}}  className="btn nbtn bg-light-gray "><p className="extra-small">{t.name}</p></a>
         </Link>
     ));

@@ -155,8 +155,11 @@ const today=moment();
                  <div className="m-1 hide-sm">
                 <Image  loader={myLoader} src={`${API}/privateJob/photo/${privateJob.slug}`}  width={300} height={300} alt={privateJob.title} className="round-image" />                     
 
-                </div>          
+                </div>       
+                <div className="my-1">
                 <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>{privateJob.title}</h1>
+
+                </div>   
              
                   <div className="share icons p-1">
                      <a href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/privateJobs/${query.slug}`} target="_blank"><p className='text-primary'><FacebookIcon style={{fontSize:30}}/></p></a>

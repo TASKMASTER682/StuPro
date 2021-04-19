@@ -2,8 +2,7 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { listHome } from '../../actions/job';
 import moment from 'moment';
-import { API } from '../../config';
-
+import Image from 'next/image'
 
 const JobHome = () => {
     const [jobs, setJobs] = useState([]);
@@ -26,7 +25,7 @@ const JobHome = () => {
         return jobs.map((job, i) => {
             return (
                 <div className="home-card m-1 nbtn">
-                <img loading='lazy' src={`${API}/job/photo/${job.slug}`} alt={job.title} />
+               <img loading='lazy' src="/homeJob2.png" alt="ProGrad" />
                 <div className="card-heading">
                     <Link href={`/jobs/${job.slug}`}>
                     <a>
@@ -38,7 +37,7 @@ const JobHome = () => {
                     </div>
                 
                
-                  <h3 className="extra-small p-1">Published on | {moment(job.updatedAt).format("MMM DD YYYY")}</h3>
+                  <h3 className="extra-small text-danger p-1">Published on | {moment(job.updatedAt).format("MMM DD YYYY")}</h3>
              </div>
             );
         });

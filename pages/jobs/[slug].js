@@ -158,7 +158,10 @@ const today=moment();
                 <Image  loader={myLoader} src={`${API}/job/photo/${job.slug}`}  width={300} height={300} alt={job.title} className="round-image" />                     
 
                 </div>
+                <div className="my-1">
                 <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>{job.title}</h1>
+
+                </div>
           
             <div className="share icons p-1">
                      <a  href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${query.slug}`} target="_blank"><strong className='text-primary'><FacebookIcon style={{fontSize:30}}/></strong></a>
