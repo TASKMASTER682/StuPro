@@ -59,7 +59,7 @@ const Landing=()=>{
    <div className="land-1" >
                
         <h1 className="large text-primary my-2 ">Latest Jobs</h1>
-     <div style={{width:'50vw',height:'auto',margin:'auto'}}>
+     <div >
             <Image src="/img/landingjob.webp" height={300} width={800}  alt="The ProGrad" />
      </div>
      </div>

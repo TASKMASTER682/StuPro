@@ -25,7 +25,7 @@ const JobHome = () => {
         return jobs.map((job, i) => {
             return (
                 <div className="home-card m-1 nbtn">
-               <img loading='lazy' src="/homeJob2.png" alt="ProGrad" />
+               <img loading='lazy' src="img/pvthome.jpg" alt={"ProGrad"} />
                 <div className="card-heading">
                     <Link href={`/jobs/${job.slug}`}>
                     <a>

@@ -29,11 +29,11 @@ const PvtJobHome = () => {
         return privateJobs.map((privateJob, i) => {
             return (
                 <div className="home-card m-1 nbtn">
-                <img  loading='lazy' src="/homeJob1.png" alt={privateJob.title} />
-                <div class="card-heading">
+               <img loading='lazy' src="homeJob1.jpg" alt={"ProGrad"} />
+                <div className="card-heading">
                     <Link href={`/privateJobs/${privateJob.slug}`}>
                     <a>
-                     <h1  className="text-dark   " style={{fontFamily:`'Source Serif Pro' ,serif`,fontSize:'1.2rem' }}>
+                     <h1  className="text-dark" style={{fontFamily:`'Source Serif Pro' ,serif`,fontSize:'1.2rem' }}>
                         {privateJob.title}
                         </h1>
                     </a>
