@@ -5,6 +5,7 @@ import NProgress from 'nprogress';
 import {signout,isAuth} from '../actions/auth';
 import Router from "next/router";
 import Image from "next/image";
+import {DOMAIN} from '../config';
 const LibraryBooksIcon=dynamic(()=>import('@material-ui/icons/LibraryBooks'),{ssr:false}) ;
 const WorkIcon=dynamic(async ()=>import('@material-ui/icons/Work'),{ssr:false}) ;
 const PersonAddIcon=dynamic(async ()=>import('@material-ui/icons/PersonAdd'),{ssr:false}) ;
@@ -17,13 +18,16 @@ const AccountCircleIcon=dynamic(async ()=>import( '@material-ui/icons/AccountCir
  Router.onRouteChangeError=url=>NProgress.done()
 
 const Navbar=()=>{
+  const myLoader = ({ src }) => {
+    return `${DOMAIN}/img/prograd.png` 
+  }
     return(
     <>
        <nav className='navbar bg-success'style={{height:'4rem'}}>
        <div className="py-1" >
          <Link  href ="/">
          <a>
-          <Image src='/img/prograd.png' height={50} width={190}  priority style={{marginTop:'0.5rem'}} alt='prograd landing'/>
+          <Image loader={myLoader} src={`${DOMAIN}/img/prograd.png`} height={50} width={190}  priority style={{marginTop:'0.5rem'}} alt='prograd landing'/>
           </a>
           </Link>
        

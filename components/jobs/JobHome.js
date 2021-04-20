@@ -20,7 +20,7 @@ const JobHome = () => {
             }
         });
     };
-
+ 
     const showAllJobs = () => {
         return jobs.map((job, i) => {
             return (
@@ -29,19 +29,18 @@ const JobHome = () => {
                 <div className="card-heading">
                     <Link href={`/jobs/${job.slug}`}>
                     <a>
-                     <h1  className="text-dark   " style={{fontFamily:`'Source Serif Pro' ,serif`,fontSize:'1.2rem' }}>
+                     <h1  className="text-dark   " style={{fontFamily:`'Source Serif Pro' ,serif`,fontSize:'1rem' }}>
                         {job.title}
                         </h1>
                     </a>
                     </Link>
-                    </div>
-                
-               
-                  <h3 className="extra-small text-danger p-1">Published on | {moment(job.updatedAt).format("MMM DD YYYY")}</h3>
+                    </div>                           
+                  <h3 className="extra-small text-danger">Published on | {moment(job.updatedAt).format("MMM DD YYYY")}</h3>
              </div>
             );
         });
     };
+ 
     // {showUpdateButton(blog)}
     return (
         <React.Fragment>

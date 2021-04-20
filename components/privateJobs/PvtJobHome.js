@@ -33,7 +33,7 @@ const PvtJobHome = () => {
                 <div className="card-heading">
                     <Link href={`/privateJobs/${privateJob.slug}`}>
                     <a>
-                     <h1  className="text-dark" style={{fontFamily:`'Source Serif Pro' ,serif`,fontSize:'1.2rem' }}>
+                     <h1  className="text-dark" style={{fontFamily:`'Source Serif Pro' ,serif`,fontSize:'1rem' }}>
                         {privateJob.title}
                         </h1>
                     </a>
@@ -41,7 +41,7 @@ const PvtJobHome = () => {
                     </div>
                 
                
-                  <h3 class="extra-small text-primary p-1">Published on | {moment(privateJob.updatedAt).format("MMM DD YYYY")}</h3>
+                  <h3 class="extra-small text-primary">Published on | {moment(privateJob.updatedAt).format("MMM DD YYYY")}</h3>
              </div>
             );
         });

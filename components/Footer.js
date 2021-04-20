@@ -2,6 +2,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import Image from 'next/image';
+import {DOMAIN} from '../config';
 const TelegramIcon =dynamic(async ()=>import('@material-ui/icons/Telegram'),{ssr:false});
 const InstagramIcon =dynamic(async ()=>import('@material-ui/icons/Instagram'),{ssr:false}) ;
 const FacebookIcon =dynamic(async ()=>import('@material-ui/icons/Facebook'),{ssr:false});
@@ -9,11 +10,14 @@ const YouTubeIcon =dynamic(async ()=>import('@material-ui/icons/YouTube'),{ssr:f
 const Footer=()=>{
     const currentDate=new Date();
     const year=currentDate.getFullYear();
+    const myLoader = ({ src }) => {
+        return `${DOMAIN}/img/StuproLogo.png` 
+      }
     return(
         <section className="footer-container bg-success my-1">
         <div className="footer">
             <div className="first-row ">
-              <span>  <Image src="/img/StuproLogo.png" height={220} width={220}   priority alt="ProGrad" /></span>
+              <span>  <Image loader={myLoader} src={`${DOMAIN}/img/StuproLogo.png`} height={220} width={220}   priority alt="ProGrad" /></span>
                 <p className="extra-small text-light-gray">
                     © Copyright {year}.ProGrad India | 
                     All rights reserved

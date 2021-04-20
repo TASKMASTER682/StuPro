@@ -16,6 +16,9 @@ const Landing=()=>{
     const myLoader = ({ src }) => {
         return `${DOMAIN}/img/stupro2.png`
       }
+      const antiLoader = ({ src }) => {
+        return `${DOMAIN}/img/landingJob.webp`
+      }
     return(
 <>
 <section className="landing " >
@@ -51,7 +54,7 @@ const Landing=()=>{
 </div>
 </div>
     <div className='p-1 my-1'>
-        <Image  src='/img/stupro2.png'  width={800} height={500} alt="The ProGrad" />
+        <Image loader={myLoader}  src='/img/stupro2.png' width={800} height={500} alt="The ProGrad" />
        
     </div>     
 </section>
@@ -60,13 +63,15 @@ const Landing=()=>{
                
         <h1 className="large text-primary my-2 ">Latest Jobs</h1>
      <div >
-            <Image src="/img/landingjob.webp" height={300} width={800}  alt="The ProGrad" />
+            <Image loader={antiLoader} src='/img/landingJob.webp' height={300} width={800}  alt="The ProGrad" />
      </div>
      </div>
 
      <div>
-     <DisplayAd />
-     <Link href='/jobs'>
+     <div className="p-2" style={{maxHeight:'10rem'}}>
+    <DisplayAd />
+    </div>   
+      <Link href='/jobs'>
       <a>
       <h2 className="text-danger small m-1">Government Jobs:-</h2>
       </a>
@@ -77,7 +82,9 @@ const Landing=()=>{
         <JobHome />
             </div>
     <div>
+    <div className="p-2" style={{maxHeight:'10rem'}}>
     <DisplayAd />
+    </div>
     <Link href='/privateJobs'>
       <a>
       <h2 className="text-danger small m-1">Private Jobs:-</h2>
@@ -130,8 +137,10 @@ const Landing=()=>{
  </div>
  <Link  href="/jobs/jobSearch"><a className="btn nbtn btn-danger">Show All Job-Categories and Tags</a></Link>
  </section>
- <DisplayAd />
- <section className="bg-primary landing-categories nbtn my-1 py-1">
+ <div className="p-2" style={{maxHeight:'10rem'}}>
+    <DisplayAd />
+ </div>
+     <section className="bg-primary landing-categories nbtn my-1 py-1">
      <h2 className="text-dark small py-1">Job Posting Plans</h2>
      <div className="cat-main">
      <div>

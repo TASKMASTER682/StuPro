@@ -312,11 +312,10 @@ img {
 .home-card img {
   border-radius: 2rem;
   width: 14.7vw;
-  height: 10rem;
+  height: 8rem;
 }
 .home-card .card-heading {
-  padding-left: 0.4rem;
-  height: 60px;
+  height: 80px;
   overflow: hidden;
 }
 .landing-categories {
@@ -1037,8 +1036,15 @@ img {
   }
 
   .home-card {
-    width: 500px;
-    height: 500px;
+    width: 145px;
+    height: 220px;
+  }
+  .home-card img {
+    width: 140px;
+  }
+  .home-card .card-heading {
+    height: 60px;
+    overflow: hidden;
   }
   .landing-inner {
     display: flex;
