@@ -8,7 +8,7 @@ import {DOMAIN} from '../config';
       }
     return (
         <div>
-         <Image loader={myLoader} src='/img/landingJob.webp' height={300} width={800}  alt="The ProGrad" />
+         <Image loader={myLoader} src='/img/landingJob.jpg' height={300} width={800}  alt="The ProGrad" />
         </div>
     )
 }
