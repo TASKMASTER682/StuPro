@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {DOMAIN} from '../config';
 import dynamic from 'next/dynamic'
-const LandingWebp =dynamic(async ()=>import('./landingWebp'),{ssr:false}) ;
 const JobHome =dynamic(async ()=>import('./jobs/JobHome'),{ssr:false});
 const PvtJobHome =dynamic(async ()=>import('./privateJobs/PvtJobHome'),{ssr:false}) ;
 const SecurityIcon =dynamic(async ()=>import( '@material-ui/icons/Security'),{ssr:false});
@@ -62,7 +61,6 @@ const Landing=()=>{
    <div className="py-2">
    <h1 className="large text-primary ">Latest Jobs</h1>
    </div>             
-     <LandingWebp />
      </div>
      <div>
      <div className="p-2" style={{maxHeight:'10rem'}}>
