@@ -4,7 +4,7 @@ import {DOMAIN} from '../config';
 
  const landingWebp = () => {
     const myLoader = ({ src }) => {
-        return `${DOMAIN}/img/landingJob.webp`
+        return `${DOMAIN}/img/landingJob.jpg`
       }
     return (
         <div>
