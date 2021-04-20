@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import {DOMAIN} from '../config'
+import {DOMAIN} from '../config';
 import dynamic from 'next/dynamic'
+const LandingWebp =dynamic(async ()=>import('./landingWebp'),{ssr:false}) ;
 const JobHome =dynamic(async ()=>import('./jobs/JobHome'),{ssr:false});
 const PvtJobHome =dynamic(async ()=>import('./privateJobs/PvtJobHome'),{ssr:false}) ;
 const SecurityIcon =dynamic(async ()=>import( '@material-ui/icons/Security'),{ssr:false});
@@ -16,9 +17,7 @@ const Landing=()=>{
     const myLoader = ({ src }) => {
         return `${DOMAIN}/img/stupro2.png`
       }
-      const antiLoader = ({ src }) => {
-        return `${DOMAIN}/img/landingJob.webp`
-      }
+
     return(
 <>
 <section className="landing " >
@@ -59,14 +58,12 @@ const Landing=()=>{
     </div>     
 </section>
 <section className="landing-two" style={{textAlign:'center',alignItems:'center',alignContent:'center'}}>
-   <div className="land-1" >
-               
-        <h1 className="large text-primary my-2 ">Latest Jobs</h1>
-     <div >
-            <Image loader={antiLoader} src='/img/landingJob.webp' height={300} width={800}  alt="The ProGrad" />
+   <div className="land-1" > 
+   <div className="py-2">
+   <h1 className="large text-primary ">Latest Jobs</h1>
+   </div>             
+     <LandingWebp />
      </div>
-     </div>
-
      <div>
      <div className="p-2" style={{maxHeight:'10rem'}}>
     <DisplayAd />
