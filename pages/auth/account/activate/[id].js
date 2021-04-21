@@ -35,7 +35,7 @@ const ActivateAccount = ({ router }) => {
     };
 
 
-    const showLoading = () => (loading ? <div className="alert bg-dark p-1 nbtn">Loading...</div> : '');
+    const showLoading = () => (loading ? <div className="badge badge-primary p-1 nbtn">Loading...</div> : '');
 
     return (
         
@@ -44,7 +44,7 @@ const ActivateAccount = ({ router }) => {
                 <div>
                 {showLoading()}
                 {error && error}
-                {success && <div className="alert bg-success p-1 nbtn">
+                {success && <div className="badge badge-primary p-1 nbtn">
                 You have successfully activated your account.<a href="/signin" className="btn btn-primary m-1 nbtn">Please signin</a>
                 </div>
                 }

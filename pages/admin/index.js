@@ -1,13 +1,19 @@
 import Admin from '../../components/auth/Admin';
 import Link from 'next/link';
 import Image from "next/image";
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import UpdateIcon from '@material-ui/icons/Update';
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
-import EditIcon from '@material-ui/icons/Edit';
+import {DOMAIN} from '../../config'
+import dynamic from 'next/dynamic';
+const AddCircleOutlineIcon =dynamic(()=>import('@material-ui/icons/AddCircleOutline'),{ssr:false}) ;
+const UpdateIcon =dynamic(()=>import('@material-ui/icons/Update'),{ssr:false}) ;
+const AssignmentIndIcon =dynamic(()=>import('@material-ui/icons/AssignmentInd'),{ssr:false}) ;
+const EditIcon =dynamic(()=>import('@material-ui/icons/Edit'),{ssr:false}) ;
 
 
 const AdminDashboard=()=>{
+    const myLoader = ({ src }) => {
+        return `${DOMAIN}/img/stupro10.png`
+      }
+
     return(
 <Admin>
      <section className="container">
@@ -50,7 +56,7 @@ const AdminDashboard=()=>{
     </Link> 
 
    
-    <Image  className="nbtn my-1" height={1000} width={2000} priority src="/img/stupro10.png" alt="The ProGrad" />
+    <Image loader={myLoader} className="nbtn my-1" height={1000} width={2000} priority src={`${DOMAIN}/img/stupro10.png`} alt="The ProGrad" />
     
 </div>
        

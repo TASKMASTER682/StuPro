@@ -1,12 +1,18 @@
 import Private from '../../components/auth/Private';
 import Link from 'next/link';
 import Image from 'next/image';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import UpdateIcon from '@material-ui/icons/Update';
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import {DOMAIN} from '../../config';
+import dynamic from 'next/dynamic';
+const AddCircleOutlineIcon =dynamic(()=>import('@material-ui/icons/AddCircleOutline'),{ssr:false}) ;
+const UpdateIcon =dynamic(()=>import('@material-ui/icons/Update'),{ssr:false}) ;
+const AssignmentIndIcon =dynamic(()=>import('@material-ui/icons/AssignmentInd'),{ssr:false}) ;
 
 
 const UserIndex=()=>{
+    const myLoader = ({ src }) => {
+        return `${DOMAIN}/img/stupro10.png`
+      }
+
     return(
     
        <Private>
@@ -28,7 +34,7 @@ const UserIndex=()=>{
         <a className="btn  nbtn my-1"><strong className="text-primary"><AssignmentIndIcon  style={{fontSize:15}}/></strong><span></span> Update Profile</a>
     </Link>
  
-    <Image  className="nbtn my-1" height={1000} width={2000} src="/img/stupro10.png"  priority alt="support others" />
+    <Image loader={myLoader} className="nbtn my-1" height={1000} width={2000} src={`${DOMAIN}/img/stupro10.png`}  priority alt="support others" />
 </div>
       
     </div>

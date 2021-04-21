@@ -45,10 +45,10 @@ const ResetPassword = ({ router }) => {
     );
 
     const showError=()=>(
-        error ? <div className="alert p-1 nbtn bg-danger">{error}</div> : ''
+        error ? <div className="badge badge-danger p-1 nbtn ">{error}</div> : ''
     )
 
-    const showMessage = () => (message ? <div className="alert bg-success p-1 nbtn">{message}</div> : '');
+    const showMessage = () => (message ? <div className="badge badge-primary p-1 nbtn">{message}</div> : '');
        
 
     return (

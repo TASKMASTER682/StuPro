@@ -36,7 +36,7 @@ const ForgotPassword = () => {
         
     const showMessage = (message) => {
         return(
-            <div className="bg-primary">{message}</div>
+            <div className="badge-primary">{message}</div>
         )
     }
          
