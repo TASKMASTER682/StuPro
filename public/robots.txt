@@ -1,3 +1,11 @@
-User-agent:Googlebot
-Sitemap: http://theprograd.com/sitemap.xml
-Disallow
+User-agent: *
+Disallow:/admin
+Disallow:/profile
+Disallow:/user
+Disallow:/auth
+Disallow:/activate
+Disallow:/jobs/jobSearch
+Disallow:/privateJobs/pvtJobSearch
+
+Sitemap: https://theprograd.com/api/jobs-sitemap
+

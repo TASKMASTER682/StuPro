@@ -53,10 +53,10 @@ class MyDocument extends Document {
           <Main />       
           <NextScript />
         </body>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y27GY802BM"></script>
-        <script async dangerouslySetInnerHTML={this.setGoogleTags()}></script>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <script async src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" dangerouslySetInnerHTML={this.setOneSignal()} ></script>
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=G-Y27GY802BM"></script>
+        <script defer dangerouslySetInnerHTML={this.setGoogleTags()}></script>
+        {/* <script defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> */}
+        <script defer src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" dangerouslySetInnerHTML={this.setOneSignal()} ></script>
 
       </Html>
     )

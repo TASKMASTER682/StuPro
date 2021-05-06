@@ -11,7 +11,7 @@ const SettingsIcon =dynamic(async ()=>import('@material-ui/icons/Settings'),{ssr
 const GavelIcon =dynamic(async ()=>import('@material-ui/icons/Gavel'),{ssr:false}) ;
 const FilterHdrIcon =dynamic(async ()=>import('@material-ui/icons/FilterHdr'),{ssr:false}) ;
 const TrainIcon =dynamic(async ()=>import('@material-ui/icons/Train'),{ssr:false}) ;
-const DisplayAd =dynamic(async ()=>import('./ads/DisplayAd'),{ssr:false}) ;
+// const DisplayAd =dynamic(async ()=>import('./ads/DisplayAd'),{ssr:false}) ;
 const Landing=()=>{
     const myLoader = ({ src }) => {
         return `${DOMAIN}/img/stupro2.png`
@@ -63,9 +63,9 @@ const Landing=()=>{
    </div>             
      </div>
      <div>
-     <div className="p-2" style={{maxHeight:'10rem'}}>
+     {/* <div className="p-2" style={{maxHeight:'10rem'}}>
     <DisplayAd />
-    </div>   
+    </div>    */}
       <Link href='/jobs'>
       <a>
       <h2 className="text-danger small m-1">Government Jobs:-</h2>
@@ -77,9 +77,9 @@ const Landing=()=>{
         <JobHome />
             </div>
     <div>
-    <div className="p-2" style={{maxHeight:'10rem'}}>
+    {/* <div className="p-2" style={{maxHeight:'10rem'}}>
     <DisplayAd />
-    </div>
+    </div> */}
     <Link href='/privateJobs'>
       <a>
       <h2 className="text-danger small m-1">Private Jobs:-</h2>
@@ -132,9 +132,9 @@ const Landing=()=>{
  </div>
  <Link  href="/jobs/jobSearch"><a className="btn nbtn btn-danger">Show All Job-Categories and Tags</a></Link>
  </section>
- <div className="p-2" style={{maxHeight:'10rem'}}>
+ {/* <div className="p-2" style={{maxHeight:'10rem'}}>
     <DisplayAd />
- </div>
+ </div> */}
      <section className="bg-primary landing-categories nbtn my-1 py-1">
      <h2 className="text-dark small py-1">Job Posting Plans</h2>
      <div className="cat-main">

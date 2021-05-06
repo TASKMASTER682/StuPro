@@ -2,7 +2,6 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { listHome } from '../../actions/job';
 import moment from 'moment';
-import Image from 'next/image'
 
 const JobHome = () => {
     const [jobs, setJobs] = useState([]);
@@ -23,9 +22,10 @@ const JobHome = () => {
  
     const showAllJobs = () => {
         return jobs.map((job, i) => {
+
             return (
                 <div className="home-card m-1 nbtn">
-               <img loading='lazy' src="img/pvthome.jpg" alt={"ProGrad"} />
+               <img  src="img/pvthome.jpg" alt={"ProGrad"} />
                 <div className="card-heading">
                     <Link href={`/jobs/${job.slug}`}>
                     <a>
@@ -40,7 +40,9 @@ const JobHome = () => {
             );
         });
     };
- 
+    
+
+
     // {showUpdateButton(blog)}
     return (
         <React.Fragment>

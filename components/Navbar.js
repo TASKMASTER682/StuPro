@@ -33,6 +33,7 @@ const Navbar=()=>{
        
         </div>
         <ul >
+            <li><h3><Link href="/about"><a>About us</a></Link></h3></li>
             <li><h3><Link href="/jobs"><a>Jobs</a></Link></h3></li>
             <li><h3><Link href="/privateJobs"><a>Private Jobs</a></Link></h3></li>
             <li><h3><Link href="/blogs"><a>Educational Blogs</a></Link></h3></li>

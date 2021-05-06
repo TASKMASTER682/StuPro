@@ -5,9 +5,9 @@ import { useState} from 'react';
 import { withRouter } from 'next/router';
 import { listJobsWithCategoriesAndTags } from '../../actions/job';
 import Card from '../../components/jobs/Card';
-const Search=dynamic(async()=>import('../../components/jobs/Search'));
-const Infeed=dynamic(async()=>import('../../components/ads/Infeed'),{ssr:false});
-const DisplayAd=dynamic(async()=>import('../../components/ads/DisplayAd'),{ssr:false});
+// const Search=dynamic(async()=>import('../../components/jobs/Search'));
+// const Infeed=dynamic(async()=>import('../../components/ads/Infeed'),{ssr:false});
+// const DisplayAd=dynamic(async()=>import('../../components/ads/DisplayAd'),{ssr:false});
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 
 const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, router })=>{
@@ -15,17 +15,17 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
 
     const head = () => (
         <Head>
-            <title> Get all types of government jobs in India and apply online directly from here. |The {APP_NAME}</title>
+            <title>Best Jobs in India |The {APP_NAME}</title>
             <meta name="description" 
-            content={`Get all types of jobs in india which includes all types of government jobs,best govt. jobs,free jobs,account manager,engineering government jobs,fresher jobs,sbi carreers,highest paying jobs,sarkari work,army jobs,public jobs,sarkari rojgar and various other government jobs.Here recruiters can also come to post jobs`}
+            content={`Apply Online for best jobs in india which includes all types of central govt jobs,state govt jobs,best Indian govt jobs,Every rojgar samachar in bharat.The ProGrad is the best platform for freshers to find fastjob search.Here recruiters can also come to post jobs`}
             />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
+            <link rel="canonical" href={`${DOMAIN}/${router.pathname}`} />
             <meta property="og:title" content={`India's best platform for grads to find all type of jobs in India. |The ${APP_NAME}`} />
             <meta
                 property="og:description"
-                content={`Get all types of jobs in india which includes all types of government jobs,best govt. jobs,free jobs,account manager,engineering government jobs,fresher jobs,sbi carreers,highest paying jobs,sarkari work,army jobs,public jobs,sarkari rojgar and various other government jobs.Here recruiters can also come to post jobs`}
+                content={`Apply Online for best jobs in india which includes all types of central govt jobs,state govt jobs,best Indian govt jobs,Every rojgar samachar in bharat.The ProGrad is the best platform for freshers to find fastjob search.Here recruiters can also come to post jobs`}
 
             />
             <meta property="og:type" content="webiste" />
@@ -106,18 +106,18 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
     {head()}
     <main>
      <section className="blogCreate">
-     <h1 className="large text-primary" style={{lineHeight:'1.9rem'}}>All Government Jobs in India</h1>
-     <p className="extra-small text-gray ">Find suitable jobs for you and apply.Just click on the title of job and see it in detail</p>
+     <h1 className="large text-primary" style={{lineHeight:'1.9rem'}}>State and Central Govt Jobs Notifications </h1>
+     <p className="extra-small text-gray ">Find suitable and best jobs for you and apply.Just click on the title of job and see it in detail</p>
      <Link href="/jobs/jobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search job</a></Link>
      <div className="createMain">
      <main>
-     <DisplayAd />
-     <Infeed />
+     {/* <DisplayAd /> 
+     <Infeed /> */}
 
          <main >
          {showAllJobs()}
          </main>
-         <Infeed />
+         {/* <Infeed /> */}
 
          <main>
             {showLoadedJobs()}
@@ -129,7 +129,7 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
     </main> 
     <div className='hide-sm'>
     <h2 className="lead text-dark">Search the job keyword,title or the location and hit the search button</h2>
-        <Search />
+        {/* <Search /> */}
         <div style={{display:'flex',justifyContent:'space-between'}}>
         
         <ul className='p-1'style={{overflowY:'scroll',maxHeight:'20rem'}}>
@@ -146,9 +146,9 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
         </ul>
         
         </div>
-        <DisplayAd />
+        {/* <DisplayAd /> */}
         <div className="line"></div>
-        <DisplayAd/>
+        {/* <DisplayAd/> */}
     </div> 
      </div>
     </section>

@@ -18,7 +18,7 @@ const AccountBalanceWalletIcon =dynamic(async ()=>import('@material-ui/icons/Acc
 const SchoolIcon =dynamic(async ()=>import('@material-ui/icons/School'),{loading:()=><p>...</p>,ssr:false}) ;
 const PinDropIcon =dynamic(async ()=>import('@material-ui/icons/PinDrop'),{loading:()=><p>...</p>,ssr:false}) ;
 const WatchLaterIcon =dynamic(async ()=>import('@material-ui/icons/WatchLater'),{loading:()=><p>...</p>,ssr:false}) ;
-const Article =dynamic(async ()=>import('../../components/ads/Article'),{loading:()=><p>...</p>,ssr:false}) ;
+// const Article =dynamic(async ()=>import('../../components/ads/Article'),{loading:()=><p>...</p>,ssr:false}) ;
 
 
 
@@ -38,35 +38,65 @@ const SingleJob=({job,query})=>{
     useEffect(() => {
         loadRelated();
     }, []);
+
     function makeJobSchema(job) {
         return {
             // schema truncated for brevity
             '@context': 'http://schema.org',
             '@type': 'JobPosting',
             'title' : `${job.title}`,
-            'description' : `${job.mdesc} The Last date to apply is ${moment(job.lastDate).format("MMM DD YYYY")} The Job Location:${job.location} The Pay Scale is ${job.salary} .For more details visit The ProGrad and checkout the full update.`,
+            'description' : `            
+            <p>Are you also looking for a job or, are you looking for a better job based on your qualification, then you are at the right place. Latest job posts in ${job.location} from ${job.agency} have been rolled out.You can apply for these posts before ${job.lastDate} If you want to work in ${job.location} and your qualification is ${job.qualification}, then this is an opportunity for you. On getting this job in ${job.location}, you get a basic monthly salary of around ${job.salary}. It is a ${job.type} job, if you want to apply, then click on the apply button and you will reach at the India's best job website.</p>
+            <br>
+            <h3>Job Highlights</h3>
+            <br>
+            <hr>
+            <table>
+            <tr>
+            <td>Organization</td>
+            <td>${job.agency}</td>
+            </tr>
+            <tr>
+            <td>Qualification</td>
+            <td>${job.qualification}</td>
+            </tr>
+            <tr>
+            <td>Monthly Salary</td>
+            <td>${job.salary}</td>
+            </tr>
+            <tr>
+            <td>Job type</td>
+            <td>${job.type}</td>
+            </tr>
+            <tr>
+            <td>Job Location</td>
+            <td>${job.location}</td>
+            </tr>
+            <tr>
+            <td>Last date to apply</td>
+            <td>${job.lastDate}</td>
+            </tr>
+            </table> `,
+            'url':`https://theprograd.com/jobs/${job.slug}`,
             'identifier': {
                 '@type': "PropertyValue",
-                 'name': "The ProGrad",
-                 'value': "1234567svha0089"
+                 'name': `${job.agency}`,
+                 'value':`${job.slug}`
+                 
                },
                'datePosted' : `${job.createdAt}`,
                'validThrough' : `${job.lastDate}`,
                'employmentType' : `${job.type}`,
                'hiringOrganization' : {
                 '@type' : "Organization",
-                'name' : 'The ProGrad',
-                'sameAs' : `https://theprograd.com/jobs/${job.slug}`,
-                "logo" : `https://theprograd.com/img/prograd.png` 
+                'name' : `${job.agency}`,
               },
               'jobLocation': {
                 '@type': "Place",
                   'address': {
-                  '@type': "PostalAddress",
-                  'streetAddress': `${job.location}`,
+                  '@type': "PostalAddress",                
                   "addressLocality": `All over ${job.location}`,
-                  "addressRegion": `${job.location}`,
-                  "postalCode": "Not required",
+                  "addressRegion": `${job.location}`,                  
                   'addressCountry': "India"
                   }
                 },
@@ -90,13 +120,14 @@ const SingleJob=({job,query})=>{
             />
         )
     }
+ 
 
     const head = () => (
         <Head>
             <title>
                 {job.title} | {APP_NAME}
             </title>
-            <link rel="canonical" href={`https://${DOMAIN}/jobs/${query.slug}`} />
+            <link rel="canonical" href={`${DOMAIN}/jobs/${query.slug}`} />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <meta name="description" content= {`${job.mdesc} Last date is ${moment(job.lastDate).format("MMM DD YYYY")} The Job Location is ${job.location} The Pay Scale is ${job.salary} `} />
             <meta property="og:title" content={`${job.title}| ${APP_NAME}`} />
@@ -159,7 +190,7 @@ const today=moment();
 
                 </div>
                 <div className="my-1">
-                <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>{job.title}</h1>
+                <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,fontDisplay:'swap',lineHeight:'1.9rem'}}>{job.title}</h1>
 
                 </div>
           
@@ -214,7 +245,6 @@ const today=moment();
 
                         </div>
                       </div>
-                      <Article />
 
                       <div className='job-content' style={{padding:'0.4rem'}}>
                       {renderHTML(job.body)}
@@ -222,7 +252,7 @@ const today=moment();
                     <div>
                    {( isAuth() && isAuth().role===1 )? <a href={`/admin/jobcrud/${job.slug}`} className="m-1 btn nbtn btn-success">Update</a>:''}
                    </div>
-                   <Article />
+                //    {/* <Article /> */}
                   
                 </div>
                 <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
@@ -255,7 +285,7 @@ const today=moment();
                     </div>
                     <div className="m-1">
 
-                    <Article />
+                    {/* <Article /> */}
                     </div>
 
 

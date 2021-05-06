@@ -7,32 +7,32 @@ import { withRouter } from 'next/router';
 import { listPvtJobsWithCategoriesAndTags } from '../../actions/privateJob';
 import Card from '../../components/privateJobs/Card';
 const SearchPvt =dynamic(async ()=>import( '../../components/privateJobs/PvtSearch'));
-const Infeed =dynamic(async ()=>import('../../components/ads/Infeed'),{ssr:false}) ;
-const DisplayAd =dynamic(async ()=>import('../../components/ads/DisplayAd'),{ssr:false}) ;
+// const Infeed =dynamic(async ()=>import('../../components/ads/Infeed'),{ssr:false}) ;
+// const DisplayAd =dynamic(async ()=>import('../../components/ads/DisplayAd'),{ssr:false}) ;
 
 const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs, jobsLimit, jobSkip, router })=>{
 
 
     const head = () => (
         <Head>
-            <title> Get all types of jobs either it is government of IT jobs in India and apply online directly from here. | {APP_NAME}</title>
+            <title> Best Placement Jobs in India | {APP_NAME}</title>
             <meta name="description" 
-            content={`Get all types of private jobs in india which includes all types of ,analyst jobs,best jobs,free private jobs,account manager,engineering placement jobs,fast jobs,highest paying jobs,public jobs,it jobs,online jobs from home,accounting jobs,marketing manager and various other jobs.Here recruiters can also come to post jobs`}
+            content={`Apply Online for various fstest jobs in india which includes all types of private sector jobs like work from home jobs,analyst jobs,Data analyst jobs,software engineer jobs,Every rojgar samachar in bharat.The ProGrad is the best platform for freshers to find fastjob search.Here recruiters can also come to post jobs`}
             />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <link rel="canonical" href={`https://${DOMAIN}${router.pathname}`} />
+            <link rel="canonical" href={`${DOMAIN}/${router.pathname}`} />
             <meta property="og:title" content={`India's best platform for grads to find all type of jobs in India. | ${APP_NAME}`} />
             <meta
                 property="og:description"
-                content={`Get all types of private jobs in india which includes all types of ,analyst jobs,best jobs,free private jobs,account manager,engineering placement jobs,fast jobs,highest paying jobs,public jobs,it jobs,online jobs from home,accounting jobs,marketing manager and various other jobs.Here recruiters can also come to post jobs`}
+                content={`Apply Online for various fstest jobs in india which includes all types of private sector jobs like work from home jobs,analyst jobs,Data analyst jobs,software engineer jobs,Every rojgar samachar in bharat.The ProGrad is the best platform for freshers to find fastjob search.Here recruiters can also come to post jobs`}
 
             />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
-            <meta property="og:image:secure_url" ccontent={`${DOMAIN}/img/StuproLogo.png`} />
+            <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:type" content="img/StuproLogo.png" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
@@ -105,18 +105,18 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
     {head()}
     <main>
      <section className="blogCreate">
-     <h1 className="large text-primary" style={{lineHeight:'1.9rem'}}>All Private Sector Jobs in India</h1>
+     <h1 className="large text-primary" style={{lineHeight:'1.9rem'}}>Best Private Sector Jobs in India</h1>
      <p className="extra-small text-gray ">Find suitable jobs for you and apply.Just click on the title of job and see it in detail</p>
-     <Link href="/privateJobs/pvtJobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search Pvt. job</a></Link>
+     <Link href="/privateJobs/pvtJobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search Pvt. jobs</a></Link>
      <div className="createMain">
      <main>
-     <DisplayAd />
+     {/* <DisplayAd /> */}
      <div className="line"></div>
-     <Infeed />
+     {/* <Infeed /> */}
          <main >
          {showAllJobs()}
          </main>
-         <Infeed />
+         {/* <Infeed /> */}
          <main>
             {showLoadedJobs()}
         </main>
@@ -144,8 +144,8 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
         </ul>
         
         </div>
-        <DisplayAd />
-        <DisplayAd />
+        {/* <DisplayAd />
+        <DisplayAd /> */}
     </div> 
      </div>
     </section>

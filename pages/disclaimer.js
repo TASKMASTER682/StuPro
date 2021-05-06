@@ -1,10 +1,22 @@
-import Private from '../components/auth/Private';
+import {APP_NAME,DOMAIN,FB_APP_ID} from "../config";
+import Head from 'next/head';
 
 
 const Disclaimer=()=>{
+    const head=()=>{
+        <Head>
+        <title> Disclaimer | The ProGrad  </title>
+    <meta
+        name="description"
+        content="Read the disclaimer of The ProGrad"
+   
+    />
+    <link rel="canonical" href={`${DOMAIN}`} />
+    </Head>
+    }
     return(
        <>
-       <Private>
+      {head()}
        <section className="container">
        <h2 className="small text-primary m-1 ">Disclaimer</h2>
            <div className="job-read p-2 nbtn">
@@ -12,7 +24,7 @@ const Disclaimer=()=>{
            <p>I assure you that, I will remove the infringing content Within 48 Hours.</p>
            </div>
        </section>
-       </Private>
+      
        </>
     )
 }

@@ -20,7 +20,7 @@ const PinDropIcon =dynamic(async()=>import('@material-ui/icons/PinDrop'),{loadin
 const BusinessCenterIcon =dynamic(async()=>import('@material-ui/icons/BusinessCenter')) ;
 const VpnKeyIcon =dynamic(async()=>import('@material-ui/icons/VpnKey'),{loading:()=><p>...</p>,ssr:false}) ;
 const WatchLaterIcon=dynamic(async()=>import( '@material-ui/icons/WatchLater'),{loading:()=><p>...</p>,ssr:false});
-const Article=dynamic(async()=>import('../../components/ads/Article'),{loading:()=><p>...</p>,ssr:false}) ;
+// const Article=dynamic(async()=>import('../../components/ads/Article'),{loading:()=><p>...</p>,ssr:false}) ;
 
 const SinglePvtJob=({privateJob,query})=>{
     const [relatedPvt, setRelatedPvt] = useState([]);
@@ -45,29 +45,60 @@ const SinglePvtJob=({privateJob,query})=>{
             '@context': 'http://schema.org',
             '@type': 'JobPosting',
             'title' : `${privateJob.title}`,
-            'description' : `${privateJob.mdesc} Last date to apply is ${moment(privateJob.lastDate).format("MMM DD YYYY")} Job Location is ${privateJob.location} The Pay Scale is ${privateJob.salary} .For more details visit The ProGrad and checkout the full update.`,
+            'description' : `
+            <p>Are you also looking for a new job or, are you looking for a better job based on your skills, then you are at the right place. Latest job posts for the post of ${privateJob.position} from ${privateJob.agency} have been rolled out in ${privateJob.location}. If you want to work in ${privateJob.location} and your qualification is ${privateJob.qualification}, then this is an opportunity for you. On getting this job in ${privateJob.location}, you get a basic monthly salary of around ${privateJob.salary}. It is a ${privateJob.type} job, if you want to apply, then click on the apply button and you will reach at the India's best job website.</p>
+            <br>
+            <h3>Job Highlights</h3>
+            <br>
+            <hr>
+            <table>
+            <tr>
+            <td>Post name</td>
+            <td>${privateJob.position}</td>
+            </tr>
+            <tr>
+            <td>Qualification</td>
+            <td>${privateJob.qualification}</td>
+            </tr>
+            <tr>
+            <td>Monthly Salary</td>
+            <td>${privateJob.salary}</td>
+            </tr>
+            <tr>
+            <td>Job type</td>
+            <td>${privateJob.type}</td>
+            </tr>
+            <tr>
+            <td>Job Location</td>
+            <td>${privateJob.location}</td>
+            </tr>
+            <td>Key Skill</td>
+            <td>${privateJob.keySkills}</td>
+            </tr>
+            </table>
+            `,
+           
+            'url':`https://theprograd.com/privateJobs/${privateJob.slug}`,
             'identifier': {
                 '@type': "PropertyValue",
-                 'name': "The ProGrad",
-                 'value': "1234567svha0896"
+                 'name': `${privateJob.agency}`,
+                 'value': `${privateJob.slug}`
                },
                'datePosted' : `${privateJob.createdAt}`,
                'validThrough' : `${privateJob.lastDate}`,
                'employmentType' : `${privateJob.type}`,
                'hiringOrganization' : {
                 '@type' : "Organization",
-                'name' : 'The ProGrad',
-                'sameAs' :`https://theprograd.com/privateJobs/${privateJob.slug}`,
-                "logo" : 'https://theprograd.com/img/prograd.png' 
+                'name' : `${privateJob.agency}`,
+               
               },
               'jobLocation': {
                 '@type': "Place",
                   'address': {
                   '@type': "PostalAddress",
-                  'streetAddress': `Any where in ${privateJob.location}`,
                   "addressLocality": `All over ${privateJob.location}`,
                   "addressRegion": `${privateJob.location}`,
-                  "postalCode": "Not required",
+                 
                   'addressCountry': "India"
                   }
                 },
@@ -100,7 +131,7 @@ const SinglePvtJob=({privateJob,query})=>{
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
             <meta name="description" content= {`${privateJob.mdesc} Last date is ${moment(privateJob.lastDate).format("MMM DD YYYY")} The Job Location is ${privateJob.location} Pay scale is ${privateJob.salary}.`} />
-            <link rel="canonical" href={`https://${DOMAIN}/privateJobs/${query.slug}`} />
+            <link rel="canonical" href={`${DOMAIN}/privateJobs/${query.slug}`} />
             <meta property="og:title" content={`${privateJob.title}| ${APP_NAME}`} />
             <meta property="og:description" content={`${privateJob.mdesc} Last date is ${moment(privateJob.lastDate).format("MMM DD YYYY")} The Job Location is ${privateJob.location} Pay scale is ${privateJob.salary}.`} />
             <meta property="og:type" content="webiste" />
@@ -157,7 +188,7 @@ const today=moment();
 
                 </div>       
                 <div className="my-1">
-                <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>{privateJob.title}</h1>
+                <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif`,fontDisplay:'swap' ,lineHeight:'1.9rem'}}>{privateJob.title}</h1>
 
                 </div>   
              
@@ -217,14 +248,14 @@ const today=moment();
                           <a href={`${privateJob.applyLink}`}  target="_blank" className={`btn nbtn btn-${ moment(privateJob.lastDate).format()<today.format() ? 'danger':'primary'} nbtn1 my-1 `}>{moment(privateJob.lastDate).format()<today.format()  ? 'Closed':'Apply now'}</a>
                         </div>
                       </div>
-                     <Article />
+                      
                       <div className='job-content' style={{padding:'0.4rem'}}>
                       {renderHTML(privateJob.body)}
                     </div>
                     <div>
                    {( isAuth() && isAuth().role===1 )? <a href={`/admin/privatejobcrud/${privateJob.slug}`} className="m-2 btn nbtn btn-success">Update</a>:''}
                    </div>
-                   <Article />
+                   {/* <Article /> */}
                 </div>
                 <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
                 <h4 className="small text-primary">Tags and Categories</h4>
@@ -256,7 +287,7 @@ const today=moment();
                         {showRelatedJob()}
                     </div>
                     <div className="m-1">
-                    <Article />
+                    {/* <Article /> */}
                     </div>
             </section>
              
