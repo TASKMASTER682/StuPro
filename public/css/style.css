@@ -70,7 +70,6 @@
   margin-top: 6rem;
   margin-bottom: 3rem;
 }
-
 .x-large {
   font-size: 4rem;
   line-height: 1.2rem;
@@ -291,7 +290,6 @@ img {
 .navbar a:hover {
   color: #0f1317;
 }
-
 .landing {
   background: linear-gradient(#00cdbb, #00a79a, #0f1317) no-repeat center
     center/cover;
@@ -403,13 +401,11 @@ img {
   font-family: 'Source Serif Pro', serif;
   font-size: 1.5rem;
 }
-
 .job-content ul {
   list-style: disc;
   padding-left: 0.5rem;
   margin: 1rem;
 }
-
 .profile-img {
   width: 70px;
   height: 70px;
@@ -849,7 +845,6 @@ img {
   margin-top: 6rem;
   margin-bottom: 3rem;
 }
-
 .x-large {
   font-size: 4rem;
   line-height: 1.2rem;
@@ -1034,7 +1029,6 @@ img {
     margin-top: 1rem;
     padding: 0.5rem;
   }
-
   .home-card {
     width: 145px;
     height: 220px;

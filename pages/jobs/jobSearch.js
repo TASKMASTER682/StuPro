@@ -1,4 +1,5 @@
 import Search from '../../components/jobs/Search';
+import Head from 'next/head';
 import ShowJobCategories from '../../components/jobs/ShowJobCategories';
 import ShowJobTags from '../../components/jobs/ShowJobTags';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';

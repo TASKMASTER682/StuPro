@@ -1,4 +1,5 @@
 import PvtSearch from '../../components/privateJobs/PvtSearch';
+import Head from 'next/head';
 import ShowPvtJobCategories from '../../components/privateJobs/ShowPvtJobCategories';
 import ShowPvtJobTags from '../../components/privateJobs/ShowPvtJobTags';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
