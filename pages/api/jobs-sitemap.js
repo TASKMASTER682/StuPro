@@ -14,7 +14,7 @@ export default async (req, res) => {
   try {
 
     const smStream = new SitemapStream({
-      hostname: `http://localhost:3000`,
+      hostname: `${DOMAIN}`,
       cacheTime: 600000,
     });
 

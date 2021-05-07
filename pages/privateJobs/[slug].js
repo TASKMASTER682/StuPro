@@ -188,7 +188,7 @@ const today=moment();
 
                 </div>       
                 <div className="my-1">
-                <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif`,fontDisplay:'swap' ,lineHeight:'1.9rem'}}>{privateJob.title}</h1>
+                <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>{privateJob.title}</h1>
 
                 </div>   
              
