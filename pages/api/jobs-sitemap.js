@@ -9,11 +9,12 @@ import {DOMAIN} from '../../config'
 
 
 
+
 export default async (req, res) => {
   try {
 
     const smStream = new SitemapStream({
-      hostname: `${DOMAIN}`,
+      hostname: `http://localhost:3000`,
       cacheTime: 600000,
     });
 
