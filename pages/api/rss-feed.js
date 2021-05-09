@@ -19,8 +19,7 @@ export default async(req,res)=>{
       updated: new Date(), 
       generator: "Feed for best government Jobs in India", 
       feedLinks: {
-        xml: `${DOMAIN}/feed.xml`,
-        atom: `${DOMAIN}/feed.atom`
+        xml: `${DOMAIN}/api/rss-feed`,
       }
     
     });
@@ -36,8 +35,12 @@ export default async(req,res)=>{
         date: new Date(job.updatedAt),
       });
     });
-  
-    res.send(feed.rss2())
+
+    res.writeHead(200, {
+      'Content-Type': 'application/xml'
+    });
+
+    res.end(feed.rss2())
   } catch (err) {
     console.log(err)
   }
