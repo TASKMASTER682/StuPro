@@ -5,7 +5,7 @@ import { useState} from 'react';
 import { withRouter } from 'next/router';
 import { listJobsWithCategoriesAndTags } from '../../actions/job';
 import Card from '../../components/jobs/Card';
-// const Search=dynamic(async()=>import('../../components/jobs/Search'));
+const Search=dynamic(async()=>import('../../components/jobs/Search'));
 // const Infeed=dynamic(async()=>import('../../components/ads/Infeed'),{ssr:false});
 // const DisplayAd=dynamic(async()=>import('../../components/ads/DisplayAd'),{ssr:false});
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
@@ -129,7 +129,7 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
     </main> 
     <div className='hide-sm'>
     <h2 className="lead text-dark">Search the job keyword,title or the location and hit the search button</h2>
-        {/* <Search /> */}
+        <Search />
         <div style={{display:'flex',justifyContent:'space-between'}}>
         
         <ul className='p-1'style={{overflowY:'scroll',maxHeight:'20rem'}}>

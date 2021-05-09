@@ -65,7 +65,7 @@ export default async (req, res) => {
     pvtJobs != null
       ? pvtJobs.forEach((pvtJob) => {
         smStream.write({
-          url: `/pvtJobs/${pvtJob.slug}`,
+          url: `/privateJobs/${pvtJob.slug}`,
           changefreq: 'weekly',
           priority: 0.8,
           lastmod:`${pvtJob.updatedAt}`

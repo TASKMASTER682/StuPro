@@ -252,7 +252,7 @@ const today=moment();
                     <div>
                    {( isAuth() && isAuth().role===1 )? <a href={`/admin/jobcrud/${job.slug}`} className="m-1 btn nbtn btn-success">Update</a>:''}
                    </div>
-                //    {/* <Article /> */}
+                    {/* <Article /> */}
                   
                 </div>
                 <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
