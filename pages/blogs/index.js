@@ -12,31 +12,18 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
     const head = () => (
         <Head>
-            <title>Get all types of educational blogs for learning and dive deep into conceptual knowledge | {APP_NAME}</title>
-            <meta
-                name="description"
-                content="Welcome to the India's best emerging learning platform in which you can check your understanding of a concept by writing it and publishing it.
-                It is free of cost.This helps you in two ways that you will never forget the concept and secondly it helps other to your blog and this will increase 
-                your popularity on internet and on other socia media.Make this patform the india wikipedia.The future of India is in your hands."
-            />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-            <link rel="canonical" href={`${DOMAIN}/${router.pathname}`} />
-            <meta property="og:title" content={`Get all types of educational blogs and get best user experience | ${APP_NAME}`} />
-            <meta
-                property="og:description"
-                content="Welcome to the India's best emerging learning platform in which you can check your understanding of a concept by writing it and publishing it.
-                It is free of cost.This helps you in two ways that you will never forget the concept and secondly it helps other to your blog and this will increase 
-                your popularity on internet and on other social media.Make this patform the india wikipedia.The future of India is in your hands."
-            />
+            <title>Best Educational Blogs |The {APP_NAME}</title>
+            <meta name="robots" content="index follow" />
+            <meta name="description" content="Get best educational blogs, tips and tricks on The ProGrad" />
+            <meta property="og:title" content={`Best Educational Blogs | The ${APP_NAME}`} />
+            <meta property="og:description" content="Get best educational blogs, tips and tricks on The ProGrad" />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
-            <meta property="og:site_name" content={`${APP_NAME}`} />
-
-            <meta property="og:image" content={`${DOMAIN}/static/images/seoblog.jpg`} />
+            <meta property="og:site_name" content={`The ${APP_NAME}`} />
+            <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:type" content="image/jpg" />
-            <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+      
         </Head>
     );
     const [limit, setLimit] = useState(blogsLimit);
@@ -68,18 +55,18 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
     };
 
     const showAllBlogs = () => {
-        return blogs.map((blog, i) => {
+        return blogs.map((blog) => {
             // ()
             return (
-                <article key={i} className="blog bg-light ">
+                <article key={blog._id} className="blog bg-light ">
                  <Card blog={blog}/>
                </article>
             );
         });
     };
     const showLoadedBlogs = () => {
-        return loadedBlogs.map((blog, i) => (
-            <article key={i} className="blog bg-light ">
+        return loadedBlogs.map((blog) => (
+            <article key={blog._id} className="blog bg-light ">
                 <Card blog={blog} />
             </article>
         ));
@@ -88,29 +75,29 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
     return (
        <>
        {head()}
-  <main>
+ 
      <section className="container ">
           <h1 className="large text-primary">All Educational Blogs</h1>
           <p className="extra-small text-light-gray">Knowledge is everything,gain it and share it.</p>
           <div className="line"></div>
-          <Link href="/search"><a className="btn nbtn btn-dark m-1">Click here to Search blog</a></Link>
+          <Link href="blogs/search"><a className="btn nbtn btn-dark m-1">Click here to Search blog</a></Link>
 
-         <main>
+         <div>
          {showAllBlogs()}
-         </main>
-         <main>
+         </div>
+         <div>
             {showLoadedBlogs()}
-        </main>
+        </div>
         <div>
             {loadMoreButton()}
         </div>
     </section>
- </main>
+ 
   </>  
     );
 };
 
-Blogs.getInitialProps = () => {
+export async function getStaticProps() {
     let skip = 0;
     let limit = 10;
     return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
@@ -118,16 +105,22 @@ Blogs.getInitialProps = () => {
             console.log(data.error);
         } else {
             return {
-                blogs: data.blogs,
-                categories: data.categories,
-                tags: data.tags,
-                totalBlogs: data.size,
-                blogsLimit: limit,
-                blogSkip: skip
+                props:{
+                    blogs: data.blogs,
+                    categories: data.categories,
+                    tags: data.tags,
+                    totalBlogs: data.size,
+                    blogsLimit: limit,
+                    blogSkip: skip
+
+                },
+                revalidate:900
+              
             };
         }
     });
-}
+  }
+
+
 
 export default withRouter(Blogs);
-

@@ -29,15 +29,7 @@ export const getTags = async () => {
         .catch(err => console.log(err));
 };
 
-export const singleTag = async (slug) => {
-    return await fetch(`${API}/tag/${slug}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
+
 
 export const removeTag = async (slug, token) => {
     return await fetch(`${API}/tag/${slug}`, {

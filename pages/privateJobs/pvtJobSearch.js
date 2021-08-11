@@ -1,8 +1,9 @@
-import PvtSearch from '../../components/privateJobs/PvtSearch';
+import AutoComplete from '../../components/reusables/AutoComplete';
+import {listPvt} from '../../actions/privateJob'
 import Head from 'next/head';
-import ShowPvtJobCategories from '../../components/privateJobs/ShowPvtJobCategories';
-import ShowPvtJobTags from '../../components/privateJobs/ShowPvtJobTags';
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
+import ShowPvtJobCategories from '../../components/reusables/SearchCat';
+import ShowPvtJobTags from '../../components/reusables/SearchTags';
+import { DOMAIN, APP_NAME} from '../../config';
 
 
 
@@ -10,6 +11,8 @@ const PvtJobSearch=()=>{
     const head = () => (
         <Head>
             <title> Search your jobs in the Fastest way | {APP_NAME}</title>
+            <meta name="robots" content="noindex nofollow" />
+
             <meta name="description" 
             content={`Search your job and get Fastjob search experience`}
             />
@@ -24,31 +27,30 @@ const PvtJobSearch=()=>{
             />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}/privateJobs/pvtJobSerach`} />
-            <meta property="og:site_name" content={`${APP_NAME}`} />
+            <meta property="og:site_name" content={`The ${APP_NAME}`} />
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:secure_url" ccontent={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:type" content="img/StuproLogo.png" />
-            <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
     );
     return(
         <>
         {head()}
         <section className="container">
-            <h1 className="large text-primary">Fast Job Search | Private Jobs</h1>
-            <p className="extra-small text-light-gray">Find the job of your choice by searching keywords,title or location</p>
+            <h1 className="large text-primary">Fast Job Search</h1>
+            <p className="extra-small text-light-gray m-1">Find the job of your choice by searching keywords,title or location</p>
             <div className="line"></div>
             <div className="my-1">
-            <PvtSearch />
+            <AutoComplete list={listPvt} newRoute='privateJobs' />
             </div>
            <div className="my-2">
            <div style={{textAlign:'center',justifyContent:'center'}}>
-           <h2 className="lead text-primary">Job Categories</h2>
-           <ShowPvtJobCategories />
+           <h2 className="lead text-danger">Private Job Categories</h2>
+           <ShowPvtJobCategories newRoute='privateJobCategories' />
            </div>
            <div style={{textAlign:'center',justifyContent:'center'}}>
-           <h2 className="lead text-primary">Job Tags</h2>
-               <ShowPvtJobTags />
+           <h2 className="lead text-danger">Private Job Tags</h2>
+               <ShowPvtJobTags newRoute='privateJobTags' />
            </div>  
                
            </div>

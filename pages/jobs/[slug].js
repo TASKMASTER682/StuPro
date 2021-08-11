@@ -1,308 +1,247 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
 import dynamic from "next/dynamic";
-import { useState,useEffect  } from 'react';
-import { singleJob ,listRelated } from '../../actions/job';
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
+import { API, DOMAIN, APP_NAME } from '../../config';
 import renderHTML from 'react-render-html';
+import UpdateButton from '../../components/reusables/UpdateButton';
+import ApplyButton from '../../components/reusables/ApplyLink';
+import Image from '../../components/reusables/ImageComponent';
+import { fetcher } from '../api/fetcher';
+import {listRelated} from '../../actions/job';
 import moment from 'moment';
-const SmallCard =dynamic(()=>import('../../components/jobs/SmallCard'),{loading:()=><p>...</p>});
-import { isAuth } from '../../actions/auth';
-const FacebookIcon=dynamic(async ()=>import('@material-ui/icons/Facebook'),{loading:()=><p>...</p>,ssr:false}) ;
-const LinkedInIcon =dynamic(async ()=>import('@material-ui/icons/LinkedIn'),{loading:()=><p>...</p>,ssr:false});
-const TelegramIcon=dynamic(async ()=>import('@material-ui/icons/Telegram'),{loading:()=><p>...</p>,ssr:false}) ;
-const SecurityIcon =dynamic(async ()=>import('@material-ui/icons/Security'),{loading:()=><p>...</p>,ssr:false}) ;
-const DateRangeIcon =dynamic(async ()=>import('@material-ui/icons/DateRange'),{loading:()=><p>...</p>,ssr:false}) ;
-const AccountBalanceWalletIcon =dynamic(async ()=>import('@material-ui/icons/AccountBalanceWallet'),{loading:()=><p>...</p>,ssr:false}) ;
-const SchoolIcon =dynamic(async ()=>import('@material-ui/icons/School'),{loading:()=><p>...</p>,ssr:false}) ;
-const PinDropIcon =dynamic(async ()=>import('@material-ui/icons/PinDrop'),{loading:()=><p>...</p>,ssr:false}) ;
-const WatchLaterIcon =dynamic(async ()=>import('@material-ui/icons/WatchLater'),{loading:()=><p>...</p>,ssr:false}) ;
-// const Article =dynamic(async ()=>import('../../components/ads/Article'),{loading:()=><p>...</p>,ssr:false}) ;
+import useSWR from 'swr';
+const SmallCard = dynamic(() => import('../../components/reusables/SmallCard'), { loading: () => <i>...</i> });
+const FacebookIcon = dynamic(async () => import('@material-ui/icons/Facebook'), { loading: () => <i>...</i>, ssr: false });
+const LinkedInIcon = dynamic(async () => import('@material-ui/icons/LinkedIn'), { loading: () => <i>...</i>, ssr: false });
+const TelegramIcon = dynamic(async () => import('@material-ui/icons/Telegram'), { loading: () => <i>...</i>, ssr: false });
+// const Article =dynamic(async ()=>import('../../components/ads/Article'),{loading:()=><i>...</i>,ssr:false}) ;
+const TagInSlug =  dynamic(async ()=> import('../../components/reusables/TagInSlug'));
+const CategoryInSlug= dynamic(async ()=> import('../../components/reusables/SlugCat'));
+const AttachmentIcon = dynamic(async () => import('@material-ui/icons/Attachment'), { loading: () => <i>...</i>, ssr: false });;
+const FilterTiltShiftIcon = dynamic(async () => import('@material-ui/icons/FilterTiltShift'), { loading: () => <i>...</i>, ssr: false });
+const IFrame = dynamic(async ()=> import('../../components/reusables/IFrame'))
+const Faq =  dynamic(async ()=> import('../../components/reusables/ShowFaq'))
+const NewsLetter =dynamic(async ()=> import('../../components/NewsLetterSubscribe'), { ssr: false });
+const JobSchema = dynamic(async ()=> import('../../components/schema/JobSchema'), { ssr: false });
+const FaqSchema = dynamic(async ()=> import('../../components/schema/FaqSchema'), { ssr: false });
 
 
 
-const SingleJob=({job,query})=>{
-    const [related, setRelated] = useState([]);
 
-    const loadRelated = () => {
-        listRelated({ job }).then(data => {
-            if (data.error) {
-                console.log(data.error);
-            } else {
-                setRelated(data);
-            }
-        });
-    };
+const SingleJob = (props) => {
+    const { data } = useSWR(props.slug ? `${API}/jobs/${props.slug}` : null, fetcher, { initialData: props, revalidateOnMount: true });
 
-    useEffect(() => {
-        loadRelated();
-    }, []);
-
-    function makeJobSchema(job) {
-        return {
-            // schema truncated for brevity
-            '@context': 'http://schema.org',
-            '@type': 'JobPosting',
-            'title' : `${job.title}`,
-            'description' : `            
-            <p>Are you also looking for a job or, are you looking for a better job based on your qualification, then you are at the right place. Latest job posts in ${job.location} from ${job.agency} have been rolled out.You can apply for these posts before ${job.lastDate} If you want to work in ${job.location} and your qualification is ${job.qualification}, then this is an opportunity for you. On getting this job in ${job.location}, you get a basic monthly salary of around ${job.salary}. It is a ${job.type} job, if you want to apply, then click on the apply button and you will reach at the India's best job website.</p>
-            <br>
-            <h3>Job Highlights</h3>
-            <br>
-            <hr>
-            <table>
-            <tr>
-            <td>Organization</td>
-            <td>${job.agency}</td>
-            </tr>
-            <tr>
-            <td>Qualification</td>
-            <td>${job.qualification}</td>
-            </tr>
-            <tr>
-            <td>Monthly Salary</td>
-            <td>${job.salary}</td>
-            </tr>
-            <tr>
-            <td>Job type</td>
-            <td>${job.type}</td>
-            </tr>
-            <tr>
-            <td>Job Location</td>
-            <td>${job.location}</td>
-            </tr>
-            <tr>
-            <td>Last date to apply</td>
-            <td>${job.lastDate}</td>
-            </tr>
-            </table> `,
-            'url':`https://theprograd.com/jobs/${job.slug}`,
-            'identifier': {
-                '@type': "PropertyValue",
-                 'name': `${job.agency}`,
-                 'value':`${job.slug}`
-                 
-               },
-               'datePosted' : `${job.createdAt}`,
-               'validThrough' : `${job.lastDate}`,
-               'employmentType' : `${job.type}`,
-               'hiringOrganization' : {
-                '@type' : "Organization",
-                'name' : `${job.agency}`,
-              },
-              'jobLocation': {
-                '@type': "Place",
-                  'address': {
-                  '@type': "PostalAddress",                
-                  "addressLocality": `All over ${job.location}`,
-                  "addressRegion": `${job.location}`,                  
-                  'addressCountry': "India"
-                  }
-                },
-                'baseSalary': {
-                    '@type': "MonetaryAmount",
-                    'currency': "INR",
-                    'value': {
-                      '@type': "QuantitativeValue",
-                      'value': `${job.salary}`,
-                      'unitText': "Month"
-                    }
-                  }
-        }
-    }
-    const JobSchema=()=> {
-        return (
-            <script
-                key={`jobJSON-${job.id}`}
-                type='application/ld+json'
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(makeJobSchema(job)) }}
-            />
-        )
-    }
- 
+    const { job } = data;
 
     const head = () => (
         <Head>
             <title>
-                {job.title} | {APP_NAME}
+                {job.subtitle ? job.subtitle : job.title} | The {APP_NAME}
             </title>
-            <link rel="canonical" href={`${DOMAIN}/jobs/${query.slug}`} />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <meta name="description" content= {`${job.mdesc} Last date is ${moment(job.lastDate).format("MMM DD YYYY")} The Job Location is ${job.location} The Pay Scale is ${job.salary} `} />
+            <meta name="robots" content="index follow" />
+            <link rel="canonical" href={`${DOMAIN}/jobs/${job.slug}`} />
+            <meta name="description" content={job.desc !==undefined  ? job.desc :  `Bumper vacancies have been announced by ${job.agency}. If you are finding a job in ${job.location} then you must apply before the ${job.lastDate}. Click here to know more and apply`} />
             <meta property="og:title" content={`${job.title}| ${APP_NAME}`} />
-            <meta property="og:description" content={`${job.mdesc} Last date is ${moment(job.lastDate).format("MMM DD YYYY")} The Job Location is ${job.location} The Pay Scale is ${job.salary} `} />
+            <meta property="og:description" content={job.desc !==undefined  ? job.desc :  `Bumper vacancies have been announced by ${job.agency}. If you are finding a job in ${job.location} then you must apply before the ${job.lastDate}. Click here to know more and apply`} />
             <meta property="og:type" content="webiste" />
-            <meta property="og:url" content={`${DOMAIN}/jobs/${query.slug}`} />
-            <meta property="og:site_name" content={`${APP_NAME}`} />
-            <meta property="og:image" content={`${API}/job/photo/${job.slug}`} />
-            <meta property="og:image:secure_url" content={`${API}/job/photo/${job.slug}`} />
-            <meta property="og:image:type" content={`${API}/job/photo/${job.slug}`} />
-            <meta name="twitter:card" content="summary_large_image"></meta>
-            <meta property="fb:app_id" content={`${FB_APP_ID}`} />
-            {JobSchema()}
+            <meta property="og:url" content={`${DOMAIN}/jobs/${job.slug}`} />
+            <meta property="og:site_name" content={`The ${APP_NAME}`} />
+            <meta property="og:image" content={`${API}/jobs/photo/${job.slug}`} />
+            <meta property="og:image:secure_url" content={`${API}/jobs/photo/${job.slug}`} />
+            <meta property="og:image:type" content={`${API}/jobs/photo/${job.slug}`} />
+            <JobSchema job={job} newRoute='jobs' />
+            <FaqSchema faqs={job.faq}  />
 
         </Head>
     );
 
 
- 
-     const showJobCategories = job =>
-        job.jobCategories.map((c, i) => (
-            <Link key={i} href={`/jobCategories/${c.slug}`}>
-                <a style={{padding:" 0 0.8rem",border:'solid #00e7d2'}}  className="btn nbtn btn-light-gray "><p>{c.name}</p></a>
-            </Link>
-        ));
+    return (
+        <>
+            {head()}
 
-    const showJobTags = job =>
-        job.jobTags.map((t, i) => (
-            <Link key={i} href={`/jobTags/${t.slug}`}>
-                <a style={{padding:" 0 0.8rem",border:'solid black '}}  className="btn nbtn btn-light-gray my-1 "><p>{t.name}</p></a>
-            </Link>
-        ));
-
-        const showRelatedJob = () => {
-            return related.map((job, i) => (
-                <div className='card-item m-1' key={i}>
-                    <article>
-                        <SmallCard job={job} />
-                    </article>
-                </div>
-            ));
-        };
-
-        const myLoader = ({ src }) => {
-            return `${API}/job/photo/${job.slug}` 
-          }
-const today=moment();
-        return(
-           <>
-           {head()}
-            <section className="container">
-            <h3 className="large text-primary my-1">See detailed</h3>
-             <p className="extra-small text-light-gray m-1 ">see eligibilty and full notification</p>
-                     
-             <div className="jobs">
-             <div className="job bg-light ">
-                 <div className="job-top p-1">
-                <div className="m-1 hide-sm">
-                <Image  loader={myLoader} src={`${API}/job/photo/${job.slug}`}  width={300} height={300} alt={job.title} className="round-image" />                     
-
-                </div>
-                <div className="my-1">
-                <h1 className="small text-dark"  style={{fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>{job.title}</h1>
-
-                </div>
-          
-            <div className="share icons p-1">
-                     <a  href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${query.slug}`} target="_blank"><strong className='text-primary'><FacebookIcon style={{fontSize:30}}/></strong></a>
-                     <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/jobs/${query.slug}`} target="_blank" ><p className='text-primary'><LinkedInIcon style={{fontSize:30}}/></p></a>
-                     <a href={`https://t.me/share/url?url=https://theprograd.com/jobs/${query.slug}&text=Fresh recruitment for ${job.agency} for the various post.Do visit the Link to explore more abou these vacancies and apply directly at The ProGrad.${job.mdesc}`}><p className='text-primary'><TelegramIcon style={{fontSize:30}} /></p></a>
-                  </div>
-
-                 </div>
-                 <small className="text-light-gray author extra-small my-2">| Published {moment(job.updatedAt).fromNow()}</small>
-
+            <section className="mat-container">
+        
+                <div className="jobs main-mat" lang={`${job.language}`}>
                
-                 <div className="job-bottom">
+                    <div className=" job bg-light ">
+           
+                        <div className="job-top p-1 my-1 input-box">
+                        <div className="m-1 text-primary hide-sm">
+                        <AttachmentIcon style={{fontSize:40}} />
+                       </div>
+                            <div className="my-1">
+                                <Link href={`/jobs/${job.slug}`}>
+                                    <h1 className="small text-dark" style={{ lineHeight: '2.9rem' }}>{job.title}</h1>
+                                </Link>
 
-                 <div className="job-table p-1">
-                          <div >
-                              <ul>
-                              <li className='text-primary'><SecurityIcon style={{fontSize:20}} /></li>
-                                  <li className='text-primary' style={{marginTop:'0.7rem'}}><DateRangeIcon style={{fontSize:20 }} /></li>
-                                  <li className='text-primary' style={{marginTop:'0.7rem'}}><AccountBalanceWalletIcon style={{fontSize:20}} /></li>
-                                  <li className='text-primary' style={{marginTop:'0.7rem'}}><SchoolIcon style={{fontSize:20}} /></li>                                
-                                  <li className='text-primary' style={{marginTop:'0.7rem'}}><PinDropIcon  style={{fontSize:20}} /></li>
-                                  <li className='text-primary' style={{marginTop:'0.7rem'}}><WatchLaterIcon style={{fontSize:20}} /></li>
-                              </ul>
-                          </div>
-                          <div>
-                              <ul>
-                                  <li><h4 >Agency</h4></li>
-                                  <li><h4 className="my-1">Expire</h4></li>
-                                  <li><h4 className="my-1">Salary</h4></li>
-                                  <li><h4 className="my-1">Qualification</h4></li>
-                                  <li><h4 className="my-1">Location</h4></li>
-                                  <li><h4>Job Type</h4></li>
-                                  
-                             </ul>
-                          </div>
-                          <div>
-                              <ul>
-                                  <li ><p>{job.agency}</p></li>
-                                  <li><p className="my-1">{moment(job.lastDate).fromNow()}</p></li>
-                                  <li><p className="my-1">{job.salary}</p></li>
-                                  <li><p className="my-1">{job.qualification}</p></li>
-                                  <li><p className="my-1">{job.location}</p></li>
-                                  <li><p>{job.type}</p></li>
+                            </div>
 
-                                </ul>
-                          </div>
-                        </div>  
-                          <div className="job-buttons p-1">
-                          <a href={`${job.applyLink}`}  target="_blank" className={`btn nbtn btn-${ moment(job.lastDate).format()<today.format() ? 'danger':'primary'} nbtn1 my-1 `}>{moment(job.lastDate).format()<today.format()  ? 'Closed':'Apply now'}</a>
+                            <div className="share icons p-1">
+                                <a href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${job.slug}`} target="_blank" rel='noopener noreferrer'><i className='text-primary'><FacebookIcon style={{ fontSize: 30 }} /></i></a>
+                                <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/jobs/${job.slug}`} target="_blank" rel='noopener noreferrer' ><i className='text-primary'><LinkedInIcon style={{ fontSize: 30 }} /></i></a>
+                                <a href={`https://t.me/share/url?url=https://theprograd.com/jobs/${job.slug}&text=Fresh recruitment for ${job.agency} for the various post.Do visit the Link to explore more abou these vacancies and apply directly at The ProGrad.${job.mdesc}`} target="_blank" rel='noopener noreferrer' ><i className='text-primary'><TelegramIcon style={{ fontSize: 30 }} /></i></a>
+                            </div>
 
                         </div>
-                      </div>
 
-                      <div className='job-content' style={{padding:'0.4rem'}}>
-                      {renderHTML(job.body)}
+                        <div className="avatar-upload" style={{margin:'auto'}}>
+                         <div className="avatar-preview"><Image newRoute='job' job={job} photo={props.photo} /></div>
+                         <strong className=" text-danger extra-small author my-1 p-1 input-box">Published on {moment(job.createdAt).format("MMM DD YYYY")}</strong>
+                        </div>
+                        <h2 className="small text-primary p-1">Job Higlights</h2>
+                     <div className="job-bottom">
+             <table style={{width:'100%'}}>
+             <tbody>
+             <tr className='py-1'>
+                        <td style={{width:'2rem'}} className='text-primary'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
+                         <td ><strong >Agency</strong></td>
+                        <td >{job.agency}</td>
+                      </tr>
+                   <tr className='py-1'>
+                       <td style={{width:'2rem'}} className='text-primary'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
+                       <td ><strong >Last Date</strong></td>
+                       <td >{moment(job.lastDate).format("MMM DD YYYY")}</td>
+                  </tr>
+                    <tr className='py-1'>
+                        <td style={{width:'2rem'}} className='text-primary'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
+                        <td ><strong >Salary</strong></td>
+                        <td >{job.salary}</td>
+                  </tr>
+                    <tr className='py-1'>
+                         <td style={{width:'2rem'}} className='text-primary'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
+                         <td ><strong >Qualification</strong></td>
+                         <td >{job.qualification}</td>
+                  </tr>
+                    <tr className='py-1'>
+                         <td style={{width:'2rem'}} className='text-primary'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
+                         <td ><strong >Location</strong></td>
+                         <td >{job.location}</td>
+                    </tr>
+                  <tr className='py-1'>
+                         <td style={{width:'2rem'}} className='text-primary'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
+                         <td ><strong >Type</strong></td>
+                         <td >{job.type}</td>
+                 </tr>
+             </tbody>    
+          </table>
+ 
+                    <div className="job-buttons p-1">
+                         <ApplyButton applyLink={job.applyLink} lastDate={job.lastDate} />
                     </div>
-                    <div>
-                   {( isAuth() && isAuth().role===1 )? <a href={`/admin/jobcrud/${job.slug}`} className="m-1 btn nbtn btn-success">Update</a>:''}
-                   </div>
-                    {/* <Article /> */}
-                  
+                        </div>
+                        <a href="#pdf-mat" className="mat-special"><strong >Download Previous Years Now</strong> </a>
+                        <div className='job-content p-1 selectable' >
+                          {renderHTML(job.body)}
+                        </div>
+                        {job.downloadLink[0] !=null && 
+                        <div className=' input-box' id="pdf-mat" >
+                        <h4 className="small text-primary my-1">Free Previous Years and others Pdfs </h4>
+                        <ol className="btn nbtn">
+                        <IFrame material={job} />
+                        </ol>
+                        </div>
+                      }
+                      <div className="new-flex">
+                      <UpdateButton url={`/admin/jobcrud/${job.slug}`} name='Update'/>
+                        <UpdateButton url={`/admin/jobcrud/${job.slug}/addFaq`} name='Add Faq' />
+                        <UpdateButton url={`/admin/jobcrud/${job.slug}/add-link`} name='Add Pdf Link' />
+                      </div>
+                        {/* <Article /> */}
+
+                    </div>
+                    <div >
+                        <h3 className="small text-primary">Tags and Categories</h3>
+                        <div className='m-1 new-flex'>
+                            <CategoryInSlug newCat='jobCategories' cats={job.jobCategories} />
+                            <TagInSlug tags={job.jobTags} newTagRoute='jobTags' />
+                        </div>
+                    </div>
+                    {job.faq[0] !=null  && 
+                        <div className='btn input-box'>
+                        <h2 className="small text-primary my-1"> Frequently Asked Questions</h2>
+                        <Faq material={job} />
+                        </div> 
+                      }
+
                 </div>
-                <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
-                <h4 className="small text-primary">Tags and Categories</h4>
-                     <div className='my-1'>
-                         {showJobCategories(job)}
-                           
-                           {showJobTags(job)}
-                           </div>
-                      </div>
-                <div className='btn nbtn' style={{border:'solid #00e7d2',fontFamily:'Source Serif Pro ,serif'}}>
-                        <h2 className="small text-primary my-1">Frequently Asked Questions </h2>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-1:</strong>What is the pay scale of posts released by {job.agency} ?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The pay scale of the posts released by {job.agency} is {job.salary}</p>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-2:</strong>What is the location of job after qualifying this exam?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The job location of posts released by {job.agency} is {job.location}</p>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-3:</strong>What is the last date to apply for vacancies released by {job.agency} ?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The Last date to apply is - {moment(job.lastDate).format("MMM DD YYYY")}</p>
-                        <h3 className="lead text-dark"><strong className='text-primary'>Q-4:</strong>What is the qualification needed to apply for the recruitment of {job.agency} ?</h3>
-                        <p className='m-1'><strong className="text-primary">Ans:</strong>The minimum qualification needed to apply for these posts of  {job.agency} is {job.qualification} .The detailed is shown above.</p>
-                    </div>
-                   
-              </div>
-        </section>
-            <section className="container">
-                    <h2 className="text-primary small">Suggested Jobs to apply</h2>
-                    <div className='line'></div>
-                    <div className="card">
-                        {showRelatedJob()}
-                    </div>
-                    <div className="m-1">
+            <div className="mat-author p-1">
+   
+            <h3 className="text-primary my-1">{job.agency}</h3>
+            <h3 className="small text-primary m-1">{job.subtitle}</h3>
+            <p className="hide-sm">{job.desc !==undefined  ? job.desc :  `Bumper vacancies have been announced by ${job.agency}. If you are finding a job in ${job.location} then you must apply before the ${moment(job.lastDate).format('Do MMMM YYYY')}. Read full notification and Apply`}</p>
+            <div className="line"></div>
+            <div className="my-1">
+            <a href="#pdf-mat" className="btn btn-dark p-1 hide-sm" style={{borderRadius:'0.7rem'}}><strong >Download Free Previous Years Pdf</strong> </a>
+            </div>
+            <div className="my-1">
+            <a href="#faq" className="btn btn-primary p-1 hide-sm" style={{borderRadius:'0.7rem'}}><strong >Some Faqs</strong> </a>
+            </div>
+            </div>
+            </section>
+
+
+            <section id='faq' className="container">
+            <div  className="input-box p-1">
+            {job.faq[0] !=null  && 
+                 <div className='btn input-box'>
+                        <h2 className="small text-danger my-1"> Frequently Asked Questions</h2>
+                        <Faq material={job} />
+                </div> 
+                }
+            </div>
+                <h4 className="text-primary small my-1">Related Jobs to apply</h4>
+                <div className='line'></div>
+                <div className="card">
+                    <SmallCard listRelated={listRelated} job={job} newRoute='jobs' />
+                </div>
+                <div className="m-1">
 
                     {/* <Article /> */}
-                    </div>
+                </div>
 
-
+             <NewsLetter />
             </section>
-             
-           </> 
-            )
- }
 
-SingleJob.getInitialProps = ({ query }) => {
-    return singleJob(query.slug).then(data => {
-        if (data.error) {
-            console.log(data.error);
-        } else {
-            return { job: data, query };
+        </>
+    )
+}
+
+export const getStaticPaths = async () => {
+    const res = await fetch(`${API}/jobs`);
+    const data = await res.json();
+    const paths = data.map(job => {
+        return {
+            params: { slug: job.slug }
         }
-    });
-};
+    })
+    return {
+        paths,
+        fallback: false
+    }
+}
+
+export const getStaticProps = async (ctx) => {
+    const slug = ctx.params.slug;
+
+    const [job, photo] = await Promise.all([
+        fetch(`${API}/jobs/` + slug).then(r => r.json()),
+        `${API}/jobs/photo/` + slug
+    ]);
+
+    return {
+        props: {
+            job,
+            photo
+
+        },
+        revalidate: 10800
+
+
+    }
+
+}
 
 export default SingleJob;
+
+// 

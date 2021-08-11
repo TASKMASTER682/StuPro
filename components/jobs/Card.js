@@ -2,59 +2,49 @@ import Link from 'next/link';
 import React from 'react';
 import dynamic from 'next/dynamic'
 import moment from 'moment';
-const SecurityIcon =dynamic(async ()=>import('@material-ui/icons/Security') ,{ssr:false});
-const BusinessCenterIcon =dynamic(async ()=>import( '@material-ui/icons/BusinessCenter'),{ssr:false});
-const RoomIcon =dynamic(async ()=>import('@material-ui/icons/Room'),{ssr:false}) ;
+import TagInSlug from '../reusables/TagInSlug';
+import CategoryInSlug from '../reusables/SlugCat';
+const SecurityIcon = dynamic(async () => import('@material-ui/icons/Security'), { ssr: false });
+const BusinessCenterIcon = dynamic(async () => import('@material-ui/icons/BusinessCenter'), { ssr: false });
+const RoomIcon = dynamic(async () => import('@material-ui/icons/Room'), { ssr: false });
 
-const Card=({job})=>{
-    const showJobCategories = job =>
-    job.jobCategories.map((c, i) => (
-        <Link key={i} href={`/jobCategories/${c.slug}`} >
-            <a style={{padding:" 0 0.8rem",border:'solid #00e7d2'}}   className="btn nbtn bg-light-gray "><p className="extra-small">{c.name}</p></a>
-        </Link>
-    ));
-
-const showJobTags = job =>
-    job.jobTags.map((t, i) => (
-        <Link key={i} href={`/jobTags/${t.slug}`} >
-            <a style={{padding:" 0 0.8rem",border:'solid black '}}  className="btn nbtn bg-light-gray "><p className="extra-small">{t.name}</p></a>
-        </Link>
-    ));
-    const today=moment();
+const Card = ({ job }) => {
+    const today = moment();
 
 
     return (
-        <>
-    <div className="nbtn job-read my-1">
-       <main className="p-1"  style={{display: "grid",gridTemplateColumns:'10fr 2fr'}}>
-       
-       <Link href={`/jobs/${job.slug}`}>
-      <a>
-       <h1 className="lead text-success" style={{lineHeight:'1.9rem'}}>{job.title}</h1>
-       </a>
-       
-       </Link>
-       <p className="extra-small p-1 text-primary"><SecurityIcon style={{fontSize:15}}/><strong className='text-dark'> {job.agency}</strong></p>
-    </main>
-    <small className="text-gray p-1"> Published {moment(job.updatedAt).fromNow()}</small>
-     <p className="extra-small py-1" style={{paddingLeft:'1rem'}}> Expire  {moment(job.lastDate).fromNow()}</p>
-     <div  style={{display: "flex",marginLeft:'1rem',flexWrap:'wrap',lineHeight:'1.2rem'}}>
-         {showJobCategories(job)}
-         {showJobTags(job)}
-        </div>
-       <div className="xyz">
-       <div>
-           <p className=" text-gray my-1">Rs.<span> </span> {job.salary}</p>
-           <p className=" text-gray my-1"><BusinessCenterIcon /><span> </span> {job.type}</p>
-           <p className=" text-gray my-1"><RoomIcon /><span> </span>{job.location}</p>
-        </div>
-        <Link href={`/jobs/${job.slug}`}>
-        <a   className={`btn nbtn nbtn1 m-1 btn-${ moment(job.lastDate).format()<today.format() ? 'danger':'primary'} `}>{moment(job.lastDate).format()<today.format()  ? 'Closed':'Apply now'}</a>
-</Link>
-        </div>
-       
-    </div>
-</>
+        
+            <div className="nbtn job-read job  my-1" style={{ border: 'solid 1px #00cdbb' }}>
+                <div className="p-1 new-job-card" >
+
+                    <Link href={`/jobs/${job.slug}`}>
+                    <a>
+                    <h1 className="lead text-success" style={{ lineHeight: '1.9rem' }}>{job.title}</h1>
+                    </a>
+                    </Link>
+                    <span className="extra-small p-1 text-primary"><SecurityIcon style={{ fontSize: 15 }} /><strong className='text-dark'> {job.agency}</strong></span>
+                </div>
+                <strong className="extra-small m-1 text-danger"> Last Date is {moment(job.lastDate).format("MMM DD YYYY")}</strong>
+                <div style={{ display: "flex", flexWrap: 'wrap' }}>
+                <div className="m-1"><CategoryInSlug newCat='jobCategories' cats={job.jobCategories} /></div>
+                    
+                <div className="m-1"><TagInSlug newTagRoute='jobTags' tags={job.jobTags} /></div>
+
+                    
+                </div>
+                <div className="xyz">
+                    <div className='my-1'>
+                        <i className=" text-gray ">Rs.<span> </span> <strong >{job.salary}</strong></i>
+                        <i className=" text-gray "><BusinessCenterIcon /><span> </span><strong> {job.type}</strong></i>
+                        <i className=" text-gray "><RoomIcon /><span> </span><strong>{job.location}</strong></i>
+                    </div>
+                    <Link href={`/jobs/${job.slug}`}>
+                        <a className={`btn nbtn m-1 btn-${moment(job.lastDate).format() < today.format() ? 'danger' : 'primary'} `}>{moment(job.lastDate).format() < today.format() ? <strong>Closed</strong> : <strong>Apply Now</strong>}</a>
+                    </Link>
+                </div>
+
+            </div>
+      
     )
 
 };

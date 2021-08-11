@@ -2,10 +2,22 @@ import Layout from '../../../components/Layout';
 import Admin from '../../../components/auth/Admin';
 import Category from '../../../components/crud/Category';
 import Tag from '../../../components/crud/Tag';
-import Link from 'next/link';
+import Head from 'next/head';
+import {APP_NAME} from '../../../config'
+
 
 const CategoryTag = () => {
+    const head = () => (
+        <Head>
+            <title>
+                Manage Categories | The {APP_NAME}
+            </title>
+            <meta name="robots" content="noindex nofollow" />
+        </Head>
+    )
     return (
+        <>
+        {head()}
         <Layout>
             <Admin>
              <section className="container">
@@ -19,6 +31,8 @@ const CategoryTag = () => {
              </section>
             </Admin>
         </Layout>
+        </>
+
     );
 };
 

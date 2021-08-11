@@ -6,11 +6,13 @@ import { getCookie, isAuth } from '../../actions/auth';
 import { getPvtJobCategories } from '../../actions/privateJobCategory';
 import { getPvtJobTags } from '../../actions/privateJobTag';
 import { singlePvtJob, updatePvtJob } from '../../actions/privateJob';
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-import { QuillModules, QuillFormats } from '../../helpers/quill';
+// const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+// import { QuillModules, QuillFormats } from '../../helpers/quill';
 import { API } from '../../config';
 import Checkbox from '@material-ui/core/Checkbox';
-
+const SlatePlugins = dynamic(() => import('../slate-plugins/index'), { loading: () => "",ssr: false  })
+import {serializeHTMLFromNodes,createEditorPlugins,deserializeHTMLToText} from '@udecode/slate-plugins';
+import {pluginsBasic,initialValueBasicElements} from '../slate-plugins/utils'
 
 
 
@@ -39,9 +41,16 @@ const PvtJobUpdate=({router})=>{
         type:'',
         location:'',
         qualification:'',
+        street:'',
+        city:'',
+        postal:'',
+        desc:'',
+        subtitle:'',
+        language:'',
+        officialLink:'',
     });
 
-    const { error, success, formData,agency,applyLink,position,keySkills, title,qualification,lastDate,location,type, salary } = values;
+    const { error, success, formData,agency,applyLink,position,keySkills,street,city,postal,language,subtitle,desc,officialLink, title,qualification,lastDate,location,type, salary } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -58,7 +67,7 @@ const PvtJobUpdate=({router})=>{
                 if (data.error) {
                     console.log(data.error);
                 } else {
-                    setValues({ ...values, title: data.title,applyLink:data.applyLink,position:data.position,keySkills:data.keySkills,lastDate:data.lastDate,agency:data.agency,salary:data.salary,qualification:data.qualification,location:data.location,type:data.type });
+                    setValues({ ...values,subtitle:data.subtitle || "",desc:data.desc || "",city:data.city || "",street:data.street || "",postal:data.postal || "",officialLink:data.officialLink || "",language:data.language || "", title: data.title,applyLink:data.applyLink,position:data.position,keySkills:data.keySkills,lastDate:data.lastDate,agency:data.agency,salary:data.salary,qualification:data.qualification,location:data.location,type:data.type });
                     setBody(data.body);
                     setCategoriesArray(data.privateJobCategories);
                     setTagsArray(data.privateJobTags);
@@ -177,8 +186,6 @@ const PvtJobUpdate=({router})=>{
                     <Checkbox
                         onChange={handleTagsToggle(t._id)}
                         checked={findOutTag(t._id)}
-                        
-                        
                     />
                     <label className="form-check-label">{t.name}</label>
                 </li>
@@ -195,9 +202,22 @@ const PvtJobUpdate=({router})=>{
         setValues({ ...values, [name]: value, formData, error: '' });
     };
 
-    const handleBody = e => {
+ 
+    const handleBody =(e)=> {
+
         setBody(e);
-        formData.set('body', e);
+    
+        // const nodal=e ? e:initialValueBasicElements;
+        const nodes=[...e];
+        const editor=createEditorPlugins();
+        const html=serializeHTMLFromNodes(editor,{
+            plugins:pluginsBasic,
+            nodes
+          });
+        formData.set('body', html);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('privateJob', JSON.stringify(e));
+        }
     };
 
     const editJob = (e) => {
@@ -233,10 +253,28 @@ const PvtJobUpdate=({router})=>{
     const updateJobForm=()=>{
         return(
             <form className="form" onSubmit={editJob}>
+        <div className="form-group">
+            <select name="Language" value={language} onChange={handleChange('language')} required>
+                <option value="0">Select Language</option>
+                <option value="en">en</option>
+                <option value="hi">hi</option>
+            </select>               
+        </div>
             <div className="form-group">
                 <label className="text-primary">Title</label>
                 <br/>
                 <input className="form-group" type="text"  value={title} onChange={handleChange('title')} />
+            </div>
+            <div className="form-group">
+                <label className="text-primary">Sub-Title</label>
+                <br/>
+                <input className="form-group" type="text"  value={subtitle} onChange={handleChange('subtitle')} />
+            </div>
+            <div className="form-group">
+            <label className="text-primary">Description</label>
+                <br/>
+              <textarea className="blog textinput"placeholder="Job Description" maxLength='160' value={desc} onChange={handleChange('desc')}></textarea>
+              <h2 className="text-primary">{160-desc.length}/160</h2>
             </div>
             <div className="form-group">
                <input type="text" placeholder="Agency"  value={agency} onChange={handleChange('agency')} required />
@@ -246,6 +284,15 @@ const PvtJobUpdate=({router})=>{
             </div>
             <div className="form-group">
             <input type="text" placeholder="Location"  value={location} onChange={handleChange('location')} required />
+            </div>
+            <div className="form-group">
+            <input type="text" placeholder="Street"  value={street} onChange={handleChange('street')}  />
+            </div>
+            <div className="form-group">
+            <input type="text" placeholder="City"  value={city} onChange={handleChange('city')}  />
+            </div>
+            <div className="form-group">
+            <input type="text" placeholder="Postal Code"  value={postal} onChange={handleChange('postal')} />
             </div>
             <div className="form-group">
             <input type="date" value={lastDate} onChange={handleChange('lastDate')}/>
@@ -265,18 +312,16 @@ const PvtJobUpdate=({router})=>{
             <div className="form-group">
             <input type="text" placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} required />
             </div>
+            <div className="form-group">
+            <input type="text" placeholder="Official Website Link"  value={officialLink} onChange={handleChange('officialLink')} />
+            </div>
 
-            <ReactQuill
-                     modules={QuillModules}
-                    formats={QuillFormats}
-                    value={body}
-                    placeholder="Write something amazing..."
-                    onChange={handleBody}
-                />
+            <SlatePlugins  handleChange={handleBody}  />
+
             
 
             <div>
-                <button type="submit" className="btn nbtn btn-dark">
+                <button type="submit" className="btn nbtn my-1 btn-dark">
                    Update
                 </button>
             </div>
@@ -299,7 +344,7 @@ const PvtJobUpdate=({router})=>{
                {updateJobForm()}
              <div className="line"></div>
              {body && (
-                        <img src={`${API}/privateJob/photo/${router.query.slug}`} alt={title} style={{ width: '100%' }} />
+                        <img src={`${API}/privateJobs/photo/${router.query.slug}`} alt={title} style={{ width: '100%' }} />
                     )}
             
             </div>

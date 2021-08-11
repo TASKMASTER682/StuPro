@@ -29,15 +29,7 @@ export const getJobTags = async () => {
         .catch(err => console.log(err));
 };
 
-export const singleJobTag = async (slug) => {
-    return await fetch(`${API}/jobTag/${slug}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
+
 
 export const removeJobTag = async (slug, token) => {
     return await fetch(`${API}/jobTag/${slug}`, {

@@ -1,41 +1,27 @@
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
-import { listHome } from '../../actions/job';
+import React from 'react';
 import moment from 'moment';
+import {API} from '../../config'
 
-const JobHome = () => {
-    const [jobs, setJobs] = useState([]);
+const JobHome = ({jobs,newRoute}) => {
 
-    useEffect(() => {
-        loadJobs();
-    }, []);
 
-    const loadJobs = () => {
-        listHome().then(data => {
-            if (data.error) {
-                console.log(data.error);
-            } else {
-                setJobs(data);
-            }
-        });
-    };
- 
     const showAllJobs = () => {
-        return jobs.map((job, i) => {
-
+        return jobs.map((job) => {
+    
             return (
-                <div className="home-card m-1 nbtn">
-               <img  src="img/pvthome.jpg" alt={"ProGrad"} />
+                    <div key={job._id} className="home-card  m-1">
+                <img loading='lazy' className="job-home-img" src={`${API}/${newRoute}s/photo/${job.slug}`} alt={job.title} />           
                 <div className="card-heading">
-                    <Link href={`/jobs/${job.slug}`}>
+                    <Link href={`/${newRoute}s/${job.slug}`}>
                     <a>
-                     <h1  className="text-dark   " style={{fontFamily:`'Source Serif Pro' ,serif`,fontSize:'1rem' }}>
+                     <h3  className="text-dark home-font  ">
                         {job.title}
-                        </h1>
+                        </h3>
                     </a>
                     </Link>
                     </div>                           
-                  <h3 className="extra-small text-danger">Published on | {moment(job.updatedAt).format("MMM DD YYYY")}</h3>
+                  <p className="extra-small text-danger">Published on | {moment(job.updatedAt).format("MMM DD YYYY")}</p>
              </div>
             );
         });
@@ -45,13 +31,12 @@ const JobHome = () => {
 
     // {showUpdateButton(blog)}
     return (
-        <React.Fragment>
+        <>
          {showAllJobs()}
-        </React.Fragment>
+        </>
     );
 };
 
 export default JobHome;
-
 
 

@@ -1,29 +1,28 @@
 import Head from 'next/head';
-import { singleCategory } from '../../actions/category';
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
+import { API, DOMAIN, APP_NAME } from '../../config';
 import Card from '../../components/blogs/Card';
 
-const Category=({category,blogs,query})=>{
 
+
+const Category=({blogs, category})=>{
+
+   
     const head = () => (
         <Head>
             <title>
-                {category.name} | {APP_NAME}
+                Educational Content related to {category.name} | {APP_NAME}
             </title>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+            <meta name="robots" content="noindex nofollow" />
             <meta name="description" content={`Blogs related to category: ${category.name}`} />
-            <link rel="canonical" href={`${DOMAIN}/categories/${query.slug}`} />
+            <link rel="canonical" href={`${DOMAIN}/categories/${category.slug}`} />
             <meta property="og:title" content={`${category.name}| ${APP_NAME}`} />
             <meta property="og:description" content={`Blogs related to: ${category.name}`} />
             <meta property="og:type" content="webiste" />
-            <meta property="og:url" content={`${DOMAIN}/categories/${query.slug}`} />
+            <meta property="og:url" content={`${DOMAIN}/categories/${category.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
-
             <meta property="og:image" content={`${DOMAIN}/img/stupro2.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:type" content="image/png" />
-            <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
     );
 
@@ -32,30 +31,52 @@ const Category=({category,blogs,query})=>{
     return(
      <>
      {head()}
-     <section class="container">
+     <section className="container">
      <h1 className="text-primary large m-1">{category.name}</h1>
      <div className="line"></div>
-       <main>
+       <div>
            <article className="blog bg-light">
            {blogs.map((b, i) => (
                 <Card key={i} blog={b} /> 
                ))}
            </article>
-       </main>
+       </div>
        
       </section>
     </>
     )
 };
 
-Category.getInitialProps = ({ query }) => {
-    
-    return singleCategory(query.slug).then(data => {
-        if (data.error) {
-            console.log(data.error);
-        } else {
-            return { category: data.category, blogs: data.blogs ,query};
+export const getStaticPaths=async ()=>{
+    const res = await fetch(`${API}/categories`);
+    const data= await res.json();
+    const paths=data.map(category=>{
+        return{
+            params:{slug:category.slug}
         }
-    });
-};
+    })
+    return{
+        paths,
+        fallback:false
+    }
+}
+
+export const getStaticProps=async (ctx)=>{
+    const slug=ctx.params.slug;
+    const res=await fetch(`${API}/categories/`+slug)
+    const data=await res.json();
+
+    return{
+        props:{
+            category: data.category, 
+            blogs: data.blogs,
+        },
+        revalidate:86400
+
+    }
+
+}
+
+
 export default Category;
+

@@ -27,10 +27,10 @@ export default async(req,res)=>{
     // jobs != null
     jobs.forEach(job => {
       feed.addItem({
-        title: job.title,
-        id: `/jobs/${job.slug}`,
-        link: `/jobs/${job.slug}`,
-        description:`Latest vacancies has been rolled out by ${job.agency} in ${job.location}.If you are searching a sarkari naukri in ${job.location} then it is an oppurtunity for you. ${job.excerpt}`,
+        title: job.subtitle ? job.subtitle :job.title,
+        id: `${DOMAIN}/jobs/${job.slug}`,
+        link: `${DOMAIN}/jobs/${job.slug}`,
+        description:`${job.desc ? job.desc : `Latest vacancies has been rolled out by ${job.agency} in ${job.location}.If you are searching a sarkari naukri in ${job.location} then it is an oppurtunity for you. ${job.excerpt}`}`,
         content: `<p>Latest vacancies has been rolled out by ${job.agency} in ${job.location}.If you are searching a job in ${job.location} then it is an oppurtunity for you.You can apply for these vacancies before ${job.lastDate}.The basic pay scale range of these vacancies is ${job.salary}/month.If you are interested to apply online for these vacancies then click on the link to visit the prograd and apply.</p>`,
         date: new Date(job.updatedAt),
       });

@@ -5,9 +5,12 @@ import { getCookie} from '../../actions/auth';
 import { getJobCategories } from '../../actions/jobCategory';
 import { getJobTags } from '../../actions/jobTag';
 import { createJob } from '../../actions/job';
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-import { QuillModules, QuillFormats } from '../../helpers/quill';
 import Checkbox from '@material-ui/core/Checkbox';
+const SlatePlugins = dynamic(() => import('../slate-plugins/index'), { loading: () => "",ssr: false  })
+import {serializeHTMLFromNodes,createEditorPlugins} from '@udecode/slate-plugins';
+import {pluginsBasic,initialValueBasicElements} from '../slate-plugins/utils'
+
+
 
 
 
@@ -32,7 +35,6 @@ const CreateJob=({router})=>{
 
     const [checked, setChecked] = useState([]); // categories
     const [checkedTag, setCheckedTag] = useState([]); // tags
-
     const [body, setBody] = useState(jobFromLS());
     const [values, setValues] = useState({
         error: '',
@@ -44,14 +46,22 @@ const CreateJob=({router})=>{
         applyLink:'',
         salary:'',
         type:'',
-        affiliateLink:'',
+        forSlug:'',
+        desc:'',
+        subtitle:'',
         qualification:'',
+        language:'',
         location:'',
+        street:'',
+        city:'',
+        postal:'',
        lastDate:'',
+       status:'',
+       officialLink:'',
         hidePublishButton: false
     });
 
-    const { error, sizeError, success, formData,applyLink,lastDate,affiliateLink, agency,title,salary,qualification,location,type, hidePublishButton } = values;
+    const { error, sizeError, success,street,city,postal,language,status,officialLink, formData,subtitle,desc,forSlug,applyLink,lastDate, agency,title,salary,qualification,location,type, hidePublishButton } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -87,7 +97,7 @@ const CreateJob=({router})=>{
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
-                setValues({ ...values, title: '',agency:'',applyLink:'',affiliateLink:'',lastDate:'', error: '',salary:'',qualification:'',type:'',location:'', success: `A new blog titled "${data.title}" is created` });
+                setValues({ ...values, title: '',agency:'',officialLink:'',status:'', applyLink:'',language:'',forSlug:'',street:'',city:'',postal:'', subtitle:'',desc:'',lastDate:'', error: '',salary:'',qualification:'',type:'',location:'', success: `A new blog titled "${data.title}" is created` });
                 setBody('');
                 setJobCategories([]);
                 setJobTags([]);
@@ -102,14 +112,23 @@ const CreateJob=({router})=>{
         setValues({ ...values, [name]: value, formData, error: '' });
     };
 
-    const handleBody = e => {
-        // console.log(e);
+    const handleBody =(e)=> {
+
         setBody(e);
+        // const nodal=e ? e:initialValueBasicElements;
+        const nodes=[...e];
+        const editor=createEditorPlugins();
+        const html=serializeHTMLFromNodes(editor,{
+            plugins:pluginsBasic,
+            nodes
+          });
         formData.set('body', e);
         if (typeof window !== 'undefined') {
-            localStorage.setItem('job', JSON.stringify(e));
+            localStorage.setItem('job', JSON.stringify(html));
         }
     };
+
+
 
     const handleToggle = c => () => {
         setValues({ ...values, error: '' });
@@ -184,12 +203,42 @@ const createJobForm = () => {
     return (
         <form className="form" onSubmit={publishJob}>
             <div className="form-group">
+            <select name="Language" value={language} onChange={handleChange('language')} required>
+                <option value="0">Select Language</option>
+                <option value="en">en</option>
+                <option value="hi">hi</option>
+            </select>               
+        </div>
+            <div className="form-group">
                 <label className="text-primary">Title</label>
                 <br/>
                 <input className="form-group" type="text"  value={title} onChange={handleChange('title')} />
             </div>
-           
-            
+            <div className="form-group">
+                <label className="text-primary">Sub-Title</label>
+                <br/>
+                <input className="form-group" type="text"  value={subtitle} onChange={handleChange('subtitle')} />
+            </div>
+            <div className="form-group">
+            <select  value={status} onChange={handleChange('status')} required>
+                <option value="0">Status</option>
+                <option value="jobs">jobs</option>
+                <option value="result">result</option>
+                <option value="admit-card">admit-card</option>
+
+            </select>               
+        </div>
+            <div className="form-group">
+                <label className="text-primary">Slug</label>
+                <br/>
+                <input className="form-group" type="text"  value={forSlug} onChange={handleChange('forSlug')} />
+            </div>
+            <div className="form-group">
+            <label className="text-primary">Description</label>
+                <br/>
+              <textarea className="blog textinput"placeholder="Job Description" maxLength='160' value={desc} onChange={handleChange('desc')}></textarea>
+              <h2 className="text-primary">{160-desc.length}/160</h2>
+            </div>
             <div className="form-group">
                <input type="text" placeholder="Main category"  value={agency} onChange={handleChange('agency')} required />
             </div>
@@ -197,7 +246,16 @@ const createJobForm = () => {
                <input type="text" placeholder="Salary"  value={salary} onChange={handleChange('salary')} required />
             </div>
             <div className="form-group">
-            <input type="text" placeholder="Location"  value={location} onChange={handleChange('location')} required />
+            <input type="text" placeholder="State"  value={location} onChange={handleChange('location')} required />
+            </div>
+            <div className="form-group">
+            <input type="text" placeholder="Street"  value={street} onChange={handleChange('street')}  />
+            </div>
+            <div className="form-group">
+            <input type="text" placeholder="City"  value={city} onChange={handleChange('city')}  />
+            </div>
+            <div className="form-group">
+            <input type="text" placeholder="Postal Code"  value={postal} onChange={handleChange('postal')} />
             </div>
             <div className="form-group">
             <input type="date" value={lastDate} onChange={handleChange('lastDate')}/>
@@ -211,16 +269,14 @@ const createJobForm = () => {
             <div className="form-group">
             <input type="text" placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} required />
             </div>
+            <div className="form-group">
+            <input type="text" placeholder="Official Website Link"  value={officialLink} onChange={handleChange('officialLink')} />
+            </div>
             
 
             
-            <ReactQuill
-                    modules={QuillModules}
-                    formats={QuillFormats}
-                    value={body}
-                    placeholder="Write something amazing..."
-                    onChange={handleBody} />
-            
+
+                    <SlatePlugins handleChange={handleBody} />
              <button type="submit" className="btn nbtn btn-dark my-1">Publish</button>
          </form>
     );
@@ -271,3 +327,5 @@ return (
 )
 }
 export default withRouter(CreateJob);
+
+{/* <h2>Remaining Characters: {charLimit - desc.length}</h2> */}

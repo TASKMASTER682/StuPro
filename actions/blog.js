@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch';
 import { API } from '../config';
 import queryString from 'query-string';
 import { isAuth ,handleResponse } from './auth';
+import { getURL } from 'next/dist/next-server/lib/utils';
 
 
 export const createBlog =async (blog, token) => {
@@ -46,9 +47,8 @@ export const listBlogsWithCategoriesAndTags =async (skip,limit) => {
         })
         .catch(err => console.log(err));
 };
-
 export const singleBlog = async (slug) => {
-    return await fetch(`${API}/blog/${slug}`, {
+    return await fetch(`${API}/blogs/${slug}`, {
         method: 'GET'
     })
         .then(response => {
@@ -56,6 +56,8 @@ export const singleBlog = async (slug) => {
         })
         .catch(err => console.log(err));
 };
+
+
 
 export const listRelated = async (blog) => {
     return  fetch(`${API}/blogs/related`, {
@@ -67,7 +69,7 @@ export const listRelated = async (blog) => {
         body: JSON.stringify(blog)
     })
         .then(response => {
-            return response.json();
+            return response.json();  
         })
         .catch(err => console.log(err));
 };
@@ -76,7 +78,7 @@ export const list = async (username) => {
     let listBlogsEndpoint;
 
     if (username) {
-        listBlogsEndpoint = `${API}/${username}/blogs`;
+        listBlogsEndpoint = `${API}/blogs/${username}`;
     } else {
         listBlogsEndpoint = `${API}/blogs`;
     }
@@ -94,9 +96,9 @@ export const removeBlog =async (slug, token) => {
     let deleteBlogEndpoint;
 
     if (isAuth() && isAuth().role === 1) {
-        deleteBlogEndpoint = `${API}/blog/${slug}`;
+        deleteBlogEndpoint = `${API}/blogs/${slug}`;
     } else if (isAuth() && isAuth().role === 0) {
-        deleteBlogEndpoint = `${API}/user/blog/${slug}`;
+        deleteBlogEndpoint = `${API}/user/blogs/${slug}`;
     }
 
     return await fetch(`${deleteBlogEndpoint}`, {
@@ -118,9 +120,9 @@ export const updateBlog = async (blog, token, slug) => {
     let updateBlogEndpoint;
 
     if (isAuth() && isAuth().role === 1) {
-        updateBlogEndpoint = `${API}/blog/${slug}`;
+        updateBlogEndpoint = `${API}/blogs/${slug}`;
     } else if (isAuth() && isAuth().role === 0) {
-        updateBlogEndpoint = `${API}/user/blog/${slug}`;
+        updateBlogEndpoint = `${API}/user/blogs/${slug}`;
     }
 
     return await fetch(`${updateBlogEndpoint}`, {
@@ -143,12 +145,10 @@ export const listSearch = async (params) => {
     let query = queryString.stringify(params);
     console.log('query params', query);
     return await fetch(`${API}/blogs/search?${query}`, {
-        method: 'GET'
+        method: 'Post'
     })
         .then(response => {
             return response.json();
         })
         .catch(err => console.log(err));
 };
-
-

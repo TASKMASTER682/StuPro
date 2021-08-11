@@ -14,25 +14,24 @@ const Footer=()=>{
         return `${DOMAIN}/img/StuproLogo.png` 
       }
     return(
-        <section className="footer-container bg-success my-1">
+        <section className="footer-container bg-success my-1" style={{borderTopLeftRadius:'0.8rem',borderTopRightRadius:'0.8rem'}}>
         <div className="footer">
             <div className="first-row ">
-              <span>  <Image loader={myLoader} src={`${DOMAIN}/img/StuproLogo.png`} height={220} width={220}   priority alt="ProGrad" /></span>
+              <span>  <Image loader={myLoader} src={`${DOMAIN}/img/StuproLogo.png`} height={220} width={220}   priority alt="The ProGrad Logo" /></span>
                 <p className="extra-small text-light-gray">
-                    © Copyright {year}.ProGrad India | 
-                    All rights reserved
+                    © Copyright {year}.The ProGrad | All rights reserved | India
                     
                 </p>
                 <div className="line"></div>
             </div>
             <div className="second-row p-1 ">
-                <h2 className="lead text-dark ">Learn more</h2>
-                   <p>ProGrad is an open platform where readers come to find insightful and dynamic thinking.Here experts and undiscovered voices come together and dive into the heart of any topic and bring new ideas to surface.Also the jobseekers come here to easily find a job and apply according to thier qualification.</p>
-                
+                <h2 className="lead text-dark ">Learn and Get hired</h2>
+                   <p>A Platform Bringing Aspiring Grads And Excelling Professionals Togather. A Perfect Indian platform to find Govt Jobs, Private Jobs, Work from home and instatnt Jobs.It is Community That Has A Perfect Ecosystem For Every Niche Of Education System.Get free pdf notes and much more study materials for your coming exams</p>
+            
             </div>
             <div className="second-row p-1 ">
                 <h2 className="lead text-dark">Share what you have learnt</h2>
-               <p>If you have knowlege to share ,a story to tell,or a perspective to offer - welcome to ProGrad.Its easy and free to post your thinking on any topic</p>
+               <p>If you have knowlege to share ,a story to tell,or a perspective to offer - welcome to ProGrad.Share your knowledge as well as get study materials ,jobs, private jobs and you can also download your cv free of cost</p>
             </div>
             <div className="third-row p-1">
                 <h2 className="lead text-dark">Quick Links</h2>
@@ -40,16 +39,15 @@ const Footer=()=>{
                <Link href="/disclaimer"><p className='text-dark'> Disclaimer</p></Link>
                <Link href="/contact"><p className='text-dark'> Contact us</p></Link>
                <Link href="/privacy"><p className='text-dark'>Terms of use | Privacy Policy </p></Link>
+               <Link href="/sitemap.xml"><p className='text-dark'>Sitemap</p></Link>
+
             
              <div className="line"></div>
                 <ul className="my-2 icons">
-                    <li><a href="https://www.instagram.com/theprograd/" target="_blank"><InstagramIcon  style={{ fontSize: 60 }}/></a></li>
-                    <li><a href="https://www.facebook.com/sayed.anwarulhaq.923" target="_blank"><FacebookIcon style={{ fontSize: 60 }} /></a></li>
-                    <li><a  href="https:///t.me/theprograd" target="_blank"><TelegramIcon  style={{ fontSize: 60 }}  /></a></li>
-                    <li><a href="https://youtube.com/channel/UCFGm2Nfoqs0G29E38B1GZxw" target="_blank"><YouTubeIcon style={{ fontSize: 60 }} /></a></li>
-
-                  
-
+                    <li><a href="https://www.instagram.com/theprograd/" rel='noopener noreferrer' target="_blank"><InstagramIcon  style={{ fontSize: 60 }}/></a></li>
+                    <li><a href="https://www.facebook.com/sayed.anwarulhaq.923" target="_blank" rel='noopener noreferrer'><FacebookIcon style={{ fontSize: 60 }} /></a></li>
+                    <li><a  href="https://t.me/theprograd" target="_blank" rel='noopener noreferrer'><TelegramIcon  style={{ fontSize: 60 }}  /></a></li>
+                    <li><a href="https://youtube.com/channel/UCFGm2Nfoqs0G29E38B1GZxw" target="_blank" rel='noopener noreferrer'><YouTubeIcon style={{ fontSize: 60 }} /></a></li>
                 </ul>
             </div>
         </div>

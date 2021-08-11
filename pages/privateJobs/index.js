@@ -1,12 +1,13 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import { useState} from 'react';
+import dynamic from 'next/dynamic'
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import { withRouter } from 'next/router';
-import { listPvtJobsWithCategoriesAndTags } from '../../actions/privateJob';
+import { listPvtJobsWithCategoriesAndTags,listPvt } from '../../actions/privateJob';
 import Card from '../../components/privateJobs/Card';
-const SearchPvt =dynamic(async ()=>import( '../../components/privateJobs/PvtSearch'));
+const AutoComplete =dynamic(async ()=>import('../../components/reusables/AutoComplete'),{ssr:false});
+const LoadMore =dynamic(async ()=>import('../../components/privateJobs/LoadMore'),{ssr:false})
+
 // const Infeed =dynamic(async ()=>import('../../components/ads/Infeed'),{ssr:false}) ;
 // const DisplayAd =dynamic(async ()=>import('../../components/ads/DisplayAd'),{ssr:false}) ;
 
@@ -15,57 +16,29 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
 
     const head = () => (
         <Head>
-            <title> Best Placement Jobs in India | {APP_NAME}</title>
-            <meta name="description" 
-            content={`Apply Online for various fstest jobs in india which includes all types of private sector jobs like work from home jobs,analyst jobs,Data analyst jobs,software engineer jobs,Every rojgar samachar in bharat.The ProGrad is the best platform for freshers to find fastjob search.Here recruiters can also come to post jobs`}
-            />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>100+ Best Latest Private Sector Jobs in India to Apply | The {APP_NAME}</title>
+            <meta name="robots" content="index follow" />
 
+            <meta name="description" 
+            content='100+ active private jobs in India to apply.Apply today and get employed.See the employment news and the crux of each private sector job notification and easily apply on The ProGrad.'
+            />
             <link rel="canonical" href={`${DOMAIN}/${router.pathname}`} />
-            <meta property="og:title" content={`India's best platform for grads to find all type of jobs in India. | ${APP_NAME}`} />
+            <meta property="og:title" content={`100+ Best Latest Private Sector Jobs in India to Apply | The ${APP_NAME}`} />
             <meta
                 property="og:description"
-                content={`Apply Online for various fstest jobs in india which includes all types of private sector jobs like work from home jobs,analyst jobs,Data analyst jobs,software engineer jobs,Every rojgar samachar in bharat.The ProGrad is the best platform for freshers to find fastjob search.Here recruiters can also come to post jobs`}
+                content='100+ active private jobs in India to apply.Apply today and get employed.See the employment news and the crux of each private sector job notification and easily apply on The ProGrad.'
 
             />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
-            <meta property="og:site_name" content={`${APP_NAME}`} />
+            <meta property="og:site_name" content={`The ${APP_NAME}`} />
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:type" content="img/StuproLogo.png" />
-            <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
     );
 
-    const [limit, setLimit] = useState(jobsLimit);
-    const [skip, setSkip] = useState(0);
-    const [size, setSize] = useState(totalJobs);
-    const [loadedJobs, setLoadedJobs] = useState([]);
 
-    const loadMore = () => {
-        let toSkip = skip + limit;
-        listPvtJobsWithCategoriesAndTags(toSkip, limit).then(data => {
-            if (data.error) {
-                console.log(data.error);
-            } else {
-                setLoadedJobs([...loadedJobs, ...data.privateJobs]);
-                setSize(data.size);
-                setSkip(toSkip);
-            }
-        });
-    };
-    
-    const loadMoreButton = () => {
-        return (
-            size > 0 &&
-            size >= limit && (
-                <button style={{width:'100%',textAlign:'center'}} onClick={loadMore} className="btn nbtn btn-danger ">
-                    Load more
-                </button>
-            )
-        );
-    };
 
     const showAllJobs = () => {
         return privateJobs.map((privateJob, i) => {
@@ -77,69 +50,55 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
             );
         });
     };
-    const showLoadedJobs = () => {
-        return loadedJobs.map((privateJob, i) => (
-            <article key={i} >
-                <Card privateJob={privateJob} />
-            </article>
-        ));
-    };
-    const showJobCategories = privateJob =>{
-    return privateJobCategories.map((c, i) => (
+
+    const showJobCategories = () =>{
+    return privateJobCategories.map((c) => (
         
-        <Link key={i} href={`/privateJobCategories/${c.slug}`}>
-         <li> <a style={{padding:" 0 0.8rem",border:'solid #00e7d2'}}  className="btn nbtn bg-light-gray "><p className="extra-small">{c.name}</p></a></li> 
-        </Link>
+        <Link key={c._id} href={`/privateJobCategories/${c.slug}`}>
+        <li className="my-1"> <a className="input-box bg-primary "><span className="extra-small text-dark p-1"><strong>{c.name}</strong></span></a></li> 
+       </Link>
         
     ));
     }
-    const showJobTags = privateJob =>{
-    return privateJobTags.map((t, i) => (
-        <Link key={i} href={`/privateJobTags/${t.slug}`}>
-          <li>  <a style={{padding:" 0 0.8rem",border:'solid black '}}  className="btn nbtn bg-light-gray "><p className="extra-small">{t.name}</p></a></li>
-        </Link>
+    const showJobTags = () =>{
+    return privateJobTags.map((t) => (
+        <Link key={t._id} href={`/privateJobTags/${t.slug}`}>
+        <li className="my-1">  <a  className="input-box bg-dark "><span className="extra-small p-1"><strong>{t.name}</strong></span></a></li>
+      </Link>
     ));
     }
     return(
     <>
     {head()}
-    <main>
+    <div>
      <section className="blogCreate">
-     <h1 className="large text-primary" style={{lineHeight:'1.9rem'}}>Best Private Sector Jobs in India</h1>
+     <header className="large text-primary" style={{lineHeight:'1.9rem'}}> <strong>Best Private Sector Jobs in India</strong> </header>
      <p className="extra-small text-gray ">Find suitable jobs for you and apply.Just click on the title of job and see it in detail</p>
      <Link href="/privateJobs/pvtJobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search Pvt. jobs</a></Link>
      <div className="createMain">
-     <main>
+     <div>
      {/* <DisplayAd /> */}
      <div className="line"></div>
      {/* <Infeed /> */}
-         <main >
+         <div >
          {showAllJobs()}
-         </main>
+         </div>
          {/* <Infeed /> */}
-         <main>
-            {showLoadedJobs()}
-        </main>
-        
-        <div>
-            {loadMoreButton()}
+         <div>
+         <LoadMore listPvtJobsWithCategoriesAndTags={listPvtJobsWithCategoriesAndTags} jobsLimit={jobsLimit} totalJobs={totalJobs} />
+
         </div>
-    </main> 
+    </div> 
     <div className='hide-sm'>
-    <h2 className="lead text-dark">Search the job keyword,title or the location and hit search button</h2>
-        <SearchPvt />
-        <div style={{display:'flex',justifyContent:'space-between'}}>
-        
+    <h2 className="lead text-dark">Type in Search box what you are searching</h2>
+        <AutoComplete newRoute='privateJobs' list={listPvt}/>
+        <div className='new-flex'>       
         <ul className='p-1'style={{overflowY:'scroll',maxHeight:'20rem'}}>
-        <h4 className="my-1">Categories</h4>
-        
-        {showJobCategories()}
-        
-        </ul>
-        
-        
+        <h3 className="my-1 text-danger">Categories</h3>       
+        {showJobCategories()}       
+        </ul>        
         <ul className='p-1' style={{overflowY:'scroll',maxHeight:'20rem'}}>
-        <h4 className="my-1">Tags</h4>
+        <h3 className="my-1 text-danger">Tags</h3>
          {showJobTags()}
         </ul>
         
@@ -149,12 +108,12 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
     </div> 
      </div>
     </section>
- </main>
-        </>
+ </div>
+</>
     )
 };
 
-PvtJobs.getInitialProps = () => {
+export async function getStaticProps(){
     let skip = 0;
     let limit = 10;
     return listPvtJobsWithCategoriesAndTags(skip, limit).then(data => {
@@ -162,12 +121,17 @@ PvtJobs.getInitialProps = () => {
             console.log(data.error);
         } else {
             return {
-                privateJobs: data.privateJobs,
-                privateJobCategories: data.privateJobCategories,
-                privateJobTags: data.privateJobTags,
-                totalJobs: data.size,
-                jobsLimit: limit,
-                jobSkip: skip
+                props:{
+                    privateJobs: data.privateJobs,
+                    privateJobCategories: data.privateJobCategories,
+                    privateJobTags: data.privateJobTags,
+                    totalJobs: data.size,
+                    jobsLimit: limit,
+                    jobSkip: skip
+
+                },revalidate:900
+
+             
             };
         }
     });

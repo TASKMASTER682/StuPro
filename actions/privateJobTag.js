@@ -29,15 +29,6 @@ export const getPvtJobTags = async () => {
         .catch(err => console.log(err));
 };
 
-export const singlePvtJobTag = async (slug) => {
-    return await fetch(`${API}/privateJobTag/${slug}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
 
 export const removePvtJobTag = async (slug, token) => {
     return await fetch(`${API}/privateJobTag/${slug}`, {

@@ -30,15 +30,7 @@ export const getPvtJobCategories =async () => {
         .catch(err => console.log(err));
 };
 
-export const singlePvtJobCategory = async (slug) => {
-    return await fetch(`${API}/privateJobCategory/${slug}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
+
 
 export const removePvtJobCategory =async (slug, token) => {
     return await fetch(`${API}/privateJobCategory/${slug}`, {

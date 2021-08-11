@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[5889],{25889:function(e,t,l){"use strict";var a=l(95318),u=l(20862);Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var d=u(l(67294)),r=(0,a(l(2108)).default)(d.createElement("path",{d:"M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"}),"FilterHdr");t.default=r}}]);

@@ -13,6 +13,8 @@ const ProfileUpdate = () => {
         email: '',
         about: '',
         password: '',
+        skills:'',
+        website:'',
         insta:'',
         facebook:'',
         twitter:'',
@@ -30,12 +32,15 @@ const ProfileUpdate = () => {
         username_for_photo,
         name,
         email,
+        status,
         about,
         password,
         error,
+        skills,
         success,
         insta,
         facebook,
+        website,
         twitter,
         linkedin,
         loading,
@@ -55,7 +60,10 @@ const ProfileUpdate = () => {
                     name: data.name,
                     email: data.email,
                     about: data.about,
+                    status:data.status,
                     insta:data.insta,
+                    website:data.website,
+                    skills:data.skills,
                     facebook:data.facebook,
                     twitter:data.twitter,
                     linkedin:data.linkedin
@@ -91,8 +99,11 @@ const ProfileUpdate = () => {
                         username: data.username,
                         name: data.name,
                         email: data.email,
+                        status:data.status,
                         about: data.about,
                         password: '',
+                        website:data.website,
+                        skills:data.skills,
                         insta:data.insta,
                         facebook:data.facebook,
                         twitter:data.twitter,
@@ -128,6 +139,9 @@ const ProfileUpdate = () => {
             <div className="form-group">
               <input type="text" placeholder="Name" value={name}  onChange={handleChange('name')} />
              </div>
+             <div className="form-group">
+              <input type="text" placeholder="Your current Occupation or Status" value={status}  onChange={handleChange('status')} />
+             </div>
          
              <div className="form-group">
               <textarea className="blog textinput"placeholder="A short bio of yourself" value={about} onChange={handleChange('about')}></textarea>
@@ -136,6 +150,18 @@ const ProfileUpdate = () => {
             <div className="form-group">
               <input type="text" placeholder="Password" value={password}  onChange={handleChange('password')} />
              </div>
+             <div className="form-group">
+          <input type="text" placeholder="* Skills"  value={skills} onChange={handleChange('skills')} />
+          <small className="text-primary">
+            Please use comma separated values (eg.
+            HTML,CSS,JavaScript,PHP)</small>
+          
+        </div>
+           <div className="form-group">
+           <label className="text-primary"></label>
+              <input type="text" placeholder="URL of your website" value={website}  onChange={handleChange('website')} />
+              <small className="text-primary">Paste URL of your website or any brand you have</small>
+            </div>
              <h2 className="lead text-primary my-1">Add Social Accounts</h2>
              <div className="form-group">
               <input type="text" placeholder="Full URL of your insta profile" value={insta}  onChange={handleChange('insta')} />

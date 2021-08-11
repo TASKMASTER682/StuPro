@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React,{ useState, useEffect } from 'react';
 import Router from 'next/router';
 import dynamic from 'next/dynamic';
@@ -7,10 +6,11 @@ import { getCookie, isAuth } from '../../actions/auth';
 import { getJobCategories } from '../../actions/jobCategory';
 import { getJobTags } from '../../actions/jobTag';
 import { singleJob, updateJob } from '../../actions/job';
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-import { QuillModules, QuillFormats } from '../../helpers/quill';
 import { API } from '../../config';
 import Checkbox from '@material-ui/core/Checkbox';
+const SlatePlugins = dynamic(() => import('../slate-plugins/index'), { loading: () => "",ssr: false  })
+import {serializeHTMLFromNodes,createEditorPlugins} from '@udecode/slate-plugins';
+import {pluginsBasic,initialValueBasicElements} from '../slate-plugins/utils'
 
 
 
@@ -31,16 +31,25 @@ const JobUpdate=({router})=>{
         formData: '',
         agency:'',
         title: '',
+        subtitle:'',
+        desc:'',
+        city:'',
+        street:'',
+        postal:'',
+        officialLink:'',
+        language:'',
         applyLink:'',
         body: '',
         salary:'',
+        language:'',
         lastDate:'',
         type:'',
         location:'',
+        status:'',
         qualification:''
     });
 
-    const { error, success, formData,agency,applyLink, title,qualification,lastDate,location,type, salary } = values;
+    const { error, success, formData,agency,status,applyLink,subtitle,desc,city,street,postal,officialLink,language, title,qualification,lastDate,location,type, salary } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -57,7 +66,7 @@ const JobUpdate=({router})=>{
                 if (data.error) {
                     console.log(data.error);
                 } else {
-                    setValues({ ...values, title: data.title,applyLink:data.applyLink,lastDate:data.lastDate,agency:data.agency,salary:data.salary,qualification:data.qualification,location:data.location,type:data.type });
+                    setValues({ ...values,status:data.status || '', title: data.title,subtitle:data.subtitle || "" ,desc:data.desc || "",city:data.city || "" ,street:data.street || "" ,postal:data.postal || "" ,officialLink:data.officialLink || "" ,language:data.language || "",applyLink:data.applyLink,lastDate:data.lastDate,agency:data.agency,salary:data.salary,qualification:data.qualification,location:data.location,type:data.type });
                     setBody(data.body);
                     setCategoriesArray(data.jobCategories);
                     setTagsArray(data.jobTags);
@@ -194,9 +203,20 @@ const JobUpdate=({router})=>{
         setValues({ ...values, [name]: value, formData, error: '' });
     };
 
-    const handleBody = e => {
+    const handleBody =(e)=> {
+
         setBody(e);
+        // const nodal=e ? e:initialValueBasicElements;
+        const nodes=[...e];
+        const editor=createEditorPlugins();
+        const html=serializeHTMLFromNodes(editor,{
+            plugins:pluginsBasic,
+            nodes
+          });
         formData.set('body', e);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('job', JSON.stringify(html));
+        }
     };
 
     const editJob = (e) => {
@@ -231,12 +251,40 @@ const JobUpdate=({router})=>{
 
     const updateJobForm=()=>{
         return(
-            <form className="form" onSubmit={editJob}>
+        <form className="form" onSubmit={editJob}>
+            <div className="form-group">
+            <select name="Language" value={language} onChange={handleChange('language')} required>
+                <option value="0">Select Language</option>
+                <option value="en">en</option>
+                <option value="hi">hi</option>
+            </select>               
+        </div>
             <div className="form-group">
                 <label className="text-primary">Title</label>
                 <br/>
                 <input className="form-group" type="text"  value={title} onChange={handleChange('title')} />
             </div>
+            <div className="form-group">
+                <label className="text-primary">Sub-Title</label>
+                <br/>
+                <input className="form-group" type="text"  value={subtitle} onChange={handleChange('subtitle')} />
+            </div>
+            <div className="form-group">
+            <select  value={status} onChange={handleChange('status')} required>
+                <option value="0">Status</option>
+                <option value="jobs">jobs</option>
+                <option value="result">result</option>
+                <option value="admit-card">admit-card</option>
+
+            </select>               
+        </div>
+            <div className="form-group">
+            <label className="text-primary">Description</label>
+                <br/>
+              <textarea className="blog textinput"placeholder="Job Description" maxLength='160' value={desc} onChange={handleChange('desc')}></textarea>
+              <h2 className="text-primary">{160-desc.length}/160</h2>
+            </div>
+
             <div className="form-group">
                <input type="text" placeholder="Agency"  value={agency} onChange={handleChange('agency')} required />
             </div>
@@ -245,6 +293,15 @@ const JobUpdate=({router})=>{
             </div>
             <div className="form-group">
             <input type="text" placeholder="Location"  value={location} onChange={handleChange('location')} required />
+            </div>
+            <div className="form-group">
+            <input type="text" placeholder="Street"  value={street} onChange={handleChange('street')}  />
+            </div>
+            <div className="form-group">
+            <input type="text" placeholder="City"  value={city} onChange={handleChange('city')}  />
+            </div>
+            <div className="form-group">
+            <input type="text" placeholder="Postal Code"  value={postal} onChange={handleChange('postal')} />
             </div>
             <div className="form-group">
             <input type="date" value={lastDate} onChange={handleChange('lastDate')}/>
@@ -258,16 +315,14 @@ const JobUpdate=({router})=>{
             <div className="form-group">
             <input type="text" placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} required />
             </div>
+            <div className="form-group">
+            <input type="text" placeholder="Official Website Link"  value={officialLink} onChange={handleChange('officialLink')}  />
+            </div>
 
-            <ReactQuill
-                     modules={QuillModules}
-                    formats={QuillFormats}
-                    value={body}
-                    placeholder="Write something amazing..."
-                    onChange={handleBody}
-                />
-            
+ 
+                <SlatePlugins handleChange={handleBody} />
 
+               
             <div>
                 <button type="submit" className="btn nbtn btn-dark my-1">
                     Update
@@ -290,7 +345,10 @@ const JobUpdate=({router})=>{
             <div className="line"></div>
             <div className="createForm">
                {updateJobForm()}
+  
+      
              <div className="line"></div>
+
              {body && (
                         <img src={`${API}/job/photo/${router.query.slug}`} alt={title} style={{ width: '100%' }} />
                     )}

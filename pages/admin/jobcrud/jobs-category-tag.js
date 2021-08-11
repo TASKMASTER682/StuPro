@@ -1,12 +1,22 @@
-import Layout from '../../../components/Layout';
 import Admin from '../../../components/auth/Admin';
 import JobCategory from '../../../components/jobcrud/JobCategory';
 import JobTag from '../../../components/jobcrud/JobTag';
-import Link from 'next/link';
+import Head from 'next/head';
+import {APP_NAME} from '../../../config'
+
 
 const JobCategoryTag = () => {
+  const head = () => (
+    <Head>
+        <title>
+            Create Job | The {APP_NAME}
+        </title>
+        <meta name="robots" content="noindex nofollow" />
+    </Head>
+)
     return (
-        
+        <>
+        {head()}
             <Admin>
              <section className="container">
              <h1 className="large text-primary">Manage Job Tags and Categories</h1>
@@ -18,6 +28,8 @@ const JobCategoryTag = () => {
                  <JobTag />
              </section>
             </Admin>
+        </>
+
         
     );
 };

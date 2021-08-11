@@ -1,72 +1,39 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { useState} from 'react';
 import { withRouter } from 'next/router';
-import { listJobsWithCategoriesAndTags } from '../../actions/job';
 import Card from '../../components/jobs/Card';
-const Search=dynamic(async()=>import('../../components/jobs/Search'));
+const AutoComplete =dynamic(async ()=>import('../../components/reusables/AutoComplete'),{ssr:false});
+const LoadMoreJobs =dynamic(async ()=>import('../../components/jobs/LoadMoreJobs'),{ssr:false})
+import { listJobsWithCategoriesAndTags,list } from '../../actions/job';
 // const Infeed=dynamic(async()=>import('../../components/ads/Infeed'),{ssr:false});
 // const DisplayAd=dynamic(async()=>import('../../components/ads/DisplayAd'),{ssr:false});
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
-
-const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, router })=>{
+import { DOMAIN, APP_NAME } from '../../config';
+const Jobs = ({jobs,jobTags,jobCategories, router, totalJobs, jobsLimit, jobSkip})=>{
     
-
     const head = () => (
         <Head>
-            <title>Best Jobs in India |The {APP_NAME}</title>
-            <meta name="description" 
-            content={`Apply Online for best jobs in india which includes all types of central govt jobs,state govt jobs,best Indian govt jobs,Every rojgar samachar in bharat.The ProGrad is the best platform for freshers to find fastjob search.Here recruiters can also come to post jobs`}
-            />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+            <title>50+ Best Latest Government Jobs in India to Apply |The {APP_NAME}</title>
             <link rel="canonical" href={`${DOMAIN}/${router.pathname}`} />
-            <meta property="og:title" content={`India's best platform for grads to find all type of jobs in India. |The ${APP_NAME}`} />
+            <meta name="robots" content="index follow" />
+            <meta name="description" 
+            content='50+ active government jobs in India to apply.Apply today and get employed.See the employment news and the crux of each govt job notification and easily apply on The ProGrad.'
+            />
+            <meta property="og:title" content={`50+ Best Government Jobs in India to Apply |The ${APP_NAME}`} />
             <meta
                 property="og:description"
-                content={`Apply Online for best jobs in india which includes all types of central govt jobs,state govt jobs,best Indian govt jobs,Every rojgar samachar in bharat.The ProGrad is the best platform for freshers to find fastjob search.Here recruiters can also come to post jobs`}
-
+                content='50+ active government jobs in India to apply.Apply today and get employed.See the employment news and the crux of each govt job notification and easily apply on The ProGrad.'
             />
             <meta property="og:type" content="webiste" />
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
-            <meta property="og:site_name" content={`${APP_NAME}`} />
-
+            <meta property="og:site_name" content={`The ${APP_NAME}`} />
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
-            <meta property="og:image:secure_url" ccontent={`${DOMAIN}/img/StuproLogo.png`} />
-            <meta property="og:image:type" content="img/StuproLogo.png" />
-            <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+            <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />
+            <meta property="og:image:type" content={`${DOMAIN}/img/StuproLogo.png`} />
         </Head>
     );
 
-    const [limit, setLimit] = useState(jobsLimit);
-    const [skip, setSkip] = useState(0);
-    const [size, setSize] = useState(totalJobs);
-    const [loadedJobs, setLoadedJobs] = useState([]);
 
-    const loadMore = () => {
-        let toSkip = skip + limit;
-        listJobsWithCategoriesAndTags(toSkip, limit).then(data => {
-            if (data.error) {
-                console.log(data.error);
-            } else {
-                setLoadedJobs([...loadedJobs, ...data.jobs]);
-                setSize(data.size);
-                setSkip(toSkip);
-            }
-        });
-    };
-    
-    const loadMoreButton = () => {
-        return (
-            size > 0 &&
-            size >= limit && (
-                <button style={{width:'100%',textAlign:'center'}} onClick={loadMore} className="btn nbtn btn-danger ">
-                    Load more
-                </button>
-            )
-        );
-    };
 
     const showAllJobs = () => {
         return jobs.map((job, i) => {
@@ -78,26 +45,20 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
             );
         });
     };
-    const showLoadedJobs = () => {
-        return loadedJobs.map((job, i) => (
-            <article key={i} >
-                <Card job={job} />
-            </article>
-        ));
-    };
+
     const showJobCategories = job =>{
-    return jobCategories.map((c, i) => (
+    return jobCategories.map((c) => (
         
-        <Link key={i} href={`/jobCategories/${c.slug}`}>
-         <li> <a style={{padding:" 0 0.8rem",border:'solid #00e7d2'}}  className="btn nbtn bg-light-gray "><p className="extra-small">{c.name}</p></a></li> 
+        <Link key={c._id} href={`/jobCategories/${c.slug}`}>
+         <li className="my-1"> <a className="input-box bg-light-gray "><span className="extra-small text-dark p-1"><strong>{c.name}</strong></span></a></li> 
         </Link>
         
     ));
     }
     const showJobTags = job =>{
-    return jobTags.map((t, i) => (
-        <Link key={i} href={`/jobTags/${t.slug}`}>
-          <li>  <a style={{padding:" 0 0.8rem",border:'solid black '}}  className="btn nbtn bg-light-gray "><p className="extra-small">{t.name}</p></a></li>
+    return jobTags.map((t) => (
+        <Link key={t._id} href={`/jobTags/${t.slug}`}>
+          <li className="my-1">  <a  className="input-box bg-dark "><span className="extra-small p-1"><strong>{t.name}</strong></span></a></li>
         </Link>
     ));
     }
@@ -106,34 +67,30 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
     {head()}
     <main>
      <section className="blogCreate">
-     <h1 className="large text-primary" style={{lineHeight:'1.9rem'}}>State and Central Govt Jobs Notifications </h1>
+     <strong className="large text-primary" style={{lineHeight:'1.9rem'}}>State and Central Govt Jobs Notifications </strong>
      <p className="extra-small text-gray ">Find suitable and best jobs for you and apply.Just click on the title of job and see it in detail</p>
      <Link href="/jobs/jobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search job</a></Link>
      <div className="createMain">
-     <main>
+     <div>
      {/* <DisplayAd /> 
      <Infeed /> */}
 
-         <main >
+         <div >
          {showAllJobs()}
-         </main>
+         </div>
          {/* <Infeed /> */}
 
-         <main>
-            {showLoadedJobs()}
-        </main>
-        
-        <div>
-            {loadMoreButton()}
+         <div>
+            <LoadMoreJobs listWithCategoriesAndTags={listJobsWithCategoriesAndTags} totalContent={totalJobs} contentLimit={jobsLimit} />
         </div>
-    </main> 
+    </div> 
     <div className='hide-sm'>
-    <h2 className="lead text-dark">Search the job keyword,title or the location and hit the search button</h2>
-        <Search />
+    <h2 className="lead text-dark">Type in Search box what you are searching</h2>
+        <AutoComplete list={list} newRoute='jobs' />
         <div style={{display:'flex',justifyContent:'space-between'}}>
         
         <ul className='p-1'style={{overflowY:'scroll',maxHeight:'20rem'}}>
-        <h4 className="my-1">Categories</h4>
+        <h3 className="my-1 text-danger">Categories</h3>
         
         {showJobCategories()}
         
@@ -141,7 +98,7 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
         
         
         <ul className='p-1' style={{overflowY:'scroll',maxHeight:'20rem'}}>
-        <h4 className="my-1">Tags</h4>
+        <h3 className="my-1 text-danger">Tags</h3>
          {showJobTags()}
         </ul>
         
@@ -156,8 +113,9 @@ const Jobs = ({ jobs, jobCategories, jobTags, totalJobs, jobsLimit, jobSkip, rou
         </>
     )
 };
+export default withRouter(Jobs);
 
-Jobs.getInitialProps = () => {
+export async function getStaticProps(){
     let skip = 0;
     let limit = 10;
     return listJobsWithCategoriesAndTags(skip, limit).then(data => {
@@ -165,14 +123,19 @@ Jobs.getInitialProps = () => {
             console.log(data.error);
         } else {
             return {
-                jobs: data.jobs,
-                jobCategories: data.jobCategories,
-                jobTags: data.jobTags,
-                totalJobs: data.size,
-                jobsLimit: limit,
-                jobSkip: skip
+                props:{
+                    jobs: data.jobs,
+                    jobCategories: data.jobCategories,
+                    jobTags: data.jobTags,
+                    totalJobs: data.size,
+                    jobsLimit: limit,
+                    jobSkip: skip
+
+                },
+                revalidate:900
+             
             };
         }
     });
 }
-export default withRouter(Jobs);
+

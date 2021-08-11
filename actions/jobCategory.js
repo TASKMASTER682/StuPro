@@ -30,16 +30,6 @@ export const getJobCategories =async () => {
         .catch(err => console.log(err));
 };
 
-export const singleJobCategory = async (slug) => {
-    return await fetch(`${API}/jobCategory/${slug}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
-
 export const removeJobCategory =async (slug, token) => {
     return await fetch(`${API}/jobCategory/${slug}`, {
         method: 'DELETE',

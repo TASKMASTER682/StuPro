@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import jwt from 'jsonwebtoken';
 import { withRouter } from 'next/router';
 import { signup } from '../../../../actions/auth';
+
 const ActivateAccount = ({ router }) => {
     const [values, setValues] = useState({
         name: '',
@@ -47,12 +48,8 @@ const ActivateAccount = ({ router }) => {
                 {success && <div className="badge badge-primary p-1 nbtn">
                 You have successfully activated your account.<a href="/signin" className="btn btn-primary m-1 nbtn">Please signin</a>
                 </div>
-                }
-                
+                }             
                 </div>
-                
-                
-               
                 {showButton && (
                     <button className="btn nbtn btn-primary" onClick={clickSubmit}>
                         Activate Account

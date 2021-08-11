@@ -6,10 +6,12 @@ import { getCookie, isAuth } from '../../actions/auth';
 import { getCategories } from '../../actions/category';
 import { getTags } from '../../actions/tag';
 import { createBlog } from '../../actions/blog';
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-import { QuillModules, QuillFormats } from '../../helpers/quill';
+// const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+// import { QuillModules, QuillFormats } from '../../helpers/quill';
 import Checkbox from '@material-ui/core/Checkbox';
-
+const SlatePlugins = dynamic(() => import('../slate-plugins/index'), { loading: () => "",ssr: false  })
+import {serializeHTMLFromNodes,createEditorPlugins} from '@udecode/slate-plugins';
+import { pluginsBasic ,initialValueBasicElements} from '../slate-plugins/utils';
 
 
 const CreateBlog=({router})=>{
@@ -37,11 +39,15 @@ const CreateBlog=({router})=>{
             sizeError: '',
             success: '',
             formData: '',
+            subtitle:'',
+            language:'',
             title: '',
+            forSlug:'',
+            desc:'',
             hidePublishButton: false,
         });
     
-        const { error, sizeError, success, formData, title, hidePublishButton } = values;
+        const { error, sizeError, success, formData, title,subtitle,language,desc,forSlug, hidePublishButton } = values;
         const token = getCookie('token');
     
         useEffect(() => {
@@ -77,7 +83,7 @@ const CreateBlog=({router})=>{
                 if (data.error) {
                     setValues({ ...values, error: data.error,});
                 } else {
-                    setValues({ ...values, title: '', error: '', success: `A new blog titled "${data.title}" is created` });
+                    setValues({ ...values, title: '',subtitle:'',desc:'',language:'',forSlug:'', error: '', success: `A new blog titled "${data.title}" is created` });
                     setBody('');
                     setCategories([]);
                     setTags([]);
@@ -91,13 +97,20 @@ const CreateBlog=({router})=>{
             formData.set(name, value);
             setValues({ ...values, [name]: value, formData, error: '' });
         };
-    
-        const handleBody = e => {
-            
+
+
+        const handleBody =(e)=> {
+
             setBody(e);
+            const nodes=[...e];
+            const editor=createEditorPlugins();
+            const html=serializeHTMLFromNodes(editor,{
+                plugins:pluginsBasic,
+                nodes
+              });
             formData.set('body', e);
             if (typeof window !== 'undefined') {
-                localStorage.setItem('blog', JSON.stringify(e));
+                localStorage.setItem('blog', JSON.stringify(html));
             }
         };
     
@@ -175,21 +188,43 @@ const CreateBlog=({router})=>{
 
     const createBlogForm = () => {
         return (
-            <form className="form" onSubmit={publishBlog}>
+        <form className="form" onSubmit={publishBlog}>
+        <div className="form-group">
+            <select name="Language" value={language} onChange={handleChange('language')} required>
+                <option value="0">Select Language</option>
+                <option value="en">en</option>
+                <option value="hi">hi</option>
+            </select>               
+        </div>
                 <div className="form-group">
                     <label className="text-primary">Title</label>
                     <br/>
                     <input className="form-group" type="text"  value={title} onChange={handleChange('title')} />
                 </div>
-
+                <div className="form-group">
+                    <label className="text-primary">Sub-Title</label>
+                    <br/>
+                    <input className="form-group" type="text"  value={subtitle} onChange={handleChange('subtitle')} />
+                </div>
+            <div className="form-group">
+                <label className="text-primary">Slug</label>
+                <br/>
+                <input className="form-group" type="text"  value={forSlug} onChange={handleChange('forSlug')} />
+            </div>
+            <div className="form-group">
+            <label className="text-primary">Description</label>
+                <br/>
+              <textarea className="blog textinput"placeholder="Blog Description" maxLength='160' value={desc} onChange={handleChange('desc')}></textarea>
+              <h2 className="text-primary">{160-desc.length}/160</h2>
+            </div>
                 
-                <ReactQuill
+                {/* <ReactQuill
                          modules={QuillModules}
                         formats={QuillFormats}
                         value={body}
                         placeholder="Write something amazing..."
-                        onChange={handleBody} />
-                
+                        onChange={handleBody} /> */}
+                        <SlatePlugins handleChange={handleBody}/>
                  <button type="submit" className="btn nbtn btn-dark my-1">Publish</button>
              </form>
         );

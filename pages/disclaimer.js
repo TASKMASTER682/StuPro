@@ -11,7 +11,9 @@ const Disclaimer=()=>{
         content="Read the disclaimer of The ProGrad"
    
     />
-    <link rel="canonical" href={`${DOMAIN}`} />
+    <link rel="canonical" href={`${DOMAIN}/disclaimer`} />
+    <meta name="robots" content="index follow" />
+
     </Head>
     }
     return(

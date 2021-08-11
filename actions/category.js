@@ -30,15 +30,6 @@ export const getCategories = async () => {
         .catch(err => console.log(err));
 };
 
-export const singleCategory = async (slug) => {
-    return await fetch(`${API}/category/${slug}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
 
 export const removeCategory =async (slug, token) => {
     return await fetch(`${API}/category/${slug}`, {

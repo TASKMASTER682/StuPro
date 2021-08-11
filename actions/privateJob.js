@@ -41,7 +41,7 @@ export const listPvtJobsWithCategoriesAndTags =async (skip,limit) => {
 };
 
 export const singlePvtJob = async (slug) => {
-    return await fetch(`${API}/privateJob/${slug}`, {
+    return await fetch(`${API}/privateJobs/${slug}`, {
         method: 'GET'
     })
         .then(response => {
@@ -91,7 +91,7 @@ export const listPvtHome =async () => {
 export const removePvtJob= async (slug, token) => {
     
 
-    return await fetch( `${API}/privateJob/${slug}`, {
+    return await fetch( `${API}/privateJobs/${slug}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -107,11 +107,10 @@ export const removePvtJob= async (slug, token) => {
 };
 
 
+
 export const updatePvtJob = async (privateJob, token, slug) => {
     
-
-
-    return await fetch(`${API}/privateJob/${slug}`, {
+    return await fetch(`${API}/privateJobs/${slug}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',

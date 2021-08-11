@@ -1,7 +1,18 @@
 import { useState } from 'react';
 import { forgotPassword } from '../../../actions/auth';
+import Head from 'next/head';
+import {APP_NAME} from '../../../config'
 
 const ForgotPassword = () => {
+
+    const head = () => (
+        <Head>
+            <title>
+                Forgot Password | The {APP_NAME}
+            </title>
+            <meta name="robots" content="noindex nofollow" />
+        </Head>
+    )
     const [values, setValues] = useState({
         email: '',
         message: '',
@@ -61,7 +72,8 @@ const ForgotPassword = () => {
     );
 
     return (
-        
+        <>
+        {head()}
             <div className="container">
                 <h2>Forgot password</h2>
                 <div className="line"></div>
@@ -74,6 +86,8 @@ const ForgotPassword = () => {
                
                 {showForm && passwordForgotForm()}
             </div>
+        </>
+
         
     );
 };

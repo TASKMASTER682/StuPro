@@ -1,7 +1,18 @@
 import { useState } from 'react';
 import { withRouter } from 'next/router';
 import { resetPassword } from '../../../../actions/auth';
+import Head from 'next/head';
+import {APP_NAME} from '../../../../config'
+
 const ResetPassword = ({ router }) => {
+    const head = () => (
+        <Head>
+            <title>
+                Reset Password | The {APP_NAME}
+            </title>
+            <meta name="robots" content="noindex nofollow" />
+        </Head>
+    )
     const [values, setValues] = useState({
         name: '',
         newPassword: '',
@@ -49,11 +60,10 @@ const ResetPassword = ({ router }) => {
     )
 
     const showMessage = () => (message ? <div className="badge badge-primary p-1 nbtn">{message}</div> : '');
-       
-
     return (
-      
-            <div className="container">
+      <>
+      {head()}
+          <div className="container">
                 <h2 className="large text-primary">Reset password</h2>
                 <div className="line"></div>
                 <div>
@@ -63,6 +73,8 @@ const ResetPassword = ({ router }) => {
                 </div>
                 {passwordResetForm()}
             </div>
+      </>
+  
        
     );
 };

@@ -4,10 +4,15 @@ import { getCookie, isAuth } from '../../actions/auth';
 import { list, removeBlog } from '../../actions/blog';
 import moment from 'moment';
 
+
+
 const BlogRead = ({ username }) => {
     const [blogs, setBlogs] = useState([]);
     const [message, setMessage] = useState('');
     const token = getCookie('token');
+
+
+    
 
     useEffect(() => {
         loadBlogs();

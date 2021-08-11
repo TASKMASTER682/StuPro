@@ -1,8 +1,18 @@
+import Head from 'next/head';
+import {APP_NAME} from '../config'
 
 const PrivacyPolicy=()=>{
+    const head = () => (
+        <Head>
+            <title>
+                Privacy Policy | The {APP_NAME}
+            </title>
+            <meta name="robots" content="noindex nofollow" />
+        </Head>
+    )
     return (
         <>
-       
+       {head()}
     <section className="container">
         <h2 className="large text-primary  my-2">
         Privacy Policies

@@ -1,54 +1,72 @@
 import Head from 'next/head';
-import { singleTag } from '../../actions/tag';
-import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
+import { API, DOMAIN, APP_NAME } from '../../config';
 import Card from '../../components/blogs/Card';
 
-const Tag=({ tag, blogs, query })=>{
+
+const Tag=({ tag, blogs})=>{
     const head = () => (
         <Head>
             <title>
-                {tag.name} | {APP_NAME}
+                Educational Content related to {tag.name} |The {APP_NAME}
             </title>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="robots" content="noindex nofollow"></meta>
             <meta name="description" content={`Blogs related to ${tag.name}`} />
-            <link rel="canonical" href={`${DOMAIN}/categories/${query.slug}`} />
+            <link rel="canonical" href={`${DOMAIN}/categories/${tag.slug}`} />
             <meta property="og:title" content={`${tag.name}| ${APP_NAME}`} />
             <meta property="og:description" content={`Blogs related to ${tag.name}`} />
             <meta property="og:type" content="webiste" />
-            <meta property="og:url" content={`${DOMAIN}/categories/${query.slug}`} />
+            <meta property="og:url" content={`${DOMAIN}/categories/${tag.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
-
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />
-            <meta property="og:image:type" content="img/stupro2.png" />
-            <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+            <meta property="og:image:type" content={`${DOMAIN}/img/StuproLogo.png`} />
         </Head>
     );
     return(
         <>
         {head()}
-        <section class="container">
+        <section className="container">
         <h1 className="text-primary large m-1">{tag.name}</h1>
         <div className="line"></div>
-          <main>
+          <div>
               <article className="blog bg-light">
               {blogs.map((b, i) => (
                    <Card key={i} blog={b} /> 
                   ))}
               </article>
-          </main>
+          </div>
          </section>
        </>
     )
 }
 
-Tag.getInitialProps = ({ query }) => {
-    return singleTag(query.slug).then(data => {
-        if (data.error) {
-            console.log(data.error);
-        } else {
-            return { tag: data.tag, blogs: data.blogs, query };
+export const getStaticPaths=async ()=>{
+    const res = await fetch(`${API}/tags`);
+    const data= await res.json();
+    const paths=data.map(category=>{
+        return{
+            params:{slug:category.slug}
         }
-    });
-};
+    })
+    return{
+        paths,
+        fallback:false
+    }
+}
+
+export const getStaticProps=async (ctx)=>{
+    const slug=ctx.params.slug;
+    const res=await fetch(`${API}/tags/`+slug)
+    const data=await res.json();
+
+    return{
+        props:{
+            tag: data.tag, 
+            blogs: data.blogs,
+        },
+        revalidate:86400
+
+    }
+
+}
 export default Tag;

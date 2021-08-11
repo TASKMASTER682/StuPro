@@ -40,8 +40,9 @@ export const listJobsWithCategoriesAndTags =async (skip,limit) => {
         .catch(err => console.log(err));
 };
 
+
 export const singleJob = async (slug) => {
-    return await fetch(`${API}/job/${slug}`, {
+    return await fetch(`${API}/jobs/${slug}`, {
         method: 'GET'
     })
         .then(response => {
@@ -49,7 +50,6 @@ export const singleJob = async (slug) => {
         })
         .catch(err => console.log(err));
 };
-
 export const listRelated = async (job) => {
     return  fetch(`${API}/jobs/related`, {
         method: 'POST',
@@ -64,6 +64,8 @@ export const listRelated = async (job) => {
         })
         .catch(err => console.log(err));
 };
+
+
 
 export const list =async () => {
   
@@ -127,17 +129,17 @@ export const updateJob = async (job, token, slug) => {
         .catch(err => console.log(err));
 };
 
-export const listSearch =async (params) => {
-    console.log('search params', params);
-    let query = queryString.stringify(params);
-    console.log('query params', query);
-    return await fetch(`${API}/jobs/search?${query}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
-};
+// export const listSearch =async (params) => {
+//     console.log('search params', params);
+//     let query = queryString.stringify(params);
+//     console.log('query params', query);
+//     return await fetch(`${API}/jobs/search?${query}`, {
+//         method: 'GET'
+//     })
+//         .then(response => {
+//             return response.json();
+//         })
+//         .catch(err => console.log(err));
+// };
 
 

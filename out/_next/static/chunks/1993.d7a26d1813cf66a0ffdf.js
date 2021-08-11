@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1993],{81993:function(e,a,t){"use strict";var h=t(95318),u=t(20862);Object.defineProperty(a,"__esModule",{value:!0}),a.default=void 0;var c=u(t(67294)),l=(0,h(t(2108)).default)(c.createElement("path",{d:"M4 10h3v7H4zM10.5 10h3v7h-3zM2 19h20v3H2zM17 10h3v7h-3zM12 1L2 6v2h20V6z"}),"AccountBalance");a.default=l}}]);

@@ -58,17 +58,17 @@ const BlogUpdate=({router})=>{
         }
     };
 
-    const setCategoriesArray = blogCategories => {
+    const setCategoriesArray = categories => {
         let ca = [];
-        blogCategories.map((c, i) => {
+        categories.map((c, i) => {
             ca.push(c._id);
         });
         setChecked(ca);
     };
 
-    const setTagsArray = blogTags => {
+    const setTagsArray = tags => {
         let ta = [];
-        blogTags.map((t, i) => {
+        tags.map((t, i) => {
             ta.push(t._id);
         });
         setCheckedTag(ta);
@@ -104,7 +104,7 @@ const BlogUpdate=({router})=>{
         } else {
             all.splice(clickedCategory, 1);
         }
-        console.log(all);
+        // console.log(all);
         setChecked(all);
         formData.set('categories', all);
     };
@@ -119,7 +119,7 @@ const BlogUpdate=({router})=>{
         } else {
             all.splice(clickedTag, 1);
         }
-        console.log(all);
+        // console.log(all);
         setCheckedTag(all);
         formData.set('tags', all);
     };
@@ -189,7 +189,7 @@ const BlogUpdate=({router})=>{
 
     const editBlog = (e) => {
         e.preventDefault();
-        let formData = new FormData();
+        // let formData = new FormData();
         formData.append("title", values.title);
         formData.append("body", body);
        
@@ -266,7 +266,7 @@ const BlogUpdate=({router})=>{
                {updateBlogForm()}
              <div className="line"></div>
              {body && (
-                        <img src={`${API}/blog/photo/${router.query.slug}`} alt={title} style={{ width: '100%' }} />
+                        <img src={`${API}/blogs/photo/${router.query.slug}`} alt={title} style={{ width: '100%' }} />
                     )}
             
             </div>
