@@ -3,7 +3,7 @@ module.exports={
         APP_NAME:'ProGrad',
         API_DEVELOPMENT:'https://the-prograd.herokuapp.com/api',
         API_PRODUCTION:'https://the-prograd.herokuapp.com/api',
-        PRODUCTION:false,
+        PRODUCTION:true,
         DOMAIN_DEVELOPMENT:'http://localhost:3000',
         DOMAIN_PRODUCTION:'https://theprograd.com',
         FB_APP_ID:'721482821740858',
