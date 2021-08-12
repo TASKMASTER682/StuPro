@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { DOMAIN } from '../config';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 const JobHome = dynamic(async () => import('./jobs/JobHome'));
+const Messenger = dynamic(async () => import('../components/reusables/Messenger'), { loading: () => <i>...</i>, ssr: false });
 const ListAdmitCard = dynamic(async () => import('./jobs/AdmitCard'));
 const ListResult = dynamic(async () => import('./jobs/Result'));
 const SecurityIcon = dynamic(async () => import('@material-ui/icons/Security'), { loading: () => <i>...</i>, ssr: false });
@@ -52,7 +53,7 @@ const Landing = ({ jobs, privateJobs,result,admitCard }) => {
 
                     <div className="p-1">
 
-                        <Image loader={()=>myLoader('stupro2.png')} className="my-1" src='/img/stupro2.png' width={700} height={400} blurDataURL="/img/blurr-min.jpg" alt="The ProGrad" placeholder='blur' />
+                        <Image loader={()=>myLoader('stupro2.png')} className="my-1" src='/img/stupro2.png' width={700} height={400}  alt="The ProGrad" placeholder='blur' blurDataURL='/img/blurr-min.jp' />
                         <ul className=" p-1 share">
                             <li><a href="https://www.instagram.com/theprograd/" rel='noopener noreferrer' target="_blank"><InstagramIcon className="text-success" style={{ fontSize: 35 }} /></a></li>
                             <li><a href="https://www.facebook.com/sayed.anwarulhaq.923" target="_blank" rel='noopener noreferrer'><FacebookIcon className="text-success" style={{ fontSize: 35 }} /></a></li>
@@ -103,7 +104,7 @@ const Landing = ({ jobs, privateJobs,result,admitCard }) => {
                             <p className="input-box p-1"> Here you will get daily government Job updates as well as private job updates and instant job suggestions.If you will subscribe to our newsletter then it will be more easy for you to reach us directly from your gmail,As we will send you job updates on daily basis...Happy</p>
                         </div>
                         <div className="p-2">
-                        <Image loader={()=>myLoader('briefcase.png')}  className="my-1" src='/img/briefcase.png' width={150} height={150} blurDataURL="/img/blurr-min.jpg" alt="The ProGrad" placeholder='blur' />
+                        <Image loader={()=>myLoader('briefcase.png')}  className="my-1" src='/img/briefcase.png' width={150} height={150} blurDataURL="/img/blurr-min.jpg" alt="The ProGrad" placeholder='blur'  />
                         </div>
                     </div>
                     <div className="service-item p-2">
@@ -122,13 +123,13 @@ const Landing = ({ jobs, privateJobs,result,admitCard }) => {
                             <p className="input-box p-1"> Books and other reference materials can be availed and downloaded for free e.g. the NCERT PDFs, the state board books pdf as well as other competitive exam books pdf along with the notes.</p>
                         </div>
                         <div className="p-2">
-                        <Image loader={()=>myLoader('book.png')} className="my-1" src='/img/book.png' width={150} height={150} blurDataURL="/img/blurr-min.jpg" alt="The ProGrad" placeholder='blur' />
+                        <Image loader={()=>myLoader('book.png')} className="my-1" src='/img/book.png' width={150} height={150}  alt="The ProGrad" placeholder='blur' blurDataURL='/img/blurr-min.jp' />
                         </div>
 
                     </div>
                     <div className="service-item p-2">
                     <div className="p-2">
-                        <Image loader={()=>myLoader('movie-player.png')} className="my-1" src='/img/movie-player.png' width={150} height={150} blurDataURL="/img/blurr-min.jpg" alt="The ProGrad" placeholder='blur' />
+                        <Image loader={()=>myLoader('movie-player.png')} className="my-1" src='/img/movie-player.png' width={150} height={150}  alt="The ProGrad" placeholder='blur' blurDataURL='/img/blurr-min.jp' />
                         </div>              
                          <div>
                             <h3 className="small text-primary my-1">Videos</h3>
@@ -141,13 +142,13 @@ const Landing = ({ jobs, privateJobs,result,admitCard }) => {
                             <p className="input-box p-1">For sufficiently qualified professionals the ProGrad provides an option to create specifically designed courses and study materials and conducted classes.</p>
                         </div>
                         <div className="p-2">
-                        <Image loader={()=>myLoader('online-course.png')}  className="my-1" src='/img/online-course.png' width={150} height={150} blurDataURL="/img/blurr-min.jpg" alt="The ProGrad" placeholder='blur' />
+                        <Image loader={()=>myLoader('online-course.png')}  className="my-1" src='/img/online-course.png' width={150} height={150}  alt="The ProGrad" placeholder='blur' blurDataURL='/img/blurr-min.jp' />
                         </div>
 
                     </div>
                     <div className="service-item p-2">
                     <div className="p-2">
-                        <Image loader={()=>myLoader('test.png')}  className="my-1" src='/img/test.png' width={150} height={150} blurDataURL="/img/blurr-min.jpg" alt="The ProGrad" placeholder='blur' />
+                        <Image loader={()=>myLoader('test.png')}  className="my-1" src='/img/test.png' width={150} height={150}  alt="The ProGrad" placeholder='blur' blurDataURL='/img/blurr-min.jp' />
                         </div>                       
                          <div>
                             <h3 className="small text-primary my-1">Test Series</h3>
@@ -160,13 +161,13 @@ const Landing = ({ jobs, privateJobs,result,admitCard }) => {
                             <p className="input-box p-1">with the help of our free CV building tool, ProGrads can build a fabulous CV or free and get hired for the job of your dreams from our network.</p>
                         </div>
                         <div className="p-2">
-                        <Image loader={()=>myLoader('resume.png')}  className="my-1" src='/img/resume.png' width={150} height={150} blurDataURL="/img/blurr-min.jpg" alt="The ProGrad" placeholder='blur' />
+                        <Image loader={()=>myLoader('resume.png')}  className="my-1" src='/img/resume.png' width={150} height={150}  alt="The ProGrad" placeholder='blur' blurDataURL='/img/blurr-min.jp' />
                         </div>
 
                     </div>
                     <div className="service-item p-2">
                     <div className="p-2">
-                        <Image loader={()=>myLoader('hired.png')}  className="my-1" src='/img/hired.png' width={150} height={150} blurDataURL="/img/blurr-min.jpg" alt="The ProGrad" placeholder='blur' />
+                        <Image loader={()=>myLoader('hired.png')}  className="my-1" src='/img/hired.png' width={150} height={150}  alt="The ProGrad" placeholder='blur' blurDataURL='/img/blurr-min.jp' />
                         </div>                        <div>
                             <h3 className="small text-primary my-1">Get Hired</h3>
                             <p className="input-box p-1">The platform provides you a unique opportunity to grow your profile with The ProGrad and feature on the top priority list of the hiring parties for job openings of your choice and Get Hired</p>
@@ -191,7 +192,7 @@ const Landing = ({ jobs, privateJobs,result,admitCard }) => {
             </section>
 
 
-
+<Messenger />
 
         </>
     )

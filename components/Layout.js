@@ -2,7 +2,6 @@ import Navbar from "./Navbar";
 import Footer from './Footer'
 import ScrollToTop from "./reusables/ScrollToTop";
 
-
 const Layout=({children })=>{
 
     return(
