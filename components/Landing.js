@@ -53,7 +53,7 @@ const Landing = ({ jobs, privateJobs,result,admitCard }) => {
 
                     <div className="p-1">
 
-                        <Image loader={()=>myLoader('stupro2.png')} className="my-1" src='/img/stupro2.png' width={700} height={400}  alt="The ProGrad" placeholder='blur' blurDataURL='/img/blurr-min.jp' />
+                        <Image loader={()=>myLoader('stupro2.png')} className="my-1" src='/img/stupro2.png' width={700} height={400}  alt="The ProGrad" placeholder='blur' blurDataURL='/img/blurr-min.jpg' />
                         <ul className=" p-1 share">
                             <li><a href="https://www.instagram.com/theprograd/" rel='noopener noreferrer' target="_blank"><InstagramIcon className="text-success" style={{ fontSize: 35 }} /></a></li>
                             <li><a href="https://www.facebook.com/sayed.anwarulhaq.923" target="_blank" rel='noopener noreferrer'><FacebookIcon className="text-success" style={{ fontSize: 35 }} /></a></li>

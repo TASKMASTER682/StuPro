@@ -48,7 +48,7 @@ const createFaqs=async ()=>{
     return (
         <>
         <section className="container">
-            <h1 className="large">
+            <h1 className="large my-1">
                 Create faq for the blog
             </h1>
             <div className="my-1">
