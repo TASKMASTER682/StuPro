@@ -16,7 +16,11 @@ const TelegramIcon =dynamic(async ()=>import('@material-ui/icons/Telegram'),{loa
 const TagInSlug =  dynamic(async ()=> import('../../../components/reusables/TagInSlug'));
 const CategoryInSlug= dynamic(async ()=> import('../../../components/reusables/SlugCat'));
 const Faq =  dynamic(async ()=> import('../../../components/reusables/ShowFaq'))
-const NewsLetter =  dynamic(async ()=> import('../../../components/NewsLetterSubscribe'))
+const NewsLetter =  dynamic(async ()=> import('../../../components/NewsLetterSubscribe'));
+const ArticleSchema =  dynamic(async ()=> import('../../../components/schema/ArticleSchema'));
+const FaqSchema =  dynamic(async ()=> import('../../../components/schema/FaqSchema'));
+
+
 
 import Photo from '../../../components/reusables/Photo'
 
@@ -123,6 +127,8 @@ const SingleBlog=  (props)=>{
                     </div>
                     </section>
                     <NewsLetter />
+                    <ArticleSchema newRoute='blogs' content={blog} />
+                    <FaqSchema faqs={blog.faq} />
             </>
             )
  }

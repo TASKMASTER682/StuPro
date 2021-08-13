@@ -6,7 +6,7 @@ const TagInSlug = ({ tags, newTagRoute }) => {
         tags.map((t) => (
             
             <Link key={t._id} href={`/${newTagRoute}/${t.slug}`}>
-                <a  className="input-box m-1 "><small className='text-dark'>#{t.name}</small></a>
+                <a  className="input-box " style={{margin:'0.5rem'}}><small className='text-dark'>#{t.name}</small></a>
             </Link>
         ));
     return (

@@ -17,7 +17,7 @@ const Footer=()=>{
         <section className="footer-container bg-success my-1" style={{borderTopLeftRadius:'0.8rem',borderTopRightRadius:'0.8rem'}}>
         <div className="footer">
             <div className="first-row ">
-              <span>  <Image loader={myLoader} src={`${DOMAIN}/img/StuproLogo.png`} height={220} width={220}   priority alt="The ProGrad Logo" placeholder="blur" blurDataURL='/img/blurr-min.jp' /></span>
+              <span>  <Image loader={myLoader} src={`${DOMAIN}/img/StuproLogo.png`} height={220} width={220}   priority alt="The ProGrad Logo" placeholder="blur" blurDataURL='/img/blurr-min.jpg' /></span>
                 <p className="extra-small text-light-gray">
                     © Copyright {year}.The ProGrad | All rights reserved | India
                     

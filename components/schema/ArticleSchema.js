@@ -1,7 +1,5 @@
 import React from 'react';
 import {DOMAIN,API} from '../../config';
-import Script from 'next/script'
-const DOMPurify = require('dompurify');
 
 const ArticleSchema = ({content,newRoute}) => {
     const makeArticleSchema=()=> {
@@ -15,7 +13,7 @@ const ArticleSchema = ({content,newRoute}) => {
             "headline":`${content.title}`,
             'image':{
                ' @type': 'ImageObject',
-               'url':`${API}/blogs/${content.slug}`,
+               'url':`${API}/${newRoute}/${content.slug}`,
                'height': 463,
               ' width': 700
             },
@@ -38,20 +36,13 @@ const ArticleSchema = ({content,newRoute}) => {
             }
            
     }
-    const sanitizer=()=>{
-        if(typeof window != 'undefined'){
-            return(
-                DOMPurify.sanitize(JSON.stringify(makeArticleSchema()) )
-            )
-        }
-    }
+ 
     const NewArticleSchema = () => {
         return (
-            <Script
-            strategy='afterInteractive'
+            <script
                 key={`articleJSON-${content._id}`}
                 type='application/ld+json'
-                dangerouslySetInnerHTML={{ __html: sanitizer()}}
+                dangerouslySetInnerHTML={{ __html:JSON.stringify(makeArticleSchema())}}
             />
         )
     }

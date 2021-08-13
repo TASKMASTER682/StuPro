@@ -30,7 +30,7 @@ const Navbar=()=>{
     <div className="py-1" >
       <Link  href ="/">
       <a>
-       <Image loader={()=>myLoader('prograd.png')} src={`${DOMAIN}/img/prograd.png`} height={50} width={190} placeholder='blur'  blurDataURL='/img/blurr-min.jp' priority style={{marginTop:'0.5rem'}} alt='prograd landing'/>
+       <Image loader={()=>myLoader('prograd.png')} src={`${DOMAIN}/img/prograd.png`} height={50} width={190} placeholder='blur'  blurDataURL='/img/blurr-min.jpg' priority style={{marginTop:'0.5rem'}} alt='prograd landing'/>
        </a>
        </Link>
     

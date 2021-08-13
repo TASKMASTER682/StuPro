@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import dynamic from "next/dynamic";
+import Script from 'next/script';
 import { API, DOMAIN, APP_NAME } from '../../config';
 import renderHTML from 'react-render-html';
 import UpdateButton from '../../components/reusables/UpdateButton';
@@ -22,8 +23,10 @@ const FilterTiltShiftIcon = dynamic(async () => import('@material-ui/icons/Filte
 const IFrame = dynamic(async ()=> import('../../components/reusables/IFrame'))
 const Faq =  dynamic(async ()=> import('../../components/reusables/ShowFaq'))
 const NewsLetter =dynamic(async ()=> import('../../components/NewsLetterSubscribe'), { ssr: false });
-const JobSchema = dynamic(async ()=> import('../../components/schema/JobSchema'), { ssr: false });
-const FaqSchema = dynamic(async ()=> import('../../components/schema/FaqSchema'), { ssr: false });
+const FaqSchema =dynamic(async ()=> import('../../components/schema/FaqSchema'), { ssr: false });
+
+const JobSchema =dynamic(async ()=> import('../../components/schema/JobSchema'), { ssr: false });
+
 
 
 
@@ -32,6 +35,9 @@ const SingleJob = (props) => {
     const { data } = useSWR(props.slug ? `${API}/jobs/${props.slug}` : null, fetcher, { initialData: props, revalidateOnMount: true });
 
     const { job } = data;
+
+
+
 
     const head = () => (
         <Head>
@@ -49,9 +55,7 @@ const SingleJob = (props) => {
             <meta property="og:image" content={`${API}/jobs/photo/${job.slug}`} />
             <meta property="og:image:secure_url" content={`${API}/jobs/photo/${job.slug}`} />
             <meta property="og:image:type" content={`${API}/jobs/photo/${job.slug}`} />
-            <JobSchema job={job} newRoute='jobs' />
-            <FaqSchema faqs={job.faq}  />
-
+     
         </Head>
     );
 
@@ -202,7 +206,9 @@ const SingleJob = (props) => {
 
              <NewsLetter />
             </section>
-
+     
+      <JobSchema job={job} newRoute='jobs'/>
+      <FaqSchema faqs={job.faq}/>
         </>
     )
 }
@@ -242,6 +248,7 @@ export const getStaticProps = async (ctx) => {
 
 }
 
+
+
 export default SingleJob;
 
-// 

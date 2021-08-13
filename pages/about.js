@@ -47,7 +47,7 @@ The proGrad assimilates all at one place and comprehensively helps the grads to 
                 <h3 className="text-primary small my-1">About the Owner</h3>
                 <p>                The Owner of the ProGrad <strong className="text-primary">Sayed Anwar Ul haq </strong>is an Electronics and Communication Engineer, a full stack web developer, and a blogger</p>
                <div>
-               <Image loader={()=>myLoader('owner.jpg')} className="round-image  m-1" src='/img/owner.jpg' placeholder="blur" blurDataURL='/public/img/blurr-min.jp' width={250} height={250}  alt={'owner'}/>
+               <Image loader={()=>myLoader('owner.jpg')} className="round-image  m-1" src='/img/owner.jpg' placeholder="blur" blurDataURL='/public/img/blurr-min.jpg' width={250} height={250}  alt={'owner'}/>
                <br/>
                <a href="#" className="btn btn-dark nbtn my-1">Sayed Anwar Ul Haq</a>
                <p className="text-danger">Contact Me On:</p>

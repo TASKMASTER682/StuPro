@@ -2,7 +2,7 @@ module.exports={
     publicRuntimeConfig:{
         APP_NAME:'ProGrad',
         API_DEVELOPMENT:'http://localhost:8000/api',
-        PRODUCTION:true,
+        PRODUCTION:false,
         DOMAIN_PRODUCTION:'https://theprograd.com',
         FB_APP_ID:'721482821740858',
 DISQUS_SHORTNAME:'stupro-1',
@@ -23,10 +23,18 @@ DOMAIN_DEVELOPMENT:'http://localhost:3000',
             source: "/feed.xml",
             destination: "/api/rss-feed/",
           },
-  
+ 
          
         ];
       },
+      async redirect(){
+        return{
+          
+            source: "https://www.theprograd.com",
+            destination: "https://stu-pro.vercel.app/",
+          
+        }
+      }
      
 }
 

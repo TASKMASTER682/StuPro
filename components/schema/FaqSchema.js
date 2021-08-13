@@ -1,27 +1,24 @@
 import React from 'react';
-import Script from 'next/script'
-const DOMPurify = require('dompurify');
-
 
 const FaqSchema = ({faqs}) => {
 
- const newFaq=()=>{
 
-     return faqs.map((faq,i)=>{
-         return (
-            {
-                "@type": "Question",
-                "name": `${faq.ques}`,
-                "acceptedAnswer": {
-                 "@type": "Answer",
-                 "text": <p key={i}>`${faq.ans}`</p>
-             },
-            }
-
-         )
-         
-     })
- }
+    const newFaq=()=>{
+        return faqs.map((f,i)=>{
+            return (
+               {
+                   "@type": "Question",
+                   "name": `<h4 key=${i}>${f.ques}</h4>`,
+                   "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text":`<p key=${i}>${f.ans}</p>`
+                },
+               }
+   
+            )
+            
+        })
+    }
     const makeFaqSchema=()=> {
         return {
             // schema truncated for brevity
@@ -30,20 +27,13 @@ const FaqSchema = ({faqs}) => {
             'mainEntity':[newFaq()]
         }
     }
-    const sanitizer=()=>{
-        if(typeof window != 'undefined'){
-            return(
-                DOMPurify.sanitize(JSON.stringify(makeFaqSchema()) )
-            )
-        }
-    }
+
     const NewFaqSchema = () => {
         return (
-            <Script
-            strategy='afterInteractive'
-                key={`faqJSON-${faq._id}`}
+            <script
+                key={`faqJSON-${faqs._id}`}
                 type='application/ld+json'
-                dangerouslySetInnerHTML={{ __html: sanitizer()}}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(makeFaqSchema())}}
             />
         )
     }

@@ -44,7 +44,6 @@ const SingleMaterial=  (props)=>{
             <meta property="og:image" content={`${API}/materials/photo/${material.slug}`} />
             <meta property="og:image:secure_url" content={`${API}/materials/photo/${material.slug}`} />
             <meta property="og:image:type" content={`${API}/materials/photo/${material.slug}`} />
-            <ArticleSchema content={material} newRotute='materials' />
             <FaqSchema faqs={material.faq} />
         </Head>
 
@@ -143,6 +142,8 @@ const SingleMaterial=  (props)=>{
             </div>
 </div>
 <NewsLetter />
+<ArticleSchema content={material} newRotute='materials' />
+
  </>
 
             )

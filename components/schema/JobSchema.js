@@ -1,14 +1,11 @@
 import React from 'react';
-import Script from 'next/script'
-import {API} from '../../config';
-const DOMPurify = require('dompurify');
+import {API} from '../../config'
 
 const JobSchema = ({job,newRoute}) => {
-
-    const makeJobSchema=()=> {
+    const makeJobSchema= ()=> {
         return {
             // schema truncated for brevity
-            '@context': 'http://schema.org',
+           '@context': 'http://schema.org',
             '@type': 'JobPosting',
             'title': `${job.title}`,
             'description': `            
@@ -22,13 +19,13 @@ const JobSchema = ({job,newRoute}) => {
             <li>Qualification needed - ${job.qualification}</li>
             <li>Pay Scale - ${job.salary}</li>
             </ul>`,
-
+    
             'url': `https://theprograd.com/${newRoute}/${job.slug}`,
             'identifier': {
                 '@type': "PropertyValue",
                 'name': "The ProGrad",
                 'value': "1234567"
-
+    
             },
             'datePosted': `${job.createdAt}`,
             'validThrough': `${job.lastDate}`,
@@ -60,28 +57,15 @@ const JobSchema = ({job,newRoute}) => {
                     'unitText': "Month"
                 }
             }
-        }
-    };
-    const sanitizer=()=>{
-        if(typeof window != 'undefined'){
-            return(
-                DOMPurify.sanitize(JSON.stringify(makeJobSchema()) )
-            )
-        }
-    };
-    const NewJobSchema = () => {
-        return (
-            <Script
-            strategy='afterInteractive'
-                key={`jobJSON-${job._id}`}
-                type='application/ld+json'
-                dangerouslySetInnerHTML={{ __html: sanitizer()}}
-            />
-        )
-    };
+        
+          }
+    }
     return (
         <>
-        {NewJobSchema()}
+               <script
+                 key={`jobJSON-${job._id}`}
+                 type='application/ld+json'
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(makeJobSchema())}} />
         </>
     )
 }

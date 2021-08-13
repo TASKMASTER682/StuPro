@@ -22,8 +22,10 @@ const FilterTiltShiftIcon =dynamic(async()=>import('@material-ui/icons/FilterTil
 const UpdateButton = dynamic(async ()=> import('../../components/reusables/UpdateButton'))
 const Faq =  dynamic(async ()=> import('../../components/reusables/ShowFaq'))
 const NewsLetter =dynamic(async ()=> import('../../components/NewsLetterSubscribe'), { ssr: false })
-const FaqSchema = dynamic(async ()=> import('../../components/schema/FaqSchema'), { ssr: false });
-const JobSchema = dynamic(async ()=> import('../../components/schema/JobSchema'), { ssr: false });
+const FaqSchema =dynamic(async ()=> import('../../components/schema/FaqSchema'), { ssr: false })
+const JobSchema =dynamic(async ()=> import('../../components/schema/JobSchema'), { ssr: false })
+
+
 
 
 
@@ -33,6 +35,8 @@ const SinglePvtJob=(props)=>{
     const {data} = useSWR(props.slug ? `${API}/privateJobs/${props.slug}`:null, fetcher, { initialData: props,revalidateOnMount:true});
 
     const {privateJob}=data;
+
+
 
 
  
@@ -53,8 +57,7 @@ const SinglePvtJob=(props)=>{
             <meta property="og:image" content={`${API}/privateJob/photo/${privateJob.slug}`} />
             <meta property="og:image:secure_url" content={`${API}/privateJob/photo/${privateJob.slug}`} />
             <meta property="og:image:type" content={`${API}/privateJob/photo/${privateJob.slug}`} />
-            <JobSchema job={privateJob} newRoute='privateJobs' />
-            <FaqSchema faqs={privateJob.faq}  />
+           
         </Head>
     );
 
@@ -64,8 +67,8 @@ const SinglePvtJob=(props)=>{
            <>
            {head()}
             <section className="container">
-             <div className="jobs">
-             <div className="job bg-light ">
+             <div className="jobs my-1">
+             <div className="job bg-light">
                  <div className="job-top p-1 my-1 input-box" >         
                  <div className="m-1 text-primary hide-sm">
                  <AttachmentIcon style={{fontSize:40}} />
@@ -132,7 +135,7 @@ const SinglePvtJob=(props)=>{
                  <tr className='py-1'>
                          <td style={{width:'2rem'}} className='text-danger'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
                          <td ><strong >Key Skills</strong></td>
-                         <td >{privateJob.skills}</td>
+                         <td >{privateJob.keySkills}</td>
                  </tr>
                  </tbody>       
            </table>
@@ -175,6 +178,10 @@ const SinglePvtJob=(props)=>{
                     </div>
             </section>
              <NewsLetter />
+           <JobSchema job={privateJob} newRoute='privateJobs' />
+           <FaqSchema faqs={privateJob.faq}  />
+
+         
            </> 
             )
  }

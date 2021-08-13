@@ -1261,7 +1261,7 @@ img {
     width: 100%;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    transition: all 0.5s;
+    transition: all 0.3s;
   }
   .mobile-menu ul {
     height: 20rem;
