@@ -24,7 +24,7 @@ const FaqSchema = ({faqs}) => {
             // schema truncated for brevity
             '@context': 'http://schema.org',
             '@type': 'FAQPage',
-            'mainEntity':[newFaq()]
+            'mainEntity':[faqs ? newFaq():null]
         }
     }
 

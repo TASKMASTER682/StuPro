@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { DOMAIN } from '../config';
 import dynamic from 'next/dynamic';
 const JobHome = dynamic(async () => import('./jobs/JobHome'));
-const Messenger = dynamic(async () => import('../components/reusables/Messenger'), { loading: () => <i>...</i>, ssr: false });
 const ListAdmitCard = dynamic(async () => import('./jobs/AdmitCard'));
 const ListResult = dynamic(async () => import('./jobs/Result'));
 const SecurityIcon = dynamic(async () => import('@material-ui/icons/Security'), { loading: () => <i>...</i>, ssr: false });
@@ -190,9 +189,6 @@ const Landing = ({ jobs, privateJobs,result,admitCard }) => {
                     <p><strong>We are also accepting sponsered content.To advertise your post on The ProGrad,Just contact us and send your post link ,title and descrption. </strong></p>
                 </div>
             </section>
-
-
-<Messenger />
 
         </>
     )

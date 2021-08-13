@@ -20,8 +20,6 @@ const NewsLetter =  dynamic(async ()=> import('../../../components/NewsLetterSub
 const ArticleSchema =  dynamic(async ()=> import('../../../components/schema/ArticleSchema'));
 const FaqSchema =  dynamic(async ()=> import('../../../components/schema/FaqSchema'));
 
-
-
 import Photo from '../../../components/reusables/Photo'
 
 const SingleBlog=  (props)=>{
@@ -100,7 +98,7 @@ const SingleBlog=  (props)=>{
                     <UpdateButton url={`/admin/crud/${blog.slug}/add-faq`} name='Add Faq' />
                 </div>
                     </div>
-                    <div style={{display: 'flex',alignItems:'left',flexWrap:'wrap'}}>
+                    <div className="new-flex">
 
                            <div>
                            <div className="line"></div>
