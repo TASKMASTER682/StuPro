@@ -179,7 +179,6 @@ const SinglePvtJob=(props)=>{
             </section>
              <NewsLetter />
            <JobSchema job={privateJob} newRoute='privateJobs' />
-           <FaqSchema faqs={privateJob.faq}  />
 
          
            </> 
