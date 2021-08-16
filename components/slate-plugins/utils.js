@@ -26,10 +26,10 @@ import {
     ELEMENT_MEDIA_EMBED,
     createCodeBlockPlugin,
     createResetNodePlugin,
-    optionsSoftBreakPlugin,
-    optionsExitBreakPlugin,
-    createSoftBreakPlugin,
-    createExitBreakPlugin,
+    // optionsSoftBreakPlugin,
+    // optionsExitBreakPlugin,
+    // createSoftBreakPlugin,
+    // createExitBreakPlugin,
     createListPlugin,
     createAlignPlugin,
     createTablePlugin,
@@ -108,8 +108,8 @@ export const styledComponents = {
     createAlignPlugin(), 
     createListPlugin(), 
     createResetNodePlugin(optionsResetBlockTypePlugin),
-    createSoftBreakPlugin(optionsSoftBreakPlugin),
-    createExitBreakPlugin(optionsExitBreakPlugin),    
+    // createSoftBreakPlugin(optionsSoftBreakPlugin),
+    // createExitBreakPlugin(optionsExitBreakPlugin),    
   
     // elements
     createParagraphPlugin(),      // paragraph element
