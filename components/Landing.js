@@ -45,8 +45,8 @@ const Landing = ({ jobs, privateJobs,result,admitCard }) => {
                                 <Link href="/jobCategories/medical"><a><LocalHospitalIcon className="m-1" style={{ fontSize: 50 }} /></a></Link>
                                 <Link href="/jobCategories/engineering"><a><SettingsIcon className="m-1" style={{ fontSize: 50 }} /></a></Link>
                                 <Link href="/jobCategories/law"><a><GavelIcon className="m-1" style={{ fontSize: 50 }} /></a></Link>
-                                <Link href="/jobCategories/jandk-jobs"><a><FilterHdrIcon className="m-1" style={{ fontSize: 50 }} /></a></Link>
-                                <Link href="/jobCategories/raileway"><a><TrainIcon className="m-1" style={{ fontSize: 50 }} /></a></Link>
+                                <Link href="/jobTags/jandk-jobs"><a><FilterHdrIcon className="m-1" style={{ fontSize: 50 }} /></a></Link>
+                                <Link href="/jobCategories/railway"><a><TrainIcon className="m-1" style={{ fontSize: 50 }} /></a></Link>
                         </marquee>
                     </div>
 

@@ -24,7 +24,6 @@ const IFrame = dynamic(async ()=> import('../../components/reusables/IFrame'))
 const Faq =  dynamic(async ()=> import('../../components/reusables/ShowFaq'))
 const NewsLetter =dynamic(async ()=> import('../../components/NewsLetterSubscribe'), { ssr: false });
 
-const JobSchema =dynamic(async ()=> import('../../components/schema/JobSchema'), { ssr: false });
 
 
 
@@ -34,7 +33,64 @@ const SingleJob = (props) => {
     const { data } = useSWR(props.slug ? `${API}/jobs/${props.slug}` : null, fetcher, { initialData: props, revalidateOnMount: true });
 
     const { job } = data;
-
+    const makeJobSchema= ()=> {
+        return {
+            // schema truncated for brevity
+           '@context': 'http://schema.org',
+            '@type': 'JobPosting',
+            'title': `${job.title}`,
+            'description': `            
+            <p>${job.desc ? `${job.desc}` : `Are you also looking for a job or, are you looking for a better job based on your qualification, then you are at the right place. Latest job posts in ${job.location} from ${job.agency} have been rolled out.You can apply for these posts before ${job.lastDate} If you want to work in ${job.location} and your qualification is ${job.qualification}, then this is an opportunity for you. On getting this job in ${job.location}, you get a basic monthly salary of around ${job.salary}. It is a ${job.type} job, if you want to apply, then click on the apply button and you will reach at the India's best job website.`}</p>
+            <br>
+            <h3>Job Highlights</h3>,
+            <ul>
+            <li>Notification issued By - ${job.agency}</li>
+            <li>Job Location - ${job.location}</li>
+            <li>The Last Date to Apply - ${job.lastDate}</li>
+            <li>Qualification needed - ${job.qualification}</li>
+            <li>Pay Scale - ${job.salary}</li>
+            </ul>`,
+    
+            'url': `https://${DOMAIN}/jobs/${job.slug}`,
+            'identifier': {
+                '@type': "PropertyValue",
+                'name': "The ProGrad",
+                'value': "1234567"
+    
+            },
+            'datePosted': `${job.createdAt}`,
+            'validThrough': `${job.lastDate}`,
+            'directApply' : false,
+            'employmentType': `${job.type}`,
+            'hiringOrganization': {
+                '@type': "Organization",
+                'name': `${job.agency}`,
+                'sameAs':`${job.officialLink}`,
+                'logo':`${API}/jobs/photo/${job.slug}`
+            },
+            'jobLocation': {
+                '@type': "Place",
+                'address': {
+                    '@type': "PostalAddress",
+                    "addressLocality": `${job.city}`,
+                    "streetAdress":`${job.street}`,
+                    "addressRegion": `${job.location}`,
+                    "postalCode":`${job.postal}`,
+                    'addressCountry': "IN"
+                }
+            },
+            'baseSalary': {
+                '@type': "MonetaryAmount",
+                'currency': "INR",
+                'value': {
+                    '@type': "QuantitativeValue",
+                    'value':job.salary,
+                    'unitText': "Month"
+                }
+            }
+        
+          }
+    }
 
 
 
@@ -54,6 +110,10 @@ const SingleJob = (props) => {
             <meta property="og:image" content={`${API}/jobs/photo/${job.slug}`} />
             <meta property="og:image:secure_url" content={`${API}/jobs/photo/${job.slug}`} />
             <meta property="og:image:type" content={`${API}/jobs/photo/${job.slug}`} />
+            <script
+                 key={`jobJSON-${job._id}`}
+                 type='application/ld+json'
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(makeJobSchema())}} />
      
         </Head>
     );
@@ -160,12 +220,7 @@ const SingleJob = (props) => {
                             <TagInSlug tags={job.jobTags} newTagRoute='jobTags' />
                         </div>
                     </div>
-                    {job.faq[0] !=null  && 
-                        <div className='btn input-box'>
-                        <h2 className="small text-primary my-1"> Frequently Asked Questions</h2>
-                        <Faq material={job} />
-                        </div> 
-                      }
+ 
 
                 </div>
             <div className="mat-author p-1">
@@ -206,7 +261,6 @@ const SingleJob = (props) => {
              <NewsLetter />
             </section>
      
-      <JobSchema job={job} newRoute='jobs'/>
         </>
     )
 }

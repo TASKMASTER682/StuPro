@@ -17,15 +17,48 @@ const TagInSlug =  dynamic(async ()=> import('../../../components/reusables/TagI
 const CategoryInSlug= dynamic(async ()=> import('../../../components/reusables/SlugCat'));
 const Faq =  dynamic(async ()=> import('../../../components/reusables/ShowFaq'))
 const NewsLetter =  dynamic(async ()=> import('../../../components/NewsLetterSubscribe'));
-const ArticleSchema =  dynamic(async ()=> import('../../../components/schema/ArticleSchema'));
-const FaqSchema =  dynamic(async ()=> import('../../../components/schema/FaqSchema'));
+
 
 import Photo from '../../../components/reusables/Photo'
 
 const SingleBlog=  (props)=>{
     const {data} = useSWR(props.slug ? `${API}/blogs/${props.slug}`:null, fetcher, { initialData: props});
-
     const {blog}=data;
+
+    const makeArticleSchema=()=> {
+        return {
+            '@context': 'http://schema.org',
+            '@type': 'BlogPosting',
+            "mainEntityOfPage":{
+                "@type":"WebPage",
+               " @id":`${DOMAIN}/blogs`
+            },
+            "headline":`${blog.title}`,
+            'image':{
+               ' @type': 'ImageObject',
+               'url':`${API}/blogs/${blog.slug}`,
+               'height': 463,
+              ' width': 700
+            },
+           ' datePublished':`${blog.createdAt}`,
+           'dateModified': `${blog.updatedAt}`,
+          ' author': {
+            '@type': 'Person',
+           ' name': `${blog.postedBy.name}`
+            },
+         'publisher': {
+                '@type':' Organization',
+               ' name': 'The ProGrad',
+                'logo': {
+               ' @type':' ImageObject',
+                'url': `${DOMAIN}/img/StuproLogo.png` ,
+                'width': 550,
+                 'height': 60
+                }
+                }
+            }
+           
+    }
     const head = () => (
         <Head>
         <title>{blog.subtitle ? blog.subtitle : blog.title} |The {APP_NAME}</title>
@@ -40,6 +73,11 @@ const SingleBlog=  (props)=>{
             <meta property="og:image" content={`${API}/blogs/photo/${blog.slug}`} />
             <meta property="og:image:secure_url" content={`${API}/blogs/photo/${blog.slug}`} />
             <meta property="og:image:type" content={`${API}/blogs/photo/${blog.slug}`} />
+            <script
+                key={`articleJSON-${blog._id}`}
+                type='application/ld+json'
+                dangerouslySetInnerHTML={{ __html:JSON.stringify(makeArticleSchema())}}
+            />
          </Head>
     );
  
@@ -125,8 +163,6 @@ const SingleBlog=  (props)=>{
                     </div>
                     </section>
                     <NewsLetter />
-                    <ArticleSchema newRoute='blogs' content={blog} />
-                    <FaqSchema faqs={blog.faq} />
             </>
             )
  }

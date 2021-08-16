@@ -142,17 +142,15 @@ const MaterialUpdate=({router})=>{
     const handleBody =(e)=> {
 
         setBody(e);
-    
-        // const nodal=e ? e:initialValueBasicElements;
         const nodes=[...e];
-        const editor=createEditorPlugins();
+        const editor=createEditorPlugins(e);
         const html=serializeHTMLFromNodes(editor,{
             plugins:pluginsBasic,
             nodes
           });
         formData.set('body', html);
         if (typeof window !== 'undefined') {
-            localStorage.setItem('material', JSON.stringify(e));
+            localStorage.setItem('blog', JSON.stringify(html));
         }
     };
 

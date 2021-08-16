@@ -1,14 +1,13 @@
-import {APP_NAME,DOMAIN} from "../config";
+import {API,APP_NAME,DOMAIN} from "../config";
 import Head from 'next/head';
 import Landing from '../components/Landing';
-import {API} from '../config'
 const Index=(props)=> {
     function makeSchema() {
         return {
             "@context": "http://schema.org",
             "@type": "Organization",
-            "url": "https://theprograd.com",
-             "logo": "https://theprograd.com/img/prograd.png"
+            "url": `${DOMAIN}`,
+             "logo": `${DOMAIN}/img/prograd.png`
               }
         
     }
@@ -77,7 +76,7 @@ export const getStaticProps=async (ctx)=>{
               admitCard,
             
           },
-          revalidate:86400
+          revalidate:300
       }
 
 }

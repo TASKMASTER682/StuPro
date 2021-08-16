@@ -10,6 +10,7 @@ import {
     MARK_UNDERLINE,
     ELEMENT_UL,
     MARK_HIGHLIGHT,
+    ELEMENT_H3,
     useStoreEditorRef,
     useEventEditorId,
 } from '@udecode/slate-plugins';
@@ -19,6 +20,8 @@ import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
 import FormatListBulletedOutlinedIcon from '@material-ui/icons/FormatListBulletedOutlined';
 import InsertLinkIcon from '@material-ui/icons/InsertLink';
 import HighlightIcon from '@material-ui/icons/Highlight';
+import Looks3OutlinedIcon from '@material-ui/icons/Looks3Outlined';
+
 
 
 
@@ -65,16 +68,17 @@ const BalloonToolbarMarks = () => {
         <ToolbarList
           type={getSlatePluginType(editor, ELEMENT_UL)}
           icon={<FormatListBulletedOutlinedIcon/>}
-          tooltip={{ content: 'Underline (⌘U)', ...tooltip }}
         />
           <ToolbarLink
           icon={<InsertLinkIcon/>}
-          tooltip={{ content: 'Underline (⌘U)', ...tooltip }}
         />
         <ToolbarMark
         type={getSlatePluginType(editor, MARK_HIGHLIGHT)}
         icon={<HighlightIcon  />} />
-        
+        <ToolbarElement
+         type={getSlatePluginType(editor, ELEMENT_H3)}
+         icon={<Looks3OutlinedIcon/>}
+    />
       </BalloonToolbar>
     );
 }

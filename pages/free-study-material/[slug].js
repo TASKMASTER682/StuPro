@@ -16,8 +16,6 @@ const TelegramIcon =dynamic(async ()=>import('@material-ui/icons/Telegram'),{loa
 const  UpdateButton = dynamic(() => import('../../components/reusables/UpdateButton'));
 const IFrame = dynamic(async ()=> import('../../components/reusables/IFrame'))
 const Faq =  dynamic(async ()=> import('../../components/reusables/ShowFaq'))
-const FaqSchema = dynamic(async ()=> import('../../components/schema/FaqSchema'), { ssr: false });
-const ArticleSchema = dynamic(async ()=> import('../../components/schema/ArticleSchema'), { ssr: false });
 const SmallCard = dynamic(() => import('../../components/reusables/SmallCard'));
 import Image from '../../components/reusables/ImageComponent'
 
@@ -28,6 +26,31 @@ const SingleMaterial=  (props)=>{
     const {data} = useSWR(props.slug ? `${API}/materials/${props.slug}`:null, fetcher, { initialData: props});
 
     const {material}=data;
+    
+    const newFaq=()=>{
+        return material.faq.map((f,i)=>{
+            return (
+               {
+                   "@type": "Question",
+                   "name": `<h4 key=${i}>${f.ques}</h4>`,
+                   "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text":`<p key=${i}>${f.ans}</p>`
+                },
+               }
+   
+            )
+            
+        })
+    }
+    const makeFaqSchema=()=> {
+        return {
+            // schema truncated for brevity
+            '@context': 'http://schema.org',
+            '@type': 'FAQPage',
+            'mainEntity':[material.faq ? newFaq():null]
+        }
+    }
 
 
     const head = () => (
@@ -44,7 +67,11 @@ const SingleMaterial=  (props)=>{
             <meta property="og:image" content={`${API}/materials/photo/${material.slug}`} />
             <meta property="og:image:secure_url" content={`${API}/materials/photo/${material.slug}`} />
             <meta property="og:image:type" content={`${API}/materials/photo/${material.slug}`} />
-            <FaqSchema faqs={material.faq} />
+            <script
+                key={`faqJSON-${material.faq._id}`}
+                type='application/ld+json'
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(makeFaqSchema())}}
+            />
         </Head>
 
     );
@@ -142,7 +169,6 @@ const SingleMaterial=  (props)=>{
             </div>
 </div>
 <NewsLetter />
-<ArticleSchema content={material} newRotute='materials' />
 
  </>
 

@@ -36,6 +36,64 @@ const SinglePvtJob=(props)=>{
 
     const {privateJob}=data;
 
+    const makeJobSchema= ()=> {
+        return {
+            // schema truncated for brevity
+           '@context': 'http://schema.org',
+            '@type': 'JobPosting',
+            'title': `${privateJob.title}`,
+            'description': `            
+            <p>${privateJob.desc ? `${privateJob.desc}` : `Are you also looking for a job or, are you looking for a better job based on your qualification, then you are at the right place. Latest job posts in ${job.location} from ${job.agency} have been rolled out.You can apply for these posts before ${job.lastDate} If you want to work in ${job.location} and your qualification is ${job.qualification}, then this is an opportunity for you. On getting this job in ${job.location}, you get a basic monthly salary of around ${job.salary}. It is a ${job.type} job, if you want to apply, then click on the apply button and you will reach at the India's best job website.`}</p>
+            <br>
+            <h3>Job Highlights</h3>,
+            <ul>
+            <li>Notification issued By - ${privateJob.agency}</li>
+            <li>Job Location - ${privateJob.location}</li>
+            <li>The Last Date to Apply - ${privateJob.lastDate}</li>
+            <li>Qualification needed - ${privateJob.qualification}</li>
+            <li>Pay Scale - ${privateJob.salary}</li>
+            </ul>`,
+    
+            'url': `https://${DOMAIN}/privateJobs/${privateJob.slug}`,
+            'identifier': {
+                '@type': "PropertyValue",
+                'name': "The ProGrad",
+                'value': "1234567"
+    
+            },
+            'datePosted': `${privateJob.createdAt}`,
+            'validThrough': `${privateJob.lastDate}`,
+            'directApply' : false,
+            'employmentType': `${privateJob.type}`,
+            'hiringOrganization': {
+                '@type': "Organization",
+                'name': `${privateJob.agency}`,
+                'sameAs':`${privateJob.officialLink}`,
+                'logo':`${API}/privateJobs/photo/${privateJob.slug}`
+            },
+            'jobLocation': {
+                '@type': "Place",
+                'address': {
+                    '@type': "PostalAddress",
+                    "addressLocality": `${privateJob.city}`,
+                    "streetAdress":`${privateJob.street}`,
+                    "addressRegion": `${privateJob.location}`,
+                    "postalCode":`${privateJob.postal}`,
+                    'addressCountry': "IN"
+                }
+            },
+            'baseSalary': {
+                '@type': "MonetaryAmount",
+                'currency': "INR",
+                'value': {
+                    '@type': "QuantitativeValue",
+                    'value':privateJob.salary,
+                    'unitText': "Month"
+                }
+            }
+        
+          }
+    }
 
 
 
@@ -57,7 +115,10 @@ const SinglePvtJob=(props)=>{
             <meta property="og:image" content={`${API}/privateJob/photo/${privateJob.slug}`} />
             <meta property="og:image:secure_url" content={`${API}/privateJob/photo/${privateJob.slug}`} />
             <meta property="og:image:type" content={`${API}/privateJob/photo/${privateJob.slug}`} />
-           
+            <script
+                 key={`jobJSON-${privateJob._id}`}
+                 type='application/ld+json'
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(makeJobSchema())}} />
         </Head>
     );
 
@@ -178,7 +239,6 @@ const SinglePvtJob=(props)=>{
                     </div>
             </section>
              <NewsLetter />
-           <JobSchema job={privateJob} newRoute='privateJobs' />
 
          
            </> 
