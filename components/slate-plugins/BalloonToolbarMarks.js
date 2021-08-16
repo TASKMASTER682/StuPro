@@ -4,6 +4,7 @@ import {
   ToolbarMark,
   ToolbarList,
   ToolbarLink,
+  ToolbarElement,
   getSlatePluginType,
     MARK_BOLD,
     MARK_ITALIC,

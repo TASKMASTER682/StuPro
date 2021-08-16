@@ -94,7 +94,7 @@ export const listHome =async () => {
 export const removeJob= async (slug, token) => {
     
 
-    return await fetch( `${API}/job/${slug}`, {
+    return await fetch( `${API}/jobs/${slug}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -114,7 +114,7 @@ export const updateJob = async (job, token, slug) => {
     
 
 
-    return await fetch(`${API}/job/${slug}`, {
+    return await fetch(`${API}/jobs/${slug}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',

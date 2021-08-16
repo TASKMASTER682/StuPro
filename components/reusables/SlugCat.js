@@ -5,7 +5,7 @@ const SlugCat = ({ newCat, cats }) => {
     const showSlugCategories = () =>
         cats.map((cat,i) => (
             <Link key={i} href={`/${newCat}/${cat.slug}`}>
-                <a className=" btn input-box btn-success" style={{margin:'0.5rem'}}><small>#{cat.name}</small></a>
+                <a className=" btn-new input-box btn-success" style={{margin:'0.5rem'}}><small>#{cat.name}</small></a>
             </Link>
         ));
     return (

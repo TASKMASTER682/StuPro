@@ -25,10 +25,10 @@ const Card = ({ job }) => {
                     <span className="extra-small p-1 text-primary"><SecurityIcon style={{ fontSize: 15 }} /><strong className='text-dark'> {job.agency}</strong></span>
                 </div>
                 <strong className="extra-small m-1 text-danger"> Last Date is {moment(job.lastDate).format("MMM DD YYYY")}</strong>
-                <div style={{ display: "flex", flexWrap: 'wrap' }}>
-                <div className="m-1"><CategoryInSlug newCat='jobCategories' cats={job.jobCategories} /></div>
+                <div className='new-flex'>
+               <CategoryInSlug newCat='jobCategories' cats={job.jobCategories} />
                     
-                <div className="m-1"><TagInSlug newTagRoute='jobTags' tags={job.jobTags} /></div>
+                <TagInSlug newTagRoute='jobTags' tags={job.jobTags} />
 
                     
                 </div>

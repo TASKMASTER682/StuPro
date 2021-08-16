@@ -1104,8 +1104,30 @@ img {
   outline: none;
   transition: all 0.2s ease-in;
 }
+.btn-new {
+  display: inline-block;
+  background: #fff;
+  color: #333;
+  padding: 0.2rem 0.7rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  outline: none;
+  transition: all 0.2s ease-in;
+}
+.btn-new.btn-success {
+  background-color: #00a79a;
+
+  color: #fff;
+}
+.btn-new.btn-dark {
+  background-color: #0f1317;
+  color: #fff;
+}
 .btn.btn-primary {
   background-color: #00cdbb;
+
   color: #fff;
 }
 .btn.btn-primary:hover {

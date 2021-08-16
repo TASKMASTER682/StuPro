@@ -29,8 +29,8 @@ const Card = ({ privateJob }) => {
                 </div>
                 <strong className="extra-small m-1 text-danger"> Last Date is {moment(privateJob.lastDate).format("MMM DD YYYY")}</strong>
                 <div className='new-flex'>
-                <div className="m-1"><CategoryInSlug newCat='privateJobCategories' cats={privateJob.privateJobCategories} /></div>
-                <div className="m-1"><TagInSlug newTagRoute='privateJobTags' tags={privateJob.privateJobTags} /></div>
+               <CategoryInSlug newCat='privateJobCategories' cats={privateJob.privateJobCategories} />
+                <TagInSlug newTagRoute='privateJobTags' tags={privateJob.privateJobTags} />
 
                 </div>
                 <div className="xyz">

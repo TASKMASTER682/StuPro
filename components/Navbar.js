@@ -58,11 +58,11 @@ const Navbar=()=>{
 <ul >
            {isAuth() && isAuth().role === 0 && (
                 <>
-               <li><Link href="/user" ><a className="btn  btn-dark my-1"><AccountCircleIcon style={{fontSize:15}}/> <span>{`${isAuth().name}'s Dashboard`}</span></a></Link></li>
+               <li><Link href="/user" ><a className="btn  btn-dark my-1"><AccountCircleIcon style={{fontSize:15}}/> <span className="text-light">{`${isAuth().name}'s Dashboard`}</span></a></Link></li>
                 </>
             )}
             {isAuth() && isAuth().role === 1 && (
-                <li><Link href="/admin" ><a  className=" input-box my-1"><span> {`${isAuth().name}'s Dashboard`}</span></a></Link></li>              )}
+                <li><Link href="/admin" ><a  className=" input-box btn my-1"><span> {`${isAuth().name}'s Dashboard`}</span></a></Link></li>              )}
             {!isAuth() && ( 
            <>
              <li><a href="/signin"  className =" input-box my-1 p-1"><ExitToAppIcon style={{fontSize:15}}/>Sign in<span> </span></a></li>
