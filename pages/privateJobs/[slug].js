@@ -42,7 +42,7 @@ const SinglePvtJob=(props)=>{
             '@type': 'JobPosting',
             'title': `${privateJob.title}`,
             'description': `            
-            <p>${privateJob.desc ? `${privateJob.desc}` : `Are you also looking for a job or, are you looking for a better job based on your qualification, then you are at the right place. Latest job posts in ${job.location} from ${job.agency} have been rolled out.You can apply for these posts before ${job.lastDate} If you want to work in ${job.location} and your qualification is ${job.qualification}, then this is an opportunity for you. On getting this job in ${job.location}, you get a basic monthly salary of around ${job.salary}. It is a ${job.type} job, if you want to apply, then click on the apply button and you will reach at the India's best job website.`}</p>
+            <p>${privateJob.desc ? `${privateJob.desc}` : `Are you also looking for a job or, are you looking for a better job based on your qualification, then you are at the right place. Latest job posts in ${privateJob.location} from ${privateJob.agency} have been rolled out.You can apply for these posts before ${privateJob.lastDate} If you want to work in ${privteJob.location} and your qualification is ${privateJob.qualification}, then this is an opportunity for you. On getting this job in ${privateJob.location}, you get a basic monthly salary of around ${privateJob.salary}. It is a ${privateJob.type} job, if you want to apply, then click on the apply button and you will reach at the India's best job website.`}</p>
             <br>
             <h3>Job Highlights</h3>,
             <ul>
