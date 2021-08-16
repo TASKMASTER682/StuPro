@@ -22,8 +22,7 @@ const FilterTiltShiftIcon =dynamic(async()=>import('@material-ui/icons/FilterTil
 const UpdateButton = dynamic(async ()=> import('../../components/reusables/UpdateButton'))
 const Faq =  dynamic(async ()=> import('../../components/reusables/ShowFaq'))
 const NewsLetter =dynamic(async ()=> import('../../components/NewsLetterSubscribe'), { ssr: false })
-const FaqSchema =dynamic(async ()=> import('../../components/schema/FaqSchema'), { ssr: false })
-const JobSchema =dynamic(async ()=> import('../../components/schema/JobSchema'), { ssr: false })
+
 
 
 
