@@ -631,6 +631,7 @@ img {
 .slate-td {
   border-left: solid #00e7d2 1px;
   border-top: solid #00e7d2 1px;
+  padding: 0rem 1rem;
 }
 
 .slate-td:first-child {

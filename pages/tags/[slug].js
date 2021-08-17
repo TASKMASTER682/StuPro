@@ -64,7 +64,7 @@ export const getStaticProps=async (ctx)=>{
             tag: data.tag, 
             blogs: data.blogs,
         },
-        revalidate:86400
+        revalidate:800
 
     }
 

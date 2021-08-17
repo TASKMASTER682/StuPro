@@ -114,7 +114,7 @@ export async function getStaticProps() {
                     blogSkip: skip
 
                 },
-                revalidate:900
+                revalidate:660
               
             };
         }

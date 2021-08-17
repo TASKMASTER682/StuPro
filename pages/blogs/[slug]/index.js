@@ -88,7 +88,7 @@ const SingleBlog=  (props)=>{
             <section className="container">
             <Link href="blogs/search"><a className="btn nbtn btn-dark m-1">Click here to Search blog</a></Link>
 
-            <div  className="blog bg-light "  lang={`${blog.language}`}>
+            <div  className="blog bg-light " >
                <div>
                     <Link href={`/blogs/${blog.slug}`}>
                      <a>
@@ -195,7 +195,7 @@ export const getStaticProps = async (ctx) => {
             photo
 
         },
-        revalidate: 10800
+        revalidate: 600
 
 
     }

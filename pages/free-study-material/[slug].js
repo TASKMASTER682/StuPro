@@ -83,7 +83,7 @@ const SingleMaterial=  (props)=>{
             {head()}
  
             <section className="mat-container">
-            <div className="main-mat job p-1"  lang={`${material.language}`}>
+            <div className="main-mat job p-1" >
             <PdfConverter>
             <Link href={`/free-study-material/${material.slug}`}>
                 <a>
@@ -200,7 +200,7 @@ export const getStaticProps=async (ctx)=>{
             material,
             photo
         },
-        revalidate:10800
+        revalidate:600
 
     }
 

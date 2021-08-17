@@ -129,7 +129,7 @@ export async function getStaticProps(){
                     jobsLimit: limit,
                     jobSkip: skip
 
-                },revalidate:900
+                },revalidate:660
 
              
             };

@@ -81,7 +81,7 @@ export async function getStaticProps(){
                     materialSkip: skip
 
                 },
-                revalidate:900
+                revalidate:660
             };
         }
     });

@@ -147,7 +147,7 @@ const SinglePvtJob=(props)=>{
                  
                  </div>
                  <div className="avatar-upload" style={{margin:'auto'}}>
-                         <div className="avatar-preview"><Image newRoute='privateJob' job={privateJob} photo={props.photo} /></div>
+                         <div className="avatar-preview"><Image photo={props.photo} /></div>
                          <strong className=" text-success extra-small author my-1 p-1 input-box" >Published on {moment(privateJob.createdAt).format("MMM DD YYYY")}</strong>
 
                         </div>     
@@ -274,7 +274,7 @@ export const getStaticProps=async (ctx)=>{
             privateJob,
             photo,
         }, 
-        revalidate:10800
+        revalidate:600
 
 
     }

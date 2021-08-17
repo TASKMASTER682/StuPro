@@ -125,7 +125,7 @@ const SingleJob = (props) => {
 
             <section className="mat-container">
         
-                <div className="jobs main-mat" lang={`${job.language}`}>
+                <div className="jobs main-mat" >
                
                     <div className=" job bg-light ">
            
@@ -149,7 +149,7 @@ const SingleJob = (props) => {
                         </div>
 
                         <div className="avatar-upload" style={{margin:'auto'}}>
-                         <div className="avatar-preview"><Image newRoute='job' job={job} photo={props.photo} /></div>
+                         <div className="avatar-preview"><Image photo={props.photo} /></div>
                          <strong className=" text-danger extra-small author my-1 p-1 input-box">Published on {moment(job.createdAt).format("MMM DD YYYY")}</strong>
                         </div>
                         <h2 className="small text-primary p-1">Job Higlights</h2>
@@ -225,8 +225,8 @@ const SingleJob = (props) => {
                 </div>
             <div className="mat-author p-1">
    
-            <h3 className="text-primary my-1">{job.agency}</h3>
-            <h3 className="small text-primary m-1">{job.subtitle}</h3>
+            <h3 className="text-danger my-1">{job.agency}</h3>
+            <h3 className=" text-primary m-1">{job.subtitle}</h3>
             <p className="hide-sm">{job.desc !==undefined  ? job.desc :  `Bumper vacancies have been announced by ${job.agency}. If you are finding a job in ${job.location} then you must apply before the ${moment(job.lastDate).format('Do MMMM YYYY')}. Read full notification and Apply`}</p>
             <div className="line"></div>
             <div className="my-1">
@@ -293,7 +293,7 @@ export const getStaticProps = async (ctx) => {
             photo
 
         },
-        revalidate: 10800
+        revalidate: 600
 
 
     }
