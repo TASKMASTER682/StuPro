@@ -76,7 +76,7 @@ export const getStaticProps=async (ctx)=>{
               admitCard,
             
           },
-          revalidate:660
+          revalidate:200
       }
 
 }

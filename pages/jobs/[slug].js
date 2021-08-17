@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import {router} from 'next/router';
 import dynamic from "next/dynamic";
 import Script from 'next/script';
 import { API, DOMAIN, APP_NAME } from '../../config';
@@ -73,7 +74,7 @@ const SingleJob = (props) => {
                 'address': {
                     '@type': "PostalAddress",
                     "addressLocality": `${job.city}`,
-                    "streetAdress":`${job.street}`,
+                    "streetAddress":`${job.street}`,
                     "addressRegion": `${job.location}`,
                     "postalCode":`${job.postal}`,
                     'addressCountry': "IN"
@@ -271,11 +272,14 @@ export const getStaticPaths = async () => {
     const paths = data.map(job => {
         return {
             params: { slug: job.slug }
+
         }
     })
+
     return {
+
         paths,
-        fallback: false
+        fallback:true
     }
 }
 
@@ -293,7 +297,7 @@ export const getStaticProps = async (ctx) => {
             photo
 
         },
-        revalidate: 600
+        revalidate: 60
 
 
     }

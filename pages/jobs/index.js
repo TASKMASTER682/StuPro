@@ -65,7 +65,6 @@ const Jobs = ({jobs,jobTags,jobCategories, router, totalJobs, jobsLimit, jobSkip
     return(
     <>
     {head()}
-    <main>
      <section className="blogCreate">
      <strong className="large text-primary" style={{lineHeight:'1.9rem'}}>State and Central Govt Jobs Notifications </strong>
      <p className="extra-small text-gray ">Find suitable and best jobs for you and apply.Just click on the title of job and see it in detail</p>
@@ -109,7 +108,6 @@ const Jobs = ({jobs,jobTags,jobCategories, router, totalJobs, jobsLimit, jobSkip
     </div> 
      </div>
     </section>
- </main>
         </>
     )
 };
@@ -132,7 +130,7 @@ export async function getStaticProps(){
                     jobSkip: skip
 
                 },
-                revalidate:660
+                revalidate:200
              
             };
         }

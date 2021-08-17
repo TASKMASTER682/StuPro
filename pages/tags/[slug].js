@@ -50,7 +50,7 @@ export const getStaticPaths=async ()=>{
     })
     return{
         paths,
-        fallback:false
+        fallback:true
     }
 }
 
@@ -64,7 +64,7 @@ export const getStaticProps=async (ctx)=>{
             tag: data.tag, 
             blogs: data.blogs,
         },
-        revalidate:800
+        revalidate:100
 
     }
 

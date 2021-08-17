@@ -177,7 +177,7 @@ export const getStaticPaths=async ()=>{
     })
     return{
         paths,
-        fallback:false
+        fallback:true
     }
 }
   
@@ -195,7 +195,7 @@ export const getStaticProps = async (ctx) => {
             photo
 
         },
-        revalidate: 600
+        revalidate: 90
 
 
     }

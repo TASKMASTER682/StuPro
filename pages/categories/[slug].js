@@ -57,7 +57,7 @@ export const getStaticPaths=async ()=>{
     })
     return{
         paths,
-        fallback:false
+        fallback:true
     }
 }
 
@@ -71,7 +71,7 @@ export const getStaticProps=async (ctx)=>{
             category: data.category, 
             blogs: data.blogs,
         },
-        revalidate:800
+        revalidate:500
 
     }
 

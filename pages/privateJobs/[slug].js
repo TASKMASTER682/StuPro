@@ -18,6 +18,8 @@ const TelegramIcon =dynamic(async()=>import('@material-ui/icons/Telegram'),{load
 // const Article=dynamic(async()=>import('../../components/ads/Article'),{loading:()=><p>...</p>,ssr:false}) ;
 const AttachmentIcon =dynamic(async()=>import('@material-ui/icons/Attachment'),{loading:()=><p>...</p>,ssr:false});
 import Image from '../../components/reusables/ImageComponent';
+import router from 'next/router';
+import { redirect } from '../../next.config';
 const FilterTiltShiftIcon =dynamic(async()=>import('@material-ui/icons/FilterTiltShift'),{loading:()=><p>...</p>,ssr:false}) ;
 const UpdateButton = dynamic(async ()=> import('../../components/reusables/UpdateButton'))
 const Faq =  dynamic(async ()=> import('../../components/reusables/ShowFaq'))
@@ -75,7 +77,7 @@ const SinglePvtJob=(props)=>{
                 'address': {
                     '@type': "PostalAddress",
                     "addressLocality": `${privateJob.city}`,
-                    "streetAdress":`${privateJob.street}`,
+                    "streetAddress":`${privateJob.street}`,
                     "addressRegion": `${privateJob.location}`,
                     "postalCode":`${privateJob.postal}`,
                     'addressCountry': "IN"
@@ -93,7 +95,6 @@ const SinglePvtJob=(props)=>{
         
           }
     }
-
 
 
  
@@ -255,7 +256,7 @@ const SinglePvtJob=(props)=>{
     })
     return{
         paths,
-        fallback:false
+        fallback:true 
     }
 }
   
@@ -264,17 +265,15 @@ export const getStaticProps=async (ctx)=>{
     const [privateJob, photo] = await Promise.all([
         fetch(`${API}/privateJobs/`+slug).then(r => r.json()),
         `${API}/privateJobs/photo/`+slug,
-
-
       ]);
-  
 
     return{
+        
         props:{
             privateJob,
             photo,
         }, 
-        revalidate:600
+        revalidate:60
 
 
     }

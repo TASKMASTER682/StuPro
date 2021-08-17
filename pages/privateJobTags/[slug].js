@@ -70,7 +70,7 @@ export const getStaticPaths=async ()=>{
     })
     return{
         paths,
-        fallback:false
+        fallback:true
     }
 }
 
@@ -84,7 +84,7 @@ export const getStaticProps=async (ctx)=>{
             privateJobTag: data.privateJobTag, 
             privateJobs: data.privateJobs,
         },
-        revalidate:800
+        revalidate:600
 
     }
 
