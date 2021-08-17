@@ -21,12 +21,10 @@ const IFrame = ({material}) => {
         <button  className="btn btn-danger nbtn m-1" onClick={()=>{setFrame(!frame);setId(newLink._id) }}>{frame && id===newLink._id ? 'Close me' : 'Preview'}</button>
         <a href={`https://drive.google.com/uc?export=download&id=${newLink.link}`} className="btn btn-primary nbtn m-1">Download</a>
         </div>
-       
         </div>
         {id===newLink._id && newFrame(newLink.link,newLink._id)}
 
      </li>
-
             )
         })
     }

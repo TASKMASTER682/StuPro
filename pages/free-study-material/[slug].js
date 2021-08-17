@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import dynamic from 'next/dynamic'
-import Router from 'next/router'
+import {useRouter} from 'next/router'
 import { listRelatedMat } from '../../actions/material'
 import PdfConverter from '../../components/reusables/PdfConverter';
 import {fetcher} from '../api/fetcher';
@@ -75,11 +75,13 @@ const SingleMaterial=  (props)=>{
         </Head>
 
     );
- 
+    const router=useRouter();
 
-        return(
-            <>
-
+    if(router.isFallback){
+        return <div>Loading...</div>
+    }
+  return(
+         <>
             {head()}
  
             <section className="mat-container">
@@ -195,6 +197,12 @@ export const getStaticProps=async (ctx)=>{
         fetch(`${API}/materials/` + slug).then(r => r.json()),
         `${API}/materials/photo/` + slug
     ]);
+
+    if (!material) {
+        return {
+      notFound:true
+        }
+      }
     return{
         props:{
             material,

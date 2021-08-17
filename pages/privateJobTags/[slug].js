@@ -35,7 +35,7 @@ const PvtJobTag=({ privateJobTag, privateJobs})=>{
     return(
         <>
         {head()}
-        <section class="blogCreate">
+        <section className="blogCreate">
         <h1 className="text-primary large m-1">{privateJobTag.name}</h1>
         <div className="line"></div>
         <div className="createMain">
@@ -70,7 +70,7 @@ export const getStaticPaths=async ()=>{
     })
     return{
         paths,
-        fallback:true
+        fallback:"blocking"
     }
 }
 

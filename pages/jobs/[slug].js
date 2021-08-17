@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import {router} from 'next/router';
+import {router, useRouter} from 'next/router';
 import dynamic from "next/dynamic";
-import Script from 'next/script';
 import { API, DOMAIN, APP_NAME } from '../../config';
 import renderHTML from 'react-render-html';
 import UpdateButton from '../../components/reusables/UpdateButton';
@@ -94,11 +93,10 @@ const SingleJob = (props) => {
     }
 
 
-
     const head = () => (
         <Head>
             <title>
-                {job.subtitle ? job.subtitle : job.title} | The {APP_NAME}
+                {job.title} | The {APP_NAME}
             </title>
             <meta name="robots" content="index follow" />
             <link rel="canonical" href={`${DOMAIN}/jobs/${job.slug}`} />
@@ -114,12 +112,14 @@ const SingleJob = (props) => {
             <script
                  key={`jobJSON-${job._id}`}
                  type='application/ld+json'
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(makeJobSchema())}} />
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(makeJobSchema()) }} />
      
         </Head>
     );
-
-
+const router=useRouter();
+    if(router.isFallback){
+        return <div>Loading...</div>
+    }
     return (
         <>
             {head()}
@@ -290,7 +290,11 @@ export const getStaticProps = async (ctx) => {
         fetch(`${API}/jobs/` + slug).then(r => r.json()),
         `${API}/jobs/photo/` + slug
     ]);
-
+    if (!job) {
+        return {
+      notFound:true
+        }
+      }
     return {
         props: {
             job,

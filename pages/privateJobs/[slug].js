@@ -18,7 +18,7 @@ const TelegramIcon =dynamic(async()=>import('@material-ui/icons/Telegram'),{load
 // const Article=dynamic(async()=>import('../../components/ads/Article'),{loading:()=><p>...</p>,ssr:false}) ;
 const AttachmentIcon =dynamic(async()=>import('@material-ui/icons/Attachment'),{loading:()=><p>...</p>,ssr:false});
 import Image from '../../components/reusables/ImageComponent';
-import router from 'next/router';
+import {useRouter} from 'next/router';
 import { redirect } from '../../next.config';
 const FilterTiltShiftIcon =dynamic(async()=>import('@material-ui/icons/FilterTiltShift'),{loading:()=><p>...</p>,ssr:false}) ;
 const UpdateButton = dynamic(async ()=> import('../../components/reusables/UpdateButton'))
@@ -102,7 +102,7 @@ const SinglePvtJob=(props)=>{
     const head = () => (
         <Head>
             <title>
-                {privateJob.subtitle ? privateJob.subtitle :privateJob.title} |The {APP_NAME}
+                {privateJob.title} |The {APP_NAME}
             </title>
 
              <link rel="canonical" href={`${DOMAIN}/privateJobs/${privateJob.slug}`} />
@@ -122,7 +122,10 @@ const SinglePvtJob=(props)=>{
         </Head>
     );
 
-
+    const router=useRouter()
+    if(router.isFallback){
+        return <div>Loading...</div>
+    }
 
         return(
            <>
@@ -266,7 +269,11 @@ export const getStaticProps=async (ctx)=>{
         fetch(`${API}/privateJobs/`+slug).then(r => r.json()),
         `${API}/privateJobs/photo/`+slug,
       ]);
-
+      if (!privateJob) {
+        return {
+      notFound:true
+        }
+      }
     return{
         
         props:{

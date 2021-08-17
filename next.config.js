@@ -24,7 +24,6 @@ DOMAIN_DEVELOPMENT:'http://localhost:3000',
             destination: "/api/rss-feed/",
           },
  
-         
         ];
       },
       async redirect(){
