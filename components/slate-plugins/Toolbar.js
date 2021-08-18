@@ -28,12 +28,12 @@ import HighlightIcon from '@material-ui/icons/Highlight';
 import InsertLinkIcon from '@material-ui/icons/InsertLink';
 import CropOriginalIcon from '@material-ui/icons/CropOriginal';
 import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
+import HdIcon from '@material-ui/icons/Hd';
 import Box from "@material-ui/core/Box";
 import {
     ToolbarAlign,
     ToolbarMark,
     getSlatePluginType,
-    ELEMENT_PARAGRAPH,
     ELEMENT_H1,
     ELEMENT_H2 ,
     ELEMENT_H3,
@@ -229,6 +229,7 @@ const Toolbar = () => {
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
     <ToolbarTable icon={<BorderRightOutlinedIcon />} transform={deleteColumn} />
     </Box>
+ 
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
     <ToolbarElement
     type={getSlatePluginType(editor,ELEMENT_MEDIA_EMBED)}

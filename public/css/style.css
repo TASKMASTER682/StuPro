@@ -624,7 +624,6 @@ img {
   border-spacing: 0rem;
   border: solid #00e7d2 1px;
   border-radius: 6px;
-  -moz-border-radius: 6px;
   width: 100%;
 }
 
@@ -636,6 +635,14 @@ img {
 
 .slate-td:first-child {
   border-left: none;
+}
+.slate-blockquote {
+  background: #bcffb9;
+  border-left: 6px solid #00e7d2;
+  margin: 1.5rem 10px;
+  padding: 0.5em 10px;
+  border-radius: 0.6rem;
+  font-style: italic;
 }
 .blog {
   display: grid;
@@ -1446,5 +1453,17 @@ img {
   }
   .home-font {
     font-size: 0.7rem;
+  }
+
+  .slate-table,
+  .slate-table tbody,
+  .slate-tr,
+  .slate-td {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .slate-td:first-child {
+    font-weight: bold;
   }
 }

@@ -237,9 +237,7 @@ const createMaterialForm = () => {
 
             </select>
             </div>       
-            <div suppressContentEditableWarning>
-            <SlatePlugins  handleChange={handleBody}  />
-            </div>    
+            <SlatePlugins  handleChange={handleBody} newValue={body} />
             <button type="submit" className="btn nbtn btn-dark my-1">Publish</button>
          </form>
     );

@@ -26,6 +26,7 @@ import {
     ELEMENT_MEDIA_EMBED,
     createCodeBlockPlugin,
     createResetNodePlugin,
+    
     // optionsSoftBreakPlugin,
     // optionsExitBreakPlugin,
     // createSoftBreakPlugin,
@@ -43,6 +44,7 @@ import {
     ELEMENT_H6,
     ELEMENT_CODE_LINE,
     ELEMENT_PARAGRAPH,
+    ELEMENT_TH
 } from '@udecode/slate-plugins'
 
 
@@ -61,9 +63,11 @@ export const styledComponents = {
           },
         },
       },
-    }), 
+    }) ,
+
 
   }
+
 
 
 
@@ -81,6 +85,8 @@ export const styledComponents = {
       ELEMENT_BLOCKQUOTE,
       ELEMENT_CODE_BLOCK,
       ELEMENT_CODE_LINE,
+      ELEMENT_TH
+
       ],
     defaultType: ELEMENT_PARAGRAPH,
   };

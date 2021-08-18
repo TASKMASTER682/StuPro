@@ -12,7 +12,7 @@ import { styledComponents,options,pluginsBasic,initialValueBasicElements } from 
 import BalloonToolbarMarks from './BalloonToolbarMarks';
 
 
-const SlatePlugin = ({handleChange}) => {
+const SlatePlugin = ({handleChange,newValue}) => {
 const [debugValue, setDebugValue] = useState(false);
 
 useLayoutEffect(() => {
@@ -42,14 +42,14 @@ const showComponent=()=>{
     )
 }
     return (
-    <div suppressContentEditableWarning>
+        <>
     {showComponent()}
         <HeadingToolbar>
         <Toolbar/>
         </HeadingToolbar>
 
-        <SlatePlugins  id='basic-elements' plugins={pluginsBasic}  initialValue={initialValueBasicElements} onChange={handleChange} components={styledComponents} options={options} editableProps={editableProps} />
-     </div>
+        <SlatePlugins  id='basic-elements' plugins={pluginsBasic}  initialValue={initialValueBasicElements} onChange={handleChange} components={styledComponents} options={options} editableProps={editableProps} >{JSON.stringify(newValue)}</SlatePlugins>
+    </>
     )
 }
 export default SlatePlugin;

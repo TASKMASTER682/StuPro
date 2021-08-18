@@ -68,7 +68,7 @@ const BlogRead = ({ username }) => {
                 <div key={i} className="p-1">
                     <Link href={`/blogs/${blog.slug}`}>
                     <a>
-                     <h2  className="text-dark small   " style={{textAlign: 'justify',fontFamily:`'Source Serif Pro' ,serif` ,lineHeight:'1.9rem'}}>
+                     <h2  className="text-dark small   " style={{lineHeight:'1.9rem'}}>
                         {blog.title}
                         </h2>
                     </a>
