@@ -174,7 +174,7 @@ const SingleMaterial=  (props)=>{
 
  </>
 
-            )
+)
  }
 
 export const getStaticPaths=async ()=>{
@@ -208,8 +208,7 @@ export const getStaticProps=async (ctx)=>{
             material,
             photo
         },
-        revalidate:80
-
+        revalidate:60
     }
 
 }

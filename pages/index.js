@@ -74,9 +74,8 @@ export const getStaticProps=async (ctx)=>{
               privateJobs,
               results,
               admitCard,
-            
           },
-          revalidate:200
+          revalidate:60
       }
 
 }

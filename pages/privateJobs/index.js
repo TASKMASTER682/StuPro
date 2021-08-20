@@ -128,10 +128,8 @@ export async function getStaticProps(){
                     totalJobs: data.size,
                     jobsLimit: limit,
                     jobSkip: skip
-
-                },revalidate:200
-
-             
+                },
+                revalidate:60
             };
         }
     });

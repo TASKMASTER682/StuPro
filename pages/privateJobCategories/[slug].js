@@ -87,7 +87,7 @@ export const getStaticProps=async (ctx)=>{
             privateJobCategory: data.privateJobCategory, 
             privateJobs: data.privateJobs,
         },
-        revalidate:400
+        revalidate:500
 
     }
 

@@ -83,7 +83,7 @@ export const getStaticProps=async (ctx)=>{
             jobTag: data.jobTag, 
             jobs: data.jobs,
         },
-        revalidate:300
+        revalidate:500
 
     }
 

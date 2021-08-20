@@ -28,7 +28,6 @@ import HighlightIcon from '@material-ui/icons/Highlight';
 import InsertLinkIcon from '@material-ui/icons/InsertLink';
 import CropOriginalIcon from '@material-ui/icons/CropOriginal';
 import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
-import HdIcon from '@material-ui/icons/Hd';
 import Box from "@material-ui/core/Box";
 import {
     ToolbarAlign,

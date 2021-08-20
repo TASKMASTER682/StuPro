@@ -7,6 +7,7 @@ const TelegramIcon =dynamic(async ()=>import('@material-ui/icons/Telegram'),{ssr
 const InstagramIcon =dynamic(async ()=>import('@material-ui/icons/Instagram'),{ssr:false}) ;
 const FacebookIcon =dynamic(async ()=>import('@material-ui/icons/Facebook'),{ssr:false});
 const YouTubeIcon =dynamic(async ()=>import('@material-ui/icons/YouTube'),{ssr:false});
+const RssFeedIcon =dynamic(async ()=>import('@material-ui/icons/RssFeed'),{ssr:false});
 const Footer=()=>{
     const currentDate=new Date();
     const year=currentDate.getFullYear();
@@ -44,10 +45,11 @@ const Footer=()=>{
             
              <div className="line"></div>
                 <ul className="my-2 icons">
-                    <li><a href="https://www.instagram.com/theprograd/" rel='noopener noreferrer' target="_blank"><InstagramIcon  style={{ fontSize: 60 }}/></a></li>
-                    <li><a href="https://www.facebook.com/sayed.anwarulhaq.923" target="_blank" rel='noopener noreferrer'><FacebookIcon style={{ fontSize: 60 }} /></a></li>
-                    <li><a  href="https://t.me/theprograd" target="_blank" rel='noopener noreferrer'><TelegramIcon  style={{ fontSize: 60 }}  /></a></li>
-                    <li><a href="https://youtube.com/channel/UCFGm2Nfoqs0G29E38B1GZxw" target="_blank" rel='noopener noreferrer'><YouTubeIcon style={{ fontSize: 60 }} /></a></li>
+                    <li><a href="https://www.instagram.com/theprograd/"  target="_blank"><InstagramIcon  style={{ fontSize:45 }}/></a></li>
+                    <li><a href="https://www.facebook.com/sayed.anwarulhaq.923" target="_blank" ><FacebookIcon style={{ fontSize:45 }} /></a></li>
+                    <li><a  href="https://t.me/theprograd" target="_blank" ><TelegramIcon  style={{ fontSize:45 }}  /></a></li>
+                    <li><a href="http://feeds.feedburner.com/theprograd/feeds" target="_blank" ><RssFeedIcon style={{ fontSize:45 }} /></a></li>
+                    <li><a href="https://youtube.com/channel/UCFGm2Nfoqs0G29E38B1GZxw" target="_blank" ><YouTubeIcon style={{ fontSize:45 }} /></a></li>
                 </ul>
             </div>
         </div>

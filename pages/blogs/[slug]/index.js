@@ -204,7 +204,7 @@ export const getStaticProps = async (ctx) => {
             photo
 
         },
-        revalidate: 90
+        revalidate:60
 
 
     }

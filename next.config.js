@@ -26,14 +26,7 @@ DOMAIN_DEVELOPMENT:'http://localhost:3000',
  
         ];
       },
-      async redirect(){
-        return{
-          
-            source: "https://www.theprograd.com",
-            destination: "https://stu-pro.vercel.app/",
-          
-        }
-      }
+
      
 }
 
