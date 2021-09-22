@@ -8,13 +8,13 @@ const InstantJobs = () => {
 
             <meta
                 name="description"
-                content="The ProGrad is a free job alerts platform for job seekers and an educational platform for students who will get conceptual learning here."        
+                content="Get your job Instatntly.If your are in a harsh need of a job then connect with us.We will surely give you some advie to do a job instantly and earn money"        
             />
             <link rel="canonical" href={`${DOMAIN}/instant-jobs`} />
             <meta property="og:title" content={`The ${APP_NAME}`} />
             <meta
                 property="og:description"
-                content="The ProGrad is a free job alerts platform for job seekers and an educational platform for students who will get conceptual learning here.Just Signin and start."
+                content="Get your job Instatntly.If your are in a harsh need of a job then connect with us.We will surely give you some advie to do a job instantly and earn money"
             />
 
         </Head>

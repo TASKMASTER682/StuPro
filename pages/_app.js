@@ -3,6 +3,7 @@ import "../public/css/style.css";
 import '../node_modules/react-quill/dist/quill.snow.css';
 import Script from 'next/script';
 import Head from 'next/head';
+import NextNProgress from 'nextjs-progressbar'
 
 
 
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps }) {
   
     <Layout>
         {head()}
+        <NextNProgress color='#0f1317' />
       <Component {...pageProps} />
       <Script strategy='afterInteractive'
         src="https://www.googletagmanager.com/gtag/js?id=G-Y27GY802BM"

@@ -85,8 +85,9 @@ const SingleMaterial=  (props)=>{
             {head()}
  
             <section className="mat-container">
-            <div className="main-mat job p-1" >
+            <div className="main-mat job" >
             <PdfConverter>
+            <div className="input-box p-1">
             <Link href={`/free-study-material/${material.slug}`}>
                 <a>
                   <h1  className="text-dark large p-1" style={{lineHeight:'3rem'}}>
@@ -94,9 +95,11 @@ const SingleMaterial=  (props)=>{
                   </h1>
                 </a>
             </Link>
+            </div>
+           
             <div className="avatar-upload my-1" style={{margin:'auto'}}>
                 <div className="avatar-preview"><Image photo={props.photo} /></div>
-                <strong className=" text-danger extra-small author my-1 p-1 input-box">Published {moment(material.updatedAt).fromNow()}</strong>
+                <strong className=" text-danger extra-small author my-1 p-1 input-box">Published {moment(material.createdAt).format("MMM DD YYYY")}</strong>
              </div>
             <a href="#pdf-mat" className="mat-special"><strong >Download Study Material Now</strong> </a>
             <div className="job-content p-1" > 

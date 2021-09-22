@@ -11,23 +11,23 @@ const RssFeedIcon =dynamic(async ()=>import('@material-ui/icons/RssFeed'),{ssr:f
 const Footer=()=>{
     const currentDate=new Date();
     const year=currentDate.getFullYear();
-    const myLoader = ( src ) => {
-        return `${DOMAIN}/img/StuproLogo.png` 
-      }
+    // const myLoader = ( src ) => {
+    //     return `${DOMAIN}/img/StuproLogo.png` 
+    //   }
     return(
         <section className="footer-container bg-success my-1" style={{borderTopLeftRadius:'0.8rem',borderTopRightRadius:'0.8rem'}}>
         <div className="footer">
             <div className="first-row ">
-              <span>  <Image loader={myLoader} src={`${DOMAIN}/img/StuproLogo.png`} height={220} width={220}   priority alt="The ProGrad Logo" placeholder="blur" blurDataURL='/img/blurr-min.jpg' /></span>
+              <span>  <Image src='/img/StuproLogo.png' width={220} height={220}  alt="The ProGrad Logo" placeholder="blur" blurDataURL='/img/blurr-min.jpg' /></span>
                 <p className="extra-small text-light-gray">
-                    © Copyright {year}.The ProGrad | All rights reserved | India
+                    © Copyright 2020 - {year}.The ProGrad - India <br /> All rights reserved 
                     
                 </p>
                 <div className="line"></div>
             </div>
             <div className="second-row p-1 ">
                 <h2 className="lead text-dark ">Learn and Get hired</h2>
-                   <p>A Platform Bringing Aspiring Grads And Excelling Professionals Togather. A Perfect Indian platform to find Govt Jobs, Private Jobs, Work from home and instatnt Jobs.It is Community That Has A Perfect Ecosystem For Every Niche Of Education System.Get free pdf notes and much more study materials for your coming exams</p>
+                   <p>A platform bringing aspiring grads and excelling professionals togather. A perfect Indian platform to find govt Jobs, private Jobs, Work from home and instatnt Jobs.It is community that has a perfect ecosystem for every niche of education system.Get free pdf notes and much more study materials for your coming exams</p>
             
             </div>
             <div className="second-row p-1 ">

@@ -10,17 +10,17 @@ const MakeCV = () => {
             <meta name="robots" content="index follow" />
 
             <meta name="description" 
-            content='Make your CV free of cost and download it at th ProGrad'
+            content='Make your CV free of cost and download it at th ProGrad.Make your profile on The ProGrad and download your cv easily and upload it on the job application portal.It can help you get hired.'
             />
-            <link rel="canonical" href={`${DOMAIN}/make-cv`} />
+            <link rel="canonical" href={`${DOMAIN}/free-cv-builder`} />
             <meta property="og:title" content={`Best Online Free CV Builder | The ${APP_NAME}`} />
             <meta
                 property="og:description"
-                content='Make your CV free of cost and download it at th ProGrad'
+                content='Make your CV free of cost and download it at th ProGrad.Make your profile on The ProGrad and download your cv easily and upload it on the job application portal.It can help you get hired.'
 
             />
             <meta property="og:type" content="webiste" />
-            <meta property="og:url" content={`${DOMAIN}/make-cv`} />
+            <meta property="og:url" content={`${DOMAIN}/free-cv-builder`} />
             <meta property="og:site_name" content={`The ${APP_NAME}`} />
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />

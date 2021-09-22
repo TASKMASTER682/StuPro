@@ -22,7 +22,7 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
             <meta name="description" 
             content='100+ active private jobs in India to apply.Apply today and get employed.See the employment news and the crux of each private sector job notification and easily apply on The ProGrad.'
             />
-            <link rel="canonical" href={`${DOMAIN}/${router.pathname}`} />
+            <link rel="canonical" href={`${DOMAIN}/privateJobs`} />
             <meta property="og:title" content={`100+ Best Latest Private Sector Jobs in India to Apply | The ${APP_NAME}`} />
             <meta
                 property="og:description"
@@ -30,7 +30,7 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
 
             />
             <meta property="og:type" content="webiste" />
-            <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
+            <meta property="og:url" content={`${DOMAIN}/privateJobs`} />
             <meta property="og:site_name" content={`The ${APP_NAME}`} />
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />

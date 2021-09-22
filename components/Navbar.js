@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React,{useState} from 'react';
 import dynamic from 'next/dynamic';                                     
-import NProgress from 'nprogress';
+// import NProgress from 'nprogress';
 import {signout,isAuth} from '../actions/auth';
 import Router from "next/router";
 import Image from "next/image";
@@ -13,15 +13,15 @@ const BusinessIcon=dynamic(async ()=>import( '@material-ui/icons/Business'),{ssr
 const DashboardIcon=dynamic(async ()=>import('@material-ui/icons/Dashboard'),{ssr:false}) ;
 const ExitToAppIcon=dynamic(async ()=>import('@material-ui/icons/ExitToApp'),{ssr:false}) ;
 const AccountCircleIcon=dynamic(async ()=>import( '@material-ui/icons/AccountCircle'),{ssr:false});
- Router.onRouteChangeStart=url=>NProgress.start()
- Router.onRouteChangeComplete=url=>NProgress.done()
- Router.onRouteChangeError=url=>NProgress.done()
+//  Router.onRouteChangeStart=url=>NProgress.start()
+//  Router.onRouteChangeComplete=url=>NProgress.done()
+//  Router.onRouteChangeError=url=>NProgress.done()
  import MenuIcon from '@material-ui/icons/Menu';
 
 const Navbar=()=>{
-  const myLoader = (src) => {
-    return `${DOMAIN}/img/${src}` 
-  }
+  // const myLoader = (src) => {
+  //   return `${DOMAIN}/img/${src}` 
+  // }
   const [show,setShow]=useState(false)
 
     return(
@@ -29,17 +29,17 @@ const Navbar=()=>{
  <nav className='navbar bg-success'>
     <div className="py-1" >
       <Link  href ="/">
-      <a>
-       <Image loader={()=>myLoader('prograd.png')} src={`${DOMAIN}/img/prograd.png`} height={50} width={190} placeholder='blur'  blurDataURL='/img/blurr-min.jpg' priority style={{marginTop:'0.5rem'}} alt='prograd landing'/>
+      <a style={{marginTop:'0.5rem'}}>
+       <Image  src='/img/prograd.png' height={50} width={190} placeholder='blur'  blurDataURL='/img/blurr-min.jpg' priority alt='prograd landing'/>
        </a>
        </Link>
     
      </div>
      <div className={show ? "mobile-menu":'desktop-menu'}>
      <ul >
-         <li><h3 className='btn btn-dark nbtn'><Link href="/about"><a>About us</a></Link></h3></li>
+         <li><h3 className='btn input-box btn-primary'><Link href="/about"><a>About us</a></Link></h3></li>
          <li className="dropdown">
-         <h3 className='dropbtn btn btn-dark nbtn'>Our Services</h3>
+         <h3 className='dropbtn btn  input-box btn-primary'>Our Services</h3>
          <div className="dropdown-content">
            <Link href='/jobs'><a>Government Jobs</a></Link>
            <Link href='/privateJobs' ><a>Private Jobs</a></Link>
@@ -50,23 +50,23 @@ const Navbar=()=>{
 
          </div>
          </li>
-        <li><h3 className='btn btn-dark nbtn'><Link href="/contact"><a>Contact us</a></Link></h3></li> 
-        <li><h3 className='btn btn-dark nbtn'><Link href="/free-cv-builder"><a>Create CV</a></Link></h3></li> 
+        <li><h3 className='btn  input-box btn-primary '><Link href="/contact"><a>Contact us</a></Link></h3></li> 
+        <li><h3 className='btn  input-box btn-primary '><Link href="/free-cv-builder"><a>Create CV</a></Link></h3></li> 
       </ul>
      </div>
 <div className="auth-links">
 <ul >
            {isAuth() && isAuth().role === 0 && (
                 <>
-               <li><Link href="/user" ><a className="btn  btn-dark my-1"><AccountCircleIcon style={{fontSize:15}}/> <span className="text-light">{`${isAuth().name}'s Dashboard`}</span></a></Link></li>
+               <li><Link href="/user" ><a className="btn input-box btn-dark my-1"><AccountCircleIcon style={{fontSize:15}}/> <span className="text-light">{`${isAuth().name}'s Dashboard`}</span></a></Link></li>
                 </>
             )}
             {isAuth() && isAuth().role === 1 && (
-                <li><Link href="/admin" ><a  className=" input-box btn my-1"><span> {`${isAuth().name}'s Dashboard`}</span></a></Link></li>              )}
+                <li><Link href="/admin" ><a  className=" input-box btn btn-dark my-1"><span> {`${isAuth().name}'s Dashboard`}</span></a></Link></li>              )}
             {!isAuth() && ( 
            <>
-             <li><a href="/signin"  className =" input-box my-1 p-1"><ExitToAppIcon style={{fontSize:15}}/>Sign in<span> </span></a></li>
-             <li><Link href="/signup"><a className ="input-box my-1 p-1 bg-dark"> Sign up <span> </span><PersonAddIcon style={{fontSize:16}}/></a></Link></li>
+             <li><a href="/signin"  className =" btn input-box btn-dark"><ExitToAppIcon style={{fontSize:15}}/>Sign in<span> </span></a></li>
+             <li><Link href="/signup"><a className ="btn input-box btn-dark "> Sign up <span> </span><PersonAddIcon style={{fontSize:16}}/></a></Link></li>
            </>
             )}
             

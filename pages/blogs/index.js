@@ -9,16 +9,16 @@ import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router }) => {
 
 
-
     const head = () => (
         <Head>
             <title>Best Educational Blogs |The {APP_NAME}</title>
             <meta name="robots" content="index follow" />
-            <meta name="description" content="Get best educational blogs, tips and tricks on The ProGrad" />
+            <link rel="canonical" href={`${DOMAIN}/blogs`} />
+            <meta name="description" content="Get best educational blogs, tips and tricks on The ProGrad.Read these quality blogs and be the ProGrad from the beginning" />
             <meta property="og:title" content={`Best Educational Blogs | The ${APP_NAME}`} />
-            <meta property="og:description" content="Get best educational blogs, tips and tricks on The ProGrad" />
+            <meta property="og:description" content="Get best educational blogs, tips and tricks on The ProGrad.Read these quality blogs and be the ProGrad from the beginning" />
             <meta property="og:type" content="webiste" />
-            <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
+            <meta property="og:url" content={`${DOMAIN}/blogs`} />
             <meta property="og:site_name" content={`The ${APP_NAME}`} />
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />

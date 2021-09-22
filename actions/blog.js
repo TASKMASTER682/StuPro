@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 import { API } from '../config';
 import queryString from 'query-string';
 import { isAuth ,handleResponse } from './auth';
-import { getURL } from 'next/dist/next-server/lib/utils';
+// import { getURL } from 'next/dist/next-server/lib/utils';
 
 
 export const createBlog =async (blog, token) => {

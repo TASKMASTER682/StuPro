@@ -43,18 +43,8 @@ const SinglePvtJob=(props)=>{
            '@context': 'http://schema.org',
             '@type': 'JobPosting',
             'title': `${privateJob.title}`,
-            'description': `            
-            <p>${privateJob.desc ? `${privateJob.desc}` : `Are you also looking for a job or, are you looking for a better job based on your qualification, then you are at the right place. Latest job posts in ${privateJob.location} from ${privateJob.agency} have been rolled out.You can apply for these posts before ${privateJob.lastDate} If you want to work in ${privateJob.location} and your qualification is ${privateJob.qualification}, then this is an opportunity for you. On getting this job in ${privateJob.location}, you get a basic monthly salary of around ${privateJob.salary}. It is a ${privateJob.type} job, if you want to apply, then click on the apply button and you will reach at the India's best job website.`}</p>
-            <br>
-            <h3>Job Highlights</h3>,
-            <ul>
-            <li>Notification issued By - ${privateJob.agency}</li>
-            <li>Job Location - ${privateJob.location}</li>
-            <li>The Last Date to Apply - ${privateJob.lastDate}</li>
-            <li>Qualification needed - ${privateJob.qualification}</li>
-            <li>Pay Scale - ${privateJob.salary}</li>
-            </ul>`,
-    
+            'educationalRequirements':`${privateJob.qualification}`,
+            'description': `${privateJob.desc}. Job Highlights are given as ----- >Notification issued By - ${privateJob.agency}, Job Location - ${privateJob.location}, The Last Date to Apply - ${privateJob.lastDate}, Qualification needed - ${privateJob.qualification}, Pay Scale - ${privateJob.salary}`,
             'url': `https://${DOMAIN}/privateJobs/${privateJob.slug}`,
             'identifier': {
                 '@type': "PropertyValue",
@@ -64,7 +54,7 @@ const SinglePvtJob=(props)=>{
             },
             'datePosted': `${privateJob.createdAt}`,
             'validThrough': `${privateJob.lastDate}`,
-            'directApply' : false,
+            'directApply' : 'true',
             'employmentType': `${privateJob.type}`,
             'hiringOrganization': {
                 '@type': "Organization",
@@ -88,7 +78,7 @@ const SinglePvtJob=(props)=>{
                 'currency': "INR",
                 'value': {
                     '@type': "QuantitativeValue",
-                    'value':privateJob.salary,
+                    'value':`${privateJob.salary}`,
                     'unitText': "Month"
                 }
             }
@@ -133,21 +123,20 @@ const SinglePvtJob=(props)=>{
             <section className="container">
              <div className="jobs my-1">
              <div className="job bg-light">
-                 <div className="job-top p-1 my-1 input-box" >         
+                 <div className="pvt-job-top p-1 my-1 input-box" >         
                  <div className="m-1 text-primary hide-sm">
                  <AttachmentIcon style={{fontSize:40}} />
                 </div>       
                 <div className="my-1">
                 <Link href={`/privateJobs/${privateJob.slug}`}>
-                    <a><h1 className="small text-dark"  style={{lineHeight:'1.9rem'}}>{privateJob.title}</h1></a>
+                    <a><h1 className="large text-dark"  style={{lineHeight:'2.9rem'}}>{privateJob.title}</h1></a>
                 </Link>               
                 </div>   
-             
-                  <div className="share icons p-1">
-                     <a href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/privateJobs/${privateJob.slug}`} target="_blank" rel='noopener noreferrer'><i className='text-primary'><FacebookIcon style={{fontSize:30}}/></i></a>
-                     <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/privateJobs/${privateJob.slug}`} target="_blank" ><i className='text-primary'><LinkedInIcon style={{fontSize:30}}/></i></a>
-                     <a target="_blank" rel='noopener noreferrer' href={`https://t.me/share/url?url=https://theprograd.com/privateJobs/${privateJob.slug}&text=Fresh recruitment for ${privateJob.agency} for the post of ${privateJob.position}.Do visit the Link to explore more abouthese vacancies and apply directly for The ProGrad.${privateJob.mdesc}`}><i className='text-primary'><TelegramIcon style={{fontSize:30}} /></i></a>
-                  </div>
+             <div className="share icons p-1">
+                <a href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${privateJob.slug}`} target="_blank" rel='noopener noreferrer'><i className='text-primary'><FacebookIcon style={{ fontSize: 30 }} /></i></a>
+                <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/jobs/${privateJob.slug}`} target="_blank" rel='noopener noreferrer' ><i className='text-primary'><LinkedInIcon style={{ fontSize: 30 }} /></i></a>
+                <a href={`https://t.me/share/url?url=https://theprograd.com/jobs/${privateJob.slug}&text=Fresh recruitment for ${privateJob.agency} for the various post.Do visit the Link to explore more abou these vacancies and apply directly at The ProGrad.${privateJob.desc}`} target="_blank" rel='noopener noreferrer' ><i className='text-primary'><TelegramIcon style={{ fontSize: 30 }} /></i></a>
+            </div>
                  
                  </div>
                  <div className="avatar-upload" style={{margin:'auto'}}>

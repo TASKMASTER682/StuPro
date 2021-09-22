@@ -12,10 +12,10 @@ const FreeStudyMaterial = ({ router, materials,materialCategories,materialsLimit
     const head = () => (
         <Head>
             <title>100+ collection of free study material with best tips and tricks |The {APP_NAME}</title>
-            <link rel="canonical" href={`${DOMAIN}/${router.pathname}`} />
+            <link rel="canonical" href={`${DOMAIN}/free-study-material`} />
             <meta name="robots" content="index follow" />
             <meta name="description" 
-            content='Read and download 100+ articles which consists of free Pdfs ,tips and tricks ,syllabuses,books pdfs,and study of Bansal classes akash and more top institutes of Kota.'
+            content='Read and download 100+ articles which consists of free Pdfs ,tips and tricks ,syllabus,books pdfs,and study of Bansal classes akash and more top institutes of Kota.'
             />
             <meta property="og:title" content={`|The ${APP_NAME}`} />
             <meta
@@ -23,8 +23,8 @@ const FreeStudyMaterial = ({ router, materials,materialCategories,materialsLimit
                 content='Read and download 100+ articles which consists of free Pdfs ,tips and tricks ,syllabuses,books pdfs,and study of Bansal classes akash and more top institutes of Kota.'
             />
             <meta property="og:type" content="webiste" />
-            <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
-            <meta property="og:site_name" content={`${APP_NAME}`} />
+            <meta property="og:url" content={`${DOMAIN}/free-study-material`} />
+            <meta property="og:site_name" content={`The ${APP_NAME}`} />
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:type" content="img/StuproLogo.png" />

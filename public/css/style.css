@@ -335,7 +335,7 @@ img {
   position: fixed;
   z-index: 1;
   width: 100%;
-  height: 5rem;
+  height: 4.5rem;
   top: 0;
   border-bottom: solid 1px #00cdbb;
   opacity: 0.9;
@@ -414,6 +414,7 @@ img {
 .main-mat {
   border-radius: 1rem;
   line-height: 1.8rem;
+  padding: 1rem;
 }
 .mat-author {
   box-shadow: 0 0.6px 2.5px rgba(0, 0, 0, 0.017),
@@ -562,6 +563,10 @@ img {
   margin: 0rem 1rem;
 }
 .job-top {
+  display: grid;
+  grid-template-columns: 1fr 20fr;
+}
+.pvt-job-top {
   display: grid;
   grid-template-columns: 1fr 8fr 3fr;
 }
@@ -1225,7 +1230,9 @@ img {
   .hide-sm {
     display: none;
   }
-
+  .navbar {
+    height: 4rem;
+  }
   .container {
     width: 100%;
     padding: 0 1rem;
@@ -1347,6 +1354,10 @@ img {
     display: flex;
     flex-direction: column;
   }
+  .pvt-job-top {
+    display: flex;
+    flex-direction: column;
+  }
   .job-bottom {
     display: flex;
     flex-direction: row;
@@ -1415,10 +1426,8 @@ img {
   }
   .mat-special {
     display: block;
-    border: solid 1px #e64444;
     border-radius: 0.5rem;
     text-align: center;
-    background-color: #e64444;
     color: #f8f8f8;
   }
 
@@ -1450,6 +1459,9 @@ img {
   .admit-card {
     display: grid;
     grid-template-columns: 1fr;
+  }
+  .main-mat {
+    padding: 0.6rem;
   }
   .home-font {
     font-size: 0.7rem;

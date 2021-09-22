@@ -9,7 +9,9 @@ const Contact = () => {
             </title>
             <meta name="robots" content="index follow" />
             <link rel="canonical" href={`${DOMAIN}/contact`} />
-
+            <meta name="description" 
+            content='If you have any offer,guest posting request,sposership query,advertisement of any query relates to job,then you can contact with us'
+            />
         </Head>
     )
     return (

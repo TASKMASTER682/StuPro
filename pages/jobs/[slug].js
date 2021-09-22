@@ -39,18 +39,8 @@ const SingleJob = (props) => {
            '@context': 'http://schema.org',
             '@type': 'JobPosting',
             'title': `${job.title}`,
-            'description': `            
-            <p>${job.desc ? `${job.desc}` : `Are you also looking for a job or, are you looking for a better job based on your qualification, then you are at the right place. Latest job posts in ${job.location} from ${job.agency} have been rolled out.You can apply for these posts before ${job.lastDate} If you want to work in ${job.location} and your qualification is ${job.qualification}, then this is an opportunity for you. On getting this job in ${job.location}, you get a basic monthly salary of around ${job.salary}. It is a ${job.type} job, if you want to apply, then click on the apply button and you will reach at the India's best job website.`}</p>
-            <br>
-            <h3>Job Highlights</h3>,
-            <ul>
-            <li>Notification issued By - ${job.agency}</li>
-            <li>Job Location - ${job.location}</li>
-            <li>The Last Date to Apply - ${job.lastDate}</li>
-            <li>Qualification needed - ${job.qualification}</li>
-            <li>Pay Scale - ${job.salary}</li>
-            </ul>`,
-    
+            'educationalRequirements':`${job.qualification}`,
+            'description': `${job.desc}. Job Highlights are given as ----- Notification issued By - ${job.agency} , Job Location - ${job.location}, The Last Date to Apply - ${job.lastDate},Qualification needed - ${job.qualification}, Pay Scale - ${job.salary}`,
             'url': `https://${DOMAIN}/jobs/${job.slug}`,
             'identifier': {
                 '@type': "PropertyValue",
@@ -60,7 +50,7 @@ const SingleJob = (props) => {
             },
             'datePosted': `${job.createdAt}`,
             'validThrough': `${job.lastDate}`,
-            'directApply' : false,
+            'directApply' : 'true',
             'employmentType': `${job.type}`,
             'hiringOrganization': {
                 '@type': "Organization",
@@ -84,7 +74,7 @@ const SingleJob = (props) => {
                 'currency': "INR",
                 'value': {
                     '@type': "QuantitativeValue",
-                    'value':job.salary,
+                    'value':`${job.salary}`,
                     'unitText': "Month"
                 }
             }
@@ -131,24 +121,25 @@ const router=useRouter();
                     <div className=" job bg-light ">
            
                         <div className="job-top p-1 my-1 input-box">
-                        <div className="m-1 text-primary hide-sm">
+                        <div className=" text-primary p-1 hide-sm">
                         <AttachmentIcon style={{fontSize:40}} />
                        </div>
                             <div className="my-1">
                                 <Link href={`/jobs/${job.slug}`}>
-                                    <h1 className="small text-dark" style={{ lineHeight: '2.9rem' }}>{job.title}</h1>
+                                    <h1 className="large text-dark" style={{ lineHeight: '2.9rem' }}>{job.title}</h1>
                                 </Link>
 
                             </div>
-
+                            <div className="mat-special">
                             <div className="share icons p-1">
                                 <a href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${job.slug}`} target="_blank" rel='noopener noreferrer'><i className='text-primary'><FacebookIcon style={{ fontSize: 30 }} /></i></a>
                                 <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/jobs/${job.slug}`} target="_blank" rel='noopener noreferrer' ><i className='text-primary'><LinkedInIcon style={{ fontSize: 30 }} /></i></a>
                                 <a href={`https://t.me/share/url?url=https://theprograd.com/jobs/${job.slug}&text=Fresh recruitment for ${job.agency} for the various post.Do visit the Link to explore more abou these vacancies and apply directly at The ProGrad.${job.mdesc}`} target="_blank" rel='noopener noreferrer' ><i className='text-primary'><TelegramIcon style={{ fontSize: 30 }} /></i></a>
                             </div>
+                            </div>
 
                         </div>
-
+                     
                         <div className="avatar-upload" style={{margin:'auto'}}>
                          <div className="avatar-preview"><Image photo={props.photo} /></div>
                          <strong className=" text-danger extra-small author my-1 p-1 input-box">Published on {moment(job.createdAt).format("MMM DD YYYY")}</strong>
@@ -191,10 +182,10 @@ const router=useRouter();
           </table>
  
                     <div className="job-buttons p-1">
-                         <ApplyButton applyLink={job.applyLink} lastDate={job.lastDate} />
+                         <ApplyButton applyLink={job.applyLink} lastDate={job.lastDate} newStatus={job.status}/>
                     </div>
                         </div>
-                        <a href="#pdf-mat" className="mat-special"><strong >Download Previous Years Now</strong> </a>
+                        <a href="#pdf-mat" className="mat-special bg-dark m-1"><strong >Download Previous Years Now</strong> </a>
                         <div className='job-content p-1 selectable' >
                           {renderHTML(job.body)}
                         </div>
@@ -235,6 +226,13 @@ const router=useRouter();
             </div>
             <div className="my-1">
             <a href="#faq" className="btn btn-primary p-1 hide-sm" style={{borderRadius:'0.7rem'}}><strong >Some Faqs</strong> </a>
+            </div>
+            <h4 className="text-primary">Social Share</h4>
+            <hr className="hr-1" />
+            <div className="share icons p-1">
+                <a href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${job.slug}`} target="_blank" rel='noopener noreferrer'><i className='text-primary'><FacebookIcon style={{ fontSize: 30 }} /></i></a>
+                <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/jobs/${job.slug}`} target="_blank" rel='noopener noreferrer' ><i className='text-primary'><LinkedInIcon style={{ fontSize: 30 }} /></i></a>
+                <a href={`https://t.me/share/url?url=https://theprograd.com/jobs/${job.slug}&text=Fresh recruitment for ${job.agency} for the various post.Do visit the Link to explore more abou these vacancies and apply directly at The ProGrad.${job.mdesc}`} target="_blank" rel='noopener noreferrer' ><i className='text-primary'><TelegramIcon style={{ fontSize: 30 }} /></i></a>
             </div>
             </div>
             </section>

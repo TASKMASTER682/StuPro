@@ -64,7 +64,7 @@ const router=useRouter();
         <Head>
         <title>{blog.subtitle ? blog.subtitle : blog.title} |The {APP_NAME}</title>
         <meta name="robots" content="index follow" />
-            <meta name="description" content={blog.desc ? blog.desc:blog.excerpt} />
+            <meta name="description" content={blog.desc ?  `${blog.desc}` : `${blog.excerpt}`}/>
             <link rel="canonical" href={`${DOMAIN}/blogs/${blog.slug}`} />
             <meta property="og:title" content={`${blog.title} | ${APP_NAME}`} />
             <meta property="og:description" content={blog.desc ? blog.desc : blog.excerpt} />

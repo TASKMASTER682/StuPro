@@ -14,7 +14,7 @@ const Jobs = ({jobs,jobTags,jobCategories, router, totalJobs, jobsLimit, jobSkip
     const head = () => (
         <Head>
             <title>50+ Best Latest Government Jobs in India to Apply |The {APP_NAME}</title>
-            <link rel="canonical" href={`${DOMAIN}/${router.pathname}`} />
+            <link rel="canonical" href={`${DOMAIN}/jobs`} />
             <meta name="robots" content="index follow" />
             <meta name="description" 
             content='50+ active government jobs in India to apply.Apply today and get employed.See the employment news and the crux of each govt job notification and easily apply on The ProGrad.'
@@ -25,7 +25,7 @@ const Jobs = ({jobs,jobTags,jobCategories, router, totalJobs, jobsLimit, jobSkip
                 content='50+ active government jobs in India to apply.Apply today and get employed.See the employment news and the crux of each govt job notification and easily apply on The ProGrad.'
             />
             <meta property="og:type" content="webiste" />
-            <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
+            <meta property="og:url" content={`${DOMAIN}/jobs`} />
             <meta property="og:site_name" content={`The ${APP_NAME}`} />
             <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
             <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />
