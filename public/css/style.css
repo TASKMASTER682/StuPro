@@ -566,9 +566,15 @@ img {
   display: grid;
   grid-template-columns: 1fr 20fr;
 }
+.job-top h1 {
+  line-height: 2.9rem;
+}
 .pvt-job-top {
   display: grid;
   grid-template-columns: 1fr 8fr 3fr;
+}
+.pvt-job-top h1 {
+  line-height: 2.9rem;
 }
 .job-top h2 {
   padding: 0.8rem;
@@ -596,6 +602,7 @@ img {
 }
 .job-content {
   line-height: 2rem;
+  padding: 1rem;
 }
 .job-content h3 {
   color: #00a79a;
@@ -1314,7 +1321,9 @@ img {
   .hamburger {
     display: block;
   }
-
+  .job {
+    padding: 0.3rem;
+  }
   .dash-buttons a {
     display: block;
     width: 100%;
@@ -1354,6 +1363,9 @@ img {
     display: flex;
     flex-direction: column;
   }
+  .job-top h1 {
+    line-height: 2rem;
+  }
   .pvt-job-top {
     display: flex;
     flex-direction: column;
@@ -1362,6 +1374,9 @@ img {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+  }
+  .job-content {
+    padding: 0.5rem;
   }
   .job-bottom .job-buttons {
     display: flex;
@@ -1477,5 +1492,8 @@ img {
   }
   .slate-td:first-child {
     font-weight: bold;
+  }
+  .pvt-job-top h1 {
+    line-height: 1.9rem;
   }
 }

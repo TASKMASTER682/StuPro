@@ -4,8 +4,8 @@ import Head from 'next/head';
 
 const Signin=()=>{
     const head=()=>{
-        <Head>
-    <title> Sign in to The ProGrad |The ProGrad </title>
+    <Head>
+    <title>Sign in to get started |The ProGrad</title>
     <meta name="robots" content="index follow" />
 
     <meta

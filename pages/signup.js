@@ -5,7 +5,7 @@ import Head from 'next/head';
 const Signup=()=>{
  const head=()=>{
     <Head>
-    <title>Sign Up to The ProGrad | The ProGrad</title>
+    <title>Sign Up and be The ProGrad from the beginning | The ProGrad</title>
     <meta name="robots" content="index follow" />
 
     <meta

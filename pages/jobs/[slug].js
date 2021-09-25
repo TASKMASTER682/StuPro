@@ -50,13 +50,16 @@ const SingleJob = (props) => {
             },
             'datePosted': `${job.createdAt}`,
             'validThrough': `${job.lastDate}`,
-            'directApply' : 'true',
             'employmentType': `${job.type}`,
             'hiringOrganization': {
                 '@type': "Organization",
                 'name': `${job.agency}`,
                 'sameAs':`${job.officialLink}`,
                 'logo':`${API}/jobs/photo/${job.slug}`
+            },
+            'directApply':{
+                '@type':"Boolean",
+                'directApply':'true'
             },
             'jobLocation': {
                 '@type': "Place",
@@ -126,7 +129,7 @@ const router=useRouter();
                        </div>
                             <div className="my-1">
                                 <Link href={`/jobs/${job.slug}`}>
-                                    <h1 className="large text-dark" style={{ lineHeight: '2.9rem' }}>{job.title}</h1>
+                                    <h1 className="large text-dark">{job.title}</h1>
                                 </Link>
 
                             </div>
@@ -186,7 +189,7 @@ const router=useRouter();
                     </div>
                         </div>
                         <a href="#pdf-mat" className="mat-special bg-dark m-1"><strong >Download Previous Years Now</strong> </a>
-                        <div className='job-content p-1 selectable' >
+                        <div className='job-content selectable' >
                           {renderHTML(job.body)}
                         </div>
                         {job.downloadLink[0] !=null && 

@@ -28,7 +28,7 @@ const Landing = ({ jobs, privateJobs,result,admitCard }) => {
                 <div className=" big-card p-2 input-box">
                     <div>
                         <ul>
-                            <li><h2 className='large text-primary my-2'><span className='text-danger'>The</span> ProGrad</h2> </li>
+                            <li><h1 className='large text-primary my-2'><span className='text-danger'>The</span> ProGrad</h1> </li>
                             <br />
                             <li> <h3 className=' text-dark  m-1'> A Platform Bringing Aspiring Grads And Excelling Professionals Togather.</h3></li>
                             <li> <h3 className=" text-dark m-1"> A Community That Has A Perfect Ecosystem For Every Niche Of <span className="text-danger">Education System.</span> </h3></li>

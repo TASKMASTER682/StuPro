@@ -10,14 +10,14 @@ const About =()=>{
         <title>About The ProGrad</title>
         <meta
             name="description"
-            content="We provide Government job notifications,Private Job notifications,Free of cot study material,educational blogs and tips and tricks to crack any entrance exam"
+            content="We provide Government job notifications,Private Job notifications,Free of cost study material,educational blogs and tips and tricks to crack any entrance exam"
        
         />
         <link rel="canonical" href={`${DOMAIN}/about`} />
         <meta property="og:title" content={`About The ${APP_NAME} `} />
         <meta
             property="og:description"
-            content="We provide Government job notifications,Private Job notifications,Free of cot study material,educational blogs and tips and tricks to crack any entrance exam"
+            content="We provide Government job notifications,Private Job notifications,Free of cost study material,educational blogs and tips and tricks to crack any entrance exam"
         />
         <meta property="og:type" content="webiste" />
         <meta property="og:url" content={`${DOMAIN}/about`} />

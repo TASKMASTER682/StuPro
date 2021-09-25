@@ -52,9 +52,12 @@ const SinglePvtJob=(props)=>{
                 'value': "1234567"
     
             },
+            'directApply':{
+                '@type':"Boolean",
+                'directApply':'true'
+            },
             'datePosted': `${privateJob.createdAt}`,
             'validThrough': `${privateJob.lastDate}`,
-            'directApply' : 'true',
             'employmentType': `${privateJob.type}`,
             'hiringOrganization': {
                 '@type': "Organization",
@@ -129,7 +132,7 @@ const SinglePvtJob=(props)=>{
                 </div>       
                 <div className="my-1">
                 <Link href={`/privateJobs/${privateJob.slug}`}>
-                    <a><h1 className="large text-dark"  style={{lineHeight:'2.9rem'}}>{privateJob.title}</h1></a>
+                    <a><h1 className="large text-dark">{privateJob.title}</h1></a>
                 </Link>               
                 </div>   
              <div className="share icons p-1">

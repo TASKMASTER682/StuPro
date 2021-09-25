@@ -66,7 +66,7 @@ const Jobs = ({jobs,jobTags,jobCategories, router, totalJobs, jobsLimit, jobSkip
     <>
     {head()}
      <section className="blogCreate">
-     <strong className="large text-primary" style={{lineHeight:'1.9rem'}}>State and Central Govt Jobs Notifications </strong>
+     <h1 className="large text-primary" style={{lineHeight:'1.9rem'}}>State and Central Govt Jobs Notifications </h1>
      <p className="extra-small text-gray ">Find suitable and best jobs for you and apply.Just click on the title of job and see it in detail</p>
      <Link href="/jobs/jobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search job</a></Link>
      <div className="createMain">

@@ -72,7 +72,7 @@ const PvtJobs = ({ privateJobs, privateJobCategories, privateJobTags, totalJobs,
     {head()}
     <div>
      <section className="blogCreate">
-     <header className="large text-primary" style={{lineHeight:'1.9rem'}}> <strong>Best Private Sector Jobs in India</strong> </header>
+     <h1 className="large text-primary" style={{lineHeight:'1.9rem'}}> <strong>Best Private Sector Jobs in India</strong> </h1>
      <p className="extra-small text-gray ">Find suitable jobs for you and apply.Just click on the title of job and see it in detail</p>
      <Link href="/privateJobs/pvtJobSearch"><a className="btn nbtn btn-dark m-1">Click here to Search Pvt. jobs</a></Link>
      <div className="createMain">
