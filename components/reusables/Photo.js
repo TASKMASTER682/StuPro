@@ -8,9 +8,9 @@ const Photo = ({content,photo}) => {
     return `${photo}`
   }
     return (
-        <>
-          <Image loader={myLoader} className="nbtn"  src={`${photo}`} width={1000} height={400} blurDataURL="/img/blurr-min.jpg" placeholder='blur' alt={content.title} />
-        </>
+     
+          <Image loader={myLoader} className='rounded-md m-1'  src={`${photo}`} width={1000} height={400} blurDataURL="/img/blurr-min.jpg" placeholder='blur' alt={content.title} />
+      
     )
 }
 

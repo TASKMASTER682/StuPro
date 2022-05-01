@@ -1,282 +1,217 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import {listRelatedPvt } from '../../actions/privateJob';
+import { listRelatedPvt,listPvtJobsWithCategoriesAndTags } from '../../actions/privateJob';
 import { API, DOMAIN, APP_NAME } from '../../config';
 import renderHTML from 'react-render-html';
-const CategoryInSlug =  dynamic(async ()=> import('../../components/reusables/SlugCat'))
-const TagInSlug =  dynamic(async ()=> import('../../components/reusables/TagInSlug'))
-const ApplyButton =  dynamic(async ()=> import('../../components/reusables/ApplyLink'))
 import useSWR from 'swr';
-import moment from 'moment';
+import {format} from 'date-fns';
 const SmallCard = dynamic(() => import('../../components/reusables/SmallCard'), { loading: () => <i>...</i> });
 import { isAuth } from '../../actions/auth';
-import {fetcher} from '../api/fetcher';
-const FacebookIcon =dynamic(async()=>import( '@material-ui/icons/Facebook'),{loading:()=><p>...</p>,ssr:false});
-const LinkedInIcon =dynamic(async()=>import('@material-ui/icons/LinkedIn'),{loading:()=><p>...</p>,ssr:false}) ;
-const TelegramIcon =dynamic(async()=>import('@material-ui/icons/Telegram'),{loading:()=><p>...</p>,ssr:false}) ;
+import { fetcher } from '../api/fetcher';
 // const Article=dynamic(async()=>import('../../components/ads/Article'),{loading:()=><p>...</p>,ssr:false}) ;
-const AttachmentIcon =dynamic(async()=>import('@material-ui/icons/Attachment'),{loading:()=><p>...</p>,ssr:false});
 import Image from '../../components/reusables/ImageComponent';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
+import { BreadcrumbJsonLd,NextSeo,JobPostingJsonLd,NewsArticleJsonLd } from 'next-seo';
+import ShortSearch from '../../components/reusables/ShortSearch';
 import { redirect } from '../../next.config';
-const FilterTiltShiftIcon =dynamic(async()=>import('@material-ui/icons/FilterTiltShift'),{loading:()=><p>...</p>,ssr:false}) ;
-const UpdateButton = dynamic(async ()=> import('../../components/reusables/UpdateButton'))
-const Faq =  dynamic(async ()=> import('../../components/reusables/ShowFaq'))
-const NewsLetter =dynamic(async ()=> import('../../components/NewsLetterSubscribe'), { ssr: false })
+const Faq = dynamic(async () => import('../../components/reusables/ShowFaq'))
+const NewsLetter = dynamic(async () => import('../../components/NewsLetterSubscribe'), { ssr: false })
 
 
 
-
-
-
-
-
-const SinglePvtJob=(props)=>{
-    const {data} = useSWR(props.slug ? `${API}/privateJobs/${props.slug}`:null, fetcher, { initialData: props,revalidateOnMount:true});
-
-    const {privateJob}=data;
-
-    const makeJobSchema= ()=> {
+export const getStaticPaths = async () => {
+    const data = await listPvtJobsWithCategoriesAndTags();
+    const paths = data.map(privateJob => {
         return {
-            // schema truncated for brevity
-           '@context': 'http://schema.org',
-            '@type': 'JobPosting',
-            'title': `${privateJob.title}`,
-            'educationalRequirements':`${privateJob.qualification}`,
-            'description': `${privateJob.desc}. Job Highlights are given as ----- >Notification issued By - ${privateJob.agency}, Job Location - ${privateJob.location}, The Last Date to Apply - ${privateJob.lastDate}, Qualification needed - ${privateJob.qualification}, Pay Scale - ${privateJob.salary}`,
-            'url': `https://${DOMAIN}/privateJobs/${privateJob.slug}`,
-            'identifier': {
-                '@type': "PropertyValue",
-                'name': "The ProGrad",
-                'value': "1234567"
-    
-            },
-            'directApply':{
-                '@type':"Boolean",
-                'directApply':'true'
-            },
-            'datePosted': `${privateJob.createdAt}`,
-            'validThrough': `${privateJob.lastDate}`,
-            'employmentType': `${privateJob.type}`,
-            'hiringOrganization': {
-                '@type': "Organization",
-                'name': `${privateJob.agency}`,
-                'sameAs':`${privateJob.officialLink}`,
-                'logo':`${API}/privateJobs/photo/${privateJob.slug}`
-            },
-            'jobLocation': {
-                '@type': "Place",
-                'address': {
-                    '@type': "PostalAddress",
-                    "addressLocality": `${privateJob.city}`,
-                    "streetAddress":`${privateJob.street}`,
-                    "addressRegion": `${privateJob.location}`,
-                    "postalCode":`${privateJob.postal}`,
-                    'addressCountry': "IN"
-                }
-            },
-            'baseSalary': {
-                '@type': "MonetaryAmount",
-                'currency': "INR",
-                'value': {
-                    '@type': "QuantitativeValue",
-                    'value':`${privateJob.salary}`,
-                    'unitText': "Month"
-                }
-            }
-        
-          }
+            params: { slug: privateJob.slug }
+        }
+    })
+    return {
+        paths,
+        fallback: true
+    }
+}
+
+export const getStaticProps = async (ctx) => {
+    const slug = ctx.params.slug;
+    const [privateJob, photo] = await Promise.all([
+        fetch(`${API}/privateJobs/` + slug).then(r => r.json()),
+        `${API}/privateJobs/photo/` + slug,
+    ]);
+    if (!privateJob) {
+        return {
+            notFound: true
+        }
+    }
+    return {
+
+        props: {
+            privateJob,
+            photo,
+        },
+        revalidate: 60
+
+
     }
 
+}
 
- 
+const SinglePvtJob = ({privateJob,photo}) => {
 
-    const head = () => (
-        <Head>
-            <title>
-                {privateJob.title} |The {APP_NAME}
-            </title>
 
-             <link rel="canonical" href={`${DOMAIN}/privateJobs/${privateJob.slug}`} />
-             <meta name="robots" content="index follow" />
-            <meta name="description" content= {privateJob.desc !==undefined  ? privateJob.desc :`Bumper vacancies have been announced by ${privateJob.agency}. If you are finding a job in ${privateJob.location} then you must apply before the ${privateJob.lastDate}. Click here to know more and apply`} />
-            <meta property="og:title" content={`${privateJob.title}| The ${APP_NAME}`} />
-            <meta property="og:description" content={privateJob.desc !==undefined  ? privateJob.desc :`Bumper vacancies have been announced by ${privateJob.agency}. If you are finding a job in ${privateJob.location} then you must apply before the ${privateJob.lastDate}. Click here to know more and apply`} />
-            <meta property="og:url" content={`${DOMAIN}/privateJobs/${privateJob.slug}`} />
-            <meta property="og:site_name" content={`The ${APP_NAME}`} />
-            <meta property="og:image" content={`${API}/privateJob/photo/${privateJob.slug}`} />
-            <meta property="og:image:secure_url" content={`${API}/privateJob/photo/${privateJob.slug}`} />
-            <meta property="og:image:type" content={`${API}/privateJob/photo/${privateJob.slug}`} />
-            <script
-                 key={`jobJSON-${privateJob._id}`}
-                 type='application/ld+json'
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(makeJobSchema())}} />
-        </Head>
-    );
 
-    const router=useRouter()
-    if(router.isFallback){
+    // const myLoader = ({ src, width, quality }) => {
+    //     return `http://${API}/${src}?w=${width}&q=${quality || 75}`
+    //   }
+
+    const router = useRouter()
+    if (router.isFallback) {
         return <div>Loading...</div>
     }
 
-        return(
-           <>
-           {head()}
-            <section className="container">
-             <div className="jobs my-1">
-             <div className="job bg-light">
-                 <div className="pvt-job-top p-1 my-1 input-box" >         
-                 <div className="m-1 text-primary hide-sm">
-                 <AttachmentIcon style={{fontSize:40}} />
-                </div>       
-                <div className="my-1">
-                <Link href={`/privateJobs/${privateJob.slug}`}>
-                    <a><h1 className="large text-dark">{privateJob.title}</h1></a>
-                </Link>               
-                </div>   
-             <div className="share icons p-1">
-                <a href={`https://www.facebook.com/sharer.php?u=https://theprograd.com/jobs/${privateJob.slug}`} target="_blank" rel='noopener noreferrer'><i className='text-primary'><FacebookIcon style={{ fontSize: 30 }} /></i></a>
-                <a href={` https://www.linkedin.com/sharing/share-offsite/?url=https://theprograd.com/jobs/${privateJob.slug}`} target="_blank" rel='noopener noreferrer' ><i className='text-primary'><LinkedInIcon style={{ fontSize: 30 }} /></i></a>
-                <a href={`https://t.me/share/url?url=https://theprograd.com/jobs/${privateJob.slug}&text=Fresh recruitment for ${privateJob.agency} for the various post.Do visit the Link to explore more abou these vacancies and apply directly at The ProGrad.${privateJob.desc}`} target="_blank" rel='noopener noreferrer' ><i className='text-primary'><TelegramIcon style={{ fontSize: 30 }} /></i></a>
-            </div>
-                 
-                 </div>
-                 <div className="avatar-upload" style={{margin:'auto'}}>
-                         <div className="avatar-preview"><Image photo={props.photo} /></div>
-                         <strong className=" text-success extra-small author my-1 p-1 input-box" >Published on {moment(privateJob.createdAt).format("MMM DD YYYY")}</strong>
+    return (
+        <>
+    <NextSeo
+      title={`${privateJob.title}`}
+      description={`${privateJob.desc}`}
+      canonical={`https://www.theprograd.com/privateJobs/${privateJob.slug}`}
+      
+      openGraph={{
+        url: `https://www.theprograd.com/privateJobs/${privateJob.slug}`,
+        title:`${privateJob.title} `,
+        description:`${privateJob.desc}`,
+        site_name: 'The ProGrad',
+      }}
+      facebook={{
+        handle: '@handle',
+        site: '@site',
+        cardType: 'summary_large_image',
+        appId: '721482821740858'
+      }}
+    />
+    <BreadcrumbJsonLd
+      itemListElements={[
+        {
+          position: 1,
+          name: 'Home',
+          item: 'https://www.theprograd.com/',
+        },
+        {
+          position: 2,
+          name: 'Private Sector Jobs',
+          item: 'https://www.theprograd.com/privateJobs',
+        },
+        {
+          position: 3,
+          name: `${privateJob.title}`,
+          item: `https://www.theprograd.com/privateJobs/${privateJob.slug}`,
+        },
+      
+      ]}
+    />
+    <JobPostingJsonLd
+      datePosted={privateJob.createdAt}
+      description={privateJob.desc}
+      hiringOrganization={{
+        name: privateJob.agency,
+        sameAs: "",
+      }}
+      jobLocation={{
+        streetAddress: '',
+        addressLocality: '',
+        addressRegion: privateJob.location,
+        postalCode: '+91',
+        addressCountry: 'India',
+      }}
+      title={privateJob.title}
+      baseSalary={{
+        currency: 'INR',
+        value: privateJob.salary,
+        unitText: 'Month',
+      }}
+      employmentType="FULL_TIME"
+      jobLocationType="TELECOMMUTE"
+      validThrough={privateJob.expireAt}
+      applicantLocationRequirements="IN"
+    />
+    <NewsArticleJsonLd
+      url={`${API}/privateJobs/${privateJob.slug}`}
+      title={privateJob.title}
+      images={[
+        `${API}/privateJobs/photo/${privateJob.slug}`,
+        `${DOMAIN}/img/pvt-job.jpg`,
+      ]}
+      section="private sector jobs"
+      keywords={`${privateJob.agency} jobs,latest private sector jobs`}
+      datePublished={privateJob.createdAt}
+      dateModified={privateJob.updatedAt}
+      authorName={privateJob.agency}
+      publisherName='The ProGrad'
+      publisherLogo={`${DOMAIN}/img/StuproLogo.png`}
+      description={privateJob.desc}
+      body={privateJob.desc}
+    />
+    <div className='flex flex-col lg:grid lg:grid-cols-3 pt-14 lg:pt-24 lg:px-14 '>
+     <div className='col-span-2 rounded-md lg:shadow-md lg:shadow-green-600 lg:m-3'>
 
-                        </div>     
-                        <h2 className="small text-primary m-1">Job Higlights</h2>
-        
-                 <div className="job-bottom">
+     <img className='float-left w-16 h-16 p-1 mx-2 mt-3 rounded-full shadow-md lg:w-24 lg:h-24 shadow-green-500 lg:mt-4' src='/img/pvt-job.jpg'  alt='Logo' />
+     <h1 className='p-1 text-2xl font-bold cursor-pointer lg:text-4xl lg:p-3 hover:underline'>{privateJob.title}</h1>
+     <ul className="sticky flex justify-between top-16">
+     <li className='mx-4 text-lg font-bold text-success underline'>{privateJob.agency}</li>
+     <li className='hidden p-1 py-3 mx-4 font-bold text-white bg-teal-600 rounded-md lg:block hover:bg-teal-300 hover:text-black'><a className='p-2' target='_blank' rel='noreferrer' href={privateJob.applyLink}>Apply Now</a></li>
+     </ul>
+        <ul className='flex flex-col justify-between p-2 m-2 mt-4 rounded-sm lg:flex-row lg:p-3 lg:px-2 bg-slate-300'>
+        <li className='text-sm font-semibold text-slate-900'>{`Posted on: ${format(new Date(privateJob.updatedAt),'dd MMM yyyy')}`}</li>
+        <li className='flex font-bold text-slate-900'>
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mx-2 fill-green-500" viewBox="0 0 20 20" >
+        <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
+        <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+        </svg>{privateJob.qualification}</li>
+        <li className='flex text-sm font-bold text-slate-900'>
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mx-2 stroke-green-500 fill-transparent "  viewBox="0 0 24 24" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 8h6m-5 0a3 3 0 110 6H9l3 3m-3-6h6m6 1a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>{privateJob.salary} /month</li>
+        <li className='flex font-bold text-slate-900'>
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mx-2 fill-green-500" viewBox="0 0 20 20" >
+        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+        </svg>{privateJob.location} </li>
+        </ul>
+        <ul className='flex flex-col justify-between p-2 mx-2 bg-green-100 rounded-sm lg:flex-row'>
+        <li className='text-sm'><span className='font-bold'>Skills required: </span>{privateJob.keySkills}</li>
+        <li className='text-sm'><span className='font-bold'>Position:</span> {privateJob.position}</li>
 
-                 <table style={{width:'100%'}}>
-                 <tbody>
-                 <tr className='py-1'>
-                        <td style={{width:'2rem'}} className='text-danger'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
-                         <td ><strong >Company</strong></td>
-                        <td >{privateJob.agency}</td>
-                      </tr>
-                   <tr className='py-1'>
-                       <td style={{width:'2rem'}} className='text-danger'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
-                       <td ><strong >Last Date</strong></td>
-                       <td > {moment(privateJob.lastDate).format("MMM DD YYYY")}</td>
-                  </tr>
-                    <tr className='py-1'>
-                        <td style={{width:'2rem'}} className='text-danger'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
-                        <td ><strong >Salary</strong></td>
-                        <td >{privateJob.salary}</td>
-                  </tr>
-                    <tr className='py-1'>
-                         <td style={{width:'2rem'}} className='text-danger'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
-                         <td ><strong >Qualification</strong></td>
-                         <td >{privateJob.qualification}</td>
-                  </tr>
-                    <tr className='py-1'>
-                         <td style={{width:'2rem'}} className='text-danger'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
-                         <td ><strong >Location</strong></td>
-                         <td >{privateJob.location}</td>
-                    </tr>
-                  <tr className='py-1'>
-                         <td style={{width:'2rem'}} className='text-danger'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
-                         <td ><strong >Type</strong></td>
-                         <td >{privateJob.type}</td>
-                 </tr>
-                 <tr className='py-1'>
-                         <td style={{width:'2rem'}} className='text-danger'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
-                         <td ><strong >Position</strong></td>
-                         <td >{privateJob.position}</td>
-                 </tr>
-                 <tr className='py-1'>
-                         <td style={{width:'2rem'}} className='text-danger'><FilterTiltShiftIcon style={{ fontSize: 20 }} /></td>
-                         <td ><strong >Key Skills</strong></td>
-                         <td >{privateJob.keySkills}</td>
-                 </tr>
-                 </tbody>       
-           </table>
-                <div className="job-buttons p-1">
-                     <ApplyButton applyLink={privateJob.applyLink} lastDate={privateJob.lastDate} />
-                </div>
-                </div>
-             <div className='job-content p-1 selectable' >
-                {renderHTML(privateJob.body)}
-            </div>
-                <div className="new-flex">
-                    <UpdateButton url={`/admin/privatejobcrud/${privateJob.slug}`} name='Update'/>
-                        <UpdateButton url={`/admin/privatejobcrud/${privateJob.slug}/addFaq`} name='Add Faq' />
-                </div>
-                   {/* <Article /> */}
-                </div>
-                <div >
-                <h3 className="small text-primary">Tags and Categories</h3>
-                    <div className='my-1 new-flex'>
-                         <CategoryInSlug newCat='privateJobCategories' cats={privateJob.privateJobCategories}/>
-                         <TagInSlug newTagRoute='privateJobTags' tags={privateJob.privateJobTags}/>
-                    </div>
-                </div>
-                      {privateJob.faq[0] !=null  && 
-                 <div className='btn input-box'>
-                        <h2 className="small text-danger my-1"> Frequently Asked Questions</h2>
-                        <Faq material={privateJob} />
-                </div> 
-                      }
-              </div>
-        </section>
-            <section className="container">
-                    <h3 className="text-primary small">Suggested Jobs to apply</h3>
-                    <div className='line'></div>
-                    <div className="card">
-                    <SmallCard listRelated={listRelatedPvt} job={privateJob} newRoute='privateJobs'/>
-                    </div>
-                    <div className="m-1">
-                    {/* <Article /> */}
-                    </div>
-            </section>
-             <NewsLetter />
+        </ul>
+        <div className='flex flex-col justify-center p-1 mt-4 body-style lg:p-3'>
+            {renderHTML(privateJob.body)}
+        </div>
+     </div>
+     <div className="col-span-1 lg:m-3">
+      <div className='p-2'>
+      <h3 className='text-lg font-bold text-success bg-slate-200'>Related Jobs</h3>
+        <SmallCard listRelated={listRelatedPvt} job={privateJob} newRoute='privateJobs' />
+      </div>
+      <ShortSearch filterRoute='privateJobs' />
 
-         
-           </> 
-            )
- }
+     </div>
+    </div>
+    <a href={privateJob.applyLink} className='sticky z-30 p-2 px-4 mx-32 text-lg font-bold text-white bg-teal-500 rounded-lg lg:hidden bottom-12 top-60'>Apply Now</a>
+     <NewsLetter />
 
-
- export const getStaticPaths=async ()=>{
-    const res = await fetch(`${API}/privateJobs`);
-    const data= await res.json();
-    const paths=data.map(privateJob=>{
-        return{
-            params:{slug:privateJob.slug}
-        }
-    })
-    return{
-        paths,
-        fallback:true 
-    }
-}
+</>
   
-export const getStaticProps=async (ctx)=>{
-    const slug=ctx.params.slug;
-    const [privateJob, photo] = await Promise.all([
-        fetch(`${API}/privateJobs/`+slug).then(r => r.json()),
-        `${API}/privateJobs/photo/`+slug,
-      ]);
-      if (!privateJob) {
-        return {
-      notFound:true
-        }
-      }
-    return{
-        
-        props:{
-            privateJob,
-            photo,
-        }, 
-        revalidate:60
-
-
-    }
-
+    )
 }
+
+
+
 
 export default SinglePvtJob;
+
+
+
+
+
+
+
+

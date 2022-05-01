@@ -2,7 +2,6 @@ import fetch from 'isomorphic-fetch';
 import { API } from '../config';
 import queryString from 'query-string';
 import { isAuth ,handleResponse } from './auth';
-// import { getURL } from 'next/dist/next-server/lib/utils';
 
 
 export const createBlog =async (blog, token) => {
@@ -29,18 +28,11 @@ export const createBlog =async (blog, token) => {
         .catch(err => console.log(err));
 };
 
-export const listBlogsWithCategoriesAndTags =async (skip,limit) => {
-    const data = {
-        limit,
-        skip
-    };
-    return await fetch(`${API}/blogs-categories-tags`, {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+export const listBlogsWithCategoriesAndTags =async () => {
+
+    return await fetch(`${API}/blogs`, {
+        method: 'GET',
+
     })
         .then(response => {
             return response.json();
@@ -80,7 +72,7 @@ export const list = async (username) => {
     if (username) {
         listBlogsEndpoint = `${API}/blogs/${username}`;
     } else {
-        listBlogsEndpoint = `${API}/blogs`;
+        listBlogsEndpoint = `${API}/blogs-edit`;
     }
 
     return await fetch(`${listBlogsEndpoint}`, {

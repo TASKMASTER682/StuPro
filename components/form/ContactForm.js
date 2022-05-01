@@ -39,48 +39,48 @@ const ContactForm = ({authorEmail}) => {
         setValues({ ...values, [name]: e.target.value, error: false, success: false, buttonText: 'Send Message' });
     };
 
-    const showSuccessMessage = () => success && <div className=" p-1 nbtn badge badge-success">Thank you for contacting us.</div>;
+    const showSuccessMessage = () => success && <div className='p-3 bg-teal-300 rounded-md'>Thank you for contacting us.</div>;
 
     const showErrorMessage = () => (
-        <div className=" p-1 nbtn badge badge-danger" style={{ display: error ? '' : 'none' }}>
+        <div className='p-3 bg-red-400 rounded-md' style={{ display: error ? '' : 'none' }}>
             {error}
         </div>
     );
     const contactForm = () => {
         return (
-            <form onSubmit={clickSubmit} className="form">
-                <div className="form-group">
+            <form onSubmit={clickSubmit} className="p-2 mb-4 rounded-md shadow-md shadow-green-400">
+              
                    
                     <textarea
                         onChange={handleChange('message')}
-                        type="text"
-                        className=" blog textinput"
+                        className='ring-1 ring-teal-500 rounded-md p-3 w-[100%]'
                         value={message}
                         placeholder="Type your message here..."
                         required
                         rows="10"
                     ></textarea>
+               
+
+                <div className='flex flex-col'>
+                   <label className='m-2 text-sm text-teal-400'>Name</label>
+                    <input type="text" onChange={handleChange('name')} autoComplete='false' className='p-2 rounded-md ring-1 ring-teal-400'  value={name} placeholder="Type Your Name" required />
                 </div>
 
-                <div className="form-group">
-                   <label className="extra-small">Name</label>
-                    <input type="text" onChange={handleChange('name')} className="form-control"  value={name} placeholder="Type Your Name" required />
-                </div>
-
-                <div className="form-group">
-                    <label className="extra-small">Email</label>
+                <div className='flex flex-col'>
+                    <label className="m-2 text-sm text-teal-400">Email</label>
                     <input
                         type="email"
                         onChange={handleChange('email')}
-                        className="form-control"
+                        className="p-2 rounded-md ring-1 ring-teal-400"
                         placeholder="Type Your Email"
                         value={email}
+                        autoComplete='false'
                         required
                     />
                 </div>
 
                 <div>
-                    <button className="btn nbtn btn-primary">{buttonText}</button>
+                    <button className='p-2 my-4 font-bold text-white bg-teal-700 rounded-md'>{buttonText}</button>
                 </div>
             </form>
         );

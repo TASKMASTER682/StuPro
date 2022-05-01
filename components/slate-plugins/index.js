@@ -1,11 +1,11 @@
 import React,{useState,useLayoutEffect} from 'react';
 
 import { 
-    SlatePlugins ,
+    Plate ,
     HeadingToolbar,
 
   
-} from '@udecode/slate-plugins';
+} from '@udecode/plate';
 
 import Toolbar from './Toolbar';
 import { styledComponents,options,pluginsBasic,initialValueBasicElements } from './utils';
@@ -48,7 +48,7 @@ const showComponent=()=>{
         <Toolbar/>
         </HeadingToolbar>
 
-        <SlatePlugins  id='basic-elements' plugins={pluginsBasic}  initialValue={initialValueBasicElements} onChange={handleChange} components={styledComponents} options={options} editableProps={editableProps} >{JSON.stringify(newValue)}</SlatePlugins>
+        <Plate  id='basic-elements' plugins={pluginsBasic}  initialValue={initialValueBasicElements} onChange={handleChange} components={styledComponents}  editableProps={ editableProps} >{JSON.stringify(newValue)}</Plate>
     </>
     )
 }

@@ -38,8 +38,8 @@ const ResetPassword = ({ router }) => {
     };
 
     const passwordResetForm = () => (
-        <form onSubmit={handleSubmit} className="form">
-            <div className="form-group py-5">
+        <form onSubmit={handleSubmit} >
+            
                 <input
                     type="password"
                     onChange={e => setValues({ ...values, newPassword: e.target.value })}
@@ -48,23 +48,21 @@ const ResetPassword = ({ router }) => {
                     placeholder="Type new password"
                     required
                 />
-            </div>
-            <div>
-                <button className="btn nbtn btn-primary">Change password</button>
-            </div>
+                <button className='bg-teal-500 p-2 rounded-md'>Change password</button>
+            
         </form>
     );
 
     const showError=()=>(
-        error ? <div className="badge badge-danger p-1 nbtn ">{error}</div> : ''
+        error ? <div className="bg-teal-500 p-2 rounded-md">{error}</div> : ''
     )
 
-    const showMessage = () => (message ? <div className="badge badge-primary p-1 nbtn">{message}</div> : '');
+    const showMessage = () => (message ? <div className="bg-teal-500 p-2 rounded-md">{message}</div> : '');
     return (
       <>
       {head()}
           <div className="container">
-                <h2 className="large text-primary">Reset password</h2>
+                <h2 className='text-teal-700 font-bold my-2'>Reset password</h2>
                 <div className="line"></div>
                 <div>
                 {showError()}

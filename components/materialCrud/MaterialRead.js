@@ -1,13 +1,11 @@
 import React from 'react'
 import { list, removeMat } from '../../actions/material';
-import moment from 'moment';
 import Read from '../reusables/Read'
 
 const MaterialRead = () => {
     return (
-            <div className="container">
-            <h2 className="large text-primary my-">Manage Study Material</h2>
-            <div className="line"></div>
+            <div className="lg:pt-20 lg:px-20 pt-14 px-3 mb-40">
+            <h2 className="text-2xl font-bold text-teal-400">Manage Study Material</h2>
             <Read list={list} removeApi={removeMat} newRoute='free-study-material' updateLink='materialcrud' />
             </div>
     )

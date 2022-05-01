@@ -30,9 +30,9 @@ import CropOriginalIcon from '@material-ui/icons/CropOriginal';
 import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
 import Box from "@material-ui/core/Box";
 import {
+    createPlateUI,
     ToolbarAlign,
-    ToolbarMark,
-    getSlatePluginType,
+    getPluginType,
     ELEMENT_H1,
     ELEMENT_H2 ,
     ELEMENT_H3,
@@ -53,185 +53,187 @@ import {
     MARK_STRIKETHROUGH,
     MARK_CODE,
     MARK_HIGHLIGHT,
-    ToolbarCodeBlock,
-    ToolbarElement,
-    ToolbarList,
-    ToolbarLink,
-    ToolbarImage,
+    ImageToolbarButton,
+    LinkToolbarButton,
+    ListToolbarButton,
+    BlockToolbarButton,
+    MarkToolbarButton,
+    CodeBlockToolbarButton,
+    MediaEmbedToolbarButton,
+    TableToolbarButton,
+    AlignToolbarButton,
     insertTable,
     deleteTable,
     addRow,
     deleteRow,
     addColumn,
     deleteColumn,
-    ToolbarTable,
-    useStoreEditorRef,
-    useEventEditorId,
+    usePlateEditorRef,
     ELEMENT_MEDIA_EMBED,
 
 
-} from '@udecode/slate-plugins';
+} from '@udecode/plate';
 
 const Toolbar = () => {
-    const editor = useStoreEditorRef(useEventEditorId('focus'));
+    const editor = usePlateEditorRef()
 
     return (
     <div style={{display:'flex',flexWrap:'wrap',border:'1px solid #00cdbb', borderRadius:'0.5rem'}}>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarMark
-        type={getSlatePluginType(editor, MARK_BOLD)}
+    <MarkToolbarButton
+        type={getPluginType(editor, MARK_BOLD)}
         icon={<FormatBoldIcon />}>
-    </ToolbarMark>
+    </MarkToolbarButton>
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarMark
-        type={getSlatePluginType(editor, MARK_ITALIC)}
+    <MarkToolbarButton
+        type={getPluginType(editor, MARK_ITALIC)}
         icon={<FormatItalicIcon />}>
-    </ToolbarMark>
+    </MarkToolbarButton>
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarMark
-        type={getSlatePluginType(editor, MARK_UNDERLINE)}
+    <MarkToolbarButton
+        type={getPluginType(editor, MARK_UNDERLINE)}
         icon={<FormatUnderlinedIcon />}>
-    </ToolbarMark>
+    </MarkToolbarButton>
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarMark
-        type={getSlatePluginType(editor, MARK_STRIKETHROUGH)}
+    <MarkToolbarButton
+        type={getPluginType(editor, MARK_STRIKETHROUGH)}
         icon={<FormatStrikethroughIcon  />}>
-    </ToolbarMark>
+    </MarkToolbarButton>
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarMark
-        type={getSlatePluginType(editor, MARK_HIGHLIGHT)}
+    <MarkToolbarButton
+        type={getPluginType(editor, MARK_HIGHLIGHT)}
         icon={<HighlightIcon  />}>
-    </ToolbarMark>
+    </MarkToolbarButton>
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarMark
-        type={getSlatePluginType(editor, MARK_CODE)}
+    <CodeBlockToolbarButton
+        type={getPluginType(editor, MARK_CODE)}
         icon={<CodeOutlinedIcon  />}>
-    </ToolbarMark>
+    </CodeBlockToolbarButton>
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarLink
+    <LinkToolbarButton
         icon={<InsertLinkIcon  />}>
-    </ToolbarLink>
+    </LinkToolbarButton>
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarImage
+    <ImageToolbarButton
         icon={<CropOriginalIcon  />}
         >
-    </ToolbarImage>
+    </ImageToolbarButton>
     </Box>
     
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarList
-        type={getSlatePluginType(editor, ELEMENT_UL)}
+    <ListToolbarButton
+        type={getPluginType(editor, ELEMENT_UL)}
         icon={<FormatListBulletedOutlinedIcon />}>
 
-    </ToolbarList>
+    </ListToolbarButton>
 
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarList
-        type={getSlatePluginType(editor, ELEMENT_OL)}
+    <ListToolbarButton
+        type={getPluginType(editor, ELEMENT_OL)}
         icon={<FormatListNumberedOutlinedIcon />}>
-    </ToolbarList>
+    </ListToolbarButton>
     </Box>
 
 
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarElement
-          type={getSlatePluginType(editor, ELEMENT_H1)}
+    <BlockToolbarButton
+          type={getPluginType(editor, ELEMENT_H1)}
           icon={<LooksOneOutlinedIcon />}
         />
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarElement
-          type={getSlatePluginType(editor, ELEMENT_H2)}
+    <BlockToolbarButton
+          type={getPluginType(editor, ELEMENT_H2)}
           icon={<LooksTwoOutlinedIcon />}
         />
     </Box> 
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarElement
-          type={getSlatePluginType(editor, ELEMENT_H3)}
+    <BlockToolbarButton
+          type={getPluginType(editor, ELEMENT_H3)}
           icon={<Looks3OutlinedIcon/>}
         />
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarElement
-          type={getSlatePluginType(editor, ELEMENT_H4)}
+    <BlockToolbarButton
+          type={getPluginType(editor, ELEMENT_H4)}
           icon={<Looks4OutlinedIcon />}
         />
     </Box> 
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarElement
-          type={getSlatePluginType(editor, ELEMENT_H5)}
+    <BlockToolbarButton
+          type={getPluginType(editor, ELEMENT_H5)}
           icon={<Looks5OutlinedIcon />}
         />
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarElement
-          type={getSlatePluginType(editor, ELEMENT_H6)}
+    <BlockToolbarButton
+          type={getPluginType(editor, ELEMENT_H6)}
           icon={<Looks6OutlinedIcon/>}
         />
     </Box> 
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarElement
-          type={getSlatePluginType(editor, ELEMENT_BLOCKQUOTE)}
+    <BlockToolbarButton
+          type={getPluginType(editor, ELEMENT_BLOCKQUOTE)}
           icon={<FormatQuoteOutlinedIcon />}
         />
     </Box> 
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarCodeBlock
-          type={getSlatePluginType(editor, ELEMENT_CODE_BLOCK)}
+    <CodeBlockToolbarButton
+          type={getPluginType(editor, ELEMENT_CODE_BLOCK)}
           icon={<CreditCardIcon />}
         />
     </Box> 
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarAlign icon={<FormatAlignLeftIcon />} />
+    <AlignToolbarButton icon={<FormatAlignLeftIcon />} />
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarAlign
-        type={getSlatePluginType(editor, ELEMENT_ALIGN_CENTER)}
+    <AlignToolbarButton
+        type={getPluginType(editor, ELEMENT_ALIGN_CENTER)}
         icon={<FormatAlignCenterIcon />}
       />
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarAlign
-        type={getSlatePluginType(editor, ELEMENT_ALIGN_RIGHT)}
+    <AlignToolbarButton
+        type={getPluginType(editor, ELEMENT_ALIGN_RIGHT)}
         icon={<FormatAlignRightIcon />}
       />
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarAlign
-        type={getSlatePluginType(editor, ELEMENT_ALIGN_JUSTIFY)}
+    <AlignToolbarButton
+        type={getPluginType(editor, ELEMENT_ALIGN_JUSTIFY)}
         icon={<FormatAlignJustifyIcon />}
       />
     </Box> 
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarTable icon={<BorderAllOutlinedIcon />} transform={insertTable} />
+    <TableToolbarButton icon={<BorderAllOutlinedIcon />} transform={insertTable} />
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarTable icon={<BorderClearOutlinedIcon />} transform={deleteTable} />
+    <TableToolbarButton icon={<BorderClearOutlinedIcon />} transform={deleteTable} />
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarTable icon={<BorderBottomOutlinedIcon />} transform={addRow} />
+    <TableToolbarButton icon={<BorderBottomOutlinedIcon />} transform={addRow} />
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarTable icon={<BorderTopOutlinedIcon  />} transform={deleteRow} />
+    <TableToolbarButton icon={<BorderTopOutlinedIcon  />} transform={deleteRow} />
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarTable icon={<BorderLeftOutlinedIcon />} transform={addColumn} />
+    <TableToolbarButton icon={<BorderLeftOutlinedIcon />} transform={addColumn} />
     </Box>
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarTable icon={<BorderRightOutlinedIcon />} transform={deleteColumn} />
+    <TableToolbarButton icon={<BorderRightOutlinedIcon />} transform={deleteColumn} />
     </Box>
  
     <Box p={1} m={1} border={1} borderColor="#00cdbb" borderRadius={4}>
-    <ToolbarElement
-    type={getSlatePluginType(editor,ELEMENT_MEDIA_EMBED)}
+    <MediaEmbedToolbarButton
+    type={getPluginType(editor,ELEMENT_MEDIA_EMBED)}
     icon={<AssignmentReturnedIcon />}
 
 />

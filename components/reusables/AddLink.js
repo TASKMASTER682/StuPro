@@ -47,19 +47,15 @@ const createLinks=async ()=>{
 
     return (
         <>
-        <section className="container">
-            <h1 className="large">
-                Create Download Links for the blog
+        <section className="lg:px-20 lg:pt-24">
+            <h1 className="text-4xl font-bold text-teal-400 ">
+                Create Download Links for the {newRoute}
             </h1>
             <div className="my-1">
-            <form className='form' onSubmit={submit}>
-            <div className="form-group">
-                <input type="text" placeholder='Type the title of the link' name='linkName' value={formData.linkName} onChange={handleChange} />
-            </div>
-            <div className="form-group">
-                <input type="text" placeholder='paste the link' name='link' value={formData.link} onChange={handleChange} />
-            </div>
-            <button type="submit" className="btn nbtn btn-dark my-1">Create</button>
+            <form className='form' onSubmit={submit}>    
+                <input type="text"  className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" placeholder='Type the title of the link' name='linkName' value={formData.linkName} onChange={handleChange} />
+                <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" placeholder='paste the link' name='link' value={formData.link} onChange={handleChange} />
+            <button type="submit" className="p-2 font-bold text-white bg-red-400 rounded-md ">Create</button>
 
         </form>
             </div>
@@ -70,3 +66,5 @@ const createLinks=async ()=>{
 }
 
 export default withRouter(AddLink);
+
+

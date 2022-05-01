@@ -1,63 +1,23 @@
 import React,{ useState, useEffect } from 'react';
 import Link from 'next/link';
-import {API } from '../../config'
+import {API,DOMAIN } from '../../config'
 
 
 
-const ShowTags=({newRoute})=>{
+const ShowTags=({newRoute,btag,fun})=>{
 
-    const getTags = async () => {
-        return fetch(`${API}/${newRoute}`, {
-            method: 'GET'
-        })
-            .then(response => {
-                return response.json();
-            })
-            .catch(err => console.log(err));
-    };
-    const [values, setValues] = useState({
-      
-        tags: [],
-        reaload:true
-        
-    });
-
-    const {  tags,reload} = values;
-    
-
-    useEffect(() => {
-        loadTags();
-       
-    }, [reload]);
-
-   
-    const loadTags = () => {
-        getTags().then(data => {
-            if (data.error) {
-                console.log(data.error);
-            } else {
-                setValues({ ...values, tags: data });
-            }
-        });
-    };
 
     const showTags=()=>{
-        return tags.map((t)=>{
+        return fun.map((t)=>{
             return(
-            <div className="input-box  m-1 bg-success ">
-                    <Link href={`/${newRoute}/${t.slug}`}><a key={t._id} ><strong className="text-dark p-1">#{t.name}</strong></a></Link> 
-            </div>
+                    <Link href={`${DOMAIN}/${btag}/${newRoute}/${t.slug}`}><a className='p-1 m-3 text-sm font-semibold rounded-md bg-teal-300 text-black' key={t._id} >#{t.name}</a></Link> 
                 )    
             })
     };
 return(
-    <>
-       <div className="new-flex" >
+       <div className='flex flex-wrap ' >
        {showTags()}
-
        </div>
-       
-   </>
 )
 }
 export default ShowTags;

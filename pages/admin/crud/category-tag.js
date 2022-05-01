@@ -18,19 +18,19 @@ const CategoryTag = () => {
     return (
         <>
         {head()}
-        <Layout>
+       
             <Admin>
-             <section className="container">
-             <h1 className="large text-primary">Manage Tags and Categories</h1>
-             <div className="line"></div>
-               <h3 className="text-dark">Create a Category</h3>
+             <section className='lg:pt-20 lg:px-20 pt-14 px-3 mb-40'>
+             <h1 className="text-2xl font-bold text-teal-500">Manage Tags and Categories</h1>
+             <hr />
+               <h3 className="text-lg font-bold my-2">Create a Category</h3>
                  <Category />
-                 <div className="line my-2"></div>
-                 <h3 className="text-dark">Create a Tag</h3>
+                 <hr />
+                    <h3 className="text-lg font-bold my-2">Create a Tag</h3>
                  <Tag />
              </section>
             </Admin>
-        </Layout>
+       
         </>
 
     );

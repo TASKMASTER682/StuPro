@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-fetch';
 import { API } from '../config';
 import { handleResponse } from './auth';
+import queryString from 'query-string';
+
 
 export const userPublicProfile = async (username) => {
     return await fetch(`${API}/user/${username}`, {
@@ -41,6 +43,15 @@ export const getMyProfile = async (token,username) => {
         })
         .catch(err => console.log(err));
 };
+export const allUsers = async () => {
+    return await fetch(`${API}/users`, {
+        method: 'GET',
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 export const update = (token, user) => {
     return fetch(`${API}/user/update`, {
         method: 'PUT',
@@ -52,6 +63,19 @@ export const update = (token, user) => {
     })
         .then(response => {
             handleResponse(response);
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const userSearch = async (params) => {
+    console.log('search params', params);
+    let query = queryString.stringify(params);
+    console.log('query params', query);
+    return await fetch(`${API}/user-search?${query}`, {
+        method: 'GET'
+    })
+        .then(response => {
             return response.json();
         })
         .catch(err => console.log(err));

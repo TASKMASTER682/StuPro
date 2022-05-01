@@ -1,19 +1,19 @@
 import Navbar from "./Navbar";
-import Footer from './Footer'
+import Footer from './Footer';
+import BottomNav from './BottomNav'
+
 import ScrollToTop from "./reusables/ScrollToTop";
 
 const Layout=({children })=>{
 
     return(
         <>
-        <div className="unselectable">
+       
         <Navbar />
-        <main>
         {children}
-        </main>
         <ScrollToTop />
+        <BottomNav />
         <Footer />
-        </div>
         </>
     )
 }

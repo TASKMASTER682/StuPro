@@ -50,56 +50,45 @@ const SignupComponent=()=>{
 
    const signupForm=()=>{
         return(
-        <>
-            <section className="container">
-        <div className="account">
-            <div>
+        
+    
+    <div className='className=" lg:pt-36 pt-16 mb-16 px-2 lg:px-60 w-auto '>
+    <div className='lg:grid lg:grid-cols-2 flex flex-col shadow-xl rounded-lg shadow-green-500'>
+    <div className='rounded-md  p-2 bg-teal-200'>
+    <h2 className='text-2xl font-bold text-center text-gray-600'>Hello mate! Fill up your details and Signup</h2>
+    <img src="/img/login.svg" alt="" />
+    <p className='font-bold text-lg text-gray-600'>Register to be the part of our community</p>
 
-        <h1 className="large text-primary py-1">
-            Sign up
-        </h1>
-        <form  className="form" onSubmit={handleSubmit}>
-        <div className="form-group">
-                <input  value={name} onChange={handleChange('name')} type="text" type="text"  placeholder="name" />
-            </div>
-           
-            <div className="form-group">
-                <input value={email} onChange={handleChange('email')} type="email"  placeholder="Email Address" />
-            </div>
-            <div className="form-group">
-                <input   value={password} onChange={handleChange('password')} type="password" placeholder="Password" />
-            </div>
-            <input type="submit" value={loading ?'Signing up...':'Sign Up'} className="btn nbtn btn-primary" />
+    </div>
+    <div>
+    <h2 className='text-2xl font-bold text-teal-600 text-center m-2'>Sign Up Here</h2>
+        <form onSubmit={handleSubmit} className='flex flex-col p-4'>
+        <input  value={name} onChange={handleChange('name')} type="text"   placeholder="Your Good Name" className='p-2 ring-2 ring-teal-500 rounded-md my-3 ' />
+        <input value={email} onChange={handleChange('email')} type="email"  placeholder="Your Email Address" className='p-2 ring-2 ring-teal-500 rounded-md my-3 ' />
+        <input   value={password} onChange={handleChange('password')} type="password" placeholder="Set Your Password" className='p-2 ring-2 ring-teal-500 rounded-md my-3 ' />
+        <input type="submit" value={loading ?'Signing up...':'Sign Up'} className=" bg-teal-500 font-bold rounded-md p-2 my-3 " />
         </form>
-      <p className="my-1 text-light-gray "></p> 
-      <div style={{textAlign:'center',margin:'auto',justifyContent:'center'}}>
-        
-      <span><h1 className="lead text-primary my-1">Sign up using Google</h1><p className="extra-small text-light-gray">Recommended</p></span>
-       <LoginGoogle />
-      </div>
+        <ul className='flex justify-between '>
+        <li className='text-sm font-bold text-teal-400 p-2'>Sign Up using Google</li>
+        <li className='text-teal-400 pl-4'><LoginGoogle /></li>
+        </ul>
+        <ul className='flex justify-between mt-4' >
+        <li className="text-sm font-bold text-teal-400 p-2">Already have an account?</li>
+        <Link href="/signin"><a className='bg-red-400 rounded-md p-1 px-3 m-2 font-bold' >Sign In</a></Link>
+        </ul>
+    </div>
+
+    </div>
+
+    </div>
       
-    </div>
-    <div className="second p-2 hide-sm">
-        <div className="fst">
-            <h2 className="text-dark">Register to be the part of our community</h2>
-           <img src="img/stupro2.png" alt="" />
-        </div>
-       
-        <div>
-            <p className="my-1 ">Already have an account?</p>
-                <Link href="/signin"><a className="btn btn-dark" >Sign In</a></Link>
+  
         
-    </div>
-    </div>
- 
-    </div>
-    </section>
-        </>
     )
    }
    const showError = () => {
     if (error) {
-        return <div className="badge badge-danger p-1 nbtn " style={{ display: error ? '' : 'none' }}>{error}</div>;
+        return <div className='bg-red-400 p-2 ' style={{ display: error ? '' : 'none' }}>{error}</div>;
     }
 };
    return <React.Fragment>
@@ -109,3 +98,5 @@ const SignupComponent=()=>{
    </React.Fragment>;
 }
 export default SignupComponent;
+
+

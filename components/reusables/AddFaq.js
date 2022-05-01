@@ -32,7 +32,7 @@ const createFaqs=async ()=>{
     const submit = e => {
         e.preventDefault();
         createFaqs().then(data => {
-            setFormData({ ...formData,ques:'',ans:'' , error: '', success: `Fresh Study ${newRoute} titled is created`});
+            setFormData({ ...formData,ques:'',ans:'' , error: '', success: `Fresh ${newRoute} titled is created`});
            
         }).catch(err => console.log(err));
     };
@@ -47,19 +47,19 @@ const createFaqs=async ()=>{
 
     return (
         <>
-        <section className="container">
-            <h1 className="large my-1">
-                Create faq for the blog
+        <section className=" px-14 lg:pt-24">
+            <h1 className="text-4xl font-bold text-teal-400 ">
+                Create faq for the {newRoute}
             </h1>
             <div className="my-1">
-            <form className='form' onSubmit={submit}>
-            <div className="form-group">
-                <input type="text" name='ques' value={formData.ques} onChange={handleChange} />
-            </div>
-            <div className="form-group">
-                <input type="text" name='ans' value={formData.ans} onChange={handleChange} />
-            </div>
-            <button type="submit" className="btn nbtn btn-dark my-1">Create</button>
+            <form onSubmit={submit}>
+                <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" name='ques' placeholder='Question' value={formData.ques} onChange={handleChange} />
+                <div>
+               <label className="text-teal-400 ">Description</label>
+              <br/>
+                <textarea className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" rows='10'  name='ans' placeholder="Answer" value={formData.ans} onChange={handleChange}></textarea>
+             </div>
+            <button type="submit" className="p-2 font-bold text-white bg-red-400 rounded-md ">Create</button>
 
         </form>
             </div>

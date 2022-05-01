@@ -1,37 +1,46 @@
 import SignupComponent from '../components/auth/SignupComponent';
 import {APP_NAME,DOMAIN} from "../config";
-import Head from 'next/head';
+import { BreadcrumbJsonLd,NextSeo } from 'next-seo';
+
 
 const Signup=()=>{
- const head=()=>{
-    <Head>
-    <title>Sign Up and be The ProGrad from the beginning | The ProGrad</title>
-    <meta name="robots" content="index follow" />
 
-    <meta
-        name="description"
-        content="Sign Up to The ProGrad and Share your Ideas to the students and get job notifications and updates"
-   
-    />
-    <link rel="canonical" href={`${DOMAIN}/signup`} />
-    <meta property="og:title" content={`Sign up | The ${APP_NAME}  `} />
-    <meta
-        property="og:description"
-        content="Sign up to The ProGrad and Share your Ideas to the students and get job notifications and updates"
-    />
-    <meta property="og:type" content="webiste" />
-    <meta property="og:url" content={`${DOMAIN}/signup`} />
-    <meta property="og:site_name" content={`The ${APP_NAME}`} />
-    <meta property="og:image" content={`${DOMAIN}/img/stupro2.png`} />
-    <meta property="og:image:secure_url" content={`${DOMAIN}/stupro2.png`} />
-    <meta property="og:image:type" content="img/stupro2.png" />
- 
 
-</Head>
- }
     return(
         <>
-        {head()}
+    <NextSeo
+      title={`Sign Up at The ${APP_NAME} `}
+      description="Sign Up and get latest updates from The ProGrad"
+      canonical="https://www.theprograd.com/signup"
+      
+      openGraph={{
+        url: 'https://www.theprograd.com/signup',
+        title:`Sign Up at The ${APP_NAME} `,
+        description:"Sign Up and get latest updates from The ProGrad",
+        site_name: 'The ProGrad',
+      }}
+      facebook={{
+        handle: '@handle',
+        site: '@site',
+        cardType: 'summary_large_image',
+        appId: '721482821740858'
+      }}
+    />
+         <BreadcrumbJsonLd
+      itemListElements={[
+        {
+          position: 1,
+          name: 'Home',
+          item: 'https://www.theprograd.com/',
+        },
+        {
+          position: 2,
+          name: 'Sign Up',
+          item: 'https://www.theprograd.com/signup',
+        },
+      
+      ]}
+    />
         <SignupComponent/>
         </>
     )

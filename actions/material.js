@@ -91,18 +91,11 @@ export const listRelatedMat = async (material) => {
         .catch(err => console.log(err));
 };
 
-export const listMaterialWithCategories =async (skip,limit) => {
-    const data = {
-        limit,
-        skip
-    };
-    return await fetch(`${API}/materials/controlledList`, {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+export const listMaterialWithCategories =async () => {
+
+    return await fetch(`${API}/materials`, {
+        method: 'GET',
+
     })
         .then(response => {
             return response.json();

@@ -34,7 +34,7 @@ const JobCategory=()=>{
     const showJobCategories=()=>{
         return jobCategories.map((c,i)=>{
             return(
-                <button  style={{ padding:'0rem 0.8rem'}}  onDoubleClick={() => deleteConfirm(c.slug)} title="Double click to delete" key={i} className="btn nbtn  btn-danger  my-1  "><p>{c.name}</p></button>
+                <button  onDoubleClick={() => deleteConfirm(c.slug)} title="Double click to delete" key={i} className="p-2 m-2 font-bold bg-green-400 rounded-md "><p>{c.name}</p></button>
                 )    
             })
     };
@@ -82,50 +82,46 @@ const JobCategory=()=>{
 
     const newJobCategoryFom = () => (
        
-        <form className="form" onSubmit={clickSubmit}>
-            <div className="form-group">
-                
-                <input type="text" className="form-text" onChange={handleChange} placeholder="Catagory" value={name} required />
-            </div>
-            <div>
-                <button type="submit" className="btn btn-primary nbtn">
+        <form className="flex justify-between px-10 my-4 " onSubmit={clickSubmit}>
+         <input type="text" className='w-full p-2 mx-4 rounded-md ring-2 ring-teal-600' onChange={handleChange} placeholder="Catagory" value={name} required />
+            <button type="submit" className='p-2 font-bold text-white bg-teal-400 rounded-md'>
                     Create
                 </button>
-            </div>
+           
         </form>
         
     );
     
     const showSuccess = () => {
         if (success) {
-            return <div className="badge badge-success p-1 nbtn " style={{ display: success ? '' : 'none' }}>Category is created</div>;
+            return <div className="p-2 bg-green-400 " style={{ display: success ? '' : 'none' }}>Category is created</div>;
         }
     };
 
     const showError = () => {
         if (error) {
-            return <div className="badge badge-danger p-1 nbtn " style={{ display: error ? '' : 'none' }}>Category already exist</div>;
+            return <div className="p-2 bg-red-400 " style={{ display: error ? '' : 'none' }}>Category already exist</div>;
         }
     };
 
     const showRemoved = () => {
         if (removed) {
-            return <div className="badge badge-primary p-1 nbtn " style={{ display: removed ? '' : 'none' }}>Category is removed</div>;
+            return <div className="p-2 bg-red-400" style={{ display: removed ? '' : 'none' }}>Category is removed</div>;
         }
     };
 
 return (
- <React.Fragment>
+ <>
       {showSuccess()}
       {showError()}
       {showRemoved()}
     <div onMouseMove={mouseMoveHandler}></div>
     {newJobCategoryFom()}
-    <div className="catagoriesAndTags">
+    <div className='flex flex-wrap'>
     {showJobCategories()}
     </div>
    
- </React.Fragment>
+ </>
 )
 }
 export default JobCategory;

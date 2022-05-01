@@ -9,12 +9,12 @@ const PdfConverter = ({children}) => {
     });
 
   return (
-    <div>
+    <>
     <div ref={componentRef} >
     {children}
     </div>
-      <button id="pdfconverter" className='job bg-light btn nbtn btn-dark my-1' onClick={handlePrint}>Download Now</button>
-    </div>
+      <button id="pdfconverter" className='p-2 my-1 font-bold text-white bg-black rounded-md ' onClick={handlePrint}>Download Now</button>
+    </>
   );
 }
 

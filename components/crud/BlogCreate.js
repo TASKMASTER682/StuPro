@@ -189,33 +189,33 @@ const CreateBlog=({router})=>{
     const createBlogForm = () => {
         return (
         <form className="form" onSubmit={publishBlog}>
-        <div className="form-group">
-            <select name="Language" value={language} onChange={handleChange('language')} required>
+        <div>
+            <select className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" name="Language" value={language} onChange={handleChange('language')} required>
                 <option value="0">Select Language</option>
                 <option value="en">en</option>
                 <option value="hi">hi</option>
             </select>               
         </div>
-                <div className="form-group">
-                    <label className="text-primary">Title</label>
+                <div >
+                    <label className="text-teal-600">Title</label>
                     <br/>
-                    <input className="form-group" type="text"  value={title} onChange={handleChange('title')} />
+                    <input  className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" type="text"  value={title} onChange={handleChange('title')} />
                 </div>
-                <div className="form-group">
-                    <label className="text-primary">Sub-Title</label>
+                <div >
+                    <label className="text-teal-600">Sub-Title</label>
                     <br/>
-                    <input className="form-group" type="text"  value={subtitle} onChange={handleChange('subtitle')} />
+                    <input  className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" type="text"  value={subtitle} onChange={handleChange('subtitle')} />
                 </div>
-            <div className="form-group">
-                <label className="text-primary">Slug</label>
+            <div >
+                <label className="text-teal-600">Slug</label>
                 <br/>
-                <input className="form-group" type="text"  value={forSlug} onChange={handleChange('forSlug')} />
+                <input  className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" type="text"  value={forSlug} onChange={handleChange('forSlug')} />
             </div>
-            <div className="form-group">
-            <label className="text-primary">Description</label>
+            <div >
+            <label className="text-teal-600">Description</label>
                 <br/>
-              <textarea className="blog textinput"placeholder="Blog Description" maxLength='160' value={desc} onChange={handleChange('desc')}></textarea>
-              <h2 className="text-primary">{160-desc.length}/160</h2>
+              <textarea className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" rows='10' placeholder="Blog Description" maxLength='160' value={desc} onChange={handleChange('desc')}></textarea>
+              <h2 className="font-bold text-teal-600">{160-desc.length}/160</h2>
             </div>
                 
                 {/* <ReactQuill
@@ -225,49 +225,44 @@ const CreateBlog=({router})=>{
                         placeholder="Write something amazing..."
                         onChange={handleBody} /> */}
                         <SlatePlugins handleChange={handleBody}/>
-                 <button type="submit" className="btn nbtn btn-dark my-1">Publish</button>
+                 <button type="submit" className="p-2 my-2 font-bold text-white bg-teal-600 rounded-md ">Publish</button>
              </form>
         );
     };
 
 return(
-    <section className="blogCreate">
+    <section className="shadow-md shadow-green-400">
    
-    <div className="createMain">
-    <div className="blogDiv">
-       <h1 className="large text-primary">Create Blog</h1>
-        <div className="line"></div>
-        <div className="createForm">
+    <div className="grid grid-cols-3 gap-3 px-14 lg:pt-24">
+    <div className="col-span-2">
+       <h1 className="text-4xl font-bold text-teal-500 ">Create Blog</h1>
+        <div >
            {createBlogForm()}
-        <div className="line"></div>
     <div className="py-3">
         {showError()}
         {showSuccess()}
     </div>
         </div>
     </div>
-    <div className="catagoriesTags">
-        <div>
-            <h3 className="text-primary">Featured Image</h3>
-             <small className="text-light-gray">Max size: 1mb</small>
+    <div>
+        <div  className="flex flex-col">
+            <h3 className="text-2xl font-bold text-teal-600 ">Featured Image</h3>
+             <small className="text-gray-400 ">Max size: 1mb</small>
             <br />
-            <label className=" btn btn-dark nbtn">
+            <label className=" bg-black rounded-md p-2 text-white font-bold w-[50%]">
                 Upload Featured Image
                 <input type="file" accept="image/*" onChange={handleChange('photo')}  hidden />
             </label>
            
-            <div className="line"></div>
         </div>
-     <div className="checkList">
-       <ul >
-        <h3 className="text-primary">Tags</h3>
-        <small className="text-light-gray">Select the tags related to your blog</small>
+     <div className="flex flex-row justify-between ">
+       <ul className='w-full max-h-screen overflow-scroll' >
+        <h3 className="text-teal-600 ">Tags</h3>
          {showTags()}
          
         </ul>
-        <ul >
-        <h3 className="text-primary">Categories</h3>
-        <small className="text-light-gray">Select the category of your blog</small>
+        <ul  className='w-full max-h-screen overflow-scroll'>
+        <h3 className="text-teal-500 ">Categories</h3>
         {showCategories()}
       </ul>
      </div>

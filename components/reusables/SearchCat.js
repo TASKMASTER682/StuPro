@@ -1,54 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { API } from '../../config'
+import { API ,DOMAIN} from '../../config'
 
 
 
-const ShowCategories = ({ newRoute }) => {
-    const getCategories = async () => {
-        return fetch(`${API}/${newRoute}`, {
-            method: 'GET'
-        })
-            .then(response => {
-                return response.json();
-            })
-            .catch(err => console.log(err));
-    };
+const ShowCategories = ({ newRoute,bcat,fun }) => {
 
-
-    const [values, setValues] = useState({
-
-        categories: [],
-        reaload: true
-
-    });
-
-    const { categories, reload } = values;
-
-
-    useEffect(() => {
-        loadCategories();
-
-    }, [reload]);
-
-
-    const loadCategories = () => {
-        getCategories().then(data => {
-            if (data.error) {
-                console.log(data.error);
-            } else {
-                setValues({ ...values, categories: data });
-            }
-        });
-    };
 
     const showCategories = () => {
-        return categories.map((jc) => {
+        return fun.map((jc) => {
             return (
-                <div className="input-box  m-1 bg-dark ">
-
-                <Link href={`/${newRoute}/${jc.slug}`}><a style={{ padding: '0rem 0.8rem' }} key={jc._id} ><strong className="text-primary p-1"> #{jc.name}</strong></a></Link>
-            </div>
+                <Link href={`${DOMAIN}/${bcat}/${newRoute}/${jc.slug}`}><a className='p-1 m-3 text-sm font-semibold rounded-md bg-gray-700 text-white'  key={jc._id} > #{jc.name}</a></Link>
             )
         })
     };
@@ -57,13 +19,11 @@ const ShowCategories = ({ newRoute }) => {
 
 
 
-    return (
-        <>
-       <div className="new-flex">
-
-            {showCategories()}
-</div>
-        </>
+    return (  
+       <div className="flex flex-wrap">
+        {showCategories()}
+       </div>
+  
     )
 }
 export default ShowCategories;

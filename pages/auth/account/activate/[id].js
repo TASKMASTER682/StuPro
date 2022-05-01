@@ -36,22 +36,22 @@ const ActivateAccount = ({ router }) => {
     };
 
 
-    const showLoading = () => (loading ? <div className="badge badge-primary p-1 nbtn">Loading...</div> : '');
+    const showLoading = () => (loading ? <div className='bg-teal-400 p-2'>Loading...</div> : '');
 
     return (
         
             <div className="container">
-                <h3 className=" lead py-2">Hey {name}, Ready to activate your account?</h3>
+                <h3 className='text-lg font-bold m-2'>Hey {name}, Ready to activate your account?</h3>
                 <div>
                 {showLoading()}
                 {error && error}
-                {success && <div className="badge badge-primary p-1 nbtn">
-                You have successfully activated your account.<a href="/signin" className="btn btn-primary m-1 nbtn">Please signin</a>
+                {success && <div className='bg-teal-400 rounded-md p-2 my-2'>
+                You have successfully activated your account.<a href="/signin" className='bg-teal-300 rounded-md p-2 my-2'>Please signin</a>
                 </div>
                 }             
                 </div>
                 {showButton && (
-                    <button className="btn nbtn btn-primary" onClick={clickSubmit}>
+                    <button className='bg-teal-500 rounded-md p-1 my-2' onClick={clickSubmit}>
                         Activate Account
                     </button>
                 )}

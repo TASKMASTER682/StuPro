@@ -1,52 +1,37 @@
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import React from 'react';
-import moment from 'moment';
-import TagInSlug from '../reusables/TagInSlug';
-import CategoryInSlug from '../reusables/SlugCat';
-const SecurityIcon = dynamic(async () => import('@material-ui/icons/Security'), { ssr: false });
-const BusinessCenterIcon = dynamic(async () => import('@material-ui/icons/BusinessCenter'), { ssr: false });
-const RoomIcon = dynamic(async () => import('@material-ui/icons/Room'), { ssr: false });
+
 
 
 const Card = ({ privateJob }) => {
 
-    const today = moment();
 
 
     return (
-        <>
-            <div className="nbtn job job-read my-1" style={{ border: 'solid 1px black' }}>
-                <div className="p-1 new-job-card">
-
-                    <Link href={`/privateJobs/${privateJob.slug}`}>
-                        <a>
-                            <h2 className="lead text-success" style={{ lineHeight: '1.9rem' }}>{privateJob.title}</h2>
-                        </a>
-
-                    </Link>
-                    <p className="extra-small p-1 text-primary"><SecurityIcon style={{ fontSize: 15 }} /><strong className='text-dark'> {privateJob.agency}</strong></p>
-                </div>
-                <strong className="extra-small m-1 text-danger"> Last Date is {moment(privateJob.lastDate).format("MMM DD YYYY")}</strong>
-                <div className='new-flex'>
-               <CategoryInSlug newCat='privateJobCategories' cats={privateJob.privateJobCategories} />
-                <TagInSlug newTagRoute='privateJobTags' tags={privateJob.privateJobTags} />
-
-                </div>
-                <div className="xyz">
-                <div className='my-1'>
-                        <i className=" text-gray "><strong >Rs.<span> </span> {privateJob.salary}</strong></i>
-                        <i className=" text-gray "><BusinessCenterIcon /><span> </span><strong> {privateJob.type}</strong></i>
-                        <i className=" text-gray "><RoomIcon /><span> </span><strong>{privateJob.location}</strong></i>
-                    </div>
-                    <Link href={`/privateJobs/${privateJob.slug}`} >
-                        <a className={`btn nbtn nbtn1 m-1 btn-${moment(privateJob.lastDate).format() < today.format() ? 'danger' : 'primary'}  `}>{moment(privateJob.lastDate).format() < today.format() ? <strong>Closed</strong> : <strong>Apply Now</strong>}</a>
-                    </Link>
-                </div>
-
-            </div>
-        </>
+        <div >
+        <Link href={`/privateJobs/${privateJob.slug}`}>
+            <a><h2 className='text-xl font-bold text-success p-2 hover:underline' >{privateJob.title}</h2></a>
+        </Link>
+        <p className='font-semibold text-blue-900 px-2'>{privateJob.location}</p>
+        <p className='font-semibold text-red-400 px-2 mb-3'>{privateJob.agency}</p>
+        <p className='text-gray-500 font-semibold text-base p-2'>{privateJob.desc}</p>
+        <ul className='flex justify-between m-1'>
+            <li className='m-1 p-1 flex'>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 fill-green-400" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 5a1 1 0 100 2h1a2 2 0 011.732 1H7a1 1 0 100 2h2.732A2 2 0 018 11H7a1 1 0 00-.707 1.707l3 3a1 1 0 001.414-1.414l-1.483-1.484A4.008 4.008 0 0011.874 10H13a1 1 0 100-2h-1.126a3.976 3.976 0 00-.41-1H13a1 1 0 100-2H7z" clipRule="evenodd" />
+            </svg>
+            <p className='text-sm font-bold'>{privateJob.salary}.</p>
+            </li>
+            <li className=' bg-teal-700 rounded-md font-bold text-white  p-2 m-1'><Link href={`/privateJobs/${privateJob.slug}`}><a>Apply Online</a></Link></li>
+        </ul>
+        
+        </div>
     )
 
 };
 export default Card;
+
+    
+
+
+

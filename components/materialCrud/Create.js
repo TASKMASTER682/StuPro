@@ -142,78 +142,58 @@ const CreateMaterial=({router})=>{
  
 
     const showError = () => (
-        <div className="badge badge-danger p-1" style={{ display: error ? '' : 'none' }}>{error}</div>
+        <div className="p-1 badge badge-danger" style={{ display: error ? '' : 'none' }}>{error}</div>
     );
 
     const showSuccess = () => (
-        <div className="badge badge-success p-1" style={{ display: success ? '' : 'none' }}>{success}</div>
+        <div className="p-1 badge badge-success" style={{ display: success ? '' : 'none' }}>{success}</div>
     );
 
-//   const addLink=()=>{
-//       setDownloadLinks([...downloadLinks,linksTemplate])
-//   }
-//   const changeHandler=(e,index)=>{
-//       const updatedLink=downloadLinks.map((newLink,i)=>index===i ? Object.assign(newLink,{[e.target.name]:e.target.value}):newLink)
-//   setDownloadLinks(updatedLink);
 
-//   formData.set('downloadLinks', updatedLink);
-//   if (typeof window !== 'undefined') {
-//       localStorage.setItem('material', JSON.stringify(updatedLink));
-//   };
-//   }
-
-//   const removeLink=(i)=>{
-//       const filteredLinks=[...downloadLinks]
-//       filteredLinks.splice(i,1);
-//       setDownloadLinks(filteredLinks)
-
-//   }
 
 const createMaterialForm = () => {
     return (
         <form className="form" onSubmit={publish}>
-            <div className="form-group">
-                <label className="text-primary">Title</label>
+            <div>
+                <label className="text-teal-600 ">Title</label>
                 <br/>
-                <input className="form-group" type="text"  value={title} onChange={handleChange('title')} />
+                <input className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" type="text"  value={title} onChange={handleChange('title')} />
             </div>
-            <div className="form-group">
-                <label className="text-primary">For Slug</label>
+            <div >
+                <label className="text-teal-600 ">For Slug</label>
                 <br/>
-                <input className="form-group" type="text"  value={forSlug} onChange={handleChange('forSlug')} />
+                <input className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" type="text"  value={forSlug} onChange={handleChange('forSlug')} />
             </div>
 
-        <div className="form-group">
-            <select name="Language" value={language} onChange={handleChange('language')} required>
+            <select className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" name="Language" value={language} onChange={handleChange('language')} required>
                 <option value="0">Select Language</option>
                 <option value="en">en</option>
                 <option value="hi">hi</option>
             </select>               
-        </div>
-            <div className="form-group">
-            <input type="text" placeholder="Sub-Title"  value={subtitle} onChange={handleChange('subtitle')} required />
-            </div>
-            <div className="form-group">
-            <input type="text" placeholder='Description' value={desc} onChange={handleChange('desc')}/>
-            </div> 
-            <div className="form-group">
-            <select name="Language" value={mainCat} onChange={handleChange('mainCat')}>
+            
+            <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" placeholder="Sub-Title"  value={subtitle} onChange={handleChange('subtitle')} required />
+            
+          
+            <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" placeholder='Description' value={desc} onChange={handleChange('desc')}/>
+        
+            
+            <select name="Language" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" value={mainCat} onChange={handleChange('mainCat')}>
                 <option value="0">Select Main Category</option>
                 <option value="schooling">Schooling</option>
                 <option value="underGraduate">Under Graduate</option>
                 <option value="jobSeekers">JobSeeker</option>
             </select> 
-            </div>          
-            <div className="form-group">
-            <select name="subCat" value={subCat} onChange={handleChange('subCat')}>
+                     
+           
+            <select name="subCat" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" value={subCat} onChange={handleChange('subCat')}>
                 <option value="0">Select Sub-Category</option>
                 <option value="cbse">CBSE</option>
                 <option value="underGraduate">State Boards</option>
                 <option value="jobSeekers">JobSeekers</option>
             </select> 
-            </div>
-            <div className="form-group">
-            <select name="standard" value={standard} onChange={handleChange('standard')}>
+           
+           
+            <select name="standard" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" value={standard} onChange={handleChange('standard')}>
                 <option value="0">Select the Standard</option>
                 <option value="5th">5th</option>
                 <option value="6th">6th</option>
@@ -224,9 +204,7 @@ const createMaterialForm = () => {
                 <option value="11th">11th</option>
                 <option value="12th">12th</option>
             </select>
-            </div>
-            <div className="form-group">
-            <select name="materialType" value={materialType} onChange={handleChange('materialType')} >
+            <select name="materialType" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" value={materialType} onChange={handleChange('materialType')} >
                 <option value="0">Select the type of material you want</option>
                 <option value="Syllabus">Syllabus</option>
                 <option value="Previous Years">Previous Years</option>
@@ -236,41 +214,36 @@ const createMaterialForm = () => {
                 <option value="Solutions">Handwritten Notes Pdf</option>
 
             </select>
-            </div>       
             <SlatePlugins  handleChange={handleBody} newValue={body} />
-            <button type="submit" className="btn nbtn btn-dark my-1">Publish</button>
+            <button type="submit" className="p-2 px-3 my-1 font-bold text-white bg-teal-600 rounded-md ">Publish</button>
          </form>
     );
 };
 return (
-    <section className="blogCreate">
+    <section className="shadow-md shadow-green-400">
   
-    <div className="createMain">
-    <div className="blogDiv">
-       <h1 className="large text-primary">Create Material</h1>
-        <div className="line"></div>
-        <div className="createForm">
-         {createMaterialForm()}
+    <div className="grid grid-cols-3 gap-3 px-14 lg:pt-24">
+    <div className="col-span-2">
+       <h1 className="text-4xl font-bold text-teal-500">Create Material</h1>
+       {createMaterialForm()}
          {showError()}
          {showSuccess()}
-        </div>
+        
     </div>
-    <div className="catagoriesTags">
-        <div>
-            <h3 className="text-primary">Featured Image</h3>
-             <small className="text-light-gray">Max size: 1mb</small>
+    <div >
+        <div className='flex flex-col'>
+            <h3 className="text-teal-500">Featured Image</h3>
+             <p className="text-sm text-gray-400 ">Max size: 1mb</p>
             <br />
-            <label className=" btn btn-dark nbtn">
+            <label className="bg-black p-2 rounded-md text-white w-[40%]">
                 Upload Featured Image
                 <input type="file" accept="image/*" onChange={handleChange('photo')}  hidden />
             </label>
            
-            <div className="line"></div>
         </div>
-     <div className='p-1'>
-       <ul >
-        <h3 className="text-primary">Categories</h3>
-        <small className="text-light-gray">Select the Categories</small>
+     <div className='flex flex-row justify-between'>
+       <ul className='w-full max-h-screen overflow-scroll'>
+        <h3 className="text-teal-500">Categories</h3>
          {showMaterialCategories()}
          
         </ul>

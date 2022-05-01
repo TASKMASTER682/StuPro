@@ -18,19 +18,17 @@ const JobCategoryTag = () => {
         <>
         {head()}
             <Admin>
-             <section className="container">
-             <h1 className="large text-primary">Manage Job Tags and Categories</h1>
-             <div className="line"></div>
-               <h3 className="text-dark">Create a job category</h3>
+             <section className="pt-20 px-11">
+             <h1 className="text-2xl font-bold text-teal-500">Manage Job Tags and Categories</h1>
+             <hr />
+               <h3 className=" text-lg font-bold ">Create a job category</h3>
                <JobCategory />
-                 <div className="line my-2"></div>
-                 <h3 className="text-dark">Create a job tag</h3>
+                 <h3 className="text-lg font-bold mt-6">Create a job tag</h3>
                  <JobTag />
              </section>
             </Admin>
         </>
 
-        
     );
 };
 

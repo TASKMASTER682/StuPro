@@ -173,57 +173,57 @@ const MaterialUpdate=({router})=>{
     };
 
     const showError = () => (
-        <div className="badge badge-danger p-1" style={{ display: error ? '' : 'none' }}>
+        <div className="p-1 badge badge-danger" style={{ display: error ? '' : 'none' }}>
             {error}
         </div>
     );
 
     const showSuccess = () => (
-        <div className="badge badge-success p-1" style={{ display: success ? '' : 'none' }}>
+        <div className="p-1 badge badge-success" style={{ display: success ? '' : 'none' }}>
             {success}
         </div>
     );
 
     const updateForm=()=>{
         return(
-            <form className="form" onSubmit={editMat}>
-            <div className="form-group">
-                <label className="text-primary">Title</label>
+            <form  onSubmit={editMat}>
+            <div >
+                <label className="text-teal-400">Title</label>
                 <br/>
-                <input className="form-group" type="text"  value={title} onChange={handleChange('title')} />
+                <input className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' type="text"  value={title} onChange={handleChange('title')} />
             </div>
   
-        <div className="form-group">
-            <select name="Language" value={language} onChange={handleChange('language')} required>
+        
+            <select name="Language" className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' value={language} onChange={handleChange('language')} required>
                 <option value="0">Select Language</option>
                 <option value="en">en</option>
                 <option value="hi">hi</option>
             </select>               
-        </div>
-            <div className="form-group">
-            <input type="text" placeholder="Sub-Title"  value={subtitle} onChange={handleChange('subtitle')} required />
-            </div>
-            <div className="form-group">
-            <input type="text" placeholder='Description' value={desc} onChange={handleChange('desc')}/>
-            </div> 
-            <div className="form-group">
-            <select name="Language" value={mainCat} onChange={handleChange('mainCat')}>
+      
+            
+            <input type="text"  className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' placeholder="Sub-Title"  value={subtitle} onChange={handleChange('subtitle')} required />
+          
+            
+            <input type="text"  className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' placeholder='Description' value={desc} onChange={handleChange('desc')}/>
+           
+            
+            <select name="Language" value={mainCat}  className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' onChange={handleChange('mainCat')}>
                 <option value="0">Select Main Category</option>
                 <option value="schooling">Schooling</option>
                 <option value="underGraduate">Under Graduate</option>
                 <option value="jobSeekers">JobSeeker</option>
             </select> 
-            </div>          
-            <div className="form-group">
-            <select name="subCat" value={subCat} onChange={handleChange('subCat')}>
+                  
+            
+            <select name="subCat" value={subCat}  className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' onChange={handleChange('subCat')}>
                 <option value="0">Select Sub-Category</option>
                 <option value="cbse">CBSE</option>
                 <option value="underGraduate">State Boards</option>
                 <option value="jobSeekers">JobSeekers</option>
             </select> 
-            </div>
-            <div className="form-group">
-            <select name="standard" value={standard} onChange={handleChange('standard')}>
+           
+           
+            <select name="standard" value={standard}  className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' onChange={handleChange('standard')}>
                 <option value="0">Select the Standard</option>
                 <option value="5th">5th</option>
                 <option value="6th">6th</option>
@@ -234,9 +234,9 @@ const MaterialUpdate=({router})=>{
                 <option value="11th">11th</option>
                 <option value="12th">12th</option>
             </select>
-            </div>
-            <div className="form-group">
-            <select name="materialType" value={materialType} onChange={handleChange('materialType')} >
+            
+           
+            <select name="materialType"  className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' value={materialType} onChange={handleChange('materialType')} >
                 <option value="0">Select the type of material you want</option>
                 <option value="Syllabus">Syllabus</option>
                 <option value="Previous Years">Previous Years</option>
@@ -246,9 +246,9 @@ const MaterialUpdate=({router})=>{
                 <option value="Solutions">Handwritten Notes Pdf</option>
 
             </select>
-            </div>           
+                     
             <SlatePlugins  handleChange={handleBody} />
-            <button type="submit" className="btn nbtn btn-dark my-1">Update</button>
+            <button type="submit" className="p-2 my-1 font-bold text-white bg-teal-600 rounded-md ">Update</button>
        
          </form>
         )
@@ -256,46 +256,39 @@ const MaterialUpdate=({router})=>{
 
     return(
        
-        <section className="blogCreate">
+        <section className="shadow-md shadow-green-400">
         {showError()}
         {showSuccess()}
-        <div className="createMain">
+        <div className="grid grid-cols-3 gap-3 px-14 lg:pt-24">
     
-        <div className="blogDiv">
+        <div className="col-span-2">
         
-            <h1 className="large text-primary">Update Job</h1>
-            <div className="line"></div>
-            <div className="createForm">
+            <h1 className="text-4xl font-bold text-teal-500">Update Job</h1>
+            
                {updateForm()}
-  
-      
-             <div className="line"></div>
-
              {body && (
-                        <img src={`${API}/materials/photo/${router.query.slug}`} alt={title} style={{ width: '100%' }} />
+                        <img src={`${API}/materials/photo/${router.query.slug}`} alt={title}  />
                     )}
  
-            </div>
+            
         
         </div>
-        <div className="catagoriesTags">
+        <div >
             
-            <div>
-                <h3 className="text-primary">Featured Image</h3>
+            <div className="flex flex-col">
+                <h3 className="text-teal-500">Featured Image</h3>
                 
-                <small className="text-light-gray">Max size: 1mb</small>
+                <small className="text-sm text-gray-400 ">Max size: 1mb</small>
                 <br />
-                <label className=" btn btn-dark nbtn">
+                <label className="bg-black p-2 rounded-md text-white w-[40%]">
                     Upload Featured Image
                     <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
                 </label>
-                <div className="line"></div>
             </div>
-         <div className="checkList">
+         <div className="flex flex-row justify-between">
            
-            <ul style={{ maxHeight: '200px' }}>
-            <h3 className="text-primary">Tags</h3>
-            <small className="text-light-gray">Category</small>
+            <ul className='w-full max-h-screen overflow-scroll'>
+            <h3 className="text-teal-500">Categories</h3>
              {showMaterialCategories()}
             </ul>
         </div>

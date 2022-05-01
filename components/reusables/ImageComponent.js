@@ -11,7 +11,7 @@ const ImageComponent = ({photo}) => {
         return `${photo}`
       }
     return (
-        <Image  loader={myLoader} src={`${photo}`} width={300} height={300} alt='Logo' className="round-image" blurDataURL="/img/blurr-min.jpg" placeholder='blur'/>  
+        <Image  loader={myLoader} src={`${photo}`} width={300} height={300} alt='Logo' className="rounded-full " blurDataURL="/img/blurr-min.jpg" placeholder='blur'/>  
     )
 }
 

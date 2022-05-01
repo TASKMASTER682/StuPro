@@ -1,20 +1,19 @@
 import React from 'react';
 import {
   BalloonToolbar,
-  ToolbarMark,
-  ToolbarList,
-  ToolbarLink,
-  ToolbarElement,
-  getSlatePluginType,
+  MarkToolbarButton,
+  LinkToolbarButton,
+  ListToolbarButton,
+  BlockToolbarButton,
+  getPluginType,
     MARK_BOLD,
     MARK_ITALIC,
     MARK_UNDERLINE,
     ELEMENT_UL,
     MARK_HIGHLIGHT,
     ELEMENT_H3,
-    useStoreEditorRef,
-    useEventEditorId,
-} from '@udecode/slate-plugins';
+    usePlateEditorRef
+} from '@udecode/plate';
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
@@ -28,8 +27,8 @@ import Looks3OutlinedIcon from '@material-ui/icons/Looks3Outlined';
 
 
 
-const BalloonToolbarMarks = () => {
-  const editor = useStoreEditorRef(useEventEditorId('focus'));
+const BalloonMarkToolbarButtons = () => {
+  const editor = usePlateEditorRef()
 
     const arrow = false;
     const theme = '#00cdbb';
@@ -51,37 +50,37 @@ const BalloonToolbarMarks = () => {
         theme={theme}
         arrow={arrow}
       >
-        <ToolbarMark
-          type={getSlatePluginType(editor, MARK_BOLD)}
+        <MarkToolbarButton
+          type={getPluginType(editor, MARK_BOLD)}
           icon={<FormatBoldIcon />}
           tooltip={{ content: 'Bold (⌘B)', ...tooltip }}
         />
-        <ToolbarMark
-          type={getSlatePluginType(editor, MARK_ITALIC)}
+        <MarkToolbarButton
+          type={getPluginType(editor, MARK_ITALIC)}
           icon={<FormatItalicIcon />}
           tooltip={{ content: 'Italic (⌘I)', ...tooltip }}
         />
-        <ToolbarMark
-          type={getSlatePluginType(editor, MARK_UNDERLINE)}
+        <MarkToolbarButton
+          type={getPluginType(editor, MARK_UNDERLINE)}
           icon={<FormatUnderlinedIcon />}
           tooltip={{ content: 'Underline (⌘U)', ...tooltip }}
         />
-        <ToolbarList
-          type={getSlatePluginType(editor, ELEMENT_UL)}
+        <ListToolbarButton
+          type={getPluginType(editor, ELEMENT_UL)}
           icon={<FormatListBulletedOutlinedIcon/>}
         />
-          <ToolbarLink
+          <LinkToolbarButton
           icon={<InsertLinkIcon/>}
         />
-        <ToolbarMark
-        type={getSlatePluginType(editor, MARK_HIGHLIGHT)}
+        <MarkToolbarButton
+        type={getPluginType(editor, MARK_HIGHLIGHT)}
         icon={<HighlightIcon  />} />
-        <ToolbarElement
-         type={getSlatePluginType(editor, ELEMENT_H3)}
+        <BlockToolbarButton
+         type={getPluginType(editor, ELEMENT_H3)}
          icon={<Looks3OutlinedIcon/>}
     />
       </BalloonToolbar>
     );
 }
 
-export default BalloonToolbarMarks;
+export default BalloonMarkToolbarButtons;

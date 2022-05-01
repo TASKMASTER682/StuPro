@@ -3,11 +3,10 @@ import {isAuth} from '../../actions/auth'
 
 const UpdateButton = ({url,name}) => {
     return (
-        <div>
                 
-         {( isAuth() && isAuth().role===1 )? <a href={url} className="m-1 btn nbtn btn-success">{name}</a>:''}
+         ( isAuth() && isAuth().role===1 )? <a href={url} className='bg-teal-500 font-bold py-1 px-3 rounded-sm'>{name}</a>:''
                    
-        </div>
+    
     )
 }
 

@@ -55,33 +55,30 @@ const AddEducation = () => {
     }
     return (
         <>
-            <section className="container">
-            <h1 className="large  text-primary p-1" style={{lineHeight:'2.8rem'}}>
+            <section className="px-14 lg:pt-24">
+            <h1 className="text-4xl font-bold text-teal-500 " >
                 Add New educational qualification to show off in your Profile and CV
             </h1>
             <div className="my-1">
-            <form className='form' onSubmit={submit}>
-            <div className="form-group">
-                <input type="text" placeholder='Your Schooling From' name='school' value={formData.school} onChange={handleChange} />
-            </div>
-            <div className="form-group">
-                <input type="text" placeholder='Your Graduation From' name='degree' value={formData.degree} onChange={handleChange} />
-            </div>
-            <div className="form-group">
-                <input type="text" placeholder='Your Field of Study' name='fieldOfStudy' value={formData.fieldOfStudy} onChange={handleChange} />
-            </div>
-            <div className="form-group">
-                <input type="date" placeholder='Start Date' name='from' value={formData.from} onChange={handleChange} />
-            </div>
-            <div className="form-group">
+            <form  onSubmit={submit}>
+                <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" placeholder='Your Schooling From' name='school' value={formData.school} onChange={handleChange} />
+                <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" placeholder='Your Graduation From' name='degree' value={formData.degree} onChange={handleChange} />
+          
+            
+                <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" placeholder='Your Field of Study' name='fieldOfStudy' value={formData.fieldOfStudy} onChange={handleChange} />
+            
+        
+                <input type="date" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" placeholder='Start Date' name='from' value={formData.from} onChange={handleChange} />
+            
+            
             <p><input type="checkbox" name="current" value={formData.current} checked={formData.current} onChange={e=>{setFormData({...formData,current:!formData.current}); toggleDisabled(!toDateDisabled);}} />{' '} Currently Doing</p>
-            </div>
-            <div className="form-group">
-            <label className='text-primary'>Ending Date</label>
-                <input type="date" placeholder='End Date' disabled={toDateDisabled ? 'disbaled':''}  name='to' value={formData.to} onChange={handleChange} />
-            </div>
-        <div className="form-group">
-          <textarea className="blog textinput"
+            
+            
+            <label className='text-teal-500'>Ending Date</label>
+                <input type="date" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" placeholder='End Date' disabled={toDateDisabled ? 'disbaled':''}  name='to' value={formData.to} onChange={handleChange} />
+            
+        
+          <textarea className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"
             name="description"
             cols="30"
             rows="5"
@@ -89,8 +86,8 @@ const AddEducation = () => {
             value={formData.description}
             onChange={handleChange}>
           </textarea>
-        </div>
-            <button type="submit" className="btn nbtn btn-dark my-1">Add New Education Qualification</button>
+        
+            <button type="submit" className="p-2 font-bold text-white bg-teal-600 rounded-md ">Add New Education Qualification</button>
 
         </form>
             </div>

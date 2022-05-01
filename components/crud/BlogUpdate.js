@@ -210,13 +210,13 @@ const BlogUpdate=({router})=>{
     };
     const showError = () => (
        
-        <div className="badge badge-danger p-1" style={{ display: error ? '' : 'none' }}>
+        <div className="p-2 bg-red-400 " style={{ display: error ? '' : 'none' }}>
             {error}
         </div>
     );
 
     const showSuccess = () => (
-        <div className="badge badge-success p-1" style={{ display: success ? '' : 'none' }}>
+        <div className="p-2 bg-green-300 " style={{ display: success ? '' : 'none' }}>
             {success}
         </div>
     );
@@ -225,10 +225,10 @@ const BlogUpdate=({router})=>{
     const updateBlogForm=()=>{
         return(
             <form className="form" onSubmit={editBlog}>
-            <div className="form-group">
-                <label className="text-primary">Title</label>
+            <div>
+                <label className="text-teal-400">Title</label>
                 <br/>
-                <input className="form-group" type="text"  value={title} onChange={handleChange('title')} />
+                <input className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" type="text"  value={title} onChange={handleChange('title')} />
             </div>
 
             
@@ -242,7 +242,7 @@ const BlogUpdate=({router})=>{
            
 
             <div>
-                <button type="submit" className="btn nbtn btn-dark">
+                <button type="submit" className="p-2 font-bold text-white bg-teal-600 rounded-md">
                     Update
                 </button>
             </div>
@@ -251,50 +251,45 @@ const BlogUpdate=({router})=>{
     }
 
     return(
-        <section className="blogCreate">
+        <section className="shadow-md shadow-green-400">
         
        
-        <div className="createMain">
+        <div className="grid grid-cols-3 gap-3 px-14 lg:pt-24">
     
-        <div className="blogDiv">
+        <div className="col-span-2">
         
-            <h1 className="large text-primary">Update Blog</h1>
+            <h1 className="text-4xl font-bold text-teal-500 ">Update Blog</h1>
            {showError()}
             {showSuccess()}
-            <div className="line"></div>
-            <div className="createForm">
+            
                {updateBlogForm()}
-             <div className="line"></div>
              {body && (
-                        <img src={`${API}/blogs/photo/${router.query.slug}`} alt={title} style={{ width: '100%' }} />
+                        <img src={`${API}/blogs/photo/${router.query.slug}`} alt={title}  />
                     )}
             
-            </div>
+          
         
         </div>
-        <div className="catagoriesTags">
+        <div >
             
-            <div>
-                <h3 className="text-primary">Featured Image</h3>
+            <div className='flex flex-col'>
+                <h3 className="text-teal-500">Featured Image</h3>
                 
-                <small className="text-light-gray">Max size: 1mb</small>
+                <p className="text-sm text-gray-400">Max size: 1mb</p>
                 <br />
-                <label className=" btn btn-dark nbtn">
+                <label className="bg-black rounded-md p-2 text-white font-bold w-[50%]">
                     Upload Featured Image
                     <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
                 </label>
-                <div className="line"></div>
             </div>
-         <div className="checkList">
+         <div className="flex flex-row justify-between">
            
-            <ul style={{ maxHeight: '200px' }}>
-            <h3 className="text-primary">Categories</h3>
-            <small className="text-light-gray">Edit the Categories related to your blog</small>
+            <ul  className='w-full max-h-screen overflow-scroll'  >
+            <h3 className="text-teal-500">Categories</h3>
              {showCategories()}
             </ul>
-            <ul style={{ maxHeight: '200px'}}>
-            <h3 className="text-primary">Tags</h3>
-            <small className="text-light-gray">Edit the Tags of your blog</small>
+            <ul  className='w-full max-h-screen overflow-scroll' >
+            <h3 className="text-teal-500">Tags</h3>
             {showTags()}
           </ul>
         </div>

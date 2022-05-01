@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React,{ useState, useEffect } from 'react';
 import { getCookie, isAuth } from '../../actions/auth';
 import { list, removeBlog } from '../../actions/blog';
-import moment from 'moment';
+import {format} from 'date-fns';
 
 
 
@@ -50,13 +50,13 @@ const BlogRead = ({ username }) => {
         if (isAuth() && isAuth().role === 0) {
             return (
                 
-                    <a  href={`/user/crud/${blog.slug}`} className="btn nbtn btn-success">Update</a>
+                    <a  href={`/user/crud/${blog.slug}`} className="p-2 mx-2 font-bold bg-teal-400 rounded-md">Update</a>
                 
             );
         } else if (isAuth() && isAuth().role === 1) {
             return (
                 
-             <a href={`/admin/crud/${blog.slug}`} className="m-2 btn nbtn btn-success">Update</a>
+             <a href={`/admin/crud/${blog.slug}`} className="p-2 mx-2 font-bold bg-teal-400 rounded-md">Update</a>
                 
             );
         }
@@ -65,18 +65,18 @@ const BlogRead = ({ username }) => {
     const showAllBlogs = () => {
         return blogs.map((blog, i) => {
             return (
-                <div key={i} className="p-1">
+                <div key={i} className="p-4 my-4 rounded-md shadow-md shadow-green-400">
                     <Link href={`/blogs/${blog.slug}`}>
                     <a>
-                     <h2  className="text-dark small   " style={{lineHeight:'1.9rem'}}>
+                     <h2  className="text-2xl font-bold ">
                         {blog.title}
                         </h2>
                     </a>
                     </Link>
-                    <p className="extra-small text-light-gray ">
-                        Written by {blog.postedBy.name} | Published on {moment(blog.updatedAt).fromNow()}
+                    <p className="text-sm text-gray-400 ">
+                        Written by {blog.postedBy.name} | Published on {format(new Date(blog.updatedAt),'dd MMM yyyy')}
                     </p>
-                    <button className="btn btn-danger nbtn" onClick={() => deleteConfirm(blog.slug)}>
+                    <button className="p-2 my-2 font-bold bg-red-400 rounded-md " onClick={() => deleteConfirm(blog.slug)}>
                         Delete
                     </button>
                     {showUpdateButton(blog)}
@@ -86,16 +86,15 @@ const BlogRead = ({ username }) => {
     };
 
     return (
-        <React.Fragment>
-            <div className="container">
-            <h2 className="large text-primary my-">Manage Blogs</h2>
-            <div className="line"></div>
-                <div className="blog">
+        <>
+            <div className="px-3 mb-40 lg:pt-20 lg:px-20 pt-14">
+            <h2 className="text-4xl font-bold text-teal-500 ">Manage Blogs</h2>
+                <div >
                    
                     {showAllBlogs()}
                 </div>
             </div>
-        </React.Fragment>
+        </>
     );
 };
 

@@ -21,24 +21,19 @@ export const createPvtJob = async (privateJob, token) => {
         .catch(err => console.log(err));
 };
 
-export const listPvtJobsWithCategoriesAndTags =async (skip,limit) => {
-    const data = {
-        limit,
-        skip
-    };
-    return await fetch(`${API}/privateJobs-categories-tags`, {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+export const listPvtJobsWithCategoriesAndTags =async () => {
+
+    return await fetch(`${API}/privateJobs`, {
+        method: 'GET',
+
     })
         .then(response => {
             return response.json();
         })
         .catch(err => console.log(err));
 };
+
+
 
 export const singlePvtJob = async (slug) => {
     return await fetch(`${API}/privateJobs/${slug}`, {
@@ -68,7 +63,7 @@ export const listRelatedPvt = async (privateJob) => {
 export const listPvt =async () => {
   
 
-    return await fetch(`${API}/privateJobs`, {
+    return await fetch(`${API}/privateJobs-edit`, {
         method: 'GET'
     })
         .then(response => {

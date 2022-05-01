@@ -40,43 +40,43 @@ const ForgotPassword = () => {
 
     const showError = (error) => {
         return (
-            <div className="badge-danger">{error}</div>
+            <div className={` bg-red-400 p-2 ${!message ? 'hidden' : ''}`}>{error}</div>
         )
     }  
         
         
     const showMessage = (message) => {
         return(
-            <div className="badge-primary">{message}</div>
+            <div className={`bg-teal-300 p-2 ${!message ? 'hidden' : ''}`} >{message}</div>
         )
     }
          
         
 
     const passwordForgotForm = () => (
-        <form onSubmit={handleSubmit} className="form">
-            <div className="form-group py-1">
+        <form onSubmit={handleSubmit} className='flex lg:flex-row flex-col justify-center' >
+            
                 <input
                     type="email"
                     onChange={handleChange('email')}
-                  
                     value={email}
-                    placeholder="Type your email"
+                    placeholder="Type your registered email"
+                    className='rounded-md ring-2 ring-teal-400 p-2 mx-2 lg:w-[70%]'
                     required
                 />
-            </div>
-            <div>
-                <button className="btn nbtn btn-primary">Send password reset link</button>
-            </div>
+         
+            
+                <button className='bg-green-400 p-2 rounded-md mx-2 font-bold text-white my-3 lg:my-0'>Send password reset link</button>
+          
         </form>
     );
 
     return (
         <>
         {head()}
-            <div className="container">
-                <h2>Forgot password</h2>
-                <div className="line"></div>
+            <div className='lg:pt-20 pt-14 p-4 lg:px-40 mb-5'>
+                <h2 className='text-lg font-bold my-3 text-red-500'>Forgot password</h2>
+                <hr />
                 <div>
                 {showError()}
                 {showMessage()}

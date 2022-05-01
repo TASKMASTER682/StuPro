@@ -1,11 +1,11 @@
 import fetch from 'isomorphic-fetch';
 import { API } from '../config';
 import queryString from 'query-string';
-import { isAuth ,handleResponse } from './auth';
+import { isAuth, handleResponse } from './auth';
 
 
 export const createJob = async (job, token) => {
-    
+
     return await fetch(`${API}/job`, {
         method: 'POST',
         headers: {
@@ -21,23 +21,16 @@ export const createJob = async (job, token) => {
         .catch(err => console.log(err));
 };
 
-export const listJobsWithCategoriesAndTags =async (skip,limit) => {
-    const data = {
-        limit,
-        skip
-    };
-    return await fetch(`${API}/jobs-categories-tags`, {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => {
-            return response.json();
+export const listJobsWithCategoriesAndTags = async () => {
+    // const data = {
+
+        return await fetch(`${API}/jobs`, {
+            method: 'GET'
         })
-        .catch(err => console.log(err));
+            .then(response => {
+                return response.json();
+            })
+            .catch(err => console.log(err));
 };
 
 
@@ -50,8 +43,9 @@ export const singleJob = async (slug) => {
         })
         .catch(err => console.log(err));
 };
+
 export const listRelated = async (job) => {
-    return  fetch(`${API}/jobs/related`, {
+    return fetch(`${API}/jobs/related`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -60,17 +54,17 @@ export const listRelated = async (job) => {
         body: JSON.stringify(job)
     })
         .then(response => {
-            return response.json();  
+            return response.json();
         })
         .catch(err => console.log(err));
 };
 
 
 
-export const list =async () => {
-  
+export const list = async () => {
 
-    return await fetch(`${API}/jobs`, {
+
+    return await fetch(`${API}/jobs-edit`, {
         method: 'GET'
     })
         .then(response => {
@@ -79,8 +73,8 @@ export const list =async () => {
         .catch(err => console.log(err));
 };
 
-export const listHome =async () => {
-  
+export const listHome = async () => {
+
 
     return await fetch(`${API}/jobsHome`, {
         method: 'GET'
@@ -91,10 +85,10 @@ export const listHome =async () => {
         .catch(err => console.log(err));
 };
 
-export const removeJob= async (slug, token) => {
-    
+export const removeJob = async (slug, token) => {
 
-    return await fetch( `${API}/jobs/${slug}`, {
+
+    return await fetch(`${API}/jobs/${slug}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -111,7 +105,7 @@ export const removeJob= async (slug, token) => {
 
 
 export const updateJob = async (job, token, slug) => {
-    
+
 
 
     return await fetch(`${API}/jobs/${slug}`, {
@@ -129,17 +123,14 @@ export const updateJob = async (job, token, slug) => {
         .catch(err => console.log(err));
 };
 
-// export const listSearch =async (params) => {
-//     console.log('search params', params);
-//     let query = queryString.stringify(params);
-//     console.log('query params', query);
-//     return await fetch(`${API}/jobs/search?${query}`, {
-//         method: 'GET'
-//     })
-//         .then(response => {
-//             return response.json();
-//         })
-//         .catch(err => console.log(err));
-// };
+export const listSearch = async (params) => {
+    return await fetch(`${API}/jobs/filter/${params}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 
 

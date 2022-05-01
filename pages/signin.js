@@ -1,37 +1,45 @@
 import SigninComponent from '../components/auth/SigninComponent';
 import {APP_NAME,DOMAIN,FB_APP_ID} from "../config";
-import Head from 'next/head';
+import { BreadcrumbJsonLd,NextSeo } from 'next-seo';
+
 
 const Signin=()=>{
-    const head=()=>{
-    <Head>
-    <title>Sign in to get started |The ProGrad</title>
-    <meta name="robots" content="index follow" />
 
-    <meta
-        name="description"
-        content="Sign in to The ProGrad and Share your Ideas to the students and get job notifications and updates"
-   
-    />
-    <link rel="canonical" href={`${DOMAIN}/signin`} />
-    <meta property="og:title" content={`Sign in | The ${APP_NAME} `} />
-    <meta
-        property="og:description"
-        content="Sign in to The ProGrad and Share your Ideas to the students and get job notifications and updates"
-    />
-    <meta property="og:type" content="webiste" />
-    <meta property="og:url" content={`${DOMAIN}/signin`} />
-    <meta property="og:site_name" content={`The ${APP_NAME}`} />
-    <meta property="og:image" content={`${DOMAIN}/img/stupro2.png`} />
-    <meta property="og:image:secure_url" content={`${DOMAIN}/stupro2.png`} />
-    <meta property="og:image:type" content={`${DOMAIN}/stupro2.png`} />
-  
-
-</Head>
-    }
     return(
         <>
-        {head()}
+            <NextSeo
+      title="Sign in to get started at The ProGrad"
+      description="Sign in to The ProGrad and Share your Ideas to the students and get job notifications and updates"
+      canonical="https://www.theprograd.com/signin"
+      
+      openGraph={{
+        url: 'https://www.theprograd.com/signin',
+        title:"Sign in to get started at The ProGrad",
+        description:"Sign in to The ProGrad and Share your Ideas to the students and get job notifications and updates",
+        site_name: 'The ProGrad',
+      }}
+      facebook={{
+        handle: '@handle',
+        site: '@site',
+        cardType: 'summary_large_image',
+        appId: '721482821740858'
+      }}
+    />
+         <BreadcrumbJsonLd
+      itemListElements={[
+        {
+          position: 1,
+          name: 'Home',
+          item: 'https://www.theprograd.com/',
+        },
+        {
+          position: 2,
+          name: 'Sign In',
+          item: 'https://www.theprograd.com/signin',
+        },
+      
+      ]}
+    />
         <SigninComponent/>
         </>
     )

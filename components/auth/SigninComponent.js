@@ -51,48 +51,42 @@ const SigninComponent=()=>{
     };
 const signinButton=loading ?'Please wait...':'Sign in'
     const signinForm=()=>{
-    
          return(
-        <>
-    <section className="container">
-        <div className="account">
-        <div>
-        <h1 className="large text-primary">Sign In</h1>
-        <p className="extra-small text-light-gray">Sign in to be the part of our community</p>
-        <form  className="form" onSubmit={handleSubmit}>
-            <div className="form-group">
-                <input value={email} onChange={handleChange('email')} type="email"  placeholder="Email Address" />
-            </div>
-            <div className="form-group">
-                <input  value={password} onChange={handleChange('password')} type="password" placeholder="Password" />
-            </div>
-            <input type="submit" value={signinButton} className="btn nbtn btn-primary" />
+    <div className='className=" lg:pt-36 pt-16 mb-16 px-2 lg:px-60 w-auto '>
+    <div className='lg:grid lg:grid-cols-2 flex flex-col shadow-xl rounded-lg shadow-green-500'>
+    <div className='rounded-md  p-2 bg-teal-200'>
+    <h2 className='text-2xl font-bold text-center text-gray-600'>Hello mate! It seems you already registered on The ProGrad</h2>
+    <img src="/img/login.svg" alt="" />
+    <p className='font-bold text-lg text-gray-600'>Go on ! Fill your details and Sign in your account </p>
+
+    </div>
+    <div>
+    <h2 className='text-2xl font-bold text-teal-600 text-center m-2'>Sign In Here</h2>
+        <form onSubmit={handleSubmit} className='flex flex-col p-4'>
+        <input value={email} onChange={handleChange('email')} type="email"  placeholder="Your Registerd Email Address" className='p-2 ring-2 ring-teal-500 rounded-md my-3 ' />
+        <input   value={password} onChange={handleChange('password')} type="password" placeholder="Type Your Password" className='p-2 ring-2 ring-teal-500 rounded-md my-3 ' />
+        <input type="submit" value={signinButton} className=" bg-teal-500 font-bold rounded-md p-2 my-3 " />
         </form>
-        <p className="my-1 extra-small">Forgot Password?<span> <Link href="/auth/password/forgot"><a>Recover here</a></Link></span></p> 
-        <div style={{textAlign:'center',margin:'auto',justifyContent:'center'}}>
-          <h1 className="lead text-primary my-1">Login using google</h1>
-          <p className="extra-small text-light-gray">Recommended</p>
-         <LoginGoogle />
-        </div>
+        <ul className='flex justify-between '>
+        <li className='text-sm font-bold text-teal-400 p-2'>Login using Google</li>
+        <li className='text-teal-400 pl-4'><LoginGoogle /></li>
+        </ul>
+        <ul className='flex justify-between mt-4' >
+        <li className="text-sm font-bold text-teal-400 p-2">Forgot Password?</li>
+        <li className=' bg-teal-300 px-2 h-6 mr-4 rounded-md text-sm font-bold'><Link href="/auth/password/forgot"><a>Click to recover</a></Link></li>
+        </ul>
+        <p className='mt-4 pl-3 pb-2'>Don't have and Account yet? <span className='bg-red-400 p-1 px-2  rounded-md font-bold'><Link  href="/signup"><a >Sign Up</a></Link></span></p>
+
     </div>
-    <div className="second p-2 hide-sm">
-        <div className="fst">
-        <h2 className="text-dark">Sign in Your account and share your ideas.</h2>
-            <img src="img/stupro2.png" alt="" />
-        </div>
-        <div>
-        <p className="my-1">Don't have an account?</p>
-         <Link  href="/signup"><a className="btn btn-dark">Sign Up</a></Link>
-       </div>
+
     </div>
-    </div>
-    </section>
-   </>    
+
+    </div>  
     )
   }
   const showError =() => {
     if (error) {
-        return <div className="badge badge-danger p-1 nbtn " style={{ display: error ? '' : 'none' }}>{error}</div>;
+        return <div className='bg-red-400 p-2' style={{ display: error ? '' : 'none' }}>{error}</div>;
     }
 };
    return (
@@ -102,8 +96,5 @@ const signinButton=loading ?'Please wait...':'Sign in'
         </React.Fragment>
     );
 }
-    
-     
-
 
 export default SigninComponent;

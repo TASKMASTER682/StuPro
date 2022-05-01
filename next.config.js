@@ -2,7 +2,7 @@ module.exports={
     publicRuntimeConfig:{
         APP_NAME:'ProGrad',
         API_DEVELOPMENT:'http://localhost:8000/api',
-        PRODUCTION:true,
+        PRODUCTION:false,
         DOMAIN_PRODUCTION:'https://www.theprograd.com',
         FB_APP_ID:'721482821740858',
 DISQUS_SHORTNAME:'stupro-1',
@@ -11,9 +11,7 @@ API_PRODUCTION:'https://the-prograd.herokuapp.com/api',
 DOMAIN_DEVELOPMENT:'http://localhost:3000',
     },
 
-
-    
-    async rewrites() {
+ async rewrites() {
         return [
           {
             source: "/sitemap.xml",
@@ -26,7 +24,9 @@ DOMAIN_DEVELOPMENT:'http://localhost:3000',
  
         ];
       },
-
+images:{
+  domains:['localhost:8000','localhost:3000']
+}
      
 }
 

@@ -2,14 +2,13 @@ import React,{ useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { withRouter } from 'next/router';
 import { getCookie } from '../../actions/auth';
-import { getPvtJobCategories } from '../../actions/privateJobCategory';
-import { getPvtJobTags } from '../../actions/privateJobTag';
+
 import { createPvtJob } from '../../actions/privateJob';
 // const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 // import { QuillModules, QuillFormats } from '../../helpers/quill';
 import Checkbox from '@material-ui/core/Checkbox';
 import SlatePlugins from '../slate-plugins/index';
-import {serializeHTMLFromNodes,createEditorPlugins} from '@udecode/slate-plugins';
+import {serializeHTMLFromNodes,createEditorPlugins} from '@udecode/plate';
 import { pluginsBasic ,initialValueBasicElements} from '../slate-plugins/utils';
 
 
@@ -29,12 +28,10 @@ const CreatePvtJob=({router})=>{
         }
     };
 
-    const [privateJobCategories, setPrivateJobCategories] = useState([]);
-    const [privateJobTags, setPrivateJobTags] = useState([]);
 
 
-    const [checked, setChecked] = useState([]); // categories
-    const [checkedTag, setCheckedTag] = useState([]); // tags
+
+
 
     const [body, setBody] = useState(jobFromLS());
     const [values, setValues] = useState({
@@ -48,49 +45,25 @@ const CreatePvtJob=({router})=>{
         position:'',
         keySkills:'',
         salary:'',
-        type:'',
+       
         qualification:'',
         location:'',
        lastDate:'',
-       street:'',
-       city:'',
-       postal:'',
        forSlug:'',
        desc:'',
-       subtitle:'',
-       language:'',
        officialLink:'',
         hidePublishButton: false,
     });
 
-    const { error, sizeError, success,street,city,postal,language,subtitle,desc,forSlug,officialLink, formData,applyLink,lastDate, keySkills,position,agency,title,salary,qualification,location,type, hidePublishButton } = values;
+    const { error, sizeError, success,desc,forSlug,officialLink, formData,applyLink,lastDate, keySkills,position,agency,title,salary,qualification,location, hidePublishButton } = values;
     const token = getCookie('token');
 
     useEffect(() => {
         setValues({ ...values, formData: new FormData() });
-        initJobCategories();
-        initJobTags();
+   
     }, [router]);
 
-    const initJobCategories = () => {
-        getPvtJobCategories().then(data => {
-            if (data.error) {
-                setValues({ ...values, error: data.error });
-            } else {
-                setPrivateJobCategories(data);
-            }
-        });
-    };
 
-    const initJobTags = () => {
-        getPvtJobTags().then(data => {
-            if (data.error) {
-                setValues({ ...values, error: data.error });
-            } else {
-                setPrivateJobTags(data);
-            }
-        });
-    };
 
     const publishJob = e => {
         e.preventDefault();
@@ -99,10 +72,8 @@ const CreatePvtJob=({router})=>{
             if (data.error) {
                 setValues({ ...values, error: data.error});
             } else {
-                setValues({ ...values, title: '',agency:'',loading:false,street:'',city:'',postal:'',language:'',subtitle:'',desc:'',forSlug:'',officialLink:'',applyLink:'',lastDate:'',position:'',keySkills:'', error: '',salary:'',qualification:'',type:'',location:'', success: `A new blog titled "${data.title}" is created` });
+                setValues({ ...values, title: '',agency:'',loading:false,desc:'',forSlug:'',officialLink:'',applyLink:'',lastDate:'',position:'',keySkills:'', error: '',salary:'',qualification:'',location:'', success: `A new blog titled "${data.title}" is created` });
                 setBody('');
-                setPrivateJobCategories([]);
-                setPrivateJobTags([]);
             }
         });
     };
@@ -137,71 +108,13 @@ const CreatePvtJob=({router})=>{
         }
     };
 
-    const handleToggle = c => () => {
-        setValues({ ...values, error: '' });
-        // return the first index or -1
-        const clickedCategory = checked.indexOf(c);
-        const all = [...checked];
-
-        if (clickedCategory === -1) {
-            all.push(c);
-        } else {
-            all.splice(clickedCategory, 1);
-        }
-        console.log(all);
-        setChecked(all);
-        formData.set('privateJobCategories', all);
-    };
-
-    const handleJobTagsToggle = t => () => {
-        setValues({ ...values, error: '' });
-        // return the first index or -1
-        const clickedTag = checked.indexOf(t);
-        const all = [...checkedTag];
-
-        if (clickedTag === -1) {
-            all.push(t);
-        } else {
-            all.splice(clickedTag, 1);
-        }
-        console.log(all);
-        setCheckedTag(all);
-        formData.set('privateJobTags', all);
-    };
-
-    const showJobCategories = () => {
-        return (
-            privateJobCategories &&
-            privateJobCategories.map((c, i) => (
-                <li key={i} >
-                    <Checkbox onChange={handleToggle(c._id)} />
-                    <label>{c.name}</label>
-                </li>
-            ))
-        );
-    };
-
-    const showJobTags = () => {
-        return (
-            privateJobTags &&
-            privateJobTags.map((t, i) => (
-                <li key={i} >
-                    <Checkbox onChange={handleJobTagsToggle(t._id)} />
-                    <label >{t.name}</label>
-                </li>
-            ))
-        );
-    };
-
-
- 
 
     const showError = () => (
-        <div className="badge badge-danger p-1" style={{ display: error ? '' : 'none' }}>{error}</div>
+        <div className="p-1 badge badge-danger" style={{ display: error ? '' : 'none' }}>{error}</div>
     );
 
     const showSuccess = () => (
-        <div className="badge badge-success p-1" style={{ display: success ? '' : 'none' }}>{success}</div>
+        <div className="p-1 badge badge-success" style={{ display: success ? '' : 'none' }}>{success}</div>
     );
 
 
@@ -209,74 +122,35 @@ const CreatePvtJob=({router})=>{
 const createJobForm = () => {
     return (
     <form className="form" onSubmit={publishJob}>
-        <div className="form-group">
-            <select name="Language" value={language} onChange={handleChange('language')} required>
-                <option value="0">Select Language</option>
-                <option value="en">en</option>
-                <option value="hi">hi</option>
-            </select>               
-        </div>
-            <div className="form-group">
+
+            <div>
                 <label className="text-primary">Title</label>
                 <br/>
-                <input className="form-group" type="text"  value={title} onChange={handleChange('title')} />
+                <input  className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  type="text"  value={title} onChange={handleChange('title')} />
             </div>
-            <div className="form-group">
-                <label className="text-primary">Sub-Title</label>
+
+            <div>
+                <label className=" text-teal-500">Slug</label>
                 <br/>
-                <input className="form-group" type="text"  value={subtitle} onChange={handleChange('subtitle')} />
+                <input className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  type="text"  value={forSlug} onChange={handleChange('forSlug')} />
             </div>
-            <div className="form-group">
-                <label className="text-primary">Slug</label>
+            <div >
+            <label className="text-teal-400">Description</label>
                 <br/>
-                <input className="form-group" type="text"  value={forSlug} onChange={handleChange('forSlug')} />
+              <textarea className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2" rows='10' placeholder="Job Description" maxLength='160' value={desc} onChange={handleChange('desc')}></textarea>
+              <h2 className="text-teal-400 font-bold">{160-desc.length}/160</h2>
             </div>
-            <div className="form-group">
-            <label className="text-primary">Description</label>
-                <br/>
-              <textarea className="blog textinput"placeholder="Job Description" maxLength='160' value={desc} onChange={handleChange('desc')}></textarea>
-              <h2 className="text-primary">{160-desc.length}/160</h2>
-            </div>
+               <input type="text" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  placeholder="Main category"  value={agency} onChange={handleChange('agency')} />
+               <input type="text" placeholder="Salary"  value={salary} onChange={handleChange('salary')} />
             
-            <div className="form-group">
-               <input type="text" placeholder="Main category"  value={agency} onChange={handleChange('agency')} required />
-            </div>
-            <div className="form-group">
-               <input type="text" placeholder="Salary"  value={salary} onChange={handleChange('salary')} required />
-            </div>
-            <div className="form-group">
-            <input type="text" placeholder="Location"  value={location} onChange={handleChange('location')} required />
-            </div>
-            <div className="form-group">
-            <input type="text" placeholder="Street"  value={street} onChange={handleChange('street')}  />
-            </div>
-            <div className="form-group">
-            <input type="text" placeholder="City"  value={city} onChange={handleChange('city')}  />
-            </div>
-            <div className="form-group">
-            <input type="text" placeholder="Postal Code"  value={postal} onChange={handleChange('postal')} />
-            </div>
-            <div className="form-group">
-            <input type="date" value={lastDate} onChange={handleChange('lastDate')}/>
-            </div>           
-            <div className="form-group">
-              <input type="text" placeholder="Qualification or skills needed"  value={qualification} onChange={handleChange('qualification')} required />
-            </div>
-            <div className="form-group">
-            <input type="text" placeholder="Type of Job"  value={type} onChange={handleChange('type')} required />
-            </div>
-            <div className="form-group">
-            <input type="text" placeholder="Position"  value={position} onChange={handleChange('position')} required />
-            </div>
-            <div className="form-group">
-            <input type="text" placeholder="Key Skills"  value={keySkills} onChange={handleChange('keySkills')} required />
-            </div>
-            <div className="form-group">
-            <input type="text" placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} required />
-            </div>
-            <div className="form-group">
-            <input type="text" placeholder="Official Website Link"  value={officialLink} onChange={handleChange('officialLink')} />
-            </div>
+            <input type="text" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  placeholder="Location"  value={location} onChange={handleChange('location')} />
+            <input type="date" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  value={lastDate} onChange={handleChange('lastDate')}/>
+              <input type="text" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  placeholder="Qualification or skills needed"  value={qualification} onChange={handleChange('qualification')} />
+            <input type="text" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  placeholder="Position"  value={position} onChange={handleChange('position')} /> 
+            <input type="text" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  placeholder="Key Skills"  value={keySkills} onChange={handleChange('keySkills')} />
+            <input type="text" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} />
+            <input type="text" placeholder="Official Website Link" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"   value={officialLink} onChange={handleChange('officialLink')} />
+         
             
 
             
@@ -288,18 +162,17 @@ const createJobForm = () => {
                     onChange={handleBody} /> */}
                     <SlatePlugins handleChange={handleBody}/>
             
-             <button type="submit" className="btn nbtn btn-dark my-1">Publish</button>
+             <button type="submit" className=" my-4 bg-teal-600 p-2 text-white font-bold rounded-md">Publish</button>
          </form>
     );
 };
 return (
-    <section className="blogCreate">
+    <section className="shadow-md shadow-green-400">
   
-    <div className="createMain">
-    <div className="blogDiv">
-       <h1 className="large text-primary">Create Job</h1>
-        <div className="line"></div>
-        <div className="createForm">
+    <div className="grid grid-cols-3 gap-3 px-14 lg:pt-24">
+    <div className="col-span-2">
+       <h1 className="text-4xl font-bold text-teal-500">Create Job</h1>
+        <div >
            {createJobForm()}
          
          {showError()}
@@ -307,32 +180,19 @@ return (
         
         </div>
     </div>
-    <div className="catagoriesTags">
-        <div>
-            <h3 className="text-primary">Featured Image</h3>
+   
+        <div className='flex flex-col'>
+            <h3 className=" text-teal-500 text-2xl">Featured Image</h3>
              <small className="text-light-gray">Max size: 1mb</small>
             <br />
-            <label className=" btn btn-dark nbtn">
+            <label className=" bg-black rounded-md text-white font-bold w-[50%] p-2 cursor-pointer">
                 Upload Featured Image
                 <input type="file" accept="image/*" onChange={handleChange('photo')}  hidden />
             </label>
            
-            <div className="line"></div>
         </div>
-     <div className="checkList">
-       <ul >
-       <h3 className="text-primary">Categories</h3>
-        <small className="text-light-gray">Select the category of your Job</small>
-        {showJobCategories()}
-         
-        </ul>
-        <ul >
-        <h3 className="text-primary">Tags</h3>
-        <small className="text-light-gray">Select the tags related to your Job</small>
-         {showJobTags()}
-      </ul>
-     </div>
-    </div>
+
+   
   </div>
 </section>
 )

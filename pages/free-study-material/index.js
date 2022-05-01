@@ -1,63 +1,99 @@
-import React from 'react';
-import Head from 'next/head';
+import {useState} from 'react';
 import dynamic from 'next/dynamic'
 import Card from '../../components/materials/Card';
 import { withRouter } from 'next/router';
 import {APP_NAME , DOMAIN} from '../../config'
-import {listMaterialWithCategories} from '../../actions/material'
-const LoadMoreMat =dynamic(async ()=>import('../../components/materials/LoadMoreMat'));
+import {listMaterialWithCategories} from '../../actions/material';
+import { BreadcrumbJsonLd,NextSeo } from 'next-seo';
 
-const FreeStudyMaterial = ({ router, materials,materialCategories,materialsLimit,totalmaterials}) => {
 
-    const head = () => (
-        <Head>
-            <title>100+ collection of free study material with best tips and tricks |The {APP_NAME}</title>
-            <link rel="canonical" href={`${DOMAIN}/free-study-material`} />
-            <meta name="robots" content="index follow" />
-            <meta name="description" 
-            content='Read and download 100+ articles which consists of free Pdfs ,tips and tricks ,syllabus,books pdfs,and study of Bansal classes akash and more top institutes of Kota.'
-            />
-            <meta property="og:title" content={`|The ${APP_NAME}`} />
-            <meta
-                property="og:description"
-                content='Read and download 100+ articles which consists of free Pdfs ,tips and tricks ,syllabuses,books pdfs,and study of Bansal classes akash and more top institutes of Kota.'
-            />
-            <meta property="og:type" content="webiste" />
-            <meta property="og:url" content={`${DOMAIN}/free-study-material`} />
-            <meta property="og:site_name" content={`The ${APP_NAME}`} />
-            <meta property="og:image" content={`${DOMAIN}/img/StuproLogo.png`} />
-            <meta property="og:image:secure_url" content={`${DOMAIN}/img/StuproLogo.png`} />
-            <meta property="og:image:type" content="img/StuproLogo.png" />
-        </Head>
-    );
+export async function getStaticProps(){
+
+    return listMaterialWithCategories().then(data => {
+        if (data.error) {
+            console.log(data.error);
+        } else {
+            return {
+                props:{
+                    materials: data
+                },
+                revalidate:60
+            };
+        }
+    });
+}
+
+
+const FreeStudyMaterial = ({ router, materials}) => {
+
+  const [visible,setVisible]=useState(10);
 
     const showAllMaterials = () => {
-        return materials.map((material, i) => {
+        return materials.slice(0,visible).map((material, i) => {
             // ()
             return (
-                <article className="my-1 " key={i} >
+                <article className='shadow-md rounded-md shadow-green-500 w-full lg:w-[20rem] mx-4 mb-3 p-2 transition ease-in-out delay-150  hover:ring-1 hover:ring-black hover:-translate-y-1 hover:scale-110' key={i} >
                  <Card material={material}/>
                </article>
             );
         });
     };
+    const showMoreItem=()=>{
+      setVisible((prevValue)=>prevValue+10)
+    }
     return (
-        <>
-        {head()}
-<section className='container'>
-  <h1 className="text-primary large">Free Study Material</h1>
-  <hr className='hr-1' />
-  <p className="text-primary small mb-1">Filter the study material according to your needs</p>
-  <a href="/free-study-material/material-search" className="btn btn-dark my-1 input-box">Click me to search</a>
-
- <div  className="new-flex">
+<>
+<NextSeo
+      title={`100+ collection of free study material with best tips and tricks |The ${APP_NAME}`}
+      description='Read and download 100+ articles which consists of free Pdfs ,tips and tricks ,syllabus,books pdfs,and study of Bansal classes akash and more top institutes of Kota.'
+      canonical={`https://www.theprograd.com/free-study-material`}
+      
+      openGraph={{
+        url: `https://www.theprograd.com/free-study-material`,
+        title:`100+ collection of free study material with best tips and tricks |The ${APP_NAME}`,
+        description:'Read and download 100+ articles which consists of free Pdfs ,tips and tricks ,syllabus,books pdfs,and study of Bansal classes akash and more top institutes of Kota.',
+        images:[
+        {
+           url: 'https://www.theprograd.com/img/book.svg',
+            width: 800,
+            height: 600,
+            alt: 'The ProGrad Home Page',
+            type: 'image/svg',
+          }
+          ],
+        site_name: 'The ProGrad',
+      }}
+      facebook={{
+        handle: '@handle',
+        site: '@site',
+        cardType: 'summary_large_image',
+        appId: '721482821740858'
+      }}
+    />
+    <BreadcrumbJsonLd
+      itemListElements={[
+        {
+          position: 1,
+          name: 'Home',
+          item: 'https://www.theprograd.com/',
+        },
+        {
+          position: 2,
+          name: 'Free Study Material',
+          item: 'https://www.theprograd.com/free-study-material',
+        }
+      
+      ]}
+    />
+    <section className='lg:pt-20 pt-14 lg:px-7'>
+ <div  className='flex flex-wrap p-2 my-1'>
  {showAllMaterials()}
- <LoadMoreMat listMaterialWithCategories={listMaterialWithCategories} totalMaterials={totalmaterials} materialsLimit={materialsLimit} />
-
  </div>
-
+ { materials.length >= 10 &&  <div>
+    <button className='bg-red-400 font-bold p-2' onClick={showMoreItem} >Load More</button>
+    </div>}
 </section>
-        </>
+</>
 
     )
 }
@@ -65,25 +101,5 @@ const FreeStudyMaterial = ({ router, materials,materialCategories,materialsLimit
 export default withRouter(FreeStudyMaterial)
 
 
-export async function getStaticProps(){
-    let skip = 0;
-    let limit = 10;
-    return listMaterialWithCategories(skip, limit).then(data => {
-        if (data.error) {
-            console.log(data.error);
-        } else {
-            return {
-                props:{
-                    materials: data.materials,
-                    materialCategories: data.materialCategories,
-                    totalmaterials: data.size,
-                    materialsLimit: limit,
-                    materialSkip: skip
 
-                },
-                revalidate:60
-            };
-        }
-    });
-}
 

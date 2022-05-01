@@ -1,50 +1,33 @@
 import Link from 'next/link';
 import React from 'react';
-import dynamic from 'next/dynamic'
-import moment from 'moment';
-import TagInSlug from '../reusables/TagInSlug';
-import CategoryInSlug from '../reusables/SlugCat';
-const SecurityIcon = dynamic(async () => import('@material-ui/icons/Security'), { ssr: false });
-const BusinessCenterIcon = dynamic(async () => import('@material-ui/icons/BusinessCenter'), { ssr: false });
-const RoomIcon = dynamic(async () => import('@material-ui/icons/Room'), { ssr: false });
+
 
 const Card = ({ job }) => {
-    const today = moment();
 
 
     return (
-        
-            <div className="nbtn job-read job  my-1" style={{ border: 'solid 1px #00cdbb' }}>
-                <div className="p-1 new-job-card" >
+       
+    
+        <div >
+        <Link href={`/jobs/${job.slug}`}>
+            <a><h2 className='text-xl font-bold text-teal-600 p-2 hover:underline' >{job.title}</h2></a>
+        </Link>
+        <p className='font-semibold px-2 text-blue-600'>{job.location}</p>
+        <p className='font-semibold  px-2 mb-3 text-primary'>{job.agency}</p>
+        <p className='text-gray-500 font-semibold text-base p-2'>{job.desc}</p>
+        <ul className='flex justify-between m-1'>
+            <li className='m-1 p-1 flex'>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 fill-green-400" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 5a1 1 0 100 2h1a2 2 0 011.732 1H7a1 1 0 100 2h2.732A2 2 0 018 11H7a1 1 0 00-.707 1.707l3 3a1 1 0 001.414-1.414l-1.483-1.484A4.008 4.008 0 0011.874 10H13a1 1 0 100-2h-1.126a3.976 3.976 0 00-.41-1H13a1 1 0 100-2H7z" clipRule="evenodd" />
+            </svg>
+            <p className='text-sm font-bold'>{job.salary ? `${job.salary }/month`: "As Per Norms"}</p>
+            </li>
+            <li className=' bg-teal-700 font-bold rounded-md text-white p-2 m-1'><Link href={`/jobs/${job.slug}`}><a>Apply Online</a></Link></li>
+        </ul>
 
-                    <Link href={`/jobs/${job.slug}`}>
-                    <a>
-                    <h1 className="lead text-success" style={{ lineHeight: '1.9rem' }}>{job.title}</h1>
-                    </a>
-                    </Link>
-                    <span className="extra-small p-1 text-primary"><SecurityIcon style={{ fontSize: 15 }} /><strong className='text-dark'> {job.agency}</strong></span>
-                </div>
-                <strong className="extra-small m-1 text-danger"> Last Date is {moment(job.lastDate).format("MMM DD YYYY")}</strong>
-                <div className='new-flex'>
-               <CategoryInSlug newCat='jobCategories' cats={job.jobCategories} />
-                    
-                <TagInSlug newTagRoute='jobTags' tags={job.jobTags} />
+        </div>
 
-                    
-                </div>
-                <div className="xyz">
-                    <div className='my-1'>
-                        <i className=" text-gray ">Rs.<span> </span> <strong >{job.salary}</strong></i>
-                        <i className=" text-gray "><BusinessCenterIcon /><span> </span><strong> {job.type}</strong></i>
-                        <i className=" text-gray "><RoomIcon /><span> </span><strong>{job.location}</strong></i>
-                    </div>
-                    <Link href={`/jobs/${job.slug}`}>
-                        <a className={`btn nbtn m-1 btn-${moment(job.lastDate).format() < today.format() ? 'danger' : 'primary'} `}>{moment(job.lastDate).format() < today.format() ? <strong>Closed</strong> : <strong>Apply Now</strong>}</a>
-                    </Link>
-                </div>
-
-            </div>
-      
+    
     )
 
 };

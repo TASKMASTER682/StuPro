@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import Link from 'next/link';
 import { getCookie, isAuth } from '../../actions/auth';
-import moment from 'moment';
 
 const Read = ({removeApi,list,newRoute,updateLink}) => {
     const [jobs, setJobs] = useState([]);
@@ -42,13 +41,13 @@ const Read = ({removeApi,list,newRoute,updateLink}) => {
         if (isAuth() && isAuth().role === 0) {
             return (
                 <Link href={`/user/${updateLink}/${job.slug}`}>
-                    <a className="btn nbtn btn-success">Update</a>
+                    <a className="bg-teal-400 rounded-md py-2 px-4 m-2">Update</a>
                 </Link>
             );
         } else if (isAuth() && isAuth().role === 1) {
             return (
               
-                    <a href={`/admin/${updateLink}/${job.slug}`} className="m-2 btn nbtn btn-success">Update</a>
+                    <a href={`/admin/${updateLink}/${job.slug}`} className="bg-teal-400 rounded-md py-2 px-4 m-2">Update</a>
                 
             );
         }
@@ -56,16 +55,16 @@ const Read = ({removeApi,list,newRoute,updateLink}) => {
     const showAll = () => {
         return jobs.map((job, i) => {
             return (
-                <div key={i} className="p-1">
+                <div key={i} className="p-2 shadow-md rounded-md my-3 ">
                     <Link href={`/${newRoute}/${job.slug}`}>
                     <a>
-                     <h2  className="text-dark small   " style={{lineHeight:'1.9rem'}}>
+                     <h2  className="text-lg font-bold">
                         {job.title}
                         </h2>
                     </a>
                     </Link>
               
-                    <button className="btn btn-danger nbtn" onClick={() => deleteConfirm(job.slug)}>
+                    <button className="bg-red-400 rounded-md py-2 px-4 m-2" onClick={() => deleteConfirm(job.slug)}>
                         Delete
                     </button>
                     {showUpdateButton(job)}
@@ -76,12 +75,11 @@ const Read = ({removeApi,list,newRoute,updateLink}) => {
     };
 
 
-    const today=moment();
 
     return (
         <React.Fragment>
 
-                <div className="blog">
+                <div >
                     {/* {message && <div className="alert alert-warning">{message}</div>} */}
                     {showAll()}
                 </div>

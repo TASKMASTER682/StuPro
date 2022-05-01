@@ -17,10 +17,10 @@ const MaterialCatCreate = () => {
         <>
         {head()}
             <Admin>
-             <section className="container">
-             <h1 className="large text-primary">Manage Job Tags and Categories</h1>
-             <div className="line"></div>
-               <h3 className="text-dark">Create a job category</h3>
+             <section className="lg:pt-20 lg:px-20 pt-14 px-3 mb-40">
+             <h1 className="text-2xl font-bold text-teal-500">Manage Material Categories</h1>
+             <hr />
+               <h3 className="text-lg font-bold my-2">Create a material category</h3>
                <MaterialCategory />
              </section>
             </Admin>

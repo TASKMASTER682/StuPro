@@ -18,11 +18,11 @@ const Blogs = () => {
     return (
         <>
     {head()}
-      <Layout>
+   
             <Admin>
                 <BlogRead />
             </Admin>
-        </Layout>
+     
         </>
   
     );

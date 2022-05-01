@@ -2,11 +2,10 @@ import React,{useMemo} from 'react';
 import {
     CodeBlockElement,
     withProps,
-    createSlatePluginsComponents,
-    createSlatePluginsOptions,
+    createPlugins,
     isBlockAboveEmpty,
     isSelectionAtBlockStart,
-    createBasicMarkPlugins,
+    // createBasicMarkPlugins,
     createHighlightPlugin,
     createLinkPlugin,
     createImagePlugin,
@@ -45,11 +44,11 @@ import {
     ELEMENT_CODE_LINE,
     ELEMENT_PARAGRAPH,
     ELEMENT_TH
-} from '@udecode/slate-plugins'
+} from '@udecode/plate'
 
 
 
-export const components = createSlatePluginsComponents();
+export const components = createPlugins();
 export const styledComponents = {
     ...components,
     [ELEMENT_CODE_BLOCK]: withProps(CodeBlockElement, {
@@ -71,7 +70,7 @@ export const styledComponents = {
 
 
 
-  export const options = createSlatePluginsOptions();
+  // export const options = createPluginsOptions();
 
 
   export const resetBlockTypesCommonRule = {
@@ -131,7 +130,7 @@ export const styledComponents = {
     // createExcalidrawPlugin(),
 
     // marks
-    createBasicMarkPlugins(),
+    // createBasicMarkPlugins(),
     createBoldPlugin(),           // bold mark
     createItalicPlugin(),         // italic mark
     createUnderlinePlugin(),      // underline mark

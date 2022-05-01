@@ -34,7 +34,7 @@ const MaterialCategory=()=>{
     const showMaterialCategories=()=>{
         return materialCategories.map((c,i)=>{
             return(
-                <button  style={{ padding:'0rem 0.8rem'}} onDoubleClick={() => deleteConfirm(c.slug)} title="Double click to delete" key={i} className="btn nbtn  btn-danger  my-1  "><p>{c.name}</p></button>
+                <button onDoubleClick={() => deleteConfirm(c.slug)} title="Double click to delete" key={i} className="px-3 py-1 m-2 text-sm font-bold rounded-md bg-slate-400"><p>{c.name}</p></button>
                 )    
             })
     };
@@ -86,10 +86,10 @@ const MaterialCategory=()=>{
         <form className="form" onSubmit={clickSubmit}>
             <div className="form-group">
                 
-                <input type="text" className="form-text" onChange={handleChange} placeholder="Catagory" value={name} required />
+                <input type="text" className=" p-2 ring-2 ring-teal-400 w-[70%] rounded-md" onChange={handleChange} placeholder="Catagory" value={name} required />
             </div>
             <div>
-                <button type="submit" className="btn btn-primary nbtn">
+                <button type="submit" className="px-3 py-2 my-2 font-bold text-white bg-teal-400 rounded-md ">
                     Create
                 </button>
             </div>
@@ -99,19 +99,19 @@ const MaterialCategory=()=>{
     
     const showSuccess = () => {
         if (success) {
-            return <div className="badge badge-success p-1 nbtn " style={{ display: success ? '' : 'none' }}>Category is created</div>;
+            return <div className="p-2 bg-green-200 " style={{ display: success ? '' : 'none' }}>Category is created</div>;
         }
     };
 
     const showError = () => {
         if (error) {
-            return <div className="badge badge-danger p-1 nbtn " style={{ display: error ? '' : 'none' }}>Category already exist</div>;
+            return <div className="p-2 bg-red-400 " style={{ display: error ? '' : 'none' }}>Category already exist</div>;
         }
     };
 
     const showRemoved = () => {
         if (removed) {
-            return <div className="badge badge-primary p-1 nbtn " style={{ display: removed ? '' : 'none' }}>Category is removed</div>;
+            return <div className="p-2 bg-red-400 " style={{ display: removed ? '' : 'none' }}>Category is removed</div>;
         }
     };
 

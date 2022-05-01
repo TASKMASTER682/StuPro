@@ -33,7 +33,7 @@ const Tag=()=>{
         return tags.map((t,i)=>{
             return(
                 <>
-                  <button  style={{ padding:'0rem 0.8rem'}} onDoubleClick={() => deleteConfirm(t.slug)} title="Double click to delete" key={i} className="btn btn-dark nbtn my-1 "><h4>{t.name}</h4></button>
+                  <button onDoubleClick={() => deleteConfirm(t.slug)} title="Double click to delete" key={i} className="px-3 py-1 m-1 text-sm font-bold bg-teal-400 rounded-md "><h4>{t.name}</h4></button>
                 </>
             )
         })
@@ -75,19 +75,19 @@ const Tag=()=>{
 
     const showSuccess = () => {
         if (success) {
-            return <div className=" p-1 nbtn badge badge-success" style={{ display: success ? '' : 'none' }}>Tag is created</div>;
+            return <div className="p-2 bg-green-300 " style={{ display: success ? '' : 'none' }}>Tag is created</div>;
         }
     };
 
     const showError = () => {
         if (error) {
-            return <div className="badge p-1 nbtn badge-danger" style={{ display: error ? '' : 'none' }}>Tag already exist</div>;
+            return <div className="p-2 bg-red-400 " style={{ display: error ? '' : 'none' }}>Tag already exist</div>;
         }
     };
 
     const showRemoved = () => {
         if (removed) {
-            return <div className="badge p-1 nbtn badge-danger" style={{ display: removed ? '' : 'none' }}>Tag is removed</div>;
+            return <div className="p-2 bg-red-400 " style={{ display: removed ? '' : 'none' }}>Tag is removed</div>;
         }
     };
   
@@ -101,10 +101,10 @@ const Tag=()=>{
         <form className="form" onSubmit={clickSubmit}>
             <div className="form-group">
                 
-                <input type="text" className="form-text" onChange={handleChange} placeholder="Tag" value={name} required />
+                <input type="text" className='p-2 rounded-md ring-2 ring-teal-400 w-[70%]' onChange={handleChange} placeholder="Tag" value={name} required />
             </div>
             <div>
-                <button type="submit" className="btn btn-primary nbtn">
+                <button type="submit" className="px-4 py-2 my-2 font-bold text-white bg-red-400 rounded-md ">
                     Create
                 </button>
             </div>

@@ -34,7 +34,7 @@ const JobTag=()=>{
             return(
                 <>
                
-                  <button  style={{ padding:'0rem 0.8rem'}} onDoubleClick={() => deleteConfirm(t.slug)} title="Double click to delete" key={i} className="btn btn-dark nbtn my-1 "><p>{t.name}</p></button>
+                  <button onDoubleClick={() => deleteConfirm(t.slug)} title="Double click to delete" key={i} className=" bg-teal-300 p-2  font-bold m-2 rounded-md "><p>{t.name}</p></button>
                 </>
             )
         })
@@ -98,16 +98,16 @@ const JobTag=()=>{
 
     const newJobTagFom = () => (
        
-        <form className="form" onSubmit={clickSubmit}>
-            <div className="form-group">
+        <form className="flex justify-between px-10 my-4 " onSubmit={clickSubmit}>
+            
                 
-                <input type="text" className="form-text" onChange={handleChange} placeholder="Tag" value={name} required />
-            </div>
-            <div>
-                <button type="submit" className="btn btn-primary nbtn">
+                <input type="text" className=" w-full mx-4 rounded-md ring-2 ring-teal-500 p-2" onChange={handleChange} placeholder="Tag" value={name} required />
+            
+            
+                <button type="submit" className=" bg-red-400 rounded-md text-white font-bold p-2">
                     Create
                 </button>
-            </div>
+            
         </form>
         
     );
@@ -123,7 +123,7 @@ const JobTag=()=>{
            
             <div onMouseMove={mouseMoveHandler}>
                 {newJobTagFom()}
-                <div className="catagoriesAndTags">
+                <div className=" flex flex-wrap">
                 {showJobTags()}
                 </div>
             </div>

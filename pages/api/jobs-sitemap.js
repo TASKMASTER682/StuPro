@@ -83,7 +83,7 @@ export default async (req, res) => {
           smStream.write({
             url: `/blogs/${blog.slug}`,
             changefreq: 'weekly',
-            priority: 0.9,
+            priority: 0.7,
           });
         })
         : "";

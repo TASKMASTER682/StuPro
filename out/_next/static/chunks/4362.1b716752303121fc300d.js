@@ -1,1 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[4362],{54362:function(e,n,s){"use strict";s.r(n);var r=s(85893),c=(s(67294),s(88043));n.default=function(e){var n=e.url,s=e.name;return(0,r.jsx)("div",{children:(0,c.$D)()&&1===(0,c.$D)().role?(0,r.jsx)("a",{href:n,className:"m-1 btn nbtn btn-success",children:s}):""})}}}]);
