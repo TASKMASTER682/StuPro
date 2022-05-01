@@ -2,7 +2,7 @@ import { SitemapStream, streamToPromise } from 'sitemap';
 import { list } from '../../actions/sitemap';
 import { listPvt } from '../../actions/sitemap';
 import { listBlog } from '../../actions/sitemap';
-import moment from 'moment';
+import {format} from 'date-fns';
 import {DOMAIN} from '../../config'
 
 
@@ -23,14 +23,14 @@ export default async (req, res) => {
       url: `/`,
       changefreq: 'daily',
       priority: 1,
-      lastmod:`${moment()}`
+      lastmod:`${format(new Date(),'dd MMM yyyy')}`
     });
     smStream.write('/about');
     smStream.write({
       url: `/jobs`,
       changefreq: 'daily',
       priority: 0.9,
-      lastmod:`${moment()}`
+      lastmod:`${format(new Date(),'dd MMM yyyy')}`
       
      
     });
@@ -38,7 +38,7 @@ export default async (req, res) => {
       url: `/privateJobs`,
       changefreq: 'daily',
       priority: 0.9,
-      lastmod:`${moment()}`
+      lastmod:`${format(new Date(),'dd MMM yyyy')}`
 
 
     });
@@ -59,7 +59,7 @@ export default async (req, res) => {
           url: `/jobs/${job.slug}`,
           changefreq: 'weekly',
           priority: 0.8,
-          lastmod:`${job.updatedAt}`
+          lastmod:`${format(new Date(job.updatedAt),'dd MMM yyyy')}`
 
         });
       })
@@ -72,7 +72,7 @@ export default async (req, res) => {
           url: `/privateJobs/${pvtJob.slug}`,
           changefreq: 'weekly',
           priority: 0.8,
-          lastmod:`${pvtJob.updatedAt}`
+          lastmod:`${format(new Date(pvtJob.updatedAt),'dd MMM yyyy')}`
         });
       })
       : "";

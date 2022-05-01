@@ -6,12 +6,10 @@ import { getCookie, isAuth } from '../../actions/auth';
 import { getCategories } from '../../actions/category';
 import { getTags } from '../../actions/tag';
 import { createBlog } from '../../actions/blog';
-// const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-// import { QuillModules, QuillFormats } from '../../helpers/quill';
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+import { QuillModules, QuillFormats } from '../../helpers/quill';
 import Checkbox from '@material-ui/core/Checkbox';
-const SlatePlugins = dynamic(() => import('../slate-plugins/index'), { loading: () => "",ssr: false  })
-import {serializeHTMLFromNodes,createEditorPlugins} from '@udecode/slate-plugins';
-import { pluginsBasic ,initialValueBasicElements} from '../slate-plugins/utils';
+
 
 
 const CreateBlog=({router})=>{
@@ -83,7 +81,7 @@ const CreateBlog=({router})=>{
                 if (data.error) {
                     setValues({ ...values, error: data.error,});
                 } else {
-                    setValues({ ...values, title: '',subtitle:'',desc:'',language:'',forSlug:'', error: '', success: `A new blog titled "${data.title}" is created` });
+                    setValues({ ...values, title: '',desc:'',language:'',forSlug:'', error: '', success: `A new blog titled "${data.title}" is created` });
                     setBody('');
                     setCategories([]);
                     setTags([]);
@@ -102,15 +100,9 @@ const CreateBlog=({router})=>{
         const handleBody =(e)=> {
 
             setBody(e);
-            const nodes=[...e];
-            const editor=createEditorPlugins(e);
-            const html=serializeHTMLFromNodes(editor,{
-                plugins:pluginsBasic,
-                nodes
-              });
-            formData.set('body', html);
+            formData.set('body', e);
             if (typeof window !== 'undefined') {
-                localStorage.setItem('blog', JSON.stringify(html));
+                localStorage.setItem('blog', JSON.stringify(e));
             }
         };
     
@@ -218,14 +210,14 @@ const CreateBlog=({router})=>{
               <h2 className="font-bold text-teal-600">{160-desc.length}/160</h2>
             </div>
                 
-                {/* <ReactQuill
+                <ReactQuill
                          modules={QuillModules}
                         formats={QuillFormats}
                         value={body}
                         placeholder="Write something amazing..."
-                        onChange={handleBody} /> */}
-                        <SlatePlugins handleChange={handleBody}/>
-                 <button type="submit" className="p-2 my-2 font-bold text-white bg-teal-600 rounded-md ">Publish</button>
+                        theme="snow"
+                        onChange={handleBody} />
+                 <button type="submit" className="p-2 my-2 font-bold text-white bg-teal-600 bg-teal-700 rounded-md ">Publish</button>
              </form>
         );
     };

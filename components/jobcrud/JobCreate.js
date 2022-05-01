@@ -6,14 +6,8 @@ import { getJobCategories } from '../../actions/jobCategory';
 import { getJobTags } from '../../actions/jobTag';
 import { createJob } from '../../actions/job';
 import Checkbox from '@material-ui/core/Checkbox';
-const SlatePlugins = dynamic(() => import('../slate-plugins/index'), { loading: () => "",ssr: false  })
-import {serializeHTMLFromNodes,createEditorPlugins} from '@udecode/slate-plugins';
-import {pluginsBasic,initialValueBasicElements} from '../slate-plugins/utils'
-
-
-
-
-
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+import { QuillModules, QuillFormats } from '../../helpers/quill';
 
 
 const CreateJob=({router})=>{
@@ -109,15 +103,10 @@ const CreateJob=({router})=>{
     const handleBody =(e)=> {
 
         setBody(e);
-        const nodes=[...e];
-        const editor=createEditorPlugins(e);
-        const html=serializeHTMLFromNodes(editor,{
-            plugins:pluginsBasic,
-            nodes
-          });
-        formData.set('body', html);
+
+        formData.set('body', e);
         if (typeof window !== 'undefined') {
-            localStorage.setItem('job', JSON.stringify(html));
+            localStorage.setItem('job', JSON.stringify(e));
         }
     };
 
@@ -219,8 +208,14 @@ const createJobForm = () => {
               <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" placeholder="Qualification or skills needed"  value={qualification} onChange={handleChange('qualification')} required />
             <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} />
             <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"  placeholder="Official Website Link"  value={officialLink} onChange={handleChange('officialLink')} />
-            <SlatePlugins handleChange={handleBody} />
-             <button type="submit" className="p-2 px-3 my-1 font-bold text-white bg-teal-600 rounded-md ">Publish</button>
+            <ReactQuill
+                     modules={QuillModules}
+                    formats={QuillFormats}
+                    value={body}
+                    placeholder="Write something amazing..."
+                    onChange={handleBody}
+                />             
+                <button type="submit" className="p-2 px-3 my-1 font-bold text-white bg-teal-600 rounded-md ">Publish</button>
          </form>
     );
 };

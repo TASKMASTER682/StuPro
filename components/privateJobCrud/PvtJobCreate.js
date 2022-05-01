@@ -2,16 +2,9 @@ import React,{ useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { withRouter } from 'next/router';
 import { getCookie } from '../../actions/auth';
-
 import { createPvtJob } from '../../actions/privateJob';
-// const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-// import { QuillModules, QuillFormats } from '../../helpers/quill';
-import Checkbox from '@material-ui/core/Checkbox';
-import SlatePlugins from '../slate-plugins/index';
-import {serializeHTMLFromNodes,createEditorPlugins} from '@udecode/plate';
-import { pluginsBasic ,initialValueBasicElements} from '../slate-plugins/utils';
-
-
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+import { QuillModules, QuillFormats } from '../../helpers/quill';
 
 
 
@@ -28,11 +21,6 @@ const CreatePvtJob=({router})=>{
         }
     };
 
-
-
-
-
-
     const [body, setBody] = useState(jobFromLS());
     const [values, setValues] = useState({
         error: '',
@@ -45,7 +33,6 @@ const CreatePvtJob=({router})=>{
         position:'',
         keySkills:'',
         salary:'',
-       
         qualification:'',
         location:'',
        lastDate:'',
@@ -85,26 +72,13 @@ const CreatePvtJob=({router})=>{
         setValues({ ...values, [name]: value, formData, error: '' });
     };
 
-    // const handleBody = e => {
-    //     // console.log(e);
-    //     setBody(e);
-    //     formData.set('body', e);
-    //     if (typeof window !== 'undefined') {
-    //         localStorage.setItem('privateJob', JSON.stringify(e));
-    //     }
-    // };
+
     const handleBody =(e)=> {
 
         setBody(e);
-        const nodes=[...e];
-        const editor=createEditorPlugins(e);
-        const html=serializeHTMLFromNodes(editor,{
-            plugins:pluginsBasic,
-            nodes
-          });
-        formData.set('body', html);
+        formData.set('body', e);
         if (typeof window !== 'undefined') {
-            localStorage.setItem('privateJob', JSON.stringify(html));
+            localStorage.setItem('privateJob', JSON.stringify(e));
         }
     };
 
@@ -126,43 +100,39 @@ const createJobForm = () => {
             <div>
                 <label className="text-primary">Title</label>
                 <br/>
-                <input  className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  type="text"  value={title} onChange={handleChange('title')} />
+                <input  className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"  type="text"  value={title} onChange={handleChange('title')} />
             </div>
-
             <div>
-                <label className=" text-teal-500">Slug</label>
+                <label className="text-teal-500 ">Slug</label>
                 <br/>
-                <input className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  type="text"  value={forSlug} onChange={handleChange('forSlug')} />
+                <input className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"  type="text"  value={forSlug} onChange={handleChange('forSlug')} />
             </div>
             <div >
             <label className="text-teal-400">Description</label>
                 <br/>
-              <textarea className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2" rows='10' placeholder="Job Description" maxLength='160' value={desc} onChange={handleChange('desc')}></textarea>
-              <h2 className="text-teal-400 font-bold">{160-desc.length}/160</h2>
+              <textarea className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" rows='10' placeholder="Job Description" maxLength='160' value={desc} onChange={handleChange('desc')}></textarea>
+              <h2 className="font-bold text-teal-400">{160-desc.length}/160</h2>
             </div>
-               <input type="text" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  placeholder="Main category"  value={agency} onChange={handleChange('agency')} />
+               <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"  placeholder="Main category"  value={agency} onChange={handleChange('agency')} />
                <input type="text" placeholder="Salary"  value={salary} onChange={handleChange('salary')} />
             
-            <input type="text" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  placeholder="Location"  value={location} onChange={handleChange('location')} />
-            <input type="date" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  value={lastDate} onChange={handleChange('lastDate')}/>
-              <input type="text" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  placeholder="Qualification or skills needed"  value={qualification} onChange={handleChange('qualification')} />
-            <input type="text" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  placeholder="Position"  value={position} onChange={handleChange('position')} /> 
-            <input type="text" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  placeholder="Key Skills"  value={keySkills} onChange={handleChange('keySkills')} />
-            <input type="text" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"  placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} />
-            <input type="text" placeholder="Official Website Link" className="ring-2 ring-teal-500 p-2 rounded-md w-full my-2"   value={officialLink} onChange={handleChange('officialLink')} />
+            <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"  placeholder="Location"  value={location} onChange={handleChange('location')} />
+            <input type="date" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"  value={lastDate} onChange={handleChange('lastDate')}/>
+              <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"  placeholder="Qualification or skills needed"  value={qualification} onChange={handleChange('qualification')} />
+            <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"  placeholder="Position"  value={position} onChange={handleChange('position')} /> 
+            <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"  placeholder="Key Skills"  value={keySkills} onChange={handleChange('keySkills')} />
+            <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"  placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} />
+            <input type="text" placeholder="Official Website Link" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"   value={officialLink} onChange={handleChange('officialLink')} />
          
-            
-
-            
-            {/* <ReactQuill
+    
+            <ReactQuill
                     modules={QuillModules}
                     formats={QuillFormats}
                     value={body}
                     placeholder="Write something amazing..."
-                    onChange={handleBody} /> */}
-                    <SlatePlugins handleChange={handleBody}/>
+                    onChange={handleBody} />
             
-             <button type="submit" className=" my-4 bg-teal-600 p-2 text-white font-bold rounded-md">Publish</button>
+             <button type="submit" className="p-2 my-4 font-bold text-white bg-teal-600 rounded-md ">Publish</button>
          </form>
     );
 };
@@ -182,7 +152,7 @@ return (
     </div>
    
         <div className='flex flex-col'>
-            <h3 className=" text-teal-500 text-2xl">Featured Image</h3>
+            <h3 className="text-2xl text-teal-500 ">Featured Image</h3>
              <small className="text-light-gray">Max size: 1mb</small>
             <br />
             <label className=" bg-black rounded-md text-white font-bold w-[50%] p-2 cursor-pointer">

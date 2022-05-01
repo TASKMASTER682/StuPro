@@ -6,12 +6,9 @@ import renderHTML from 'react-render-html';
 import { getCookie, isAuth } from '../../actions/auth';
 import { getMaterialCategories } from '../../actions/materialCategory';
 import { singleMaterial, updateMaterial } from '../../actions/material';
-// const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-// import { QuillModules, QuillFormats } from '../../helpers/quill';
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+import { QuillModules, QuillFormats } from '../../helpers/quill';
 import Checkbox from '@material-ui/core/Checkbox';
-const SlatePlugins = dynamic(() => import('../slate-plugins/index'), { loading: () => "",ssr: false  })
-import {serializeHTMLFromNodes,createEditorPlugins} from '@udecode/slate-plugins';
-import {pluginsBasic,initialValueBasicElements} from '../slate-plugins/utils'
 import {API} from '../../config'
 
 
@@ -142,15 +139,9 @@ const MaterialUpdate=({router})=>{
     const handleBody =(e)=> {
 
         setBody(e);
-        const nodes=[...e];
-        const editor=createEditorPlugins(e);
-        const html=serializeHTMLFromNodes(editor,{
-            plugins:pluginsBasic,
-            nodes
-          });
-        formData.set('body', html);
+        formData.set('body', e);
         if (typeof window !== 'undefined') {
-            localStorage.setItem('blog', JSON.stringify(html));
+            localStorage.setItem('blog', JSON.stringify(e));
         }
     };
 
@@ -247,8 +238,14 @@ const MaterialUpdate=({router})=>{
 
             </select>
                      
-            <SlatePlugins  handleChange={handleBody} />
-            <button type="submit" className="p-2 my-1 font-bold text-white bg-teal-600 rounded-md ">Update</button>
+            <ReactQuill
+                     modules={QuillModules}
+                    formats={QuillFormats}
+                    value={body}
+                    placeholder="Write something amazing..."
+                    onChange={handleBody}
+                /> 
+                <button type="submit" className="p-2 my-1 font-bold text-white bg-teal-600 rounded-md ">Update</button>
        
          </form>
         )

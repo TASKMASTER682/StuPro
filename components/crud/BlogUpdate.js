@@ -239,8 +239,6 @@ const BlogUpdate=({router})=>{
                     placeholder="Write something amazing..."
                     onChange={handleBody}
                 />
-           
-
             <div>
                 <button type="submit" className="p-2 font-bold text-white bg-teal-600 rounded-md">
                     Update

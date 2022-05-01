@@ -2,7 +2,7 @@ import Layout from '../components/Layout';
 import "../styles/global.css";
 import Script from 'next/script';
 import NextNProgress from 'nextjs-progressbar';
-
+import 'react-quill/dist/quill.snow.css';
 
 
 

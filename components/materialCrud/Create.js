@@ -5,9 +5,8 @@ import { getCookie} from '../../actions/auth';
 import { getMaterialCategories } from '../../actions/materialCategory';
 import { createMaterial } from '../../actions/material';
 import Checkbox from '@material-ui/core/Checkbox';
-const SlatePlugins = dynamic(() => import('../slate-plugins/index'), { loading: () => "",ssr: false  })
-import {  createEditorPlugins,serializeHTMLFromNodes} from '@udecode/slate-plugins';
-import { pluginsBasic,initialValueBasicElements } from '../slate-plugins/utils';
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+import { QuillModules, QuillFormats } from '../../helpers/quill';
 
 
 
@@ -96,18 +95,10 @@ const CreateMaterial=({router})=>{
 
 
     const handleBody = (e) => {
-            setBody(e)
-
-      const nodes=[...e];
-      const editor=createEditorPlugins(e);
-      const html=serializeHTMLFromNodes(editor,{
-          plugins:pluginsBasic,
-          nodes
-        });
-
-    formData.set('body', html);
+    setBody(e)
+    formData.set('body', e);
     if (typeof window !== 'undefined') {
-        localStorage.setItem('material', JSON.stringify(html));
+        localStorage.setItem('material', JSON.stringify(e));
     };
 }
 
@@ -214,8 +205,14 @@ const createMaterialForm = () => {
                 <option value="Solutions">Handwritten Notes Pdf</option>
 
             </select>
-            <SlatePlugins  handleChange={handleBody} newValue={body} />
-            <button type="submit" className="p-2 px-3 my-1 font-bold text-white bg-teal-600 rounded-md ">Publish</button>
+            <ReactQuill
+                     modules={QuillModules}
+                    formats={QuillFormats}
+                    value={body}
+                    placeholder="Write something amazing..."
+                    onChange={handleBody}
+                />             
+                <button type="submit" className="p-2 px-3 my-4 font-bold text-white bg-teal-600 rounded-md ">Publish</button>
          </form>
     );
 };

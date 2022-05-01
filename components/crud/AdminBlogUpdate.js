@@ -8,10 +8,8 @@ import { getTags } from '../../actions/tag';
 import { singleBlog, updateBlog } from '../../actions/blog';
 import { API } from '../../config';
 import Checkbox from '@material-ui/core/Checkbox';
-const SlatePlugins = dynamic(() => import('../slate-plugins/index'), { loading: () => "",ssr: false  })
-import {serializeHTMLFromNodes,createEditorPlugins} from '@udecode/slate-plugins';
-import {pluginsBasic,initialValueBasicElements} from '../slate-plugins/utils'
-
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+import { QuillModules, QuillFormats } from '../../helpers/quill';
 
 const AdminBlogUpdate=({router})=>{
     const [body, setBody] = useState('');
@@ -186,21 +184,10 @@ const AdminBlogUpdate=({router})=>{
     };
 
 
-    const handleBody =(e)=> {
-
+    const handleBody = e => {
         setBody(e);
-        const nodes=[...e];
-        const editor=createEditorPlugins(e);
-        const html=serializeHTMLFromNodes(editor,{
-            plugins:pluginsBasic,
-            nodes
-          });
-        formData.set('body', html);
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('blog', JSON.stringify(html));
-        }
+        formData.set('body', e);
     };
-
     const editBlog = (e) => {
         e.preventDefault();
         // let formData = new FormData();
@@ -266,12 +253,15 @@ const AdminBlogUpdate=({router})=>{
               <h2 className="font-bold text-teal-400 ">{160-desc.length}/160</h2>
             </div>
             
- 
-                <SlatePlugins handleChange={handleBody} />
-           
-
             <div>
-                <button type="submit" className="p-2 font-bold text-white bg-teal-600 rounded-md">
+            <ReactQuill
+                     modules={QuillModules}
+                    formats={QuillFormats}
+                    value={body}
+                    placeholder="Write something amazing..."
+                    onChange={handleBody}
+                />
+                <button type="submit" className="p-2 my-4 font-bold text-white bg-teal-600 rounded-md">
                     Update
                 </button>
             </div>

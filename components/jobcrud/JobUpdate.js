@@ -8,9 +8,8 @@ import { getJobTags } from '../../actions/jobTag';
 import { singleJob, updateJob } from '../../actions/job';
 import { API } from '../../config';
 import Checkbox from '@material-ui/core/Checkbox';
-const SlatePlugins = dynamic(() => import('../slate-plugins/index'), { loading: () => "",ssr: false  })
-import {serializeHTMLFromNodes,createEditorPlugins} from '@udecode/slate-plugins';
-import {pluginsBasic,initialValueBasicElements} from '../slate-plugins/utils'
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+import { QuillModules, QuillFormats } from '../../helpers/quill';
 
 
 
@@ -202,19 +201,9 @@ const JobUpdate=({router})=>{
     };
 
     const handleBody =(e)=> {
-
         setBody(e);
-        const nodes=[...e];
-        const editor=createEditorPlugins(e);
-        const html=serializeHTMLFromNodes(editor,{
-            plugins:pluginsBasic,
-            nodes
-          });
-        formData.set('body', html);
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('job', JSON.stringify(html));
-        }
-    };;
+        formData.set('body', e);
+    };
 
     const editJob = (e) => {
         e.preventDefault();
@@ -235,13 +224,13 @@ const JobUpdate=({router})=>{
     };
 
     const showError = () => (
-        <div className="badge badge-danger p-1" style={{ display: error ? '' : 'none' }}>
+        <div className="p-1 badge badge-danger" style={{ display: error ? '' : 'none' }}>
             {error}
         </div>
     );
 
     const showSuccess = () => (
-        <div className="badge badge-success p-1" style={{ display: success ? '' : 'none' }}>
+        <div className="p-1 badge badge-success" style={{ display: success ? '' : 'none' }}>
             {success}
         </div>
     );
@@ -251,31 +240,35 @@ const JobUpdate=({router})=>{
         <form className='px-6' onSubmit={editJob}>
 
             <div>
-                <label className='text-teal-400 my-2'>Title</label>
+                <label className='my-2 text-teal-400'>Title</label>
                 <br/>
-                <input className='rounded-sm ring-2 ring-teal-500 p-2 w-full ' type="text"  value={title} onChange={handleChange('title')} />
+                <input className='w-full p-2 rounded-sm ring-2 ring-teal-500 ' type="text"  value={title} onChange={handleChange('title')} />
             </div>
             <div >
-            <label className='text-teal-400 my-2'>Description</label>
+            <label className='my-2 text-teal-400'>Description</label>
                 <br/>
-              <textarea className="rounded-sm ring-2 ring-teal-500 p-2 w-full "placeholder="Job Description" maxLength='160' rows='7' value={desc} onChange={handleChange('desc')}></textarea>
+              <textarea className="w-full p-2 rounded-sm ring-2 ring-teal-500 "placeholder="Job Description" maxLength='160' rows='7' value={desc} onChange={handleChange('desc')}></textarea>
               <h2 className="text-lg font-bold text-red-500">{160-desc.length}/160</h2>
             </div>
-               <input className='rounded-sm ring-2 ring-teal-500 p-2 w-full my-2' type="text" placeholder="Agency"  value={agency} onChange={handleChange('agency')} required />
-               <input className='rounded-sm ring-2 ring-teal-500 p-2 w-full my-2 ' type="text" placeholder="Salary"  value={salary} onChange={handleChange('salary')} required />
-            <input type="text" className='rounded-sm ring-2 ring-teal-500 p-2 w-full  my-2' placeholder="Location"  value={location} onChange={handleChange('location')} required />
-            <input className='rounded-sm ring-2 ring-teal-500 p-2 w-full my-2' type="date" value={lastDate} onChange={handleChange('lastDate')}/>
-              <input className='rounded-sm ring-2 ring-teal-500 p-2 w-full my-2' type="text" placeholder="Qualification needed"  value={qualification} onChange={handleChange('qualification')} required />
-            <input type="text" className='rounded-sm ring-2 ring-teal-500 p-2 w-full my-2' placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} required />
-            <input className='rounded-sm ring-2 ring-teal-500 p-2 w-full my-2' type="text" placeholder="Official Website Link"  value={officialLink} onChange={handleChange('officialLink')}  />
+               <input className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' type="text" placeholder="Agency"  value={agency} onChange={handleChange('agency')} required />
+               <input className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500 ' type="text" placeholder="Salary"  value={salary} onChange={handleChange('salary')} required />
+            <input type="text" className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' placeholder="Location"  value={location} onChange={handleChange('location')} required />
+            <input className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' type="date" value={lastDate} onChange={handleChange('lastDate')}/>
+              <input className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' type="text" placeholder="Qualification needed"  value={qualification} onChange={handleChange('qualification')} required />
+            <input type="text" className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} required />
+            <input className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' type="text" placeholder="Official Website Link"  value={officialLink} onChange={handleChange('officialLink')}  />
            
-
- 
-                <SlatePlugins handleChange={handleBody} />
 
                
             <div>
-                <button type="submit" className='rounded-md bg-teal-600 font-bold p-2 my-2 text-white'>
+            <ReactQuill
+                     modules={QuillModules}
+                    formats={QuillFormats}
+                    value={body}
+                    placeholder="Write something amazing..."
+                    onChange={handleBody}
+                />  
+                <button type="submit" className='p-2 my-2 font-bold text-white bg-teal-600 rounded-md'>
                     Update
                 </button>
             </div>
@@ -291,7 +284,7 @@ const JobUpdate=({router})=>{
         <div className='grid grid-cols-3 gap-3 lg:pt-24'>
     
         <div className='col-span-2'>
-            <h1 className='text-2xl p-2 font-bold text-teal-500'>Update Job</h1>
+            <h1 className='p-2 text-2xl font-bold text-teal-500'>Update Job</h1>
             <hr />
             <div >
                {updateJobForm()}
@@ -305,9 +298,9 @@ const JobUpdate=({router})=>{
         <div >
             <div >
                 <h3 className='text-lg font-bold text-teal-500'>Featured Image</h3>
-                <p className='text-gray-500 text-sm'>Max size: 1mb</p>
+                <p className='text-sm text-gray-500'>Max size: 1mb</p>
                 <br />
-                <label className='bg-black rounded-md p-2 text-white cursor-pointer'>
+                <label className='p-2 text-white bg-black rounded-md cursor-pointer'>
                     Upload Featured Image
                     <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
                 </label>
@@ -315,8 +308,8 @@ const JobUpdate=({router})=>{
           
          <div className='flex justify-around my-4'>
            
-            <ul className=' max-h-screen overflow-scroll' >
-            <h3 className=" text-teal-400">Category</h3>
+            <ul className='max-h-screen overflow-scroll ' >
+            <h3 className="text-teal-400 ">Category</h3>
              {showJobCategories()}
             </ul>
 
