@@ -80,6 +80,14 @@ return(
         title:`${blog.title} `,
         description:`${blog.desc}`,
         site_name: 'The ProGrad',
+        images: [
+          {
+            url: `${photo} `,
+            width: 850,
+            height: 650,
+            alt:` ${blog.title}`,
+          },
+        ],
       }}
       facebook={{
         handle: '@handle',

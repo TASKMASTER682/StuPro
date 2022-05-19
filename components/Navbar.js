@@ -13,9 +13,6 @@ const Navbar=()=>{
   const [show,setShow]=useState(false);
   const [smallShow,setSmallShow]=useState(false);
 
-  // <?xml version="1.0" standalone="no"?>
-  // <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-  //  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 
     return(
     <>
@@ -79,9 +76,6 @@ const Navbar=()=>{
 </Link>
 </li>
 
-{/* drop down by me */}
-
-
 
 {isAuth() &&
 <>
@@ -100,66 +94,3 @@ const Navbar=()=>{
 }
 export default Navbar;
 
-{/* <nav className=''>
-    <div className="" >
- 
-    
-     </div>
-     <div className={show ? 'v' : 'm'}>
-     <ul >
-         <li><h3 className=''><Link href="/about"><a>About us</a></Link></h3></li>
-         <li className="">
-         <h3 className=''>Our Services</h3>
-         <div className="">
-           <Link href='/jobs'><a>Government Jobs</a></Link>
-           <Link href='/privateJobs' ><a>Private Jobs</a></Link>
-           <Link href='/instant-jobs' ><a>Instant Jobs</a></Link>
-           <Link href='/free-study-material' ><a>Free Study Material</a></Link>
-           <Link href='/user/crud/blog' ><a>Share Ideas</a></Link>
-           <Link href='/blogs' ><a>Educational Blogs</a></Link>
-
-         </div>
-         </li>
-        <li><h3 className=''><Link href="/contact"><a>Contact us</a></Link></h3></li> 
-        <li><h3 className=''><Link href="/free-cv-builder"><a>Create CV</a></Link></h3></li> 
-      </ul>
-     </div>
-<div className="auth-links">
-<ul >
-           {isAuth() && isAuth().role === 0 && (
-                <>
-               <li><Link href="/user" ><a className=""><AccountCircleIcon style={{fontSize:15}}/> <span className="text-light">{`${isAuth().name}'s Dashboard`}</span></a></Link></li>
-                </>
-            )}
-            {isAuth() && isAuth().role === 1 && (
-                <li><Link href="/admin" ><a  className=""><span> {`${isAuth().name}'s Dashboard`}</span></a></Link></li>              )}
-            {!isAuth() && ( 
-           <>
-             <li><a href="/signin"  className =""><ExitToAppIcon style={{fontSize:15}}/>Sign in<span> </span></a></li>
-             <li><Link href="/signup"><a className =""> Sign up <span> </span><PersonAddIcon style={{fontSize:16}}/></a></Link></li>
-           </>
-            )}
-            
-           
-     </ul>
-</div>
-
-     <div className="p-1 hamburger"><MenuIcon onClick={()=>setShow(!show)} className="text-dark" style={{fontSize:40}} /></div>
-  </nav>
-         <ul className="bottom-nav " style={{zIndex:'1'}}>    
-         {!isAuth() && (<li><strong><a href='/signin' className='text-dark'><PersonAddIcon style={{fontSize:35}}/></a></strong></li>)}
-         {isAuth() && (<li><Link href={isAuth().role===1 ? '/admin' :'/user'} ><a className=''><DashboardIcon style={{fontSize:35}}/></a></Link></li>)}
-         <li>
-           <Link  href="/jobs"><a className=''><WorkIcon  style={{fontSize:35}}/></a></Link>  
-         </li>
-         <li>
-           <Link  href="/privateJobs"><a className=''><BusinessIcon style={{fontSize:35}}/></a></Link>  
-         </li>
-         <li>
-            <Link href="/blogs"><a className=''><LibraryBooksIcon style={{fontSize:35}}/></a></Link>
-         </li>
-         </ul> */}
-
-
-
-         

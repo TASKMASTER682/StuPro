@@ -88,10 +88,10 @@ const router=useRouter();
         description:`${job.desc}`,
         images:[
         {
-           url: `${API}/jobs/photo/${job.slug}`,
+           url: `${photo ? photo : '/img/pvt-job.jpg' }`,
             width: 800,
             height: 600,
-            alt: 'The ProGrad Home Page',
+            alt: `${job.title}`,
             type: 'image/jpeg',
           }
           ],

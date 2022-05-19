@@ -14,7 +14,7 @@ const Card = ({ job }) => {
         </Link>
         <p className='font-semibold px-2 text-blue-600'>{job.location}</p>
         <p className='font-semibold  px-2 mb-3 text-primary'>{job.agency}</p>
-        <p className='text-gray-500 font-semibold text-base p-2'>{job.desc}</p>
+        <p className='text-gray-500 font-semibold text-base p-2'>{`${job.desc.substr(0-300)}`}<span className='text-red-400'>....Read More</span></p>
         <ul className='flex justify-between m-1'>
             <li className='m-1 p-1 flex'>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 fill-green-400" viewBox="0 0 20 20">

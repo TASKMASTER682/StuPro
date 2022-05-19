@@ -82,6 +82,15 @@ const SinglePvtJob = ({privateJob,photo}) => {
         title:`${privateJob.title} `,
         description:`${privateJob.desc}`,
         site_name: 'The ProGrad',
+        images:[
+        {
+           url: `${photo ? photo : '/img/pvt-job.jpg' }`,
+            width: 800,
+            height: 600,
+            alt: `${privateJob.title}`,
+            type: 'image/jpeg',
+          }
+          ],
       }}
       facebook={{
         handle: '@handle',
@@ -171,7 +180,7 @@ const SinglePvtJob = ({privateJob,photo}) => {
         <li className='flex text-sm font-bold text-slate-900'>
         <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mx-2 stroke-green-500 fill-transparent "  viewBox="0 0 24 24" strokeWidth="2">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 8h6m-5 0a3 3 0 110 6H9l3 3m-3-6h6m6 1a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>{privateJob.salary} /month</li>
+        </svg>{privateJob.salary ? privateJob.salary : 'Best in Industry'} </li>
         <li className='flex font-bold text-slate-900'>
         <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mx-2 fill-green-500" viewBox="0 0 20 20" >
         <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />

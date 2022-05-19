@@ -200,10 +200,10 @@ const JobUpdate=({router})=>{
         setValues({ ...values, [name]: value, formData, error: '' });
     };
 
-    const handleBody =(e)=> {
-        setBody(e);
-        formData.set('body', e);
-    };
+    // const handleBody =(e)=> {
+    //     setBody(e);
+    //     formData.set('body', e);
+    // };
 
     const editJob = (e) => {
         e.preventDefault();
@@ -261,13 +261,13 @@ const JobUpdate=({router})=>{
 
                
             <div>
-            <ReactQuill
+            {/* <ReactQuill
                      modules={QuillModules}
                     formats={QuillFormats}
                     value={body}
                     placeholder="Write something amazing..."
                     onChange={handleBody}
-                />  
+                />   */}
                 <button type="submit" className='p-2 my-2 font-bold text-white bg-teal-600 rounded-md'>
                     Update
                 </button>

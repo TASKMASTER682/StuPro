@@ -34,7 +34,7 @@ const NewSearch=({categories,tags,blogs})=>{
     return(
         <>
         {head()}
-        <section className=" lg:pt-24 lg:px-20">
+        <section className="pt-24 lg:px-20">
             <h1 className=" text-3xl font-bold text-teal-700">Search Blogs</h1>
             <p className="text-base text-gray-500 font-bold p-1">Find the blog of your choice by searching keywords,title </p>
             <div className="my-1">
