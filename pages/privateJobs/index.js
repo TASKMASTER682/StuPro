@@ -1,5 +1,3 @@
-import Head from 'next/head';
-import Link from 'next/link';
 import {useState} from 'react';
 import ShortSearch from '../../components/reusables/ShortSearch';
 import { BreadcrumbJsonLd,NextSeo } from 'next-seo';
@@ -30,7 +28,6 @@ export async function getStaticProps(){
 }
 
 const PvtJobs = ({ privateJobs, router })=>{
-
   const [visible,setVisible]=useState(10);
     const showAllJobs = () => {
         return privateJobs.slice(0,visible).map((privateJob, i) => {
@@ -45,7 +42,6 @@ const PvtJobs = ({ privateJobs, router })=>{
     const showMoreItem=()=>{
       setVisible((prevValue)=>prevValue+10)
     }
-
     return(
         <>
     <NextSeo

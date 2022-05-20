@@ -1,24 +1,19 @@
-import Head from 'next/head';
-import NextLink from 'next/link';
 import {useRouter} from 'next/router';
 import dynamic from "next/dynamic";
 import { API, DOMAIN, APP_NAME } from '../../config';
 import renderHTML from 'react-render-html';
 import UpdateButton from '../../components/reusables/UpdateButton';
-import Image from '../../components/reusables/ImageComponent';
-import Share from '../../components/Share'
+const Share= dynamic(async ()=> import('../../components/Share'));
 import {listRelated,listJobsWithCategoriesAndTags} from '../../actions/job';
 import { BreadcrumbJsonLd,NextSeo ,JobPostingJsonLd,NewsArticleJsonLd} from 'next-seo';
 import {Link} from 'react-scroll';
 import {isAuth} from '../../actions/auth';
 import {useState} from 'react';
 import {format} from 'date-fns';
-const SmallCard = dynamic(() => import('../../components/reusables/SmallCard'), { loading: () => <i>...</i> });
-import ShortSearch from '../../components/reusables/ShortSearch'
-
+const SmallCard = dynamic(() => import('../../components/reusables/SmallCard'), { loading: () => "Loading..." });
+const ShortSearch = dynamic(() => import('../../components/reusables/ShortSearch'), { loading: () => "Loading..." });
 const TagInSlug =  dynamic(async ()=> import('../../components/reusables/TagInSlug'));
 const CategoryInSlug= dynamic(async ()=> import('../../components/reusables/SlugCat'));
-
 // const IFrame = dynamic(async ()=> import('../../components/reusables/IFrame'))
 const Faq =  dynamic(async ()=> import('../../components/reusables/ShowFaq'))
 const NewsLetter =dynamic(async ()=> import('../../components/NewsLetterSubscribe'), { ssr: false });

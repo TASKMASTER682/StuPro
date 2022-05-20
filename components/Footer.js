@@ -12,7 +12,7 @@ const Footer=()=>{
     return(
         <section className='grid gap-4 p-2 text-center bg-primary lg:grid-cols-4' >
         <div className='block' >
-        <Image src='/img/StuproLogo.png' width={220} height={220}  alt="The ProGrad Logo" placeholder="blur" blurDataURL='/img/blurr-min.jpg' />
+        <Image src='/img/StuproLogo.svg' width={220} height={220}  alt="The ProGrad Logo" placeholder="blur" blurDataURL='/img/blurr-min.jpg' />
        
         <p className='text-xs text-gray-600' >
             © Copyright 2020 - {year}.The ProGrad - India <br /> All rights reserved 

@@ -1,19 +1,13 @@
-import Head from 'next/head';
-import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { listRelatedPvt,listPvtJobsWithCategoriesAndTags } from '../../actions/privateJob';
 import { API, DOMAIN, APP_NAME } from '../../config';
 import renderHTML from 'react-render-html';
-import useSWR from 'swr';
 import {format} from 'date-fns';
 const SmallCard = dynamic(() => import('../../components/reusables/SmallCard'), { loading: () => <i>...</i> });
-import { isAuth } from '../../actions/auth';
-import { fetcher } from '../api/fetcher';
 // const Article=dynamic(async()=>import('../../components/ads/Article'),{loading:()=><p>...</p>,ssr:false}) ;
-import Image from '../../components/reusables/ImageComponent';
 import { useRouter } from 'next/router';
 import { BreadcrumbJsonLd,NextSeo,JobPostingJsonLd,NewsArticleJsonLd } from 'next-seo';
-import ShortSearch from '../../components/reusables/ShortSearch';
+const ShortSearch = dynamic(() => import('../../components/reusables/ShortSearch'), { loading: () => "Loading..." });
 import { redirect } from '../../next.config';
 const Faq = dynamic(async () => import('../../components/reusables/ShowFaq'))
 const NewsLetter = dynamic(async () => import('../../components/NewsLetterSubscribe'), { ssr: false })
@@ -167,7 +161,7 @@ const SinglePvtJob = ({privateJob,photo}) => {
      <img className='float-left w-16 h-16 p-1 mx-2 mt-3 rounded-full shadow-md lg:w-24 lg:h-24 shadow-green-500 lg:mt-4' src='/img/pvt-job.jpg'  alt='Logo' />
      <h1 className='p-1 text-2xl font-bold cursor-pointer lg:text-4xl lg:p-3 hover:underline'>{privateJob.title}</h1>
      <ul className="sticky flex justify-between top-16">
-     <li className='mx-4 text-lg font-bold text-success underline'>{privateJob.agency}</li>
+     <li className='mx-4 text-lg font-bold underline text-success'>{privateJob.agency}</li>
      <li className='hidden p-1 py-3 mx-4 font-bold text-white bg-teal-600 rounded-md lg:block hover:bg-teal-300 hover:text-black'><a className='p-2' target='_blank' rel='noreferrer' href={privateJob.applyLink}>Apply Now</a></li>
      </ul>
         <ul className='flex flex-col justify-between p-2 m-2 mt-4 rounded-sm lg:flex-row lg:p-3 lg:px-2 bg-slate-300'>

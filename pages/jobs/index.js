@@ -1,6 +1,4 @@
-import Head from 'next/head';
 import {useState} from 'react';
-import Link from 'next/link';
 import { BreadcrumbJsonLd,NextSeo } from 'next-seo';
 import dynamic from 'next/dynamic';
 import { withRouter } from 'next/router';
@@ -10,7 +8,7 @@ import { listJobsWithCategoriesAndTags,list } from '../../actions/job';
 // const Infeed=dynamic(async()=>import('../../components/ads/Infeed'),{ssr:false});
 // const DisplayAd=dynamic(async()=>import('../../components/ads/DisplayAd'),{ssr:false});
 import { DOMAIN, APP_NAME,API } from '../../config';
-import ShortSearch from '../../components/reusables/ShortSearch'
+const ShortSearch = dynamic(() => import('../../components/reusables/ShortSearch'), { loading: () => "Loading..." });
 
 export async function getStaticProps(){
 
