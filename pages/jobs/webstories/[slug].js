@@ -49,6 +49,7 @@ export const config = { amp: true };
 export default () => (
   <>
     <Head>
+
       <Script strategy='lazyOnload' key="amp-story" custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
@@ -116,98 +117,7 @@ export default () => (
       description='RGNUL Jobs Notification 2022 information for the hiring of 12 Finance Officers, Deputy Librarians, Medical Officers, Assistant Registrar, and Superintendent Posts has been released on the official website at rgnul.ac.in. Candidates Planning to start their career at the Rajiv Gandhi National University of Law can apply Offline application on or before 2022-07-05.'
       body='RGNUL Jobs Notification 2022 information for the hiring of 12 Finance Officers, Deputy Librarians, Medical Officers, Assistant Registrar, and Superintendent Posts has been released on the official website at rgnul.ac.in. Candidates Planning to start their career at the Rajiv Gandhi National University of Law can apply Offline application on or before 2022-07-05.'
     />
-    <amp-story
-      standalone=""
-      title='JKSSB Jobs Notification 2022 has released.Chekout this story for all details'
-      publisher="The ProGrad"
-      publisher-logo-src="https://www.theprograd.com/img/StuproLogo.png"
-      poster-portrait-src="https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg"
-      poster-square-src="https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg"
-      poster-landscape-src="https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg">
-      {/* <!-- A story consists of one or more pages. Each page is declared by an `amp-story-page` element. Pages are designed by layering videos, images and text. Here we have a page that uses two layers. One layer filling the available space with an image and one text layer that shows a heading. --> */}
-      <amp-story-page id="page-1" auto-advance-after="8s">
-        <amp-story-grid-layer template="fill">
-          <amp-img src="https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg"
-                   width="720" height="1280"
-                   animate-in="fly-in-top"
-                   layout="responsive">
-          </amp-img>
-        </amp-story-grid-layer>
-        <amp-story-grid-layer template="vertical">
-        <amp-img src='https://i.ibb.co/10gjXBp/Govt-Jobs-Pvt-Jobs-Study-Material.jpg'  animate-in="fly-in-top"
-                   width="720" height="1280"
-                   layout="responsive"></amp-img>
-  
-          <h1 className='new-head'  animate-in="fly-in-bottom"  animate-in-delay="0.4s">JKSSB Jobs Notification 2022 has released. <span className="text-red">Chekout this story for all details</span></h1>
-          
-        </amp-story-grid-layer>
-      </amp-story-page>
-
-      {/* <!-- Here we have a page consisting of a video which autoplays and loops. --> */}
-      <amp-story-page id="page-2" auto-advance-after="8s">
-      <amp-story-grid-layer template="fill">
-          <amp-img src="https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg"
-                   animate-in="fly-in-top"
-                   width="720" height="1280"
-                   layout="responsive">
-          </amp-img>
-        </amp-story-grid-layer>
-        <amp-story-grid-layer template="vertical">
-        
-        <h2 className='newHead'  animate-in="fly-in-bottom"  animate-in-delay="0.4s">Description</h2>
-          <p>RGNUL Jobs Notification 2022 information for the hiring of 12 Finance Officers, Deputy Librarians, Medical Officers, Assistant Registrar, and Superintendent Posts has been released on the official website at rgnul.ac.in. Candidates Planning to start their career at the Rajiv Gandhi National University of Law can apply Offline application on or before 2022-07-05.</p>
-          
-          
-        <h2 className='newHead'  animate-in="fly-in-bottom"  animate-in-delay="0.4s">Job Location</h2>
-          <p>Jammu</p> 
-          
-          
-          <h2 className='newHead'  animate-in="fly-in-bottom"  animate-in-delay="0.4s">Salary Details</h2>
-          <p>The Salary offered is ₹ 5000 per month.But you can check the detailed notification</p>
-          
-         
-
-        </amp-story-grid-layer>
-      </amp-story-page>
-
-      {/* <!-- Pre-defined entry animations make it possible to create dynamic pages without videos. The length and initial delay can be customized using the `animate-in-duration` and `animate-in-delay` properties. The [animations sample](/documentation/examples/visual-effects/amp_story_animations/) shows all available animantions in action. --> */}
-      <amp-story-page id="animation-demo" auto-advance-after="8s">
-        <amp-story-grid-layer template="fill">
-          <amp-img src="https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg"
-                   animate-in="fly-in-top"
-                   width="720" height="1280"
-                   layout="responsive">
-          </amp-img>
-        </amp-story-grid-layer>
-        <amp-story-grid-layer template="thirds">
-        <amp-story-grid-layer grid-area="upper-third">
-        <h2 className='newHead'  animate-in="fly-in-bottom"
-              animate-in-delay="0.4s">
-            Qualification Required
-          </h2>
-          <p>MBBS,BUMS,GRADUATION</p>
-        </amp-story-grid-layer>
-        <amp-story-grid-layer grid-area="middle-third">
-        <h2 className='newHead'  animate-in="fly-in-bottom"
-              animate-in-delay="0.4s">
-            Last Date to Apply
-          </h2>
-          <p>Last date to apply is:5-10-2022</p>
-        </amp-story-grid-layer>
-        <amp-story-grid-layer grid-area="lower-third">
- 
-          <a className='rounded-md bg-red'  animate-in="fly-in-bottom"
-              animate-in-delay="0.4s" href='/jobs/rgnul-job-notification-for-12-finance-officer-deputy-librarian-medical-officer-assistant-registrar-superintendent'><h2 className='newHead'>
-            Click to Know More 
-          </h2></a>
-        </amp-story-grid-layer>
-        </amp-story-grid-layer>
-      </amp-story-page>
-      {/* <!-- A "bookend" panel containing links to other resources will appear on the last page of your story if you include an `amp-story-bookend` that references a [bookend JSON config](/static/samples/json/bookend.json). --> */}
-      <amp-story-bookend src="https://amp.dev/static/samples/json/bookend.json" layout="nodisplay">
-      </amp-story-bookend>
-    </amp-story>
-    <style jsx amp-custom>
+        <style jsx amp-custom>
 {`
 .newHead{
   font-family: 'Righteous', cursive;
@@ -252,6 +162,102 @@ font-family: 'Marcellus', serif;
 line-height:1.5rem
 }`}
 </style>
+    <amp-story
+      standalone=""
+      title='JKSSB Jobs Notification 2022 has released.Chekout this story for all details'
+      publisher="The ProGrad"
+      publisher-logo-src="https://www.theprograd.com/img/StuproLogo.png"
+      poster-portrait-src="https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg"
+      poster-square-src="https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg"
+      poster-landscape-src="https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg">
+      {/* <!-- A story consists of one or more pages. Each page is declared by an `amp-story-page` element. Pages are designed by layering videos, images and text. Here we have a page that uses two layers. One layer filling the available space with an image and one text layer that shows a heading. --> */}
+      
+      <amp-story-page id="page-1" auto-advance-after="8s">
+
+        <amp-story-grid-layer template="fill">
+          <amp-img src="https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg"
+                   width="720" height="1280"
+                   animate-in="fly-in-top"
+                   layout="responsive">
+          </amp-img>
+        </amp-story-grid-layer>
+
+        <amp-story-grid-layer template="vertical">
+        <amp-img src='https://i.ibb.co/10gjXBp/Govt-Jobs-Pvt-Jobs-Study-Material.jpg'  animate-in="fly-in-top"
+                   width="720" height="1280"
+                   layout="responsive"></amp-img>
+  
+          <h1 className='new-head'  animate-in="fly-in-bottom"  animate-in-delay="0.4s">JKSSB Jobs Notification 2022 has released. <span className="text-red">Chekout this story for all details</span></h1>
+          
+        </amp-story-grid-layer>
+      </amp-story-page>
+
+      {/* <!-- Here we have a page consisting of a video which autoplays and loops. --> */}
+      <amp-story-page id="page-2" auto-advance-after="8s">
+
+      <amp-story-grid-layer template="fill">
+          <amp-img src="https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg"
+                   animate-in="fly-in-top"
+                   width="720" height="1280"
+                   layout="responsive">
+          </amp-img>
+        </amp-story-grid-layer>
+
+        <amp-story-grid-layer template="vertical">
+        
+        <h2 className='newHead'  animate-in="fly-in-bottom"  animate-in-delay="0.4s">Description</h2>
+          <p>RGNUL Jobs Notification 2022 information for the hiring of 12 Finance Officers, Deputy Librarians, Medical Officers, Assistant Registrar, and Superintendent Posts has been released on the official website at rgnul.ac.in. Candidates Planning to start their career at the Rajiv Gandhi National University of Law can apply Offline application on or before 2022-07-05.</p>
+          
+          
+        <h2 className='newHead'  animate-in="fly-in-bottom"  animate-in-delay="0.4s">Job Location</h2>
+          <p>Jammu</p> 
+          
+          
+          <h2 className='newHead'  animate-in="fly-in-bottom"  animate-in-delay="0.4s">Salary Details</h2>
+          <p>The Salary offered is ₹ 5000 per month.But you can check the detailed notification</p>
+          
+
+        </amp-story-grid-layer>
+      </amp-story-page>
+
+      {/* <!-- Pre-defined entry animations make it possible to create dynamic pages without videos. The length and initial delay can be customized using the `animate-in-duration` and `animate-in-delay` properties. The [animations sample](/documentation/examples/visual-effects/amp_story_animations/) shows all available animantions in action. --> */}
+      <amp-story-page id="animation-demo" auto-advance-after="8s">
+        
+        <amp-story-grid-layer template="fill">
+          <amp-img src="https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg"
+                   animate-in="fly-in-top"
+                   width="720" height="1280"
+                   layout="responsive">
+          </amp-img>
+        </amp-story-grid-layer>
+        <amp-story-grid-layer template="vertical">
+        
+        <h2 className='newHead'  animate-in="fly-in-bottom"
+              animate-in-delay="0.4s">
+            Qualification Required
+          </h2>
+          <p>MBBS,BUMS,GRADUATION</p>
+       
+        
+        <h2 className='newHead'  animate-in="fly-in-bottom"
+              animate-in-delay="0.4s">
+            Last Date to Apply
+          </h2>
+          <p>Last date to apply is:5-10-2022</p>
+        
+          <a className='rounded-md bg-red'  animate-in="fly-in-bottom"
+              animate-in-delay="0.4s" href='/jobs/rgnul-job-notification-for-12-finance-officer-deputy-librarian-medical-officer-assistant-registrar-superintendent'><h2 className='newHead'>
+            Click to Know More 
+          </h2></a>
+        
+        </amp-story-grid-layer>
+      </amp-story-page>
+      {/* <!-- A "bookend" panel containing links to other resources will appear on the last page of your story if you include an `amp-story-bookend` that references a [bookend JSON config](/static/samples/json/bookend.json). --> */}
+     
+      <amp-story-bookend src="https://amp.dev/static/samples/json/bookend.json" layout="nodisplay">
+      </amp-story-bookend>
+    
+</amp-story>
   </>
 )
 
