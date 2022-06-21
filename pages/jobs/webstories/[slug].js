@@ -6,6 +6,7 @@ import Script from 'next/script';
 import { API } from '../../../config';
 import { format } from 'date-fns';
 
+
 export const config = { amp: true };
 // export const getStaticPaths = async () => {
 //     const post = await listJobsWithCategoriesAndTags();
@@ -48,13 +49,60 @@ export const config = { amp: true };
 // }
 export default () => (
   <>
-    <Head>
+    <Head>    
+      <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Righteous&display=swap" rel="stylesheet" type="text/css" /> 
+      <style amp-custom>
+{`
 
-      <Script strategy='lazyOnload' key="amp-story" custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Oleo+Script&family=Righteous&display=swap" rel="stylesheet" />
+.newHead{
+   font-family: Righteous, cursive;
+    color:#005555;
+    text-decoration:underline
+}
+.new-head{
+  font-family: Righteous, cursive;
+    color:#005555;
+}
+.bg-green{
+  background-color:#00FFAB;
+  padding:1rem
+  opacity:0.7rem
+}
+.bg-red{
+  background-color:#FF8C8C;
+  padding:1rem
+}
+.text-green{
+  color:#00FFAB;
+}
+.text-red{
+  color:#FD5D5D;
+}
+.rounded-md{
+  border-radius:4px;
+}
+amp-img {
+border: 1px solid black;
+border-radius: 4px;
+}
+.mt{
+  margin-top:2rem;
+}
+a{
+  text-align:center;
+  color:black;
+  margin-bottom:2rem;
+}
+p {
+padding: 1rem;
+color:black;
+font-family: Marcellus, serif;
+line-height:1.5rem
+}
+`}
+</style>
    </Head>
+
    <NextSeo
       title='JKSSB Jobs Notification 2022 has released.Chekout this story for all details'
       description='RGNUL Jobs Notification 2022 information for the hiring of 12 Finance Officers, Deputy Librarians, Medical Officers, Assistant Registrar, and Superintendent Posts has been released on the official website at rgnul.ac.in. Candidates Planning to start their career at the Rajiv Gandhi National University of Law can apply Offline application on or before 2022-07-05'
@@ -117,51 +165,7 @@ export default () => (
       description='RGNUL Jobs Notification 2022 information for the hiring of 12 Finance Officers, Deputy Librarians, Medical Officers, Assistant Registrar, and Superintendent Posts has been released on the official website at rgnul.ac.in. Candidates Planning to start their career at the Rajiv Gandhi National University of Law can apply Offline application on or before 2022-07-05.'
       body='RGNUL Jobs Notification 2022 information for the hiring of 12 Finance Officers, Deputy Librarians, Medical Officers, Assistant Registrar, and Superintendent Posts has been released on the official website at rgnul.ac.in. Candidates Planning to start their career at the Rajiv Gandhi National University of Law can apply Offline application on or before 2022-07-05.'
     />
-        <style jsx amp-custom>
-{`
-.newHead{
-  font-family: 'Righteous', cursive;
-    color:#005555;
-    text-decoration:underline
-}
-.new-head{
-  font-family: 'Righteous', cursive;
-    color:#005555;
-}
-.bg-green{
-  background-color:#00FFAB;
-  padding:1rem
-  opacity:0.7rem
-}
-.bg-red{
-  background-color:#FF8C8C;
-  padding:1rem
-}
-.text-green{
-  color:#00FFAB;
-}
-.text-red{
-  color:#FD5D5D;
-}
-.rounded-md{
-  border-radius:4px;
-}
-amp-img {
-border: 1px solid black;
-border-radius: 4px;
-}
-a{
-  text-align:center;
-  color:black;
-  margin-bottom:2rem;
-}
-p {
-padding: 1rem;
-color:black;
-font-family: 'Marcellus', serif;
-line-height:1.5rem
-}`}
-</style>
+
     <amp-story
       standalone=""
       title='JKSSB Jobs Notification 2022 has released.Chekout this story for all details'
@@ -182,12 +186,12 @@ line-height:1.5rem
           </amp-img>
         </amp-story-grid-layer>
 
-        <amp-story-grid-layer template="vertical">
-        <amp-img src='https://i.ibb.co/10gjXBp/Govt-Jobs-Pvt-Jobs-Study-Material.jpg'  animate-in="fly-in-top"
-                   width="720" height="1280"
+        <amp-story-grid-layer template="thirds">
+        <amp-img src='https://i.ibb.co/10gjXBp/Govt-Jobs-Pvt-Jobs-Study-Material.jpg' grid-area='upper-third'  animate-in="fly-in-top"
+                   width="320" height="640"
                    layout="responsive"></amp-img>
   
-          <h1 className='new-head'  animate-in="fly-in-bottom"  animate-in-delay="0.4s">JKSSB Jobs Notification 2022 has released. <span className="text-red">Chekout this story for all details</span></h1>
+          <h1 className='new-head mt'  animate-in="fly-in-bottom"  animate-in-delay="0.4s">JKSSB Jobs Notification 2022 has released. <span className="text-red">Chekout this story for all details</span></h1>
           
         </amp-story-grid-layer>
       </amp-story-page>

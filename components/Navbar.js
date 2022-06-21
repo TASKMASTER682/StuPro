@@ -61,6 +61,9 @@ const Navbar=()=>{
      <a  className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800' >Blogs</a>
        </Link>
      </li>
+     <li>
+     <a  href="/jobs/webstories" target="_blank"  className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800' >Top WebStories</a>
+     </li>
    </ul>
 
  </div>
