@@ -51,24 +51,23 @@ export default ({job,photo}) => (
     <Head>
       <Script strategy='lazyOnload' key="amp-story" custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Oleo+Script&family=Righteous&display=swap" rel="stylesheet" />
    </Head>
    <NextSeo
-      title={`${job.title}`}
-      description={`${job.desc}`}
-      canonical={`https://www.theprograd.com/jobs/webstories/${job.slug}`}
+      title='JKSSB Jobs Notification 2022 has released.Chekout this story for all details'
+      description='RGNUL Jobs Notification 2022 information for the hiring of 12 Finance Officers, Deputy Librarians, Medical Officers, Assistant Registrar, and Superintendent Posts has been released on the official website at rgnul.ac.in. Candidates Planning to start their career at the Rajiv Gandhi National University of Law can apply Offline application on or before 2022-07-05'
+      canonical='https://www.theprograd.com/jobs/webstories/rgnul-job-notification-for-12-finance-officer-deputy-librarian-medical-officer-assistant-registrar-superintendent'
       
       openGraph={{
-        url: `https://www.theprograd.com/jobs/webstories/${job.slug}`,
-        title:`${job.title}`,
-        description:`${job.desc}`,
-        images:[
+        url: 'https://www.theprograd.com/jobs/webstories/rgnul-job-notification-for-12-finance-officer-deputy-librarian-medical-officer-assistant-registrar-superintendent',
+        title:'JKSSB Jobs Notification 2022 has released.Chekout this story for all details',
+        description:'RGNUL Jobs Notification 2022 information for the hiring of 12 Finance Officers, Deputy Librarians, Medical Officers, Assistant Registrar, and Superintendent Posts has been released on the official website at rgnul.ac.in. Candidates Planning to start their career at the Rajiv Gandhi National University of Law can apply Offline application on or before 2022-07-05',        images:[
         {
-           url: job.imgLink ? `${job.imgLink}` : 'https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg' ,
+           url: 'https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg' ,
             width: 800,
             height: 600,
-            alt: `${job.title}`,
+            alt: 'JKSSB Jobs Notification 2022 has released.Chekout this story for all details',
             type: 'image/jpeg',
           }
           ],
@@ -95,15 +94,15 @@ export default ({job,photo}) => (
         },
         {
           position: 4,
-          name: `${job.agency} Jobs Notification 2022 has released.Chekout this story for all details`,
-          item: `https://www.theprograd.com/jobs/webstories/${job.slug}`,
+          name: 'JKSSB Jobs Notification 2022 has released.Chekout this story for all details',
+          item: 'https://www.theprograd.com/jobs/webstories/rgnul-job-notification-for-12-finance-officer-deputy-librarian-medical-officer-assistant-registrar-superintendent',
         },
       
       ]}
     />
     <NewsArticleJsonLd
-      url={`https://www.theprograd.com/jobs/webstories/${job.slug}`}
-      title={ `${job.agency} Jobs Notification 2022 has released.Chekout this story for all details`}
+      url='https://www.theprograd.com/jobs/webstories/rgnul-job-notification-for-12-finance-officer-deputy-librarian-medical-officer-assistant-registrar-superintendent'
+      title='JKSSB Jobs Notification 2022 has released.Chekout this story for all details'
       images={[
         'https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg',
       ]}
