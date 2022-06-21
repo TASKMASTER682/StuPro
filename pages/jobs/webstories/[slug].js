@@ -7,46 +7,46 @@ import { API } from '../../../config';
 import { format } from 'date-fns';
 
 export const config = { amp: true };
-export const getStaticPaths = async () => {
-    const post = await listJobsWithCategoriesAndTags();
-    // const post = await res.json();
-    const paths =await post.map((job) => {
-        return {
-            params: { slug: job.slug }
+// export const getStaticPaths = async () => {
+//     const post = await listJobsWithCategoriesAndTags();
+//     // const post = await res.json();
+//     const paths =await post.map((job) => {
+//         return {
+//             params: { slug: job.slug }
 
-        }
-    })
+//         }
+//     })
 
-    return {
+//     return {
 
-        paths,
-        fallback:true
-    }
-}
+//         paths,
+//         fallback:true
+//     }
+// }
 
-export const getStaticProps = async (ctx) => {
-    const slug = ctx.params.slug;
+// export const getStaticProps = async (ctx) => {
+//     const slug = ctx.params.slug;
 
-    const [job,photo] = await Promise.all([
-      fetch(`${API}/jobs/` + slug).then(r => r.json()),
-      `${API}/jobs/photo/` + slug
-    ]);
-    if (!job) {
-        return {
-      notFound:true
-        }
-      }
-    return {
-        props: {
-            job,
-            photo
+//     const [job,photo] = await Promise.all([
+//       fetch(`${API}/jobs/` + slug).then(r => r.json()),
+//       `${API}/jobs/photo/` + slug
+//     ]);
+//     if (!job) {
+//         return {
+//       notFound:true
+//         }
+//       }
+//     return {
+//         props: {
+//             job,
+//             photo
 
-        },
-        revalidate:60
-    }
+//         },
+//         revalidate:60
+//     }
 
-}
-export default ({job,photo}) => (
+// }
+export default () => (
   <>
     <Head>
       <Script strategy='lazyOnload' key="amp-story" custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js" />

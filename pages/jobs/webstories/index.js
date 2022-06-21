@@ -3,24 +3,24 @@ import Head from 'next/head';
 import { BreadcrumbJsonLd,NextSeo} from 'next-seo';
 
 
-export async function getStaticProps(){
+// export async function getStaticProps(){
 
-    return listHome().then(data => {
-        if (data.error) {
-            console.log(data.error);
-        } else {
-            return {
-                props:{
-                    jobs: data,
-                },
-                revalidate:60
+//     return listHome().then(data => {
+//         if (data.error) {
+//             console.log(data.error);
+//         } else {
+//             return {
+//                 props:{
+//                     jobs: data,
+//                 },
+//                 revalidate:60
              
-            };
-        }
-    });
-}
+//             };
+//         }
+//     });
+// }
 
-const NewStories = ({jobs}) => {
+const NewStories = () => {
 
 
     
