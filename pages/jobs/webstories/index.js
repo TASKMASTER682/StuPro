@@ -48,14 +48,14 @@ const NewStories = ({jobs}) => {
       
       openGraph={{
         url: `https://www.theprograd.com/jobs/webstories`,
-        title:`${job.title}`,
-        description:`${job.desc}`,
+        title:'Checkout the Sarkari Naukri Webstories',
+        description:'Get in short job details here',
         images:[
         {
            url:  'https://i.ibb.co/Sd0sJXD/www-theprograd-com-4.jpg' ,
             width: 800,
             height: 600,
-            alt: `${job.title}`,
+            alt: 'Checkout the Sarkari Naukri Webstories',
             type: 'image/jpeg',
           }
           ],
