@@ -43,10 +43,12 @@ const JobUpdate=({router})=>{
        
         location:'',
         
-        qualification:''
+        qualification:'',
+
+        imgLink:''
     });
 
-    const { error, success, formData,agency,applyLink,desc,officialLink, title,qualification,lastDate,location, salary } = values;
+    const { error, success, formData,agency,applyLink,desc,officialLink, title,qualification,lastDate,location,imgLink, salary } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -63,7 +65,7 @@ const JobUpdate=({router})=>{
                 if (data.error) {
                     console.log(data.error);
                 } else {
-                    setValues({ ...values , title: data.title ,desc:data.desc || "",officialLink:data.officialLink || "",applyLink:data.applyLink,lastDate:data.lastDate,agency:data.agency,salary:data.salary,qualification:data.qualification,location:data.location });
+                    setValues({ ...values , title: data.title ,desc:data.desc || "",officialLink:data.officialLink || "",imgLink:data.imgLink || "",applyLink:data.applyLink,lastDate:data.lastDate,agency:data.agency,salary:data.salary,qualification:data.qualification,location:data.location });
                     setBody(data.body);
                     setCategoriesArray(data.jobCategories);
                     setTagsArray(data.jobTags);
@@ -257,7 +259,8 @@ const JobUpdate=({router})=>{
               <input className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' type="text" placeholder="Qualification needed"  value={qualification} onChange={handleChange('qualification')} required />
             <input type="text" className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} required />
             <input className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' type="text" placeholder="Official Website Link"  value={officialLink} onChange={handleChange('officialLink')}  />
-           
+            <input className='w-full p-2 my-2 rounded-sm ring-2 ring-teal-500' type="text" placeholder="Image Link"  value={imgLink} onChange={handleChange('imgLink')}  />
+
 
                
             <div>

@@ -43,13 +43,14 @@ const CreateJob=({router})=>{
         desc:'',
         qualification:'',
         location:'',
+        imgLink:'',
        lastDate:'',
        mode:'',
        officialLink:'',
         hidePublishButton: false
     });
 
-    const { error, sizeError, success,mode,officialLink,formData,desc,forSlug,applyLink,lastDate, agency,title,salary,qualification,location, hidePublishButton } = values;
+    const { error, sizeError, success,mode,officialLink,formData,desc,imgLink,forSlug,applyLink,lastDate, agency,title,salary,qualification,location, hidePublishButton } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -85,7 +86,7 @@ const CreateJob=({router})=>{
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
-                setValues({ ...values, title: '',agency:'',officialLink:'',mode:'', applyLink:'',forSlug:'', subtitle:'',desc:'',lastDate:'', error: '',salary:'',qualification:'',location:'', success: `A new blog titled "${data.title}" is created` });
+                setValues({ ...values, title: '',agency:'',officialLink:'',imgLink:'',mode:'', applyLink:'',forSlug:'', subtitle:'',desc:'',lastDate:'', error: '',salary:'',qualification:'',location:'', success: `A new blog titled "${data.title}" is created` });
                 setBody('');
                 setJobCategories([]);
                 setJobTags([]);
@@ -208,6 +209,8 @@ const createJobForm = () => {
               <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" placeholder="Qualification or skills needed"  value={qualification} onChange={handleChange('qualification')} required />
             <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500" placeholder="Link"  value={applyLink} onChange={handleChange('applyLink')} />
             <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"  placeholder="Official Website Link"  value={officialLink} onChange={handleChange('officialLink')} />
+            <input type="text" className="w-full p-2 my-2 rounded-md ring-2 ring-teal-500"  placeholder="Image Link"  value={imgLink} onChange={handleChange('imgLink')} />
+
             <ReactQuill
                      modules={QuillModules}
                     formats={QuillFormats}

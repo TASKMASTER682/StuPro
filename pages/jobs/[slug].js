@@ -79,11 +79,11 @@ const router=useRouter();
       
       openGraph={{
         url: `https://www.theprograd.com/jobs/${job.slug}`,
-        title:`${job.slug}`,
+        title:`${job.title}`,
         description:`${job.desc}`,
         images:[
         {
-           url: `${photo ? photo : '/img/pvt-job.jpg' }`,
+           url:photo ?  `${photo}` : `${DOMAIN}/img/pvt-job.jpg` ,
             width: 800,
             height: 600,
             alt: `${job.title}`,
@@ -145,7 +145,7 @@ const router=useRouter();
       applicantLocationRequirements="IN"
     />
     <NewsArticleJsonLd
-      url={`${API}/jobs/${job.slug}`}
+      url={`https://www.theprograd.com/jobs/${job.slug}`}
       title={job.title}
       images={[
         `${API}/jobs/photo/${job.slug}`,
@@ -155,7 +155,7 @@ const router=useRouter();
       keywords={`${job.agency} jobs,latest sarkari naukri`}
       datePublished={job.createdAt}
       dateModified={job.updatedAt}
-      authorName={job.agency}
+      authorName="The ProGrad Admin"
       publisherName='The ProGrad'
       publisherLogo={`${DOMAIN}/img/StuproLogo.png`}
       description={job.desc}
