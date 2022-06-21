@@ -45,7 +45,6 @@ export default async (req, res) => {
     smStream.write('/privacy');
     smStream.write('/signin');
     smStream.write('/signup');
-    smStream.write('/instant-jobs');
     smStream.write('/free-cv-builder');
 
 
