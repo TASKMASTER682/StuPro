@@ -103,7 +103,7 @@ line-height:1.5rem
 `}
 </style>
    </Head>
-
+title
    <NextSeo
     title={`${job.title}`}
     description={`${job.desc}`}
