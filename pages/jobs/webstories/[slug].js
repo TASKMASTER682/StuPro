@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { BreadcrumbJsonLd,NextSeo ,NewsArticleJsonLd} from 'next-seo';
-
 import { listHome } from '../../../actions/job';
 import Script from 'next/script';
 import { API } from '../../../config';
@@ -8,6 +7,7 @@ import { format } from 'date-fns';
 
 
 export const config = { amp: true };
+
 export const getStaticPaths = async () => {
     const post = await listHome();
     const paths =await post.map((job,i) => {
@@ -41,12 +41,13 @@ export const getStaticProps = async (ctx) => {
     }
 
 }
-export default ({job}) => (
+export default ({job}) => {
+  return( 
   <>
     <Head>    
       <Script strategy='lazyOnload' key="amp-story" custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js" />
       <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Righteous&display=swap" rel="stylesheet" type="text/css" /> 
-      <style amp-custom>
+      <style amp-custom="">
 {`
 
 .newHead{
@@ -257,8 +258,8 @@ line-height:1.5rem
       </amp-story-bookend>
     
 </amp-story>
-  </>
-)
+  </>)
+}
 
 
 
