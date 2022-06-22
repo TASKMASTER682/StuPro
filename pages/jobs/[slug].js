@@ -86,7 +86,7 @@ const router=useRouter();
            url:photo ?  `${photo}` : `${DOMAIN}/img/pvt-job.jpg` ,
             width: 800,
             height: 600,
-            alt: `${job.title}`,
+            alt: `${job.title.substr(0-70)}`,
             type: 'image/jpeg',
           }
           ],
@@ -151,8 +151,8 @@ const router=useRouter();
         `${API}/jobs/photo/${job.slug}`,
         `${DOMAIN}/img/pvt-job.jpg`,
       ]}
-      section="jobs"
-      keywords={`${job.agency} jobs,latest sarkari naukri`}
+      section="govt jobs"
+      keywords={`${job.agency} jobs,latest sarkari naukri ,govt jobs,government jobs`}
       datePublished={job.createdAt}
       dateModified={job.updatedAt}
       authorName="The ProGrad Admin"

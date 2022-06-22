@@ -6,6 +6,8 @@ import {format} from 'date-fns';
 const SmallCard = dynamic(() => import('../../components/reusables/SmallCard'), { loading: () => <i>...</i> });
 // const Article=dynamic(async()=>import('../../components/ads/Article'),{loading:()=><p>...</p>,ssr:false}) ;
 import { useRouter } from 'next/router';
+import {isAuth} from '../../actions/auth';
+import UpdateButton from '../../components/reusables/UpdateButton';
 import { BreadcrumbJsonLd,NextSeo,JobPostingJsonLd,NewsArticleJsonLd } from 'next-seo';
 const ShortSearch = dynamic(() => import('../../components/reusables/ShortSearch'), { loading: () => "Loading..." });
 import { redirect } from '../../next.config';
@@ -78,7 +80,7 @@ const SinglePvtJob = ({privateJob,photo}) => {
         site_name: 'The ProGrad',
         images:[
         {
-           url: `${photo ? photo : '/img/pvt-job.jpg' }`,
+           url: photo ? `${photo}` : '/img/pvt-job.jpg',
             width: 800,
             height: 600,
             alt: `${privateJob.title}`,
@@ -145,8 +147,8 @@ const SinglePvtJob = ({privateJob,photo}) => {
         `${API}/privateJobs/photo/${privateJob.slug}`,
         `${DOMAIN}/img/pvt-job.jpg`,
       ]}
-      section="private sector jobs"
-      keywords={`${privateJob.agency} jobs,latest private sector jobs`}
+      section="Private sector jobs"
+      keywords={`${privateJob.agency} jobs,latest private sector jobs,Work from home jobs`}
       datePublished={privateJob.createdAt}
       dateModified={privateJob.updatedAt}
       authorName={privateJob.agency}
@@ -195,6 +197,12 @@ const SinglePvtJob = ({privateJob,photo}) => {
         <SmallCard listRelated={listRelatedPvt} job={privateJob} newRoute='privateJobs' />
       </div>
       <ShortSearch filterRoute='privateJobs' />
+      {isAuth() && isAuth().role===1 && <div>
+   <h2 className="p-1 text-lg font-bold bg-red-300 rounded-md">Admin Bar</h2>
+    <ul className="flex justify-between my-3">
+      <li><UpdateButton url={`/admin/privatejobcrud/${privateJob.slug}`} name='Update'/></li>
+    </ul>
+</div>}
 
      </div>
     </div>
