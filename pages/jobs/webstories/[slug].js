@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { BreadcrumbJsonLd,NextSeo ,NewsArticleJsonLd} from 'next-seo';
 
-import { listJobsWithCategoriesAndTags } from '../../../actions/job';
+import { listHome } from '../../../actions/job';
 import Script from 'next/script';
 import { API } from '../../../config';
 import { format } from 'date-fns';
@@ -9,9 +9,8 @@ import { format } from 'date-fns';
 
 export const config = { amp: true };
 export const getStaticPaths = async () => {
-    const post = await listJobsWithCategoriesAndTags();
-    // const post = await res.json();
-    const paths =await post.map((job) => {
+    const post = await listHome();
+    const paths =await post.map((job,i) => {
         return {
             params: { slug: job.slug }
 
@@ -28,10 +27,8 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (ctx) => {
     const slug = ctx.params.slug;
 
-    const [job,photo] = await Promise.all([
-      fetch(`${API}/jobs/` + slug).then(r => r.json()),
-      `${API}/jobs/photo/` + slug
-    ]);
+    const job = await fetch(`${API}/jobs/` + slug).then(r => r.json());
+    
     if (!job) {
         return {
       notFound:true
@@ -40,14 +37,12 @@ export const getStaticProps = async (ctx) => {
     return {
         props: {
             job,
-            photo
-
         },
         revalidate:60
     }
 
 }
-export default ({job,photo}) => (
+export default ({job}) => (
   <>
     <Head>    
       <Script strategy='lazyOnload' key="amp-story" custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js" />
