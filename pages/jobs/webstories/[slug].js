@@ -18,7 +18,6 @@ export const getStaticPaths = async () => {
     })
 
     return {
-
         paths,
         fallback:true
     }
@@ -36,9 +35,9 @@ export const getStaticProps = async (ctx) => {
       }
     return {
         props: {
-            job,
+            job
         },
-        revalidate:60
+      
     }
 
 }
@@ -98,7 +97,6 @@ line-height:1.5rem
 `}
 </style>
    </Head>
-title
    <NextSeo
     title={`${job.title}`}
     description={`${job.desc}`}
