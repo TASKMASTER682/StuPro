@@ -4,9 +4,9 @@ import BottomNav from './BottomNav';
 import { useRouter } from "next/router";
 
 import ScrollToTop from "./reusables/ScrollToTop";
-const config={layout1:['/jobs/webstories/[slug]']}
 
 const Layout=({children })=>{
+    const config={layout1:['/jobs/webstories/[slug]']}
    const {pathname}=useRouter();
 
    if(config.layout1.includes(pathname)){
