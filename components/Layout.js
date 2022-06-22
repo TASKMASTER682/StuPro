@@ -2,7 +2,7 @@ import Navbar from "./Navbar";
 import Footer from './Footer';
 import BottomNav from './BottomNav';
 import { useRouter } from "next/router";
-
+import NextNProgress from 'nextjs-progressbar';
 import ScrollToTop from "./reusables/ScrollToTop";
 
 const Layout=({children })=>{
@@ -14,6 +14,7 @@ const Layout=({children })=>{
    }else{
     return(
         <>
+        <NextNProgress color='#0f1317' />
         <Navbar />
         {children}
         <ScrollToTop />
