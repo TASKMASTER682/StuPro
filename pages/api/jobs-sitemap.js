@@ -8,8 +8,6 @@ import {DOMAIN} from '../../config'
 
 
 
-
-
 export default async (req, res) => {
   try {
 
@@ -55,19 +53,6 @@ export default async (req, res) => {
     smStream.write('/signup');
     smStream.write('/free-cv-builder');
 
-    const webStory = await listHome();
-
-    webStory != null
-      ? webStory.forEach((ws) => {
-        smStream.write({
-          url: `/jobs/webstories/${ws.slug}`,
-          changefreq: 'weekly',
-          priority: 0.8,
-          lastmod:`${format(new Date(ws.updatedAt),'dd MMM yyyy')}`
-
-        });
-      })
-      : "";
 
 
     // List of posts
