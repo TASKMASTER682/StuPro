@@ -145,7 +145,7 @@ const WebStory= ({job}) => {
           </amp-story-grid-layer>
     
           <amp-story-grid-layer template="thirds">
-          <amp-img src='https://i.ibb.co/10gjXBp/Govt-Jobs-Pvt-Jobs-Study-Material.jpg' grid-area='upper-third'  animate-in="fly-in-top"
+          <amp-img src={job.imgLink ? `${job.imgLink}`: 'https://i.ibb.co/10gjXBp/Govt-Jobs-Pvt-Jobs-Study-Material.jpg'} grid-area='upper-third'  animate-in="fly-in-top"
                      width="320" height="640"
                      layout="responsive"></amp-img>
     
