@@ -4,9 +4,6 @@ import Image from 'next/image';
 import {isAuth} from '../../actions/auth'
 import {DOMAIN,APP_NAME} from '../../config';
 import dynamic from 'next/dynamic';
-const AddCircleOutlineIcon =dynamic(()=>import('@material-ui/icons/AddCircleOutline'),{ssr:false}) ;
-const UpdateIcon =dynamic(()=>import('@material-ui/icons/Update'),{ssr:false}) ;
-const AssignmentIndIcon =dynamic(()=>import('@material-ui/icons/AssignmentInd'),{ssr:false}) ;
 import Head from 'next/head';
 
 const UserIndex=()=>{
@@ -29,38 +26,38 @@ const UserIndex=()=>{
  <ul className='flex justify-around'>
  <li>
  <Link href="/user/crud/blog">
-   <a className=" bg-teal-600 font-bold p-2 rounded-md"><AddCircleOutlineIcon style={{fontSize:15}}/><span></span> Create Blog</a>
+   <a className=" bg-teal-600 font-bold p-2 rounded-md"><span></span> Create Blog</a>
 </Link>
  </li>
  <li>
  <Link href="/user/crud/blogs">
-        <a className=" bg-teal-600 font-bold p-2 rounded-md"><UpdateIcon  style={{fontSize:15}}/><span></span> Update/Delete Blog</a>
+        <a className=" bg-teal-600 font-bold p-2 rounded-md"><span></span> Update/Delete Blog</a>
     </Link>
  </li>
  <li>
  <Link href="/user/update">
-        <a className=" bg-teal-600 font-bold p-2 rounded-md"><AssignmentIndIcon  style={{fontSize:15}}/><span></span> Update Profile</a>
+        <a className=" bg-teal-600 font-bold p-2 rounded-md"><span></span> Update Profile</a>
     </Link>
  </li>
  <li>
  <Link href="/user/addEducation">
-        <a className=" bg-teal-600 font-bold p-2 rounded-md"><AssignmentIndIcon  style={{fontSize:15}}/><span></span>Add Education</a>
+        <a className=" bg-teal-600 font-bold p-2 rounded-md"><span></span>Add Education</a>
     </Link>
  </li>
  <li>
  <Link href="/user/addExperience">
-        <a className=" bg-teal-600 font-bold p-2 rounded-md"><AssignmentIndIcon  style={{fontSize:15}}/><span></span>Add Experience</a>
+        <a className=" bg-teal-600 font-bold p-2 rounded-md"><span></span>Add Experience</a>
     </Link>
  </li>
 
  <li>
  {isAuth() &&   <Link href={`/profile/${isAuth().username}`}> 
-        <a className=" bg-teal-600 font-bold p-2 rounded-md"><EditIcon style={{fontSize:15}}/><span></span> Show My Profile</a>
+        <a className=" bg-teal-600 font-bold p-2 rounded-md"><span></span> Show My Profile</a>
     </Link>}
  </li>
  <li>
  {isAuth() &&   <Link href={`/profile/${isAuth().username}/cv`}> 
-        <a className=" bg-teal-600 font-bold p-2 rounded-md"><EditIcon style={{fontSize:15}}/><span></span> Download CV</a>
+        <a className=" bg-teal-600 font-bold p-2 rounded-md"><span></span> Download CV</a>
     </Link>}
  </li>
  </ul>
