@@ -9,7 +9,7 @@ import { BreadcrumbJsonLd,NextSeo ,JobPostingJsonLd,NewsArticleJsonLd} from 'nex
 import {Link} from 'react-scroll';
 import {isAuth} from '../../actions/auth';
 import {useState} from 'react';
-import {format} from 'date-fns';
+import format from 'date-fns/format';
 const SmallCard = dynamic(() => import('../../components/reusables/SmallCard'), { loading: () => "Loading..." });
 const ShortSearch = dynamic(() => import('../../components/reusables/ShortSearch'), { loading: () => "Loading..." });
 const TagInSlug =  dynamic(async ()=> import('../../components/reusables/TagInSlug'));
