@@ -3,9 +3,7 @@ import dynamic from 'next/dynamic';
 import { userPublicProfile } from '../../../actions/user';
 import { API, DOMAIN, APP_NAME} from '../../../config';
 import {format} from 'date-fns';
-const TwitterIcon =dynamic(async ()=>import('@material-ui/icons/Twitter'),{ssr:false});
-const FacebookIcon =dynamic(async ()=>import('@material-ui/icons/Facebook'),{ssr:false});
-const LinkedInIcon =dynamic(async ()=>import('@material-ui/icons/LinkedIn'),{ssr:false});
+
 import LanguageIcon from '@material-ui/icons/Language';
 import Private from '../../../components/auth/Private';
 
@@ -95,10 +93,10 @@ const showExperience=()=>{
 
         <h3 className="m-1 text-lg font-bold text-teal-500">My Social Links |</h3>
              <div className="flex flex-row justify-around ">
-                 <a href={user.twitter} ><TwitterIcon style={{fontSize:'40',color:'white'}} className="m-1 " /></a>
-                <a href={user.facebook}><FacebookIcon style={{fontSize:'40',color:'white'}} className="m-1" /></a>
-                <a href={user.linkedin}><LinkedInIcon style={{fontSize:'40',color:'white'}} className="m-1" /></a>
-                <a href={user.website}><LanguageIcon style={{fontSize:'40',color:'white'}} className="m-1" /></a>
+                 <a href={user.twitter} >Twitter</a>
+                <a href={user.facebook}>Facebook</a>
+                <a href={user.linkedin}>Linked In</a>
+                <a href={user.website}>Website</a>
               </div>
         <div className='grid grid-cols-2 gap-2'  >
         <div className='p-2 m-1 rounded-md ring-2 ring-teal-400'>
