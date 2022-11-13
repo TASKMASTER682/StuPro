@@ -86,7 +86,7 @@ const router=useRouter();
            url:photo ?  `${photo}` : `${DOMAIN}/img/pvt-job.jpg` ,
             width: 800,
             height: 600,
-            alt: `${job.title.substr(0-70)}`,
+            alt: `${job.title.substring(0,70)}`,
             type: 'image/jpeg',
           }
           ],
