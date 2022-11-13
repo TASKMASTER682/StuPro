@@ -3,8 +3,6 @@ import dynamic from 'next/dynamic';
 import { userPublicProfile } from '../../../actions/user';
 import { API, DOMAIN, APP_NAME} from '../../../config';
 import {format} from 'date-fns';
-
-import LanguageIcon from '@material-ui/icons/Language';
 import Private from '../../../components/auth/Private';
 
 
