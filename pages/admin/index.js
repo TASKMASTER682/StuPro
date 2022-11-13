@@ -6,10 +6,7 @@ import dynamic from 'next/dynamic';
 import {allUsers} from '../../actions/user'
 import {isAuth} from '../../actions/auth';
 
-const AddCircleOutlineIcon =dynamic(()=>import('@material-ui/icons/AddCircleOutline'),{ssr:false}) ;
-const UpdateIcon =dynamic(()=>import('@material-ui/icons/Update'),{ssr:false}) ;
-const AssignmentIndIcon =dynamic(()=>import('@material-ui/icons/AssignmentInd'),{ssr:false}) ;
-const EditIcon =dynamic(()=>import('@material-ui/icons/Edit'),{ssr:false}) ;
+
 import Head from 'next/head';
 
 export async function getStaticProps(){
@@ -67,24 +64,24 @@ const AdminDashboard=({users})=>{
             <ul className='flex flex-wrap justify-around p-4'>
             <li>
             <Link href="/admin/update">
-            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><AssignmentIndIcon style={{fontSize:15}}/><span></span> Update Profile</a>
+            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><span></span> Update Profile</a>
             </Link>  
             </li>
             <li>
             <Link href="/admin/education">
-            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><AssignmentIndIcon style={{fontSize:15}}/><span></span> Add Education</a>
+            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><span></span> Add Education</a>
             </Link>
             </li>
             <li>
             <Link href="/admin/experience">
-            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><AssignmentIndIcon style={{fontSize:15}}/><span></span> Add Experience</a>
+            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><span></span> Add Experience</a>
             </Link> 
             </li>
             <li>{isAuth() &&   <Link href={`/profile/${isAuth().username}`}> 
-            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><EditIcon style={{fontSize:15}}/><span></span> Show My Profile</a>
+            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><span></span> Show My Profile</a>
             </Link>}</li>
             <li>{isAuth() &&   <Link href={`/profile/${isAuth().username}/cv`}> 
-            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><EditIcon style={{fontSize:15}}/><span></span> Download CV</a>
+            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><span></span> Download CV</a>
             </Link>}</li>
             </ul>
            
