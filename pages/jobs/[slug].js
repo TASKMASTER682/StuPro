@@ -33,7 +33,7 @@ export const getStaticPaths = async () => {
     return {
 
         paths:pathData,
-        fallback:'blocking'
+        fallback:"blocking"
         
     }
 }
@@ -66,6 +66,7 @@ const SingleJob = ({job,photo}) => {
 
 
  const [toc,setToc]=useState(false);
+
    
 
     return (
