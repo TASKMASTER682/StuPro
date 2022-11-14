@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { API, DOMAIN, APP_NAME } from '../../../config';
 import Card from '../../../components/blogs/Card';
 import { BreadcrumbJsonLd,NextSeo } from 'next-seo';
+import fetch from 'isomorphic-fetch';
 
 
 

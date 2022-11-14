@@ -4,6 +4,8 @@ import { listHome } from '../../../actions/job';
 import { useAmp } from 'next/amp';
 import { API } from '../../../config';
 import { format } from 'date-fns';
+import fetch from 'isomorphic-fetch';
+
 
 
 export const config = { amp: true};

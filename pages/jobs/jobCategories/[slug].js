@@ -3,6 +3,8 @@ import { API, DOMAIN, APP_NAME } from '../../../config';
 import Card from '../../../components/jobs/Card';
 import { BreadcrumbJsonLd,NextSeo } from 'next-seo';
 const ShortSearch =dynamic(async ()=>import('../../../components/reusables/ShortSearch'),{ssr:false});
+import fetch from 'isomorphic-fetch';
+
 
 // import Infeed from '../../components/ads/Infeed';
 // import DisplayAd from '../../components/ads/DisplayAd';
