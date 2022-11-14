@@ -17,6 +17,7 @@ const CategoryInSlug= dynamic(async ()=> import('../../components/reusables/Slug
 // const IFrame = dynamic(async ()=> import('../../components/reusables/IFrame'))
 const Faq =  dynamic(async ()=> import('../../components/reusables/ShowFaq'))
 const NewsLetter =dynamic(async ()=> import('../../components/NewsLetterSubscribe'), { ssr: false });
+import fetch from 'isomorphic-fetch';
 
 
 

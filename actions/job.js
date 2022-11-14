@@ -1,4 +1,4 @@
-// import fetch from 'isomorphic-fetch';
+import fetch from 'isomorphic-fetch';
 import { API } from '../config';
 import queryString from 'query-string';
 import { isAuth, handleResponse } from './auth';
@@ -24,13 +24,13 @@ export const createJob = async (job, token) => {
 export const listJobsWithCategoriesAndTags = async () => {
     // const data = {
 
-        return await fetch(`${API}/jobs`, {
-            method: 'GET'
+    return await fetch(`${API}/jobs`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
         })
-            .then(response => {
-                return response.json();
-            })
-            .catch(err => console.log(err));
+        .catch(err => console.log(err));
 };
 
 

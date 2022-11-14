@@ -12,7 +12,8 @@ import { BreadcrumbJsonLd,NextSeo,JobPostingJsonLd,NewsArticleJsonLd } from 'nex
 const ShortSearch = dynamic(() => import('../../components/reusables/ShortSearch'), { loading: () => "Loading..." });
 import { redirect } from '../../next.config';
 const Faq = dynamic(async () => import('../../components/reusables/ShowFaq'))
-const NewsLetter = dynamic(async () => import('../../components/NewsLetterSubscribe'), { ssr: false })
+const NewsLetter = dynamic(async () => import('../../components/NewsLetterSubscribe'), { ssr: false });
+import fetch from 'isomorphic-fetch';
 
 
 
