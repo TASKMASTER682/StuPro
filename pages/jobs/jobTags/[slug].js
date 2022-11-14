@@ -97,7 +97,7 @@ export const getStaticProps=async (ctx)=>{
     const slug=ctx.params.slug;
     const res=await fetch(`${API}/jobTags/`+slug);
     
-    const data=res.json()
+    const data=await res.json();
 
     return{
         props:{
