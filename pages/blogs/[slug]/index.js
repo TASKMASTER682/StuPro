@@ -134,7 +134,7 @@ return(
 <div className='col-span-2 p-2 mb-3 rounded-md lg:shadow-md lg:shadow-green-500'>
     <h1 className='text-2xl font-bold lg:text-4xl'>{blog.title}</h1>
     <div className='flex justify-between p-2 my-1'>
-        <p className='text-sm font-semibold text-gray-500'>Posted on:{format(new Date(blog.updatedAt),'dd MMM yyyy')}</p>
+        <p className='text-sm font-semibold text-gray-500'>Posted on:{format(new Date(`${blog.updatedAt}`),'dd MMM yyyy')}</p>
         <Share newRoute='blogs' blog={blog} />
     </div>
     <Photo photo={photo} content={blog} />

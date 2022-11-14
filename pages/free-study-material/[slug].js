@@ -135,7 +135,7 @@ const SingleMaterial=  ({material,photo})=>{
       </div>
 
       <ul className='flex flex-col justify-between px-1 my-1 lg:flex-row'>
-          <li className='text-sm font-semibold'>Posted on: <span className=' mx-1'> {format(new Date(material.updatedAt),'dd MMM yyyy')}</span></li>
+          <li className='text-sm font-semibold'>Posted on: <span className=' mx-1'> {format(new Date(`${material.updatedAt}`),'dd MMM yyyy')}</span></li>
           <li><Share newRoute='free-study-material' blog={material} /></li>
       </ul>
           <div className='p-1 body-style'>

@@ -15,7 +15,7 @@ const JobHome = ({jobs,newRoute}) => {
                 
                 </Link>
                <p className='p-1 my-2 font-semibold text-gray-500'>{`${job.desc.substr(0-160)}......Read More`}</p>
-               <p className='p-1 text-sm font-bold text-gray-400'>Published on | {format(new Date(job.updatedAt),'dd MMM yyyy')}</p>
+               <p className='p-1 text-sm font-bold text-gray-400'>Published on | {format(new Date(`${job.updatedAt}`),'dd MMM yyyy')}</p>
                 </div>
 
 

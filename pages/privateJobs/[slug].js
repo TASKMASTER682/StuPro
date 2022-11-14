@@ -167,7 +167,7 @@ const SinglePvtJob = ({privateJob,photo}) => {
      <li className='hidden p-1 py-3 mx-4 font-bold text-white bg-teal-600 rounded-md lg:block hover:bg-teal-300 hover:text-black'><a className='p-2' target='_blank' rel='noreferrer' href={privateJob.applyLink}>Apply Now</a></li>
      </ul>
         <ul className='flex flex-col justify-between p-2 m-2 mt-4 rounded-sm lg:flex-row lg:p-3 lg:px-2 bg-slate-300'>
-        <li className='text-sm font-semibold text-slate-900'>{`Posted on: ${format(new Date(privateJob.updatedAt),'dd MMM yyyy')}`}</li>
+        <li className='text-sm font-semibold text-slate-900'>{`Posted on: ${format(new Date(`${privateJob.updatedAt}`),'dd MMM yyyy')}`}</li>
         <li className='flex font-bold text-slate-900'>
         <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mx-2 fill-green-500" viewBox="0 0 20 20" >
         <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />

@@ -42,12 +42,12 @@ About
 <div className={show ? 'p-2 mt-4 bg-teal-100 rounded-md lg:absolute':'hidden' }  >
    <ul className='space-y-2' >
      <li>
-     <Link className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800' prefetch={false}  href="/jobs">
+     <Link className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800'   href="/jobs">
   Government Jobs
      </Link>
      </li>
      <li>
-     <Link className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800' prefetch={false} href="/privateJobs" >
+     <Link className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800'  href="/privateJobs" >
      Private Jobs
        </Link>
      </li>
@@ -69,12 +69,12 @@ About
  </div>
 </li>
 <li className='py-2 m-2'>
-<Link className="font-bold hover:text-green-700"  prefetch={false} href="/free-cv-builder">
+<Link className="font-bold hover:text-green-700"  href="/free-cv-builder">
 Create Cv
 </Link>
 </li>
 <li className='py-2 m-2'>
-<Link className="mx-2 font-bold hover:text-green-700" prefetch={false} href="/contact">
+<Link className="mx-2 font-bold hover:text-green-700" href="/contact">
 Contact
 </Link>
 </li>
