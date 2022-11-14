@@ -10,7 +10,7 @@ const Card = ({ privateJob }) => {
     return (
         <div >
         <Link href={`/privateJobs/${privateJob.slug}`}>
-            <a><h2 className='text-xl font-bold text-success p-2 hover:underline' >{privateJob.title}</h2></a>
+            <h2 className='text-xl font-bold text-success p-2 hover:underline' >{privateJob.title}</h2>
         </Link>
         <p className='font-semibold text-blue-900 px-2'>{privateJob.location}</p>
         <p className='font-semibold text-red-400 px-2 mb-3'>{privateJob.agency}</p>
@@ -22,7 +22,7 @@ const Card = ({ privateJob }) => {
             </svg>
             <p className='text-sm font-bold'>{privateJob.salary}.</p>
             </li>
-            <li className=' bg-teal-700 rounded-md font-bold text-white  p-2 m-1'><Link href={`/privateJobs/${privateJob.slug}`}><a>Apply Online</a></Link></li>
+            <li className=' bg-teal-700 rounded-md font-bold text-white  p-2 m-1'><Link href={`/privateJobs/${privateJob.slug}`}>Apply Online</Link></li>
         </ul>
         
         </div>

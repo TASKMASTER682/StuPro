@@ -73,9 +73,9 @@ const signinButton=loading ?'Please wait...':'Sign in'
         </ul>
         <ul className='flex justify-between mt-4' >
         <li className="text-sm font-bold text-teal-400 p-2">Forgot Password?</li>
-        <li className=' bg-teal-300 px-2 h-6 mr-4 rounded-md text-sm font-bold'><Link href="/auth/password/forgot"><a>Click to recover</a></Link></li>
+        <li className=' bg-teal-300 px-2 h-6 mr-4 rounded-md text-sm font-bold'><Link href="/auth/password/forgot">Click to recover</Link></li>
         </ul>
-        <p className='mt-4 pl-3 pb-2'>Don't have and Account yet? <span className='bg-red-400 p-1 px-2  rounded-md font-bold'><Link  href="/signup"><a >Sign Up</a></Link></span></p>
+        <p className='mt-4 pl-3 pb-2'>Don't have and Account yet? <span className='bg-red-400 p-1 px-2  rounded-md font-bold'><Link  href="/signup">Sign Up</Link></span></p>
 
     </div>
 

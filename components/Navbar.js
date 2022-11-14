@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React,{useState} from 'react';
 import {signout,isAuth} from '../actions/auth';
 import Router from "next/router";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import {DOMAIN} from '../config';
 
 
@@ -18,10 +18,10 @@ const Navbar=()=>{
     <>
     <nav className='fixed z-10 flex justify-between w-full bg-transparent shadow-md backdrop-blur-md '>
      <div className='flex justify-start '>
-      <Link  href ="/">
-       <a className='p-1'>
+      <Link className='p-1' href ="/">
+      
        <Image  src='/img/progradLogo.svg' height={40} width={120} placeholder='blur'  blurDataURL='/img/blurr-min.jpg' priority alt='prograd landing'/>
-       </a>
+      
       </Link>
      </div>
 <div>
@@ -33,8 +33,8 @@ const Navbar=()=>{
   <ul className={` justify-end lg:flex-row left-0 flex flex-col-reverse  ${smallShow && 'hidden'}`  }>
 
 <li className='py-2 m-2'>
-<Link href="/about">
-<a className="font-bold hover:text-green-700"  >About</a>
+<Link className="font-bold hover:text-green-700"  href="/about">
+About
 </Link>
 </li>
 <li className='py-2 m-2'>
@@ -42,23 +42,23 @@ const Navbar=()=>{
 <div className={show ? 'p-2 mt-4 bg-teal-100 rounded-md lg:absolute':'hidden' }  >
    <ul className='space-y-2' >
      <li>
-     <Link prefetch={false}  href="/jobs">
-     <a className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800'  >Government Jobs</a>
+     <Link className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800' prefetch={false}  href="/jobs">
+  Government Jobs
      </Link>
      </li>
      <li>
-     <Link prefetch={false} href="/privateJobs" >
-     <a className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800' >Private Jobs</a>
+     <Link className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800' prefetch={false} href="/privateJobs" >
+     Private Jobs
        </Link>
      </li>
      <li>
-     <Link href="/free-study-material">
-     <a  className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800' >Study Material</a>
+     <Link className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800' href="/free-study-material">
+     Study Material
        </Link>
      </li>
      <li>
-     <Link href="/blogs">
-     <a  className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800' >Blogs</a>
+     <Link className='p-2 font-bold text-teal-700 rounded-md hover:bg-gray-100 hover:text-gray-800' href="/blogs">
+     Blogs
        </Link>
      </li>
      <li>
@@ -69,20 +69,20 @@ const Navbar=()=>{
  </div>
 </li>
 <li className='py-2 m-2'>
-<Link prefetch={false} href="/free-cv-builder">
-<a className="font-bold hover:text-green-700" >Create Cv</a>
+<Link className="font-bold hover:text-green-700"  prefetch={false} href="/free-cv-builder">
+Create Cv
 </Link>
 </li>
 <li className='py-2 m-2'>
-<Link prefetch={false} href="/contact">
-<a className="mx-2 font-bold hover:text-green-700" >Contact</a>
+<Link className="mx-2 font-bold hover:text-green-700" prefetch={false} href="/contact">
+Contact
 </Link>
 </li>
 
 
 {isAuth() &&
 <>
-<li className='px-4 py-2 m-2 font-bold transition ease-in-out delay-150 bg-teal-300 rounded-sm hover:-translate-y-1 hover:scale-110'  ><Link href={isAuth().role===1 ? '/admin' :'/user'} ><a >{`${isAuth().name} Dashboard`}</a></Link></li>
+<li className='px-4 py-2 m-2 font-bold transition ease-in-out delay-150 bg-teal-300 rounded-sm hover:-translate-y-1 hover:scale-110'  ><Link href={isAuth().role===1 ? '/admin' :'/user'} >{`${isAuth().name} Dashboard`}</Link></li>
 <li className ='px-4 py-2 m-2 transition ease-in-out delay-150 bg-teal-300 rounded-sm hover:-translate-y-1 hover:scale-110 '  ><button className='font-bold '  onClick={() => signout(() => Router.push('/signin'))} >Signout</button></li>
 </> }   
 

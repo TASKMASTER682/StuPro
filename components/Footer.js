@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import {DOMAIN} from '../config';
 
 const Footer=()=>{
@@ -36,19 +36,19 @@ const Footer=()=>{
             <hr className='my-2 text-gray-900 ' />
             <ul>
                 <li>
-                <Link href="/about"><a className='font-bold' >About Us</a></Link>
+                <Link className='font-bold' href="/about">About Us</Link>
                 </li>
                 <li>
-                <Link href="/disclaimer" ><a className='font-bold'> Disclaimer</a></Link>
+                <Link className='font-bold' href="/disclaimer" >Disclaimer</Link>
                 </li>
                 <li>
-                <Link href="/contact" ><a className='font-bold'> Contact us</a></Link>
+                <Link className='font-bold' href="/contact" >Contact us</Link>
                 </li>
                 <li>
-                <Link href="/privacy" ><a className='font-bold'>Terms of use | Privacy Policy </a></Link>
+                <Link className='font-bold' href="/privacy" >Terms of use | Privacy Policy </Link>
                 </li>
                 <li>
-                <Link href="/sitemap.xml" ><a className='font-bold'>Sitemap</a></Link>  
+                <Link className='font-bold' href="/sitemap.xml" >Sitemap</Link>  
                 </li>
             </ul>
             <hr className='my-2 text-gray-900 ' />

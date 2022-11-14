@@ -10,14 +10,10 @@ const ShowCategories = ({ newRoute,bcat,fun }) => {
     const showCategories = () => {
         return fun.map((jc) => {
             return (
-                <Link href={`${DOMAIN}/${bcat}/${newRoute}/${jc.slug}`}><a className='p-1 m-3 text-sm font-semibold rounded-md bg-gray-700 text-white'  key={jc._id} > #{jc.name}</a></Link>
+                <Link className='p-1 m-3 text-sm font-semibold rounded-md bg-gray-700 text-white'  key={jc._id} href={`${DOMAIN}/${bcat}/${newRoute}/${jc.slug}`}> #{jc.name}</Link>
             )
         })
     };
-
-
-
-
 
     return (  
        <div className="flex flex-wrap">

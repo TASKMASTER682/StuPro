@@ -46,42 +46,42 @@ const AdminDashboard=({users})=>{
         <div className='grid grid-cols-3'>
           <ul className='flex-col col-span-1 bg-teal-100'>
           <li className='p-2 text-xl font-bold text-teal-700'>Create</li>
-          <li className='px-2 my-2' ><Link href='admin/materialcrud/create'><a className='p-2 font-bold text-white bg-black rounded-md'>Create Study Material</a></Link></li>
-          <li className='px-2 my-4'><Link href='/admin/jobcrud/job' ><a className='p-2 font-bold text-white bg-black rounded-md'>Create Job</a></Link></li>
-          <li className='px-2 my-4'><Link href='/admin/privatejobcrud/privateJob' ><a className='p-2 font-bold text-white bg-black rounded-md'>Create Private Job</a></Link></li>
-          <li className='px-2 my-2'><Link href='/admin/crud/blog' ><a className='p-2 font-bold text-white bg-black rounded-md'>Create Blog</a></Link></li>
+          <li className='px-2 my-2' ><Link className='p-2 font-bold text-white bg-black rounded-md' href='admin/materialcrud/create'>Create Study Material</Link></li>
+          <li className='px-2 my-4'><Link className='p-2 font-bold text-white bg-black rounded-md' href='/admin/jobcrud/job' >Create Job</Link></li>
+          <li className='px-2 my-4'><Link className='p-2 font-bold text-white bg-black rounded-md' href='/admin/privatejobcrud/privateJob' >Create Private Job</Link></li>
+          <li className='px-2 my-2'><Link className='p-2 font-bold text-white bg-black rounded-md' href='/admin/crud/blog' >Create Blog</Link></li>
           <li className='p-2 text-xl font-bold text-teal-700'>Update</li>
           <li className='px-2 my-2' ><a href='/admin/crud/blogs' className='p-2 font-bold text-white bg-black rounded-md'>Update/Delete Blogs</a></li>
           <li className='px-2 my-4'><a href='/admin/jobcrud/jobs' className='p-2 font-bold text-white bg-black rounded-md'>Update/Delete Jobs</a></li>
           <li className='px-2 my-4'><a href='/admin/privatejobcrud/privateJobs' className='p-2 font-bold text-white bg-black rounded-md'>Update/Delete Pvt Job</a></li>
           <li className='px-2 my-2'>   <a  href='/admin/materialcrud/materials' className='p-2 font-bold text-white bg-black rounded-md'>Update/Delete Study Material</a></li>
           <li className='p-2 text-xl font-bold text-teal-700'>Categories</li>
-          <li className='px-2 my-2' > <Link href='/admin/crud/category-tag'><a className='p-2 font-bold text-white bg-black rounded-md'>Edit Blog Category</a></Link></li>
-          <li className='px-2 my-4'>   <Link href='/admin/jobcrud/jobs-category-tag' ><a className='p-2 font-bold text-white bg-black rounded-md'>Edit Job Category</a></Link></li>
-          <li className='px-2 my-4'>   <Link href='/admin/materialcrud/materialCategory' ><a className='p-2 font-bold text-white bg-black rounded-md'>Edit Material Category</a></Link></li>
+          <li className='px-2 my-2' > <Link className='p-2 font-bold text-white bg-black rounded-md' href='/admin/crud/category-tag'>Edit Blog Category</Link></li>
+          <li className='px-2 my-4'>   <Link className='p-2 font-bold text-white bg-black rounded-md' href='/admin/jobcrud/jobs-category-tag' >Edit Job Category</Link></li>
+          <li className='px-2 my-4'>   <Link className='p-2 font-bold text-white bg-black rounded-md' href='/admin/materialcrud/materialCategory' >Edit Material Category</Link></li>
           </ul>
           <div className='col-span-2 p-2 bg-teal-50'>
             <ul className='flex flex-wrap justify-around p-4'>
             <li>
-            <Link href="/admin/update">
-            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><span></span> Update Profile</a>
+            <Link className="p-2 my-1 font-bold text-white rounded-md bg-success" href="/admin/update">
+            <span></span> Update Profile
             </Link>  
             </li>
             <li>
-            <Link href="/admin/education">
-            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><span></span> Add Education</a>
+            <Link className="p-2 my-1 font-bold text-white rounded-md bg-success" href="/admin/education">
+            <span></span> Add Education
             </Link>
             </li>
             <li>
-            <Link href="/admin/experience">
-            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><span></span> Add Experience</a>
+            <Link className="p-2 my-1 font-bold text-white rounded-md bg-success" href="/admin/experience">
+            <span></span> Add Experience
             </Link> 
             </li>
-            <li>{isAuth() &&   <Link href={`/profile/${isAuth().username}`}> 
-            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><span></span> Show My Profile</a>
+            <li>{isAuth() &&   <Link className="p-2 my-1 font-bold text-white rounded-md bg-success" href={`/profile/${isAuth().username}`}> 
+            <span></span> Show My Profile
             </Link>}</li>
-            <li>{isAuth() &&   <Link href={`/profile/${isAuth().username}/cv`}> 
-            <a className="p-2 my-1 font-bold text-white rounded-md bg-success"><span></span> Download CV</a>
+            <li>{isAuth() &&   <Link className="p-2 my-1 font-bold text-white rounded-md bg-success" href={`/profile/${isAuth().username}/cv`}> 
+            <span></span> Download CV
             </Link>}</li>
             </ul>
            

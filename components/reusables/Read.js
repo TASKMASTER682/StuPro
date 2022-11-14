@@ -40,8 +40,8 @@ const Read = ({removeApi,list,newRoute,updateLink}) => {
     const showUpdateButton = job => {
         if (isAuth() && isAuth().role === 0) {
             return (
-                <Link href={`/user/${updateLink}/${job.slug}`}>
-                    <a className="bg-teal-400 rounded-md py-2 px-4 m-2">Update</a>
+                <Link className="bg-teal-400 rounded-md py-2 px-4 m-2" href={`/user/${updateLink}/${job.slug}`}>
+                   Update
                 </Link>
             );
         } else if (isAuth() && isAuth().role === 1) {
@@ -57,13 +57,11 @@ const Read = ({removeApi,list,newRoute,updateLink}) => {
             return (
                 <div key={i} className="p-2 shadow-md rounded-md my-3 ">
                     <Link href={`/${newRoute}/${job.slug}`}>
-                    <a>
                      <h2  className="text-lg font-bold">
                         {job.title}
                         </h2>
-                    </a>
+                    
                     </Link>
-              
                     <button className="bg-red-400 rounded-md py-2 px-4 m-2" onClick={() => deleteConfirm(job.slug)}>
                         Delete
                     </button>

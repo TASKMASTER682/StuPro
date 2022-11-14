@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import {APP_NAME ,DOMAIN} from '../config';
 import { BreadcrumbJsonLd,NextSeo } from 'next-seo';
 

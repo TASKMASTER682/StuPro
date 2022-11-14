@@ -10,9 +10,9 @@ const JobHome = ({jobs,newRoute}) => {
     
             return (
                 <div key={i} className=' shadow-md shadow-green-400 w-[16rem] mx-2 rounded-md ring-1 ring-black'>
-                <Link href={`/jobs/${job.slug}`}><a>
+                <Link href={`/jobs/${job.slug}`}>
                 <h3 className='font-bold text-teal-600 text-xl p-1 w-[16rem] h-28 hover:underline overflow-hidden'>{job.title}</h3>
-                </a>
+                
                 </Link>
                <p className='p-1 my-2 font-semibold text-gray-500'>{`${job.desc.substr(0-160)}......Read More`}</p>
                <p className='p-1 text-sm font-bold text-gray-400'>Published on | {format(new Date(job.updatedAt),'dd MMM yyyy')}</p>

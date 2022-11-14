@@ -10,9 +10,9 @@ const NewsletterSubscribe = () => {
   return (
   <Modal newInterval={15000} >
   <div className="px-4 pb-3 rounded-md shadow-md">
-<Link href="/signup"><a>
+<Link href="/signup">
 <h3 className="my-2 text-lg font-bold text-teal-500 ">Subscribe to Our News Letter</h3>
-</a></Link>
+</Link>
   <p className="font-bold text-gray-500 ">We will update you whenever new updates arrive</p>
       <div className=" rounded-md ring-2 ring-teal-500 p-4 my-2">
        <MailchimpSubscribe className='ring-1 ring-teal-500' url={url}/>

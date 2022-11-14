@@ -33,9 +33,9 @@ const PublicProfile = ({ user, blogs, query}) => {
         <div  key={i}>
         <div className='p-2 my-4 rounded-md shadow-md'>
                 <Link href={`/jobs/${blog.slug}`}>
-                  <a>
+                 
                   <h3 className="text-lg font-bold text-gray-700 hover:underline">{blog.title}</h3>
-                  </a>
+                 
                 </Link>
                
               

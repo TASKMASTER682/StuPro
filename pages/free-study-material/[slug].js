@@ -128,9 +128,9 @@ const SingleMaterial=  ({material,photo})=>{
       <div className='flex mb-1 '>
       <img className='w-16 h-16 p-1 mx-2 mt-3 rounded-full shadow-md lg:w-24 lg:h-24 shadow-green-500 lg:mt-4' src={`${photo}`}  alt='Logo' />
       <Link href={`/free-study-material/${material.slug}`}>
-        <a>
+        
         <h1 className='mb-1 text-2xl font-bold lg:text-4xl'>{material.title}</h1>
-        </a>
+        
       </Link>
       </div>
 

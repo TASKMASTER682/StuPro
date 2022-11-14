@@ -67,11 +67,11 @@ const BlogRead = ({ username }) => {
             return (
                 <div key={i} className="p-4 my-4 rounded-md shadow-md shadow-green-400">
                     <Link href={`/blogs/${blog.slug}`}>
-                    <a>
+                    
                      <h2  className="text-2xl font-bold ">
                         {blog.title}
                         </h2>
-                    </a>
+                    
                     </Link>
                     <p className="text-sm text-gray-400 ">
                         Written by {blog.postedBy.name} | Published on {format(new Date(blog.updatedAt),'dd MMM yyyy')}

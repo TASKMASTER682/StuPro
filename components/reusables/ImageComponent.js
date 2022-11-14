@@ -1,12 +1,10 @@
 import React from 'react'
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import {API} from '../../config'
 
 
 
 const ImageComponent = ({photo}) => {
-
-   
     const myLoader = ({ src }) => {
         return `${photo}`
       }

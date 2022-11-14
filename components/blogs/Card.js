@@ -8,9 +8,9 @@ const Card = ({ blog }) => {
 
     return (
       <>
-      <Link href={`/blogs/${blog.slug}`}><a>
+      <Link href={`/blogs/${blog.slug}`}>
       <h2 className='text-lg font-bold bg-slate-200 rounded-md hover:underline '>{blog.title}</h2>
-      </a></Link>
+      </Link>
         <div className='mt-2 p-2 text-lg lg:text-sm text-gray-600'>{renderHTML(blog.excerpt)}</div>
         <ul className='flex justify-between'>
             <li className='text-sm font-bold text-teal-600 p-2'>Posted By</li>

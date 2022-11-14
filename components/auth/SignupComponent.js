@@ -74,7 +74,7 @@ const SignupComponent=()=>{
         </ul>
         <ul className='flex justify-between mt-4' >
         <li className="text-sm font-bold text-teal-400 p-2">Already have an account?</li>
-        <Link href="/signin"><a className='bg-red-400 rounded-md p-1 px-3 m-2 font-bold' >Sign In</a></Link>
+        <Link className='bg-red-400 rounded-md p-1 px-3 m-2 font-bold'  href="/signin">Sign In</Link>
         </ul>
     </div>
 

@@ -37,12 +37,9 @@ const AutoComplete = ({newRoute,jobs}) => {
             <div >
             <div className='p-2 my-4 rounded-md shadow-md ring-1' key={i} >
                 <Link href={`/${newRoute}/${sug.slug}`}>
-                    <a>
                     <h3 className='p-2 text-xl font-bold'>
                          {sug.title}
                    </h3>
-              
-                 </a>
                 </Link>
 
               </div>
