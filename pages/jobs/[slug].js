@@ -222,14 +222,14 @@ const SingleJob = ({job,photo}) => {
  <CategoryInSlug catRoute='jobs' newCat='jobCategories' cats={job.jobCategories} />
    <TagInSlug tagRoute='jobs' newTagRoute='jobTags' tags={job.jobTags} />
  </div>
- {  job.downloadLink.length ?<div >
+ {/* {  job.downloadLink.length ?<div >
             <h3 className="mb-2 text-lg font-bold text-green-500 bg-slate-200">Free Previous Years and others Pdfs </h3>
             <ol className="p-2 rounded-md ring-1 ring-teal-500">
             <IFrame material={job} />
             </ol>
             </div> : null}
  {job.faq.length ? <div><h3 className='m-2 text-lg font-bold text-green-500 bg-slate-200'>Frequently Asked Questions</h3>
-<Faq material={job} /></div> : null }
+<Faq material={job} /></div> : null } */}
 
 <ShortSearch filterRoute='jobs' />
 {isAuth() && isAuth().role===1 && <div>
