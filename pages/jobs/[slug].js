@@ -20,46 +20,7 @@ const NewsLetter =dynamic(async ()=> import('../../components/NewsLetterSubscrib
 
 
 
-export const getStaticPaths = async () => {
-    const post = await listJobsWithCategoriesAndTags();
-    // const post = await res.json();
-    const pathData =await post.map((job) => {
-        return {
-            params: { slug: job.slug }
 
-        }
-    })
-
-    return {
-
-        paths:pathData,
-        fallback:"blocking"
-        
-    }
-}
-
-export const getStaticProps = async (ctx) => {
-    const slug = ctx.params.slug;
-
-    const [job,photo] = await Promise.all([
-      fetch(`${API}/jobs/` + slug).then(r => r.json()),
-      `${API}/jobs/photo/` + slug
-    ]);
-    // if (!job) {
-    //     return {
-    //   notFound:true
-    //     }
-    //   }
-    return {
-        props: {
-            job,
-            photo
-
-        },
-        revalidate:60
-    }
-
-}
 
 
 const SingleJob = ({job,photo}) => {
@@ -252,9 +213,44 @@ const SingleJob = ({job,photo}) => {
 }
 
 export default SingleJob;
-// const router=useRouter();
 
- 
-// if(router.isFallback){
-//     return <div>Loading...</div>
-// }
+export const getStaticPaths = async () => {
+  const post = await listJobsWithCategoriesAndTags();
+  // const post = await res.json();
+  const pathData =await post.map((job) => {
+      return {
+          params: { slug: job.slug }
+
+      }
+  })
+
+  return {
+
+      paths:pathData,
+      fallback:"blocking"
+      
+  }
+}
+
+export const getStaticProps = async (ctx) => {
+  const slug = ctx.params.slug;
+
+  const [job,photo] = await Promise.all([
+    fetch(`${API}/jobs/` + slug).then(r => r.json()),
+    `${API}/jobs/photo/` + slug
+  ]);
+  // if (!job) {
+  //     return {
+  //   notFound:true
+  //     }
+  //   }
+  return {
+      props: {
+          job,
+          photo
+
+      },
+      revalidate:60
+  }
+
+}
