@@ -89,7 +89,7 @@ export const getStaticProps=async (ctx)=>{
     return{
         props:{
             category: data.category, 
-            blogs: data.blogs,
+            blogs: data.blogs ,
         },
         revalidate:500
 

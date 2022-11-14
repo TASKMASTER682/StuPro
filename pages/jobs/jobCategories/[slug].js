@@ -81,13 +81,13 @@ const JobCategory=({jobCategory,jobs})=>{
 export const getStaticPaths=async ()=>{
     const res = await fetch(`${API}/jobCategories`);
     const data= await res.json();
-    const paths=data.map(category=>{
+    const pathData=data.map(category=>{
         return{
             params:{slug:category.slug}
         }
     })
     return{
-        paths,
+        paths:pathData,
         fallback:"blocking"
     }
 }
@@ -100,7 +100,7 @@ export const getStaticProps=async (ctx)=>{
     return{
         props:{
             jobCategory: data.jobCategory, 
-            jobs: data.jobs,
+            jobs: data.jobs ? data.jobs : null,
         },
         revalidate:500
 

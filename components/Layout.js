@@ -15,7 +15,7 @@ const Layout=({children })=>{
     return(
         <>
         <NextNProgress color='#0f1317' />
-        {/* <Navbar /> */}
+        <Navbar />
         {children}
         <ScrollToTop />
         <BottomNav />

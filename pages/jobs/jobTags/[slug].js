@@ -33,18 +33,19 @@ const JobTag=({ jobTag, jobs})=>{
       }}
     />
 
-         <BreadcrumbJsonLd
+      <BreadcrumbJsonLd
       itemListElements={[
         {
           position: 1,
           name: 'Home',
           item: 'https://www.theprograd.com/',
-        },
+        }, 
         {
           position: 2,
           name: 'Government Jobs',
           item: 'https://www.theprograd.com/jobs',
         },
+
         {
           position: 3,
           name: `Jobs According to Tag ${jobTag.name}`,
@@ -65,41 +66,41 @@ const JobTag=({ jobTag, jobs})=>{
          ))}
      
      {/* <Infeed /> */}
-   </div>
-
-     <div>
+   </div> 
+    <div>
    <ShortSearch filterRoute='jobs' />
 
    </div>
-
-      </section>
-       </>
+   </section>
+    </>
     )
 }
 
 export const getStaticPaths=async ()=>{
     const res = await fetch(`${API}/jobTags`);
     const data= await res.json();
-    const paths=data.map(category=>{
+
+    const pathData= data.map(category=>{
         return{
             params:{slug:category.slug}
         }
-    })
+    }) 
     return{
-        paths,
-        fallback:"blocking"
+        paths:pathData,
+        fallback:'blocking'
     }
 }
 
-export const getStaticProps=async (ctx)=>{
+export const getServerSideProps=async (ctx)=>{
     const slug=ctx.params.slug;
-    const res=await fetch(`${API}/jobTags/`+slug)
-    const data=await res.json();
+    const res=await fetch(`${API}/jobTags/`+slug);
+    
+    const data=res.json()
 
     return{
         props:{
-            jobTag: data.jobTag, 
-            jobs: data.jobs,
+            jobTag: data.jobTag , 
+            jobs:  data.jobs ? data.jobs : null,
         },
         revalidate:500
 
