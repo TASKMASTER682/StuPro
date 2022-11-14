@@ -35,11 +35,11 @@ export const getStaticProps = async (ctx) => {
         fetch(`${API}/privateJobs/` + slug).then(r => r.json()),
         `${API}/privateJobs/photo/` + slug,
     ]);
-    if (!privateJob) {
-        return {
-            notFound: true
-        }
-    }
+    // if (!privateJob) {
+    //     return {
+    //         notFound: true
+    //     }
+    // }
     return {
 
         props: {

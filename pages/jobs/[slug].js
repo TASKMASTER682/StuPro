@@ -45,11 +45,11 @@ export const getStaticProps = async (ctx) => {
       fetch(`${API}/jobs/` + slug).then(r => r.json()),
       `${API}/jobs/photo/` + slug
     ]);
-    if (!job) {
-        return {
-      notFound:true
-        }
-      }
+    // if (!job) {
+    //     return {
+    //   notFound:true
+    //     }
+    //   }
     return {
         props: {
             job,
@@ -221,14 +221,14 @@ const SingleJob = ({job,photo}) => {
  <CategoryInSlug catRoute='jobs' newCat='jobCategories' cats={job.jobCategories} />
    <TagInSlug tagRoute='jobs' newTagRoute='jobTags' tags={job.jobTags} />
  </div>
- {/* {  job.downloadLink.length ?<div >
+ {  job.downloadLink.length ?<div >
             <h3 className="mb-2 text-lg font-bold text-green-500 bg-slate-200">Free Previous Years and others Pdfs </h3>
             <ol className="p-2 rounded-md ring-1 ring-teal-500">
             <IFrame material={job} />
             </ol>
             </div> : null}
  {job.faq.length ? <><h3 className='m-2 text-lg font-bold text-green-500 bg-slate-200'>Frequently Asked Questions</h3>
-<Faq material={job} /></> : null } */}
+<Faq material={job} /></> : null }
 
 <ShortSearch filterRoute='jobs' />
 {isAuth() && isAuth().role===1 && <div>
