@@ -23,8 +23,8 @@ const Landing = ({ jobs }) => {
        
        </ul>
        <ul className='flex flex-initial'>
-         <li className='p-3 ml-2 mr-4 font-bold rounded-sm bg-gradient-to-r from-green-500 to-teal-400 ring-1 ring-black hover:bg-slate-600 hover:text-slate-100'><Link prefetch={false} href="/signup">Signup Here</Link></li>
-         <li className='p-3 ml-2 font-bold rounded-sm bg-slate-900 ring-1 ring-black hover:bg-slate-600 hover:text-slate-100'><Link prefetch={false} className="px-4 py-2 font-bold text-green-300 "    href="/signin">Login</Link></li>
+         <li className='p-3 ml-2 mr-4 font-bold rounded-sm bg-gradient-to-r from-green-500 to-teal-400 ring-1 ring-black hover:bg-slate-600 hover:text-slate-100'><Link  href="/signup">Signup Here</Link></li>
+         <li className='p-3 ml-2 font-bold rounded-sm bg-slate-900 ring-1 ring-black hover:bg-slate-600 hover:text-slate-100'><Link  className="px-4 py-2 font-bold text-green-300 "    href="/signin">Login</Link></li>
        </ul>
 
 <h3 className='pt-3 pl-2 mt-3 text-lg font-bold'>Top Job Categories</h3>

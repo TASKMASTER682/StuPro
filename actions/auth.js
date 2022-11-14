@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch';
+// import fetch from 'isomorphic-fetch';
 import {API} from '../config';
 import cookie from 'js-cookie';
 import Router from 'next/router';
