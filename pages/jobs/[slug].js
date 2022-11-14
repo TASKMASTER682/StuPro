@@ -227,8 +227,8 @@ const SingleJob = ({job,photo}) => {
             <IFrame material={job} />
             </ol>
             </div> : null}
- {job.faq.length ? <><h3 className='m-2 text-lg font-bold text-green-500 bg-slate-200'>Frequently Asked Questions</h3>
-<Faq material={job} /></> : null }
+ {job.faq.length ? <div><h3 className='m-2 text-lg font-bold text-green-500 bg-slate-200'>Frequently Asked Questions</h3>
+<Faq material={job} /></div> : null }
 
 <ShortSearch filterRoute='jobs' />
 {isAuth() && isAuth().role===1 && <div>
