@@ -23,7 +23,7 @@ const NewsLetter =dynamic(async ()=> import('../../components/NewsLetterSubscrib
 export const getStaticPaths = async () => {
     const post = await listJobsWithCategoriesAndTags();
     // const post = await res.json();
-    const paths =await post.map((job) => {
+    const pathData =await post.map((job) => {
         return {
             params: { slug: job.slug }
 
@@ -32,8 +32,8 @@ export const getStaticPaths = async () => {
 
     return {
 
-        paths,
-        fallback:true
+        paths:pathData,
+        fallback:'blocking'
         
     }
 }
@@ -67,10 +67,7 @@ const SingleJob = ({job,photo}) => {
 
  const [toc,setToc]=useState(false);
    
-const router=useRouter();
-    if(router.isFallback){
-        return <h3>Loading...</h3>
-    }
+
     return (
      <>
     <NextSeo

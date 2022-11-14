@@ -21,14 +21,14 @@ import { isAuth } from '../../actions/auth';
 export const getStaticPaths=async ()=>{
     const res = await fetch(`${API}/materials`);
     const data= await res.json();
-    const paths=data.map(material=>{
+    const pathData=data.map(material=>{
         return{
             params:{slug:material.slug}
         }
     })
     return{
-        paths,
-        fallback:true
+        paths:pathData,
+        fallback:'blocking'
     }
 }
   

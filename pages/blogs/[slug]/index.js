@@ -23,14 +23,14 @@ import { isAuth } from '../../../actions/auth';
 export const getStaticPaths=async ()=>{
     const res = await fetch(`${API}/blogs`);
     const data= await res.json();
-    const paths=data.map(blog=>{
+    const pathData=data.map(blog=>{
         return{
             params:{slug:blog.slug}
         }
     })
     return{
-        paths,
-        fallback:true
+        paths:pathData,
+        fallback:'blocking'
     }
 }
   
@@ -62,12 +62,7 @@ const SingleBlog=  ({blog,photo})=>{
     // const {data} = useSWR(props.slug ? `${API}/blogs/${props.slug}`:null, fetcher, { initialData: props});
     // const {blog}=data;
 
-const router=useRouter();
 
- 
-if(router.isFallback){
-    return <div>Loading...</div>
-}
 return(
 <>        
 <NextSeo

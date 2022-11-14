@@ -13,7 +13,6 @@ const Navbar=()=>{
   const [show,setShow]=useState(false);
   const [smallShow,setSmallShow]=useState(false);
 
-
     return(
     <>
     <nav className='fixed z-10 flex justify-between w-full bg-transparent shadow-md backdrop-blur-md '>
