@@ -61,7 +61,7 @@ export const getStaticProps = async (ctx) => {
 
 }
 
-length
+
 const SingleJob = ({job,photo}) => {
 
 

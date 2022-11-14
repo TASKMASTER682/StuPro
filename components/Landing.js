@@ -11,7 +11,7 @@ const Landing = ({ jobs }) => {
     // }
     // , privateJobs,result,admitCard
     return (
-       <section className='block '>
+       <div className='block '>
        <div className='p-4 bg-gradient-to-l from-green-400 to-orange-200'>
        <div className='flex flex-col-reverse rounded-lg lg:grid lg:grid-cols-2 lg:shadow-2xl lg:shadow-gray-900'>
        <div className='p-4 lg:pt-32 lg:pl-6'>
@@ -147,7 +147,7 @@ const Landing = ({ jobs }) => {
 </div>
       
 
-</section>
+</div>
     )
 }
 
