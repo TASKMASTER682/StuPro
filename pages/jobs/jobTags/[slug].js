@@ -91,7 +91,7 @@ export const getStaticPaths=async ()=>{
     }
 }
 
-export const getServerSideProps=async (ctx)=>{
+export const getStaticProps=async (ctx)=>{
     const slug=ctx.params.slug;
     const res=await fetch(`${API}/jobTags/`+slug);
     
