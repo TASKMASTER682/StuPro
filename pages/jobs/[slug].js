@@ -133,7 +133,7 @@ const SingleJob = ({job,photo}) => {
 </ul>
 
    <ul className='flex flex-col justify-between p-2 m-2 mt-4 rounded-md lg:flex-row lg:p-3 lg:px-2 bg-slate-300'>
-   <li className='text-sm font-semibold text-slate-900'>{`Posted on:${job.updatedAt}`}</li>
+   <li className='text-sm font-semibold text-slate-900'>{`Posted on:${format(new Date(job.updatedAt),'dd MMM yyyy')}`}</li>
 
 {job.salary ?    <li className='flex text-sm font-semibold text-slate-900'>
    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mx-2 stroke-teal-500 fill-transparent "  viewBox="0 0 24 24" strokeWidth="2">
@@ -149,7 +149,7 @@ const SingleJob = ({job,photo}) => {
    <li className='flex flex-initial text-sm'><span className='flex mr-3 font-bold'>
    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mx-2 fill-teal-500" viewBox="0 0 20 20" >
   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-</svg>Last Date: -</span> {job.lastDate}</li>
+</svg>Last Date: -</span> {`${format(new Date(job.lastDate),'dd MMM yyyy')}`}</li>
 <li><Share newRoute='jobs' blog={job} /></li>
    </ul>
    <div className='p-2'>

@@ -19,6 +19,8 @@ const Faq =  dynamic(async ()=> import('../../../components/reusables/ShowFaq'))
 const NewsLetter =  dynamic(async ()=> import('../../../components/NewsLetterSubscribe'));
 import Photo from '../../../components/reusables/Photo'
 import { isAuth } from '../../../actions/auth';
+import fetch from 'isomorphic-fetch';
+
 
 export const getStaticPaths=async ()=>{
     const res = await fetch(`${API}/blogs`);

@@ -15,6 +15,8 @@ const Faq =  dynamic(async ()=> import('../../components/reusables/ShowFaq'))
 const SmallCard = dynamic(() => import('../../components/reusables/SmallCard'));
 import Image from '../../components/reusables/ImageComponent'
 import { isAuth } from '../../actions/auth';
+import fetch from 'isomorphic-fetch';
+
 
 
 

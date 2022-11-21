@@ -2,6 +2,8 @@
 import FilterSearch from '../../../components/reusables/FilterSearch';
 import ShortSearch from '../../../components/reusables/ShortSearch';
 import { BreadcrumbJsonLd ,NextSeo} from 'next-seo';
+import fetch from 'isomorphic-fetch';
+
 
 
 

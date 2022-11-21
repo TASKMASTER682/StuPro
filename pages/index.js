@@ -1,6 +1,8 @@
 import {API,APP_NAME,DOMAIN} from "../config";
 import Landing from '../components/Landing';
 import { BreadcrumbJsonLd,NextSeo } from 'next-seo';
+import fetch from 'isomorphic-fetch';
+
 
 export const getStaticProps=async ()=>{
 

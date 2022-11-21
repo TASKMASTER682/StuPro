@@ -1,7 +1,9 @@
 import React,{useState,useEffect} from 'react';
 import {useRouter} from 'next/router';
 import {API} from '../../config';
-import Card from '../jobs/Card'
+import Card from '../jobs/Card';
+import fetch from 'isomorphic-fetch';
+
 
 
 const SearchedJobs = ({xRoute}) => {
@@ -13,7 +15,7 @@ const SearchedJobs = ({xRoute}) => {
     
         const fetchData= async ()=> {
             const searchData=await fetch(`${API}/${xRoute}/filter/${title}`).then(res=>res.json());
-            setData(searchData);
+            searchData && setData(searchData);
             
         }
         fetchData();
@@ -31,7 +33,7 @@ const SearchedJobs = ({xRoute}) => {
                 </article>
             )
 
-        }) : <p className='my-2 text-lg font-bold text-red-500 '>Sorry No Jobs Found</p>}
+        }) : <p className='my-2 text-lg font-bold text-red-500 '>Searching...</p>}
     </div>
       </>
  

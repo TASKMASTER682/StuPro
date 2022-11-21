@@ -7,6 +7,8 @@ import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../../config';
 // import {useState} from 'react';
 // import Link from 'next/link';
 import { BreadcrumbJsonLd,NextSeo } from 'next-seo';
+import fetch from 'isomorphic-fetch';
+
 
 
 export async function getStaticProps(){

@@ -1,7 +1,7 @@
 import AutoComplete from '../../components/reusables/AutoComplete';
 import ShowCategories from '../../components/reusables/SearchCat';
 import ShowTags from '../../components/reusables/SearchTags';
-
+import fetch from 'isomorphic-fetch';
 import Head from 'next/head';
 import {APP_NAME,API} from '../../config'
 

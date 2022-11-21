@@ -24,14 +24,14 @@ export default async (req, res) => {
       lastmod:`${format(new Date(),'dd MMM yyyy')}`
     });
     smStream.write('/about');
-    smStream.write({
-      url: `/jobs/webstories`,
-      changefreq: 'daily',
-      priority: 0.9,
-      lastmod:`${format(new Date(),'dd MMM yyyy')}`
+    // smStream.write({
+    //   url: `/jobs/webstories`,
+    //   changefreq: 'daily',
+    //   priority: 0.9,
+    //   lastmod:`${format(new Date(),'dd MMM yyyy')}`
       
      
-    });
+    // });
     smStream.write({
       url: `/jobs`,
       changefreq: 'daily',
