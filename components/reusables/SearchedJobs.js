@@ -11,16 +11,18 @@ const SearchedJobs = ({xRoute}) => {
     const router=useRouter();
     const {title}=router.query;
 
-    useEffect(async ()=>{
-    
-        const fetchData= async ()=> {
-            const searchData=await fetch(`${API}/${xRoute}/filter/${title}`).then(res=>res.json());
-            searchData && setData(searchData);
-            
-        }
+    const fetchData= async ()=> {
+        const searchData=await fetch(`${API}/${xRoute}/filter/${title}`).then(res=>res.json());
+        searchData && setData(searchData);
+        
+    }
+
+    useEffect(() => {
         fetchData();
     
     },[title]);
+
+
 
   return (
       <>
