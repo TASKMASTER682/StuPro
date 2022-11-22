@@ -21,7 +21,6 @@ module.exports = {
         source: "/feed.xml",
         destination: "/api/rss-feed/",
       },
-
     ];
   },
 }
