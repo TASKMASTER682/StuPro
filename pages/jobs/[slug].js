@@ -19,11 +19,6 @@ const Faq =  dynamic(async ()=> import('../../components/reusables/ShowFaq'))
 const NewsLetter =dynamic(async ()=> import('../../components/NewsLetterSubscribe'), { ssr: false });
 import fetch from 'isomorphic-fetch';
 
-
-
-
-
-
 const SingleJob = ({job,photo}) => {
 
 
@@ -217,7 +212,6 @@ export default SingleJob;
 
 export const getStaticPaths = async () => {
   const post = await listJobsWithCategoriesAndTags();
-  // const post = await res.json();
   const pathData =await post.map((job) => {
       return {
           params: { slug: job.slug }
